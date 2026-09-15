@@ -135,7 +135,7 @@ Hyper-ARC is a neuro-symbolic solver for the ARC-AGI-2 benchmark. The system com
 
 ### Requirement 7 — Solver Orchestration
 
-**User Story:** As a competition participant, I want a single entry-point script that processes all tasks and produces a valid submission file, so that the end-to-end pipeline is reproducible with one command.
+**User Story:** As a competition participant running in a Kaggle Notebook, I want a single entry-point script that processes all tasks, checkpoints progress across sessions, and produces a valid submission file, so that the pipeline survives Kaggle's 9-hour session limit and is reproducible with `!python main.py`.
 
 #### Acceptance Criteria
 
@@ -144,7 +144,13 @@ Hyper-ARC is a neuro-symbolic solver for the ARC-AGI-2 benchmark. The system com
 3. WHEN `main.py` finishes processing all Tasks, THE Solver SHALL write `submission.json` to the working directory in the Kaggle ARC submission format: a JSON object mapping task IDs to lists of predicted output grids.
 4. WHEN `main.py` completes successfully, THE Solver SHALL exit with return code 0.
 5. IF an unhandled exception occurs during task processing, THEN THE Solver SHALL log the task ID and exception details, skip that task, and continue processing remaining tasks.
-6. THE Solver SHALL log progress to stdout including task ID, iteration count, and whether Exact Match was achieved, for each processed task.
+6. THE Solver SHALL log progress to stdout including task ID, iteration count, and whether Exact Match was achieved, for each processed task; all log lines SHALL be immediately flushed (`flush=True`) so output streams live in Kaggle Notebook cells.
+7. `main.py` SHALL accept the following optional CLI arguments: `--data-dir` (default: `/kaggle/input/arc-prize-2025` with fallback to `./data/arc-agi-2`), `--output` (default: `submission.json`), `--checkpoint` (default: `checkpoint.pt`), `--seed-bank` (default: `hyper_arc/seed_bank.json`).
+8. WHEN `main.py` starts, THE Solver SHALL detect whether it is running in a Kaggle environment (by checking for `/kaggle/working/`) and automatically adjust default paths to Kaggle conventions if no CLI overrides are provided.
+9. THE Solver SHALL save a checkpoint file (default: `checkpoint.pt`) using `torch.save` after completing each task; the checkpoint SHALL contain: the completed `submission` dict, the set of completed task IDs, and the current `GlobalMemoryBank` state.
+10. WHEN `main.py` starts and a checkpoint file exists, THE Solver SHALL load the checkpoint, restore the submission dict and completed task IDs, and skip all already-completed tasks — resuming from the first incomplete task.
+11. IF loading a checkpoint fails for any reason, THE Solver SHALL log a warning, discard the corrupt checkpoint, and start fresh without raising an exception.
+12. THE Solver SHALL delete the checkpoint file after writing the final `submission.json` to signal clean completion.
 
 ---
 

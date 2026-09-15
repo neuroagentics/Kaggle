@@ -263,17 +263,34 @@ Implement the Hyper-ARC solver in Python 3.10+, building each component incremen
   - Run `pytest tests/` to verify HPM and MCTS tests all pass. Ask the user if any questions arise before proceeding to orchestration.
 
 - [ ] 10. Implement solver orchestration (`main.py`)
-  - [ ] 10.1 Write `main.py` entry point
-    - `load_tasks(data_dir)` — glob `**/*.json`, parse each, return `{task_id: task_dict}`
-    - `main()` — instantiate `GlobalMemoryBank` once at startup from `seed_bank.json` (if present); log seed bank size; instantiate `MCTSEngine` with the global bank
-    - For each task: instantiate a fresh `LocalTaskBuffer`, pass both `global_memory` and `local_memory` to `MCTSEngine`; build `train_pairs` as list of `(ESB, ESB)`, call `engine.solve`, apply program to each test input, collect predictions
-    - Catch per-task exceptions: log task ID + traceback, set `submission[task_id] = []`, continue
-    - Write `submission.json` as JSON mapping task IDs → list of predicted grids
-    - Log to stdout: task ID, `exact_match`, `program_len` per task; seed bank size at startup; total task count
-    - Exit with code 0 on success
-    - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6_
+  - [ ] 10.1 Write `main.py` entry point with Kaggle compatibility and checkpointing
+    - **CLI arguments** (all optional, with auto-detected Kaggle defaults):
+      - `--data-dir`: ARC task directory (default: `/kaggle/input/arc-prize-2025` if running on Kaggle, else `./data/arc-agi-2`)
+      - `--output`: submission file path (default: `/kaggle/working/submission.json` on Kaggle, else `./submission.json`)
+      - `--checkpoint`: checkpoint file path (default: `/kaggle/working/checkpoint.pt` on Kaggle, else `./checkpoint.pt`)
+      - `--seed-bank`: seed bank path (default: `hyper_arc/seed_bank.json`)
+    - **Kaggle detection**: check `Path("/kaggle/working/").exists()` at startup; if true, use Kaggle default paths unless overridden via CLI
+    - **Seed bank loading — MVP graceful fallback (REQUIRED)**:
+      - Wrap seed bank loading in a `try/except` block
+      - If `seed_bank.json` exists and loads cleanly: populate `GlobalMemoryBank` normally, use `global_prior_weight = 0.2`
+      - If `seed_bank.json` is missing OR loading raises any exception: initialize an empty `GlobalMemoryBank`, set `global_prior_weight = 0.0`, log `[WARN] seed_bank.json not found — GlobalMemoryBank empty, using uniform prior`
+      - `build_global_memory.py` is a separate offline utility; its absence must NEVER block `main.py` from running
+      - With `global_prior_weight = 0.0`: MCTS relies 100% on `LocalTaskBuffer` priors and uniform random fallback
+    - **Checkpoint resume logic** (run before processing any tasks):
+      - If checkpoint file exists: load with `torch.load`; restore `submission` dict, `completed_task_ids` set, and `GlobalMemoryBank` state; log how many tasks are being skipped
+      - If checkpoint load fails for any reason: log warning, start fresh (do not raise)
+    - **Task loop**:
+      - Skip any `task_id` already in `completed_task_ids`
+      - For each task: instantiate a fresh `LocalTaskBuffer`; build `train_pairs`; call `engine.solve`; apply program to test inputs; collect predictions
+      - After each task completes (success or skip): save checkpoint with `torch.save({"submission": submission, "completed_ids": completed_task_ids, "global_memory_state": global_memory.state_dict_entries()}, checkpoint_path)`
+    - **Logging**: all `print()` calls use `flush=True` for live Kaggle Notebook cell output; log format: `[TASK] {task_id} exact_match={bool} program_len={int} ({n}/{total})`
+    - **Shutdown**: after writing final `submission.json`, delete checkpoint file and log clean completion; exit code 0
+    - Catch per-task exceptions: log task ID + traceback, set `submission[task_id] = []`, save checkpoint, continue
+    - `load_tasks(data_dir)` — glob `**/*.json`, skip `seed_bank.json`, parse each, return `{task_id: task_dict}`
+    - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 7.10, 7.11, 7.12_
 
 - [ ] 11. Build Global Memory Seed Bank (`build_global_memory.py`)
+  - **This is a standalone offline utility. It is NOT a dependency of `main.py`. Run it separately on Kaggle Notebooks after the MVP is working.**
   - [ ] 11.1 Write `build_global_memory.py` offline generation script
     - Accept `--data-dir` (path to ARC training data), `--n-tasks` (default: 50), and `--output` (default: `hyper_arc/seed_bank.json`) command-line arguments via `argparse`
     - Load a random subset of `--n-tasks` ARC training tasks from `--data-dir`

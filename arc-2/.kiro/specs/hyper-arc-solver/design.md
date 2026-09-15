@@ -758,51 +758,135 @@ class MCTSEngine:
 
 ### 7. Solver Orchestration (`main.py`)
 
+Designed to run in a Kaggle Notebook cell via `!python main.py` with no edits required. All paths auto-detect the Kaggle environment. Checkpointing survives the 9-hour session limit.
+
 ```python
-"""main.py — Hyper-ARC end-to-end solver."""
-import json, sys, traceback
+"""main.py — Hyper-ARC end-to-end solver.
+
+Kaggle usage:
+    !python main.py
+    # or with explicit paths:
+    !python main.py --data-dir /kaggle/input/arc-prize-2025 --output /kaggle/working/submission.json
+"""
+import argparse, json, sys, traceback, torch
 from pathlib import Path
 from hyper_arc.esb import ESB
-from hyper_arc.hpm import HyperbolicProgramMemory
+from hyper_arc.hpm import GlobalMemoryBank, LocalTaskBuffer
 from hyper_arc.mcts import MCTSEngine
-from hyper_arc.dsl import SpatialDSL
+from hyper_arc.spatial_dsl import SpatialDSL
 
-DATA_DIR      = Path("./data/arc-agi-2")
-SEED_BANK     = Path("./hyper_arc/seed_bank.json")
-OUTPUT_FILE   = Path("./submission.json")
+# ── Kaggle environment detection ─────────────────────────────
+IS_KAGGLE = Path("/kaggle/working/").exists()
 
-def load_tasks(data_dir: Path) -> dict[str, dict]:
-    tasks = {}
+DEFAULT_DATA_DIR   = "/kaggle/input/arc-prize-2025" if IS_KAGGLE else "./data/arc-agi-2"
+DEFAULT_OUTPUT     = "/kaggle/working/submission.json" if IS_KAGGLE else "./submission.json"
+DEFAULT_CHECKPOINT = "/kaggle/working/checkpoint.pt"  if IS_KAGGLE else "./checkpoint.pt"
+DEFAULT_SEED_BANK  = "hyper_arc/seed_bank.json"
+
+
+def log(msg: str) -> None:
+    """Print with immediate flush for live Kaggle Notebook cell output."""
+    print(msg, flush=True)
+
+
+def load_tasks(data_dir: Path, seed_bank_path: Path) -> dict[str, dict]:
+    """Glob all *.json task files, skipping the seed bank."""
+    tasks: dict[str, dict] = {}
     for fpath in sorted(data_dir.glob("**/*.json")):
+        if fpath.resolve() == seed_bank_path.resolve():
+            continue
         try:
             tasks[fpath.stem] = json.loads(fpath.read_text())
         except Exception:
             pass
     return tasks
 
+
+def save_checkpoint(path: Path, submission: dict, completed_ids: set,
+                    global_memory: GlobalMemoryBank) -> None:
+    torch.save({
+        "submission":    submission,
+        "completed_ids": completed_ids,
+        "global_memory": [
+            {"program": e.program, "embedding": e.embedding}
+            for e in global_memory._entries
+        ],
+    }, path)
+
+
+def load_checkpoint(path: Path, global_memory: GlobalMemoryBank
+                    ) -> tuple[dict, set]:
+    """Load checkpoint; return (submission_dict, completed_ids_set).
+    Restores GlobalMemoryBank entries in-place.
+    Returns ({}, set()) on any error."""
+    try:
+        ckpt = torch.load(path, weights_only=False)
+        for entry in ckpt.get("global_memory", []):
+            from hyper_arc.hpm import HPMEntry
+            global_memory._entries.append(
+                HPMEntry(program=entry["program"], embedding=entry["embedding"])
+            )
+        log(f"[RESUME] Loaded checkpoint: {len(ckpt['completed_ids'])} tasks already done.")
+        return ckpt["submission"], set(ckpt["completed_ids"])
+    except Exception as exc:
+        log(f"[WARN] Checkpoint load failed ({exc}); starting fresh.")
+        global_memory._entries.clear()
+        return {}, set()
+
+
 def main() -> int:
-    hpm = HyperbolicProgramMemory(k=5)
-    if SEED_BANK.exists():
-        hpm.load_seed_bank(SEED_BANK)
-        print(f"[INFO] Loaded seed bank: {len(hpm._entries)} programs")
+    parser = argparse.ArgumentParser(description="Hyper-ARC solver")
+    parser.add_argument("--data-dir",   default=DEFAULT_DATA_DIR)
+    parser.add_argument("--output",     default=DEFAULT_OUTPUT)
+    parser.add_argument("--checkpoint", default=DEFAULT_CHECKPOINT)
+    parser.add_argument("--seed-bank",  default=DEFAULT_SEED_BANK)
+    args = parser.parse_args()
+
+    data_dir        = Path(args.data_dir)
+    output_path     = Path(args.output)
+    checkpoint_path = Path(args.checkpoint)
+    seed_bank_path  = Path(args.seed_bank)
+
+    log(f"[INFO] data_dir={data_dir}  output={output_path}  "
+        f"checkpoint={checkpoint_path}  kaggle={IS_KAGGLE}")
+
+    # ── Initialise GlobalMemoryBank ───────────────────────────
+    global_memory = GlobalMemoryBank(k=5)
+
+    # ── Resume from checkpoint (loads global_memory entries too) ─
+    submission: dict[str, list]
+    completed_ids: set[str]
+    if checkpoint_path.exists():
+        submission, completed_ids = load_checkpoint(checkpoint_path, global_memory)
     else:
-        print("[WARN] No seed bank found; HPM initialized empty.")
+        submission, completed_ids = {}, set()
 
-    engine = MCTSEngine(hpm=hpm)
-    dsl    = SpatialDSL()
-    tasks  = load_tasks(DATA_DIR)
-    print(f"[INFO] Found {len(tasks)} tasks.")
+    # ── Load seed bank (only if global_memory still empty) ───
+    if not global_memory._entries and seed_bank_path.exists():
+        global_memory.load_seed_bank(seed_bank_path)
+        log(f"[INFO] Loaded seed bank: {len(global_memory._entries)} programs")
+    elif not global_memory._entries:
+        log("[WARN] No seed bank found; GlobalMemoryBank initialized empty.")
 
-    submission: dict[str, list] = {}
+    dsl   = SpatialDSL()
+    tasks = load_tasks(data_dir, seed_bank_path)
+    total = len(tasks)
+    log(f"[INFO] Found {total} tasks. Already completed: {len(completed_ids)}.")
 
-    for task_id, task in tasks.items():
+    for n, (task_id, task) in enumerate(tasks.items(), 1):
+        if task_id in completed_ids:
+            log(f"[SKIP] {task_id} ({n}/{total})")
+            continue
         try:
+            local_memory = LocalTaskBuffer(k=5)
+            engine = MCTSEngine(global_memory=global_memory,
+                                local_memory=local_memory)
             train_pairs = [
                 (ESB.from_grid(p["input"]), ESB.from_grid(p["output"]))
                 for p in task.get("train", [])
             ]
             program = engine.solve(train_pairs)
-            exact   = program is not None and len(program) > 0
+            exact   = bool(program)
 
             predictions = []
             for test_pair in task.get("test", []):
@@ -811,20 +895,61 @@ def main() -> int:
                 predictions.append(pred.to_grid())
 
             submission[task_id] = predictions
-            print(f"[TASK] {task_id}  exact_match={exact}  "
-                  f"program_len={len(program)}")
+            completed_ids.add(task_id)
+            log(f"[TASK] {task_id}  exact_match={exact}  "
+                f"program_len={len(program)}  ({n}/{total})")
 
         except Exception as exc:
-            print(f"[ERROR] {task_id}: {exc}")
-            traceback.print_exc()
+            log(f"[ERROR] {task_id}: {exc}")
+            traceback.print_exc(file=sys.stdout)
             submission[task_id] = []
+            completed_ids.add(task_id)
 
-    OUTPUT_FILE.write_text(json.dumps(submission, indent=2))
-    print(f"[INFO] Wrote {OUTPUT_FILE}")
+        # ── Checkpoint after every task ───────────────────────
+        save_checkpoint(checkpoint_path, submission, completed_ids, global_memory)
+
+    # ── Write final submission ────────────────────────────────
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(submission, indent=2))
+    log(f"[INFO] Wrote {output_path}  ({len(submission)} tasks)")
+
+    # ── Clean up checkpoint ───────────────────────────────────
+    if checkpoint_path.exists():
+        checkpoint_path.unlink()
+        log(f"[INFO] Deleted checkpoint {checkpoint_path} (clean completion)")
+
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
+```
+
+#### Checkpoint File Structure
+
+```python
+{
+    "submission":    dict[str, list],   # task_id → predicted grids so far
+    "completed_ids": set[str],           # task IDs fully processed
+    "global_memory": list[{             # GlobalMemoryBank entries
+        "program":   DSLProgram,
+        "embedding": torch.Tensor,
+    }],
+}
+```
+
+#### Resume Flow
+
+```
+Session 1:  tasks 1–N  →  checkpoint.pt written after each task
+            (session times out at hour 9)
+
+Session 2:  checkpoint.pt detected at startup
+            GlobalMemoryBank restored from checkpoint
+            tasks 1–(N-k) skipped
+            tasks (N-k+1)–end processed normally
+            final submission.json written
+            checkpoint.pt deleted
 ```
 
 ---
@@ -845,13 +970,13 @@ pytest==8.2.*
 """Hyper-ARC: Neuro-Symbolic ARC-AGI-2 Solver."""
 from hyper_arc.esb import ESB
 from hyper_arc.spatial_dsl import SpatialDSL, DSLProgram
-from hyper_arc.hpm import HyperbolicProgramMemory
+from hyper_arc.hpm import GlobalMemoryBank, LocalTaskBuffer
 from hyper_arc.mcts import MCTSEngine
 from hyper_arc.cost import exact_match, partial_reward
 
 __all__ = [
     "ESB", "SpatialDSL", "DSLProgram",
-    "HyperbolicProgramMemory", "MCTSEngine",
+    "GlobalMemoryBank", "LocalTaskBuffer", "MCTSEngine",
     "exact_match", "partial_reward",
 ]
 ```
@@ -892,9 +1017,13 @@ submission.json
 | Kaggle CLI missing | `download_data.py` | Print actionable message, exit 1 |
 | Data dir already populated | `download_data.py` | Skip download, log info |
 | ESB dimension < 1 | `esb.py` | Raise `ValueError` with message |
-| Invalid DSL parameter | `dsl.py` | Raise `ValueError` with parameter name + range |
+| Invalid DSL parameter | `spatial_dsl.py` | Raise `ValueError` with parameter name + range |
 | HPM store empty at query | `hpm.py` | Return empty list |
 | HPM store < k at query | `hpm.py` | Return all entries, no error |
+| Unhandled task exception | `main.py` | Log task ID + traceback, `submission[id]=[]`, save checkpoint, continue |
+| No exact match in budget | `mcts.py` | Return best partial program |
+| Checkpoint file corrupt / missing | `main.py` | Log warning, start fresh, no exception raised |
+| Kaggle session timeout | `main.py` | Resume from `checkpoint.pt` on next session start |
 | Unhandled task exception | `main.py` | Log task ID + traceback, skip, continue |
 | No exact match in budget | `mcts.py` | Return best partial program |
 
