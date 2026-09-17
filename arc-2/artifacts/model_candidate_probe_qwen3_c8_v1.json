@@ -1,0 +1,31 @@
+{
+  "probe": "reflect-horizontal",
+  "candidates_per_model": 8,
+  "promising_models": [
+    "qwen3:8b"
+  ],
+  "reports": [
+    {
+      "model": "qwen3:8b",
+      "json_ok": true,
+      "candidates": 8,
+      "executed": 7,
+      "executed_rate": 0.88,
+      "duplicates": 1,
+      "syntax_errors": 0,
+      "forbidden_api": 0,
+      "worker_errors": 0,
+      "non_exact_but_ran": 6,
+      "solved_demo": true,
+      "sample_rejections": [
+        "r0c1:non-exact:10:Rotate the grid 180 degrees.",
+        "r0c2:non-exact:902:Transpose the grid and mirror it horizontally.",
+        "r0c3:non-exact:8:Mirror the grid vertically.",
+        "r0c4:duplicate",
+        "r0c5:non-exact:906:Rotate the grid 270 degrees clockwise.",
+        "r0c6:non-exact:904:Transpose the grid and reverse the order of rows."
+      ],
+      "elapsed_seconds": 33.3
+    }
+  ]
+}

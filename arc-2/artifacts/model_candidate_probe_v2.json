@@ -1,0 +1,83 @@
+{
+  "probe": "reflect-horizontal",
+  "candidates_per_model": 4,
+  "promising_models": [
+    "qwen3:8b"
+  ],
+  "reports": [
+    {
+      "model": "gemma4:latest",
+      "json_ok": false,
+      "candidates": 0,
+      "executed": 0,
+      "executed_rate": 0.0,
+      "duplicates": 0,
+      "syntax_errors": 0,
+      "forbidden_api": 0,
+      "worker_errors": 0,
+      "non_exact_but_ran": 0,
+      "solved_demo": false,
+      "sample_rejections": [
+        "r0:model:AgenticReasoningError:model JSON is missing hypotheses"
+      ],
+      "elapsed_seconds": 28.6
+    },
+    {
+      "model": "qwen2.5-coder:7b",
+      "json_ok": true,
+      "candidates": 4,
+      "executed": 0,
+      "executed_rate": 0.0,
+      "duplicates": 0,
+      "syntax_errors": 0,
+      "forbidden_api": 0,
+      "worker_errors": 0,
+      "non_exact_but_ran": 0,
+      "solved_demo": false,
+      "sample_rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r0c1:ValueError:program must define transform(grid)",
+        "r0c2:ValueError:program must define transform(grid)",
+        "r0c3:ValueError:program must define transform(grid)"
+      ],
+      "elapsed_seconds": 15.3
+    },
+    {
+      "model": "qwen3:8b",
+      "json_ok": true,
+      "candidates": 4,
+      "executed": 2,
+      "executed_rate": 0.5,
+      "duplicates": 1,
+      "syntax_errors": 0,
+      "forbidden_api": 0,
+      "worker_errors": 1,
+      "non_exact_but_ran": 2,
+      "solved_demo": false,
+      "sample_rejections": [
+        "r0c0:non-exact:8:Reflect the grid horizontally and swap the colors of the top and bottom rows.",
+        "r0c1:non-exact:904:Transpose the grid and then reflect it horizontally.",
+        "r0c2:ValueError:worker rejected program: e 3, in transform   File \"C:\\Kaggle\\arc-2\\agentic_primitives.py\", line 62, in reflect_horizontal     return copy_grid(grid[::-1])   File \"C:\\Kaggle\\arc-2\\agentic_primitives.py\", line 10, in copy_grid     return [list(row) for row in grid]             ~~~~^^^^^ TypeError: 'in",
+        "r0c3:duplicate"
+      ],
+      "elapsed_seconds": 24.4
+    },
+    {
+      "model": "qwen3-vl:8b",
+      "json_ok": false,
+      "candidates": 0,
+      "executed": 0,
+      "executed_rate": 0.0,
+      "duplicates": 0,
+      "syntax_errors": 0,
+      "forbidden_api": 0,
+      "worker_errors": 0,
+      "non_exact_but_ran": 0,
+      "solved_demo": false,
+      "sample_rejections": [
+        "r0:model:AgenticReasoningError:model response contains no valid JSON object"
+      ],
+      "elapsed_seconds": 32.3
+    }
+  ]
+}

@@ -8,6 +8,9 @@ import pytest
 
 from hyper_arc.contender.agentic_reasoner import (
     AgenticReasoner,
+    AgenticReasoningError,
+    _extract_json_object,
+    _normalize_code,
     execute_code,
     validate_code,
 )
@@ -154,6 +157,47 @@ def test_reasoner_uses_verifier_feedback_and_returns_only_exact_replays():
     assert len(payloads) == 2
     assert "mismatches" in payloads[1]["messages"][-1]["content"]
     assert "Scene graph" in payloads[0]["messages"][-1]["content"]
+
+
+@pytest.mark.parametrize(
+    "raw",
+    [
+        # plain
+        "def transform(grid):\n    return [row[::-1] for row in grid]",
+        # fenced python
+        "```python\ndef transform(grid):\n    return [row[::-1] for row in grid]\n```",
+        # fenced, no language tag
+        "```\ndef transform(grid):\n    return [row[::-1] for row in grid]\n```",
+        # prose before the fence (previously not stripped -> syntax error)
+        "Here is the program:\n```python\ndef transform(grid):\n    return [row[::-1] for row in grid]\n```",
+        # JSON-escaped newlines with no real newlines
+        "def transform(grid):\\n    return [row[::-1] for row in grid]",
+    ],
+)
+def test_normalize_code_recovers_runnable_source(raw):
+    code = _normalize_code(raw)
+    # Every variant must validate and produce the horizontal reflection.
+    assert validate_code(code) > 0
+    assert execute_code(code, [[[1, 2, 3]]]) == [[[3, 2, 1]]]
+
+
+def test_extract_json_object_prefers_the_object_carrying_hypotheses():
+    # A stray fragment precedes the real payload. The first-object-wins behavior
+    # would have returned {"note": ...} and failed as "missing hypotheses".
+    text = 'Reasoning: {"note": "thinking"} then the answer {"hypotheses": [{"summary": "s", "code": "c"}]}'
+    result = _extract_json_object(text)
+    assert isinstance(result.get("hypotheses"), list)
+    assert result["hypotheses"][0]["summary"] == "s"
+
+
+def test_extract_json_object_falls_back_to_first_valid_object():
+    text = 'prefix {"other": 1} suffix'
+    assert _extract_json_object(text) == {"other": 1}
+
+
+def test_extract_json_object_raises_when_no_object_present():
+    with pytest.raises(AgenticReasoningError):
+        _extract_json_object("no json here at all")
 
 
 def test_reasoner_does_not_promote_a_non_exact_program():

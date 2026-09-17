@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "gemma4:latest",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 8,
+  "rounds": 3,
+  "candidates_per_round": 4,
+  "ordering": "smallest",
+  "thinking": false,
+  "demonstration_exact_tasks": 0,
+  "full_task_exact_pass_at_2": 0,
+  "unique_vs_owned_production": 0,
+  "candidates_generated": 25,
+  "candidates_executed": 0,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 2,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: -2\\hyper_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 20, in transform TypeError: list indices must be inte",
+        "r1:model:AgenticReasoningError:model JSON is missing hypotheses",
+        "r2c0:ValueError:worker rejected program: c-2\\hyper_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 7, in transform TypeError: list indices must be inte"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "44f52bb0",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 0,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0:model:AgenticReasoningError:model JSON is missing hypotheses",
+        "r1:model:AgenticReasoningError:model JSON is missing hypotheses",
+        "r2:model:AgenticReasoningError:model JSON is missing hypotheses"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "a85d4709",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 0,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0:model:AgenticReasoningError:model response contains no valid JSON object",
+        "r1:model:AgenticReasoningError:model response contains no valid JSON object",
+        "r2:model:AgenticReasoningError:model response contains no valid JSON object"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "0520fde7",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 6,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r1c0:ValueError:invalid Python: invalid syntax",
+        "r2c0:ValueError:program must define transform(grid)",
+        "r2c1:duplicate",
+        "r2c2:duplicate",
+        "r2c3:ValueError:program must define transform(grid)"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "88a62173",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 2,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r1:model:AgenticReasoningError:model response contains no valid JSON object",
+        "r2c0:ValueError:program must define transform(grid)"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "dae9d2b5",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 6,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r0c1:ValueError:program must define transform(grid)",
+        "r0c2:ValueError:program must define transform(grid)",
+        "r0c3:ValueError:invalid Python: unmatched ']'",
+        "r1c0:ValueError:program must define transform(grid)",
+        "r2c0:ValueError:program must define transform(grid)"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "59341089",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 9,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r1c0:ValueError:program must define transform(grid)",
+        "r1c1:ValueError:program must define transform(grid)",
+        "r1c2:ValueError:program must define transform(grid)",
+        "r1c3:ValueError:program must define transform(grid)",
+        "r2c0:ValueError:program must define transform(grid)",
+        "r2c1:ValueError:program must define transform(grid)",
+        "r2c2:ValueError:program must define transform(grid)",
+        "r2c3:ValueError:program must define transform(grid)"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "4522001f",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 0,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0:model:AgenticReasoningError:model JSON is missing hypotheses",
+        "r1:model:AgenticReasoningError:model JSON is missing hypotheses",
+        "r2:model:AgenticReasoningError:model JSON is missing hypotheses"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 319.55860249999387,
+  "telemetry": {
+    "wall_seconds": 319.55855979998887,
+    "cpu_seconds": 56.515625,
+    "peak_rss_bytes": 255111168,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  },
+  "agentic_memory": {
+    "path": "artifacts\\agentic_memory_resandbox_v1.json",
+    "new_records": 0,
+    "total_records": 0
+  }
+}

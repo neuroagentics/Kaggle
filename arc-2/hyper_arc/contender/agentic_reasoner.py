@@ -91,7 +91,16 @@ def execute_code(
 
 
 def _extract_json_object(text: str) -> Mapping[str, Any]:
+    """Return the response object, preferring one that carries `hypotheses`.
+
+    Models sometimes emit a small JSON fragment (e.g. a stray ``{...}`` inside
+    prose, or a single hypothesis object) before the real payload. Returning the
+    first object found then fails downstream as "missing hypotheses" and burns a
+    whole round. Scan every decodable object and prefer the first one that has a
+    `hypotheses` list, falling back to the first valid object otherwise.
+    """
     decoder = json.JSONDecoder()
+    first_object: Mapping[str, Any] | None = None
     for index, character in enumerate(text):
         if character != "{":
             continue
@@ -99,9 +108,43 @@ def _extract_json_object(text: str) -> Mapping[str, Any]:
             value, _end = decoder.raw_decode(text[index:])
         except json.JSONDecodeError:
             continue
-        if isinstance(value, Mapping):
+        if not isinstance(value, Mapping):
+            continue
+        if isinstance(value.get("hypotheses"), list):
             return value
+        if first_object is None:
+            first_object = value
+    if first_object is not None:
+        return first_object
     raise AgenticReasoningError("model response contains no valid JSON object")
+
+
+def _normalize_code(code: str) -> str:
+    """Recover runnable source from common model formatting quirks.
+
+    Models wrap code in markdown fences (sometimes preceded by prose) and
+    occasionally emit literal ``\\n``/``\\t`` escapes instead of real
+    whitespace. Prior logic only stripped a fence at position 0 and only
+    unescaped when the string had no real newlines, so mixed responses stayed
+    unparseable and were discarded as syntax errors. Extract the fenced block
+    when present, otherwise strip a leading fence marker, then unescape literal
+    line/tab escapes whenever they appear.
+    """
+    text = code.strip()
+    # Prefer the contents of the first fenced block anywhere in the response.
+    fence = text.find("```")
+    if fence != -1:
+        rest = text[fence + 3 :]
+        if rest[:6].lower().startswith("python"):
+            rest = rest[6:]
+        elif rest[:2] == "py":
+            rest = rest[2:]
+        close = rest.find("```")
+        text = (rest if close == -1 else rest[:close]).strip()
+    # Some models JSON-escape newlines/tabs into the code string itself.
+    if "\\n" in text or "\\t" in text:
+        text = text.replace("\\r\\n", "\n").replace("\\n", "\n").replace("\\t", "\t")
+    return text.strip()
 
 
 def _code_response_schema(max_candidates: int) -> dict[str, Any]:
@@ -478,16 +521,7 @@ class AgenticReasoner:
                 if not isinstance(summary, str) or not isinstance(code, str):
                     failures.append(f"r{round_index}c{index}:bad-fields")
                     continue
-                code = code.strip()
-                if code.startswith("```python"):
-                    code = code[len("```python") :]
-                elif code.startswith("```"):
-                    code = code[3:]
-                if code.endswith("```"):
-                    code = code[:-3]
-                code = code.strip()
-                if "\\n" in code and "\n" not in code:
-                    code = code.replace("\\n", "\n").replace("\\t", "\t")
+                code = _normalize_code(code)
                 rejected_summaries.append(summary[:300])
                 digest = hashlib.sha256(code.strip().encode("utf-8")).hexdigest()
                 if digest in seen:
