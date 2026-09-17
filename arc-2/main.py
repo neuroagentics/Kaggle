@@ -145,12 +145,30 @@ def _two_attempts(
     return {"attempt_1": unique[0], "attempt_2": unique[1]}
 
 
-def failure_fallback(task_data: dict[str, Any]) -> list[dict[str, list[list[int]]]]:
-    """Declared last-resort policy used only after a recorded task failure."""
+def _zero_grid(grid: list[list[int]]) -> list[list[int]]:
+    """A same-shape all-zero (ARC background) grid."""
+    if not grid or not grid[0]:
+        # Degenerate input; emit a minimal valid 1x1 grid.
+        return [[0]]
+    return [[0] * len(grid[0]) for _ in grid]
+
+
+def failure_fallback(
+    task_data: dict[str, Any], mode: str = "input"
+) -> list[dict[str, list[list[int]]]]:
+    """Declared last-resort policy used only after a recorded task failure.
+
+    mode="input" (default): copy the test input. On ARC this is a strictly
+        stronger blind guess than zeros (many tasks are near-identity) and is
+        always shape-valid.
+    mode="zero": emit a same-shape all-zero (background) grid. Provided for
+        explicit request only; expected to score no better and often worse.
+    """
+    filler = _zero_grid if mode == "zero" else _copy_grid
     return [
         {
-            "attempt_1": _copy_grid(pair["input"]),
-            "attempt_2": _copy_grid(pair["input"]),
+            "attempt_1": filler(pair["input"]),
+            "attempt_2": filler(pair["input"]),
         }
         for pair in task_data.get("test", [])
     ]
@@ -384,7 +402,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--procedural-memory", default=str(DEFAULT_PROCEDURAL_MEMORY)
     )
-    parser.add_argument("--task-timeout", type=float, default=90.0)
+    parser.add_argument("--task-timeout", type=float, default=60.0)
+    parser.add_argument(
+        "--timeout-fallback",
+        choices=("input", "zero"),
+        default="input",
+        help=(
+            "Grid submitted when a task fails or times out. 'input' (default) "
+            "copies the test input; 'zero' emits a same-shape blank grid."
+        ),
+    )
     parser.add_argument("--max-iterations", type=int, default=MAX_ITERATIONS)
     parser.add_argument("--global-timeout", type=float, default=36_000.0)
     parser.add_argument("--enable-world-model", action="store_true")
@@ -637,7 +664,9 @@ def main(argv: list[str] | None = None) -> int:
             log(f"[TIMEOUT] Global solver deadline reached at task {task_id}")
             for pending_id, pending_task in list(challenges.items())[index - 1 :]:
                 if pending_id not in submission:
-                    submission[pending_id] = failure_fallback(pending_task)
+                    submission[pending_id] = failure_fallback(
+                        pending_task, args.timeout_fallback
+                    )
                     timed_out_tasks.append(pending_id)
             break
         try:
@@ -666,7 +695,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.task_failure_policy == "abort":
                 raise
             failures.append({"task_id": task_id, "error": type(exc).__name__})
-            submission[task_id] = failure_fallback(task_data)
+            submission[task_id] = failure_fallback(task_data, args.timeout_fallback)
         completed_ids.add(task_id)
         save_checkpoint(
             checkpoint_path,
@@ -709,6 +738,7 @@ def main(argv: list[str] | None = None) -> int:
             "run_signature": run_signature,
             "global_timeout_seconds": args.global_timeout,
             "task_timeout_seconds": args.task_timeout,
+            "timeout_fallback": args.timeout_fallback,
             "max_iterations": args.max_iterations,
             "world_model_enabled": args.enable_world_model,
             "world_memory_enabled": args.enable_world_memory,
