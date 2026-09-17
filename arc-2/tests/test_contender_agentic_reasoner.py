@@ -13,6 +13,7 @@ from hyper_arc.contender.agentic_reasoner import (
     _extract_json_object,
     _normalize_code,
     _planning_prompt,
+    _scene_payload,
     execute_code,
     validate_code,
 )
@@ -181,6 +182,25 @@ def test_normalize_code_recovers_runnable_source(raw):
     # Every variant must validate and produce the horizontal reflection.
     assert validate_code(code) > 0
     assert execute_code(code, [[[1, 2, 3]]]) == [[[3, 2, 1]]]
+
+
+def test_scene_payload_bounds_busy_grids_to_limit_prompt_bloat():
+    # A grid dense with many isolated single cells produces far more objects
+    # than the cap; the scene must report the true count but cap serialized
+    # objects and omit per-object pixel masks so the prompt stays bounded.
+    dense = [[0] * 20 for _ in range(20)]
+    for r in range(0, 20, 2):
+        for c in range(0, 20, 2):
+            dense[r][c] = 1 + ((r + c) // 2) % 8
+    task = {
+        "train": [{"input": dense, "output": [[1, 1], [1, 1]]}],
+        "test": [{"input": dense}],
+    }
+    scene = _scene_payload("busy", task)
+    input_grid = scene["grids"][0]
+    assert input_grid["object_count"] > 24  # true count preserved
+    assert len(input_grid["objects"]) <= 24  # serialized objects capped
+    assert all("relative_pixels" not in obj for obj in input_grid["objects"])
 
 
 def test_diversity_directive_demands_distinct_hypotheses():

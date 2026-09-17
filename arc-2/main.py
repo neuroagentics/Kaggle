@@ -429,7 +429,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--agentic-rounds", type=int, default=2)
     parser.add_argument("--agentic-candidates", type=int, default=4)
-    parser.add_argument("--agentic-max-output-tokens", type=int, default=1800)
+    parser.add_argument("--agentic-max-output-tokens", type=int, default=2400)
     parser.add_argument("--agentic-thinking", action="store_true")
     parser.add_argument("--competition-run", action="store_true")
     parser.add_argument(

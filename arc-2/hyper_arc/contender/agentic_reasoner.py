@@ -180,11 +180,51 @@ def _task_payload(task_data: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+# Payload budget. On busy grids the full per-object pixel lists dominated the
+# prompt (12k-18k chars) and, against a fixed output-token budget, starved the
+# model so it emitted no runnable code. Bound object count and per-object pixel
+# detail; the raw grids are already in the task payload, and bbox/area/shape/
+# holes carry the structural summary the planner actually needs.
+_MAX_OBJECTS_PER_GRID = 24
+_MAX_RELATIVE_PIXELS = 24
+_MAX_RELATIONS_PER_GRID = 40
+
+
+# Object attribute keys that the model cannot cheaply recompute from bbox/area
+# and are worth the tokens. height/width/is_line/is_square are derivable from
+# bbox and were dropped to shrink the payload.
+_KEPT_OBJECT_ATTRIBUTES = ("filled_bbox", "shape_symmetries")
+
+
+def _object_payload(item: Any, *, include_pixels: bool) -> dict[str, Any]:
+    attributes = {
+        key: item.attributes[key]
+        for key in _KEPT_OBJECT_ATTRIBUTES
+        if key in item.attributes
+    }
+    payload = {
+        "id": item.object_id.rsplit(":", 1)[-1],
+        "color": item.colors[0],
+        "bbox": list(item.bounding_box),
+        "area": item.area,
+        "holes": item.holes,
+        "shape": item.shape_signature[:12],
+        "attributes": attributes,
+    }
+    # Only inline the pixel mask for small objects on uncluttered grids; the
+    # bbox + shape signature already localize larger ones.
+    if include_pixels and len(item.relative_pixels) <= _MAX_RELATIVE_PIXELS:
+        payload["relative_pixels"] = [list(pixel) for pixel in item.relative_pixels]
+    return payload
+
+
 def _scene_payload(task_id: str, task_data: Mapping[str, Any]) -> dict[str, Any]:
     """Compact deterministic scene graph supplied to the neural planner."""
     state = perceive_task(task_id, task_data)
     grids = []
     for grid in state.grids:
+        objects = grid.objects[:_MAX_OBJECTS_PER_GRID]
+        include_pixels = len(grid.objects) <= _MAX_OBJECTS_PER_GRID
         grids.append(
             {
                 "ref": grid.grid_ref,
@@ -195,18 +235,10 @@ def _scene_payload(task_id: str, task_data: Mapping[str, Any]) -> dict[str, Any]
                 "periodicity": [list(item) for item in grid.periodicity],
                 "separator_rows": list(grid.separator_rows),
                 "separator_columns": list(grid.separator_columns),
+                "object_count": len(grid.objects),
                 "objects": [
-                    {
-                        "id": item.object_id.rsplit(":", 1)[-1],
-                        "color": item.colors[0],
-                        "bbox": list(item.bounding_box),
-                        "area": item.area,
-                        "holes": item.holes,
-                        "shape": item.shape_signature[:12],
-                        "relative_pixels": [list(pixel) for pixel in item.relative_pixels],
-                        "attributes": dict(item.attributes),
-                    }
-                    for item in grid.objects
+                    _object_payload(item, include_pixels=include_pixels)
+                    for item in objects
                 ],
                 "relations": [
                     {
@@ -214,7 +246,7 @@ def _scene_payload(task_id: str, task_data: Mapping[str, Any]) -> dict[str, Any]
                         "source": item.source_id.rsplit(":", 1)[-1],
                         "target": item.target_id.rsplit(":", 1)[-1],
                     }
-                    for item in grid.relations
+                    for item in grid.relations[:_MAX_RELATIONS_PER_GRID]
                 ],
             }
         )
