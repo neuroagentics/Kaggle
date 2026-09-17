@@ -9,8 +9,10 @@ import pytest
 from hyper_arc.contender.agentic_reasoner import (
     AgenticReasoner,
     AgenticReasoningError,
+    _diversity_directive,
     _extract_json_object,
     _normalize_code,
+    _planning_prompt,
     execute_code,
     validate_code,
 )
@@ -179,6 +181,36 @@ def test_normalize_code_recovers_runnable_source(raw):
     # Every variant must validate and produce the horizontal reflection.
     assert validate_code(code) > 0
     assert execute_code(code, [[[1, 2, 3]]]) == [[[3, 2, 1]]]
+
+
+def test_diversity_directive_demands_distinct_hypotheses():
+    directive = _diversity_directive(8, prior_summaries=())
+    assert "DIVERSITY REQUIREMENT" in directive
+    assert "distinct" in directive
+    assert "duplicates are forbidden" in directive or "forbidden" in directive
+
+
+def test_diversity_directive_lists_already_tried_approaches():
+    directive = _diversity_directive(
+        4, prior_summaries=["reflect horizontally", "rotate 180 degrees"]
+    )
+    assert "ALREADY proposed" in directive
+    assert "reflect horizontally" in directive
+    assert "rotate 180 degrees" in directive
+
+
+def test_planning_prompt_embeds_diversity_directive_and_prior_summaries():
+    prompt = _planning_prompt(
+        task={"train": [], "test": []},
+        scene={},
+        memory_cues=(),
+        feedback="",
+        rejected_summaries=("mirror the grid",),
+        max_candidates=6,
+        prior_summaries=("mirror the grid",),
+    )
+    assert "DIVERSITY REQUIREMENT" in prompt
+    assert "mirror the grid" in prompt
 
 
 def test_extract_json_object_prefers_the_object_carrying_hypotheses():

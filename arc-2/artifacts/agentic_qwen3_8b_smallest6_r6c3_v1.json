@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen3:8b",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 6,
+  "rounds": 6,
+  "candidates_per_round": 3,
+  "ordering": "smallest",
+  "thinking": false,
+  "demonstration_exact_tasks": 1,
+  "full_task_exact_pass_at_2": 1,
+  "unique_vs_owned_production": 1,
+  "candidates_generated": 90,
+  "candidates_executed": 15,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": true,
+      "test_exact": true,
+      "rounds": 3,
+      "generated": 9,
+      "executed": 6,
+      "hypotheses": [
+        {
+          "digest": "da45fd102c708cda9c6a8430008d517bcf7f4bde6a31dee7b2e1dbc65d3475df",
+          "summary": "Transform the grid by alternating colors in a checkerboard pattern, where each cell's color alternates between the two colors present in the input, starting with the second color in the top-left corner.",
+          "complexity": 117,
+          "round": 2,
+          "code": "def transform(grid):\n    colors = list(set(color_counts(grid).keys()))\n    if len(colors) != 2:\n        return grid\n    color1, color2 = colors\n    new_grid = copy_grid(grid)\n    for row in range(len(grid)):\n        for col in range(len(grid[0])):\n            if (row + col) % 2 == 0:\n                new_grid[row][col] = color2\n            else:\n                new_grid[row][col] = color1\n    return new_grid"
+        }
+      ],
+      "rejections": [
+        "r0c0:non-exact:12:Transform the input grid by alternating colors in a checkerboard pattern, where each cell's color al",
+        "r0c1:non-exact:12:Transform the input grid by placing the second color in every other column, starting from the second",
+        "r0c2:non-exact:12:Transform the input grid by placing the second color in every other row, starting from the second ro",
+        "r1c0:ValueError:worker rejected program: arc-2\\hyper_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform ValueError: not enough values to u",
+        "r1c1:ValueError:invalid Python: unmatched '}'",
+        "r1c2:ValueError:worker rejected program: arc-2\\hyper_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform ValueError: not enough values to u",
+        "r2c0:non-exact:24:Transform the grid by alternating colors in a checkerboard pattern, where each cell's color alternat",
+        "r2c1:non-exact:12:Transform the grid by placing the second color in every other column, starting from the second colum"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "44f52bb0",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 15,
+      "executed": 3,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: \", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform UnboundLocalError: cannot access local variable 'color_counts' where it is no",
+        "r0c1:ValueError:worker rejected program: py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform UnboundLocalError: cannot access local variable 'components' where it is no",
+        "r0c2:ValueError:worker rejected program:  row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 26, in transform   File \"C:\\Kaggle\\arc-2\\agentic_primitives.py\", line 96, in paint     for row, col in pixels:                     ^^^^^^ TypeError: 'in",
+        "r1c0:ValueError:call is not allowed: component_color",
+        "r1c1:ValueError:attribute is not allowed: shape",
+        "r1c2:duplicate",
+        "r2c0:ValueError:worker rejected program: py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 2, in transform UnboundLocalError: cannot access local variable 'components' where it is no",
+        "r2c1:non-exact:5424:Replace the background color with the color that appears in the fewest rows and columns.",
+        "r2c2:ValueError:invalid Python: unmatched '}'",
+        "r3c0:non-exact:6:Replace the background color with the color that appears in the fewest rows and columns.",
+        "r3c1:non-exact:6:Replace the background color with the color that appears in the fewest total cells.",
+        "r3c2:duplicate"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "a85d4709",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 14,
+      "executed": 6,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:non-exact:31:The output grid is formed by replacing the color of each object in the input grid with a new color b",
+        "r0c1:ValueError:invalid Python: invalid syntax",
+        "r0c2:duplicate",
+        "r1c0:non-exact:21:The output grid is formed by replacing the color of each object in the input grid with a new color b",
+        "r1c1:non-exact:21:The output grid is formed by replacing the color of each object in the input grid with a new color b",
+        "r1c2:non-exact:19:The output grid is formed by replacing the color of each object in the input grid with a new color b",
+        "r2c0:ValueError:transform must take exactly one argument named grid",
+        "r2c1:duplicate",
+        "r2c2:duplicate",
+        "r3c0:non-exact:21:The output grid is created by transforming each row based on its position: even rows (0-indexed) are",
+        "r3c1:non-exact:25:The output grid is created by replacing each column with a color based on its position: even columns",
+        "r3c2:duplicate"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "0520fde7",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 17,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r0c1:ValueError:program must define transform(grid)",
+        "r0c2:ValueError:program must define transform(grid)",
+        "r1c0:ValueError:program must define transform(grid)",
+        "r1c1:ValueError:program must define transform(grid)",
+        "r1c2:ValueError:program must define transform(grid)",
+        "r2c0:ValueError:program must define transform(grid)",
+        "r2c1:ValueError:program must define transform(grid)",
+        "r2c2:duplicate",
+        "r3c0:ValueError:program must define transform(grid)",
+        "r3c1:duplicate",
+        "r4c0:ValueError:program must define transform(grid)"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "88a62173",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 18,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: er_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform TypeError: crop_bbox() takes 2 positional a",
+        "r0c1:duplicate",
+        "r0c2:duplicate",
+        "r1c0:ValueError:program must define transform(grid)",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r2c0:ValueError:program must define transform(grid)",
+        "r2c1:duplicate",
+        "r2c2:duplicate",
+        "r3c0:ValueError:program must define transform(grid)",
+        "r3c1:ValueError:program must define transform(grid)",
+        "r3c2:ValueError:program must define transform(grid)"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "dae9d2b5",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 17,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r0c1:duplicate",
+        "r0c2:duplicate",
+        "r1c0:ValueError:program must define transform(grid)",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r2c0:ValueError:program must define transform(grid)",
+        "r2c1:ValueError:program must define transform(grid)",
+        "r2c2:ValueError:program must define transform(grid)",
+        "r3c0:ValueError:program must define transform(grid)",
+        "r3c1:duplicate",
+        "r3c2:duplicate"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 525.1952210000018,
+  "telemetry": {
+    "wall_seconds": 525.1951753999892,
+    "cpu_seconds": 66.09375,
+    "peak_rss_bytes": 255188992,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  },
+  "agentic_memory": {
+    "path": "artifacts\\agentic_memory_qwen3_v2.json",
+    "new_records": 1,
+    "total_records": 1
+  }
+}

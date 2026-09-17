@@ -269,6 +269,36 @@ def _planning_schema(max_candidates: int) -> dict[str, Any]:
     }
 
 
+def _diversity_directive(max_candidates: int, prior_summaries: Sequence[str]) -> str:
+    """Explicit anti-duplication pressure for multi-candidate planning.
+
+    The model tends to emit near-identical hypotheses when asked for several at
+    once, which wastes the whole round after digest dedup. Require each
+    hypothesis to differ in substance, and list approaches already produced for
+    this task so it does not repeat them.
+    """
+    directive = (
+        f"DIVERSITY REQUIREMENT: the {max_candidates} hypotheses MUST be mutually "
+        "distinct. Each must use a different rule FAMILY or a materially different "
+        "mechanism from every other hypothesis in this response — not a reworded "
+        "restatement and not the same code with cosmetic changes. Draw from "
+        "different families such as geometric transform, color remap, object "
+        "selection/move, counting/classification, panel selection, symmetry "
+        "completion, scaling/tiling, or cropping. If you can only justify one rule "
+        "confidently, return that one plus genuinely different alternative theories "
+        "for the remaining slots rather than duplicates. Two hypotheses whose "
+        "transform(grid) would return identical outputs on the demonstrations are "
+        "duplicates and are forbidden."
+    )
+    if prior_summaries:
+        directive += (
+            " You have ALREADY proposed these approaches for this task; do not "
+            "repeat any of them unless verifier feedback names a concrete repair: "
+            + json.dumps(list(prior_summaries[-16:]))
+        )
+    return directive
+
+
 def _planning_prompt(
     task: Mapping[str, Any],
     scene: Mapping[str, Any],
@@ -276,12 +306,15 @@ def _planning_prompt(
     feedback: str,
     rejected_summaries: Sequence[str],
     max_candidates: int,
+    prior_summaries: Sequence[str] = (),
 ) -> str:
     return (
         "Act as the perception and hypothesis-planning role in a verified ARC "
         "agent. Infer a single general rule from all demonstrations. Use the raw "
         "grids and deterministic object/relationship scene graph together. Return "
-        f"up to {max_candidates} genuinely different hypotheses as JSON only. Each "
+        f"up to {max_candidates} genuinely different hypotheses as JSON only. "
+        + _diversity_directive(max_candidates, prior_summaries)
+        + " Each "
         "hypothesis requires id, rule, evidence, algorithm, and code fields. Code must "
         "define transform(grid), use pure bounded Python, and implement that exact rule. "
         "You may use the trusted ARC functions: components, largest_component, "
@@ -474,6 +507,7 @@ class AgenticReasoner:
                                 feedback,
                                 rejected_summaries,
                                 self.candidates_per_round,
+                                prior_summaries=rejected_summaries,
                             ),
                         },
                     ],
