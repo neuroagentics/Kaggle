@@ -30,8 +30,13 @@ SAFE_CALLS = {
 }
 
 SAFE_METHODS = {
+    # list / dict read + mutation
     "append", "copy", "count", "extend", "get", "index", "items", "keys",
-    "pop", "reverse", "sort", "values",
+    "pop", "reverse", "sort", "values", "setdefault", "clear",
+    # set mutation (local, side-effect-free w.r.t. the host) — models reach for
+    # these when accumulating colors or coordinates; rejecting them discarded
+    # otherwise-valid candidates in the model bakeoff.
+    "add", "discard", "remove", "update", "union", "intersection", "difference",
 }
 
 

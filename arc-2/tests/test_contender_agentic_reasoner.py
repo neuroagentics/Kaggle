@@ -62,6 +62,41 @@ def test_model_program_can_extract_unique_panel():
     assert execute_code(code, [grid]) == [[[2]]]
 
 
+def test_model_program_can_accumulate_colors_with_a_set():
+    # Distinct non-background colors, built with set.add + set.discard. This was
+    # previously rejected ("method is not allowed: add") in the model bakeoff.
+    code = (
+        "def transform(grid):\n"
+        "    seen = set()\n"
+        "    for row in grid:\n"
+        "        for value in row:\n"
+        "            seen.add(value)\n"
+        "    seen.discard(0)\n"
+        "    return [[len(seen)]]"
+    )
+    assert validate_code(code) > 0
+    assert execute_code(code, [[[0, 1, 2], [2, 0, 3]]]) == [[[3]]]
+
+
+def test_model_program_can_tally_with_dict_setdefault():
+    # setdefault-based counting followed by a lambda-free argmax. The sandbox
+    # intentionally forbids lambdas, so the argmax is written with a loop.
+    code = (
+        "def transform(grid):\n"
+        "    counts = {}\n"
+        "    for row in grid:\n"
+        "        for value in row:\n"
+        "            counts[value] = counts.setdefault(value, 0) + 1\n"
+        "    best = grid[0][0]\n"
+        "    for color in counts:\n"
+        "        if counts[color] > counts[best]:\n"
+        "            best = color\n"
+        "    return [[best]]"
+    )
+    assert validate_code(code) > 0
+    assert execute_code(code, [[[4, 4, 1], [4, 2, 2]]]) == [[[4]]]
+
+
 @pytest.mark.parametrize(
     "code",
     [
@@ -69,6 +104,8 @@ def test_model_program_can_extract_unique_panel():
         "def transform(grid):\n    return grid.__class__",
         "def transform(grid):\n    while True:\n        pass\n    return grid",
         "x = 1\ndef transform(grid):\n    return grid",
+        # Dunder access must stay blocked even though it is spelled like a method.
+        "def transform(grid):\n    return grid.__len__()",
     ],
 )
 def test_validator_blocks_ambient_system_access_and_unbounded_syntax(code):
