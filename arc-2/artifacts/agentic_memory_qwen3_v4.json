@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "policy": "model-authored-full-task-exact-only",
+  "records": [
+    {
+      "record_id": "1739e1606b8ce2e08227637c3097c88bdf7943c52f054627d6af56f81bbaa59c",
+      "source_task_id": "e9afcf9a",
+      "summary": "Alternating color pattern with vertical symmetry",
+      "code": "def transform(grid):\n    new_grid = copy_grid(grid)\n    for i in range(len(new_grid)):\n        for j in range(len(new_grid[0])):\n            if (i + j) % 2 == 0:\n                new_grid[i][j] = grid[0][j]\n            else:\n                new_grid[i][j] = grid[1][j]\n    return new_grid",
+      "model": "qwen3:8b",
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      },
+      "validation_scope": "validation",
+      "full_task_exact": true
+    },
+    {
+      "record_id": "fdf8ec318185984a10b4257616c254dbf069df2f61621459bbf324a51b4a7214",
+      "source_task_id": "e9afcf9a",
+      "summary": "Symmetry-based color replacement with periodic tiling",
+      "code": "def transform(grid):\n    new_grid = copy_grid(grid)\n    for i in range(len(new_grid)):\n        for j in range(len(new_grid[0])):\n            if (i % 2 == 0 and j % 2 == 0) or (i % 2 == 1 and j % 2 == 1):\n                new_grid[i][j] = grid[0][j]\n            else:\n                new_grid[i][j] = grid[1][j]\n    return new_grid",
+      "model": "qwen3:8b",
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      },
+      "validation_scope": "validation",
+      "full_task_exact": true
+    }
+  ]
+}

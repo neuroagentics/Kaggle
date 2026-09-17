@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen3:8b",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 6,
+  "rounds": 6,
+  "candidates_per_round": 3,
+  "ordering": "smallest",
+  "thinking": false,
+  "demonstration_exact_tasks": 1,
+  "full_task_exact_pass_at_2": 1,
+  "unique_vs_owned_production": 1,
+  "candidates_generated": 88,
+  "candidates_executed": 15,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": true,
+      "test_exact": true,
+      "rounds": 1,
+      "generated": 3,
+      "executed": 3,
+      "hypotheses": [
+        {
+          "digest": "00d13a640cba4bb1568e93a65d7f89d83707e082e0bff74eec8fe6e2a6706f12",
+          "summary": "Alternating color pattern with vertical symmetry",
+          "complexity": 93,
+          "round": 0,
+          "code": "def transform(grid):\n    new_grid = copy_grid(grid)\n    for i in range(len(new_grid)):\n        for j in range(len(new_grid[0])):\n            if (i + j) % 2 == 0:\n                new_grid[i][j] = grid[0][j]\n            else:\n                new_grid[i][j] = grid[1][j]\n    return new_grid"
+        },
+        {
+          "digest": "698aec40d05f1deb4bca34cb1278911958dbc17a5c46f56f212f21dd543d94b6",
+          "summary": "Symmetry-based color replacement with periodic tiling",
+          "complexity": 119,
+          "round": 0,
+          "code": "def transform(grid):\n    new_grid = copy_grid(grid)\n    for i in range(len(new_grid)):\n        for j in range(len(new_grid[0])):\n            if (i % 2 == 0 and j % 2 == 0) or (i % 2 == 1 and j % 2 == 1):\n                new_grid[i][j] = grid[0][j]\n            else:\n                new_grid[i][j] = grid[1][j]\n    return new_grid"
+        }
+      ],
+      "rejections": [
+        "r0c2:non-exact:16:Color inversion with rotational symmetry"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "44f52bb0",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 18,
+      "executed": 6,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 2, in transform UnboundLocalError: cannot access local variable 'components' where it is no",
+        "r0c1:ValueError:worker rejected program: py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 2, in transform UnboundLocalError: cannot access local variable 'symmetries' where it is no",
+        "r0c2:ValueError:worker rejected program: ine 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 2, in transform UnboundLocalError: cannot access local variable 'background_color' where it is no",
+        "r1c0:ValueError:worker rejected program:             ~~~~^^   File \"C:\\Kaggle\\arc-2\\hyper_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 6, in transfo",
+        "r1c1:ValueError:worker rejected program: in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 9, in transform   File \"C:\\Kaggle\\arc-2\\agentic_primitives.py\", line 41, in make_grid     raise ValueError(\"make_grid requires integer height/width\") ValueError: make_grid requ",
+        "r1c2:ValueError:worker rejected program: in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 7, in transform   File \"C:\\Kaggle\\arc-2\\agentic_primitives.py\", line 41, in make_grid     raise ValueError(\"make_grid requires integer height/width\") ValueError: make_grid requ",
+        "r2c0:ValueError:worker rejected program: c\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform   File \"<agentic-transform>\", line 3, in <genexp",
+        "r2c1:ValueError:invalid Python: unmatched ')'",
+        "r2c2:ValueError:worker rejected program: c\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform   File \"<agentic-transform>\", line 3, in <genexp",
+        "r3c0:ValueError:worker rejected program:             ~~~~^^   File \"C:\\Kaggle\\arc-2\\hyper_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 4, in transfo",
+        "r3c1:non-exact:2715:Color Replacement Based on Object Count and Symmetry",
+        "r3c2:ValueError:worker rejected program:               ~~~~^^   File \"C:\\Kaggle\\arc-2\\hyper_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 4, in trans"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "a85d4709",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 18,
+      "executed": 5,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:non-exact:26:Color Remapping Based on Symmetry and Position",
+        "r0c1:duplicate",
+        "r0c2:duplicate",
+        "r1c0:ValueError:worker rejected program: py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 5, in transform UnboundLocalError: cannot access local variable 'symmetries' where it is no",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r2c0:non-exact:27:Color Remapping Based on Symmetry and Position with Repair",
+        "r2c1:non-exact:21:Color Remapping Based on Symmetry and Position with Adjusted Rules",
+        "r2c2:non-exact:21:Color Remapping Based on Symmetry and Position with Position Mapping",
+        "r3c0:non-exact:21:Color Remapping Based on Symmetry and Position with Repair",
+        "r3c1:duplicate",
+        "r3c2:duplicate"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "0520fde7",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 18,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r0c1:ValueError:program must define transform(grid)",
+        "r0c2:ValueError:program must define transform(grid)",
+        "r1c0:ValueError:program must define transform(grid)",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r2c0:ValueError:program must define transform(grid)",
+        "r2c1:ValueError:program must define transform(grid)",
+        "r2c2:duplicate",
+        "r3c0:ValueError:program must define transform(grid)",
+        "r3c1:ValueError:program must define transform(grid)",
+        "r3c2:ValueError:program must define transform(grid)"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "88a62173",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 13,
+      "executed": 1,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: er_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform TypeError: crop_bbox() takes 2 positional a",
+        "r0c1:ValueError:worker rejected program: er_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform TypeError: crop_bbox() takes 2 positional a",
+        "r0c2:ValueError:call is not allowed: scale",
+        "r1:model:AgenticReasoningError:model JSON is missing hypotheses",
+        "r2c0:ValueError:call is not allowed: replace_bbox",
+        "r2c1:non-exact:8:Remove the central 3x3 area and replace the top-left 2x2 panel with the background color.",
+        "r2c2:ValueError:call is not allowed: replace_bbox",
+        "r3c0:ValueError:program must define transform(grid)",
+        "r3c1:ValueError:program must define transform(grid)",
+        "r3c2:ValueError:program must define transform(grid)",
+        "r4c0:ValueError:program must define transform(grid)",
+        "r4c1:ValueError:program must define transform(grid)"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "dae9d2b5",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 6,
+      "generated": 18,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r0c1:duplicate",
+        "r0c2:duplicate",
+        "r1c0:ValueError:transform must take exactly one argument named grid",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r2c0:ValueError:program must define transform(grid)",
+        "r2c1:ValueError:program must define transform(grid)",
+        "r2c2:ValueError:program must define transform(grid)",
+        "r3c0:ValueError:program must define transform(grid)",
+        "r3c1:duplicate",
+        "r3c2:duplicate"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 518.5258614000049,
+  "telemetry": {
+    "wall_seconds": 518.5258169000008,
+    "cpu_seconds": 69.015625,
+    "peak_rss_bytes": 255098880,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  },
+  "agentic_memory": {
+    "path": "artifacts\\agentic_memory_qwen3_v4.json",
+    "new_records": 2,
+    "total_records": 2
+  },
+  "failure_memory": {
+    "path": "artifacts\\failure_memory_qwen3_v2.json",
+    "recalled_and_avoided": true,
+    "new_failed_families": 11,
+    "total_failed_families": 11
+  }
+}
