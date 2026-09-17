@@ -1,0 +1,61 @@
+{
+  "partition": "public-evaluation",
+  "partition_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+  "tasks": 120,
+  "outputs": 172,
+  "design_cases_present": [],
+  "relational_fit_tasks": 0,
+  "relational_candidate_count": 0,
+  "production_pass_at_2": 2,
+  "relational_pass_at_2": 0,
+  "combined_pass_at_2": 2,
+  "combined_unique": [],
+  "combined_regressions": [],
+  "non_design_tasks": 120,
+  "non_design_relational_fits": 0,
+  "non_design_combined_unique": [],
+  "combined_distinct_attempt_outputs": 8,
+  "combined_attempt_diversity_rate": 0.046511627906976744,
+  "family_metrics": {
+    "contract": {
+      "tasks": 26,
+      "production_pass_at_2": 0,
+      "relational_pass_at_2": 0,
+      "combined_pass_at_2": 0
+    },
+    "expand": {
+      "tasks": 3,
+      "production_pass_at_2": 0,
+      "relational_pass_at_2": 0,
+      "combined_pass_at_2": 0
+    },
+    "mixed-axis": {
+      "tasks": 1,
+      "production_pass_at_2": 0,
+      "relational_pass_at_2": 0,
+      "combined_pass_at_2": 0
+    },
+    "mixed-demonstrations": {
+      "tasks": 9,
+      "production_pass_at_2": 0,
+      "relational_pass_at_2": 0,
+      "combined_pass_at_2": 0
+    },
+    "same-size": {
+      "tasks": 81,
+      "production_pass_at_2": 2,
+      "relational_pass_at_2": 0,
+      "combined_pass_at_2": 2
+    }
+  },
+  "telemetry": {
+    "wall_seconds": 110.77629350000097,
+    "cpu_seconds": 109.5,
+    "peak_rss_bytes": 286662656,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

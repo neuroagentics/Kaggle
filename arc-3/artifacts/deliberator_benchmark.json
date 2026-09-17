@@ -1,0 +1,19 @@
+{
+  "model": "C:\\Kaggle\\arc-3\\models\\qwen2.5-7b-instruct",
+  "device": "cuda:0",
+  "load_seconds": 56.65,
+  "vram_before_gib": 0.0,
+  "vram_after_load_gib": 5.178,
+  "peak_vram_gib": 5.429,
+  "total_gpu_gib": 12.0,
+  "calls": 3,
+  "latency_seconds": {
+    "mean": 42.763,
+    "min": 41.707,
+    "max": 43.659
+  },
+  "last_hypotheses": 3,
+  "last_goals": 2,
+  "repairs": 0,
+  "vram_headroom_ok": true
+}

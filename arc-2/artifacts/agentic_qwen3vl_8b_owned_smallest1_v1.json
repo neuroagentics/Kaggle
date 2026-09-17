@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen3-vl:8b",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 1,
+  "rounds": 2,
+  "candidates_per_round": 4,
+  "ordering": "smallest",
+  "thinking": false,
+  "demonstration_exact_tasks": 0,
+  "full_task_exact_pass_at_2": 0,
+  "unique_vs_owned_production": 0,
+  "candidates_generated": 0,
+  "candidates_executed": 0,
+  "failures": {
+    "ProposalError:Model endpoint failed: HTTP Error 500: Internal Server Error": 1
+  },
+  "details": [],
+  "elapsed_seconds": 55.597867700009374,
+  "telemetry": {
+    "wall_seconds": 55.59722060000058,
+    "cpu_seconds": 9.15625,
+    "peak_rss_bytes": 235646976,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 1,
+    "sampler": "psutil-process-tree"
+  }
+}

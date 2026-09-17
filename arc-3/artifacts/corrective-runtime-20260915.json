@@ -1,0 +1,196 @@
+{
+  "purpose": "Local runtime diagnostic, no real deliberator, not competition evidence",
+  "artifact_hashes": {
+    "source": "fc9b5266cd43c79813e0c36c4c07f0a5d7ac78d1023b2f641b6f1250bf14f1e9",
+    "checkpoint": "82a020d70bb6aba757bf920e577d7bc03f2ac0ca2e309c89f2a6ccdab1d4202d"
+  },
+  "result": {
+    "run_id": "aa4bedbfa7694ecea8e8af5e6fb4ee33",
+    "game_id": "cd82",
+    "condition": "no_deliberator",
+    "seed": 0,
+    "mode": "LOCAL_NORMAL",
+    "model_version": "world-model-v0",
+    "code_hash": "see artifact_hashes",
+    "data_hash": "local-public-environment",
+    "levels_completed": 0,
+    "total_actions": 5,
+    "total_steps": 5,
+    "crashed": false,
+    "timed_out": true,
+    "crash_detail": "",
+    "elapsed_seconds": 60.20300000000134,
+    "peak_latency_ms": 14469.00000000096,
+    "mean_latency_ms": 10028.499999999744,
+    "mean_discrepancy": 0.960107421875,
+    "steps_with_prediction": 5,
+    "total_imagined_steps": 80,
+    "probe_decisions": 5,
+    "steps": [
+      {
+        "step": 0,
+        "action_id": 3,
+        "action_x": null,
+        "action_y": null,
+        "level_before": 0,
+        "level_after": 0,
+        "level_delta": 0,
+        "latency_ms": 14469.00000000096,
+        "plan_was_empty": true,
+        "plan_was_ambiguous": false,
+        "imagined_steps": 27,
+        "discrepancy_score": 0.959716796875,
+        "crashed": false,
+        "crash_detail": ""
+      },
+      {
+        "step": 1,
+        "action_id": 3,
+        "action_x": null,
+        "action_y": null,
+        "level_before": 0,
+        "level_after": 0,
+        "level_delta": 0,
+        "latency_ms": 14125.0,
+        "plan_was_empty": true,
+        "plan_was_ambiguous": false,
+        "imagined_steps": 27,
+        "discrepancy_score": 0.960205078125,
+        "crashed": false,
+        "crash_detail": ""
+      },
+      {
+        "step": 2,
+        "action_id": 3,
+        "action_x": null,
+        "action_y": null,
+        "level_before": 0,
+        "level_after": 0,
+        "level_delta": 0,
+        "latency_ms": 11328.000000001339,
+        "plan_was_empty": true,
+        "plan_was_ambiguous": false,
+        "imagined_steps": 16,
+        "discrepancy_score": 0.960205078125,
+        "crashed": false,
+        "crash_detail": ""
+      },
+      {
+        "step": 3,
+        "action_id": 3,
+        "action_x": null,
+        "action_y": null,
+        "level_before": 0,
+        "level_after": 0,
+        "level_delta": 0,
+        "latency_ms": 9655.99999999904,
+        "plan_was_empty": true,
+        "plan_was_ambiguous": false,
+        "imagined_steps": 9,
+        "discrepancy_score": 0.960205078125,
+        "crashed": false,
+        "crash_detail": ""
+      },
+      {
+        "step": 4,
+        "action_id": 3,
+        "action_x": null,
+        "action_y": null,
+        "level_before": 0,
+        "level_after": 0,
+        "level_delta": 0,
+        "latency_ms": 7045.9999999984575,
+        "plan_was_empty": true,
+        "plan_was_ambiguous": false,
+        "imagined_steps": 1,
+        "discrepancy_score": 0.960205078125,
+        "crashed": false,
+        "crash_detail": ""
+      }
+    ]
+  },
+  "controller": {
+    "game_id": "cd82",
+    "model_version": "world-model-v0",
+    "total_decisions": 6,
+    "total_deliberator_calls": 0,
+    "total_imagined_steps": 81,
+    "total_probe_decisions": 6,
+    "total_corrections": 5,
+    "adapter": {
+      "adapter_version": 0,
+      "accepted": 0,
+      "rejected": 0,
+      "total_attempts": 0
+    },
+    "mechanic_conditioning_supported": false,
+    "last_inference_seconds": 3.5469999999986612,
+    "memory": {
+      "game_id": "cd82",
+      "schema_version": "1.0",
+      "episodes": 5,
+      "beliefs": 0,
+      "goals": 0,
+      "procedures": 0,
+      "branches": 0,
+      "bytes_used": 62780,
+      "ceiling_bytes": 33554432,
+      "caps": {
+        "episode": 512,
+        "mechanic": 128,
+        "goal": 16,
+        "procedure": 64
+      }
+    },
+    "deliberator": {}
+  },
+  "agent": {
+    "world_model_active": true,
+    "deliberator_backend": "stub",
+    "fallback_reason": "",
+    "controller_decisions": 6,
+    "baseline_decisions": 0,
+    "controller": {
+      "game_id": "cd82",
+      "model_version": "world-model-v0",
+      "total_decisions": 6,
+      "total_deliberator_calls": 0,
+      "total_imagined_steps": 81,
+      "total_probe_decisions": 6,
+      "total_corrections": 5,
+      "adapter": {
+        "adapter_version": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "total_attempts": 0
+      },
+      "mechanic_conditioning_supported": false,
+      "last_inference_seconds": 3.5469999999986612,
+      "memory": {
+        "game_id": "cd82",
+        "schema_version": "1.0",
+        "episodes": 5,
+        "beliefs": 0,
+        "goals": 0,
+        "procedures": 0,
+        "branches": 0,
+        "bytes_used": 62780,
+        "ceiling_bytes": 33554432,
+        "caps": {
+          "episode": 512,
+          "mechanic": 128,
+          "goal": 16,
+          "procedure": 64
+        }
+      },
+      "deliberator": {}
+    },
+    "simulator": {
+      "model_version": "corrective-v2-smoke",
+      "parameter_count": 620387,
+      "device": "cuda:0"
+    }
+  },
+  "nonzero_live_h": true,
+  "checkpoint_transition_version": "posterior-action-v2"
+}

@@ -1,7 +1,6 @@
 """tests/test_cost.py — Unit and property tests for cost functions."""
 from __future__ import annotations
 
-import torch
 from hypothesis import given, settings
 from hypothesis import strategies as st
 

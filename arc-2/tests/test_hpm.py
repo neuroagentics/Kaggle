@@ -10,12 +10,12 @@ import math
 import tempfile
 from pathlib import Path
 
-import pytest
 import torch
+import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
-from hyper_arc.hpm import GlobalMemoryBank, LocalTaskBuffer, _encode_program, DIM
+from hyper_arc.hpm import GlobalMemoryBank, LocalTaskBuffer
 from hyper_arc.mcts import MCTSNode, MCTSEngine, enumerate_actions
 from hyper_arc.esb import ESB
 from hyper_arc.spatial_dsl import DSLProgram
@@ -46,6 +46,20 @@ def test_gmb_query_empty_returns_empty_list():
     gmb = GlobalMemoryBank(k=5)
     results = gmb.query(_make_prog(["rotate"]))
     assert results == []
+
+
+def test_hpm_uses_portable_unit_ball_math_without_geoopt():
+    gmb = GlobalMemoryBank(k=2)
+    gmb.add(_make_prog(["rotate"]))
+    gmb.add(_make_prog(["reflect"]))
+
+    assert not hasattr(gmb, "manifold")
+    assert gmb._distance(gmb._entries[0].embedding, gmb._entries[0].embedding) == 0
+
+
+def test_hpm_rejects_unsupported_curvature():
+    with pytest.raises(ValueError, match="curvature=1"):
+        GlobalMemoryBank(curvature=0.5)
 
 
 def test_gmb_query_fewer_than_k_entries():

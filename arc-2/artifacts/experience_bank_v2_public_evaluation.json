@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "bank_id": "3501eb3591c781b97557e27218c6321635607b47d2a128508b6f946c00d264e7",
+  "partition": "public-evaluation",
+  "evaluated_tasks": 120,
+  "memory_fit_tasks": 0,
+  "memory_candidate_count": 0,
+  "memory_second_distinct": 0,
+  "owned_baseline_pass_at_2": 0,
+  "memory_pass_at_2": 0,
+  "production_pass_at_2": 2,
+  "production_memory_pass_at_2": 2,
+  "memory_unique_vs_owned": [],
+  "memory_regressions_vs_owned": [],
+  "production_memory_unique": [],
+  "production_memory_regressions": [],
+  "memory_unique_details": {},
+  "production_memory_unique_details": {},
+  "elapsed_seconds": 137.17833539999992
+}

@@ -1,6 +1,5 @@
-torch==2.3.*
-geoopt==0.5.*
-numpy==1.26.*
-kaggle==1.6.*
-pytest==8.2.*
-hypothesis==6.*
+torch>=2.3,<3
+numpy>=1.26,<3
+kaggle>=1.6,<2
+pytest>=8.2,<10
+hypothesis>=6,<7

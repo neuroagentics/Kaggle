@@ -1,0 +1,20 @@
+{
+  "id": "jthomaslockhart/arc-agi-3-world-model-v0",
+  "title": "ARC-AGI-3 World Model v0",
+  "code_file": "submission.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "jthomaslockhart/arc3-world-model-v0"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "arc-prize-2026-arc-agi-3"
+  ],
+  "model_sources": []
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "policy": "Every dataset, checkpoint, rule source, and generated memory bank must be registered before use.",
+  "sources": [
+    {
+      "id": "arc-agi-2-official-public",
+      "uri": "https://github.com/arcprize/ARC-AGI-2",
+      "kind": "dataset",
+      "license": "Apache-2.0",
+      "allowed_roles": ["development", "internal-holdout", "sealed-public-evaluation"],
+      "memory_write_scope": "development-partition-only"
+    },
+    {
+      "id": "verified-symbolic-e151937",
+      "uri": "https://github.com/tanmaybisen31/arc-agi-solver",
+      "kind": "rule-source",
+      "license": "MIT",
+      "pinned_revision": "e151937e34c8b34f953833a0dab75797fc737ba4",
+      "allowed_roles": ["solver-channel", "regression-baseline"],
+      "memory_write_scope": "none"
+    }
+  ],
+  "unregistered_source_policy": "blocked"
+}

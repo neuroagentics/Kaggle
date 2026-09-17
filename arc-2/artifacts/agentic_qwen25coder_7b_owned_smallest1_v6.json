@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 1,
+  "rounds": 2,
+  "candidates_per_round": 4,
+  "ordering": "smallest",
+  "demonstration_exact_tasks": 0,
+  "full_task_exact_pass_at_2": 0,
+  "unique_vs_owned_production": 0,
+  "candidates_generated": 8,
+  "candidates_executed": 8,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 8,
+      "executed": 8,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:non-exact:12:Reflect the input grid along the vertical axis.",
+        "r0c1:non-exact:12:Reflect the input grid along the horizontal axis.",
+        "r0c2:non-exact:12:Rotate the input grid by 180 degrees.",
+        "r0c3:non-exact:1816:Rotate the input grid by 90 degrees clockwise.",
+        "r1c0:non-exact:12:Reflect the input grid along the vertical axis and then rotate it by 180 degrees.",
+        "r1c1:non-exact:12:Reflect the input grid along the horizontal axis and then rotate it by 180 degrees.",
+        "r1c2:non-exact:12:Rotate the input grid by 180 degrees and then reflect it along the vertical axis.",
+        "r1c3:non-exact:12:Rotate the input grid by 180 degrees and then reflect it along the horizontal axis."
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 25.793369899998652,
+  "telemetry": {
+    "wall_seconds": 25.79333049998968,
+    "cpu_seconds": 4.1875,
+    "peak_rss_bytes": 251146240,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

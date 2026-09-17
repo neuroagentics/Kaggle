@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 1,
+  "rounds": 3,
+  "candidates_per_round": 4,
+  "ordering": "smallest",
+  "demonstration_exact_tasks": 0,
+  "full_task_exact_pass_at_2": 0,
+  "unique_vs_owned_production": 0,
+  "candidates_generated": 12,
+  "candidates_executed": 8,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 12,
+      "executed": 8,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:invalid Python: invalid syntax",
+        "r0c1:ValueError:invalid Python: invalid syntax",
+        "r0c2:ValueError:invalid Python: invalid syntax",
+        "r0c3:ValueError:invalid Python: invalid syntax",
+        "r1c0:non-exact:12:Reflect the input grid vertically and then replace the color of the input object with the output col",
+        "r1c1:non-exact:12:Rotate the input grid 180 degrees and then replace the color of the input object with the output col",
+        "r1c2:non-exact:12:Reflect the input grid horizontally and then replace the color of the input object with the output c",
+        "r1c3:non-exact:1816:Rotate the input grid 90 degrees clockwise and then replace the color of the input object with the o",
+        "r2c0:non-exact:12:Reflect the input grid horizontally and then replace the color of the input object with the output c",
+        "r2c1:non-exact:12:Reflect the input grid vertically and then replace the color of the input object with the output col",
+        "r2c2:non-exact:12:Rotate the input grid 180 degrees and then replace the color of the input object with the output col",
+        "r2c3:non-exact:1816:Rotate the input grid 90 degrees clockwise and then replace the color of the input object with the o"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 33.07306470000185,
+  "telemetry": {
+    "wall_seconds": 33.07301960000768,
+    "cpu_seconds": 5.625,
+    "peak_rss_bytes": 250556416,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

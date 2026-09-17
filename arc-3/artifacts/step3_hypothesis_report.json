@@ -1,0 +1,16 @@
+{
+  "n_trials": 200,
+  "grid": 8,
+  "max_probes": 8,
+  "max_steps": 40,
+  "prediction": {
+    "correct_survivor_rate": 1.0,
+    "rejected_all_wrong_rate": 0.9
+  },
+  "action_selection": {
+    "hypothesis_reached_goal_rate": 1.0,
+    "baseline_reached_goal_rate": 0.255,
+    "hypothesis_avg_steps": 5.29,
+    "baseline_avg_steps": 16.94
+  }
+}

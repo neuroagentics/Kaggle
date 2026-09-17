@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 1,
+  "rounds": 2,
+  "candidates_per_round": 4,
+  "ordering": "smallest",
+  "demonstration_exact_tasks": 0,
+  "full_task_exact_pass_at_2": 0,
+  "unique_vs_owned_production": 0,
+  "candidates_generated": 8,
+  "candidates_executed": 4,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 8,
+      "executed": 4,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:non-exact:12:Crop the rarest color, scale it to a 2x2 block pattern, repeat, and mirror in top-left and bottom-ri",
+        "r0c1:non-exact:12:Crop the most common color, scale it to a 2x2 block pattern, repeat, and mirror in top-left and bott",
+        "r0c2:non-exact:12:Crop color 0, scale it to a 2x2 block pattern, repeat, and mirror in top-left and bottom-right quadr",
+        "r0c3:non-exact:12:Crop the mode color, scale it to a 2x2 block pattern, repeat, and mirror in top-left and bottom-righ",
+        "r1c0:duplicate",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r1c3:duplicate"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 72.69442149999668,
+  "telemetry": {
+    "wall_seconds": 72.69438080000691,
+    "cpu_seconds": 11.40625,
+    "peak_rss_bytes": 248909824,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

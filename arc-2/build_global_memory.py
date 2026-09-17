@@ -10,20 +10,22 @@ Usage:
         --n-tasks  50 \\
         --output   hyper_arc/seed_bank.json
 """
+
 from __future__ import annotations
 
 import argparse
 import json
-import random
 import sys
 import traceback
 from pathlib import Path
 
 from hyper_arc.esb import ESB
+from hyper_arc.deterministic import exact_candidates
 from hyper_arc.hpm import GlobalMemoryBank, LocalTaskBuffer
 from hyper_arc.mcts import MCTSEngine
+from hyper_arc.spatial_dsl import DSLProgram, SpatialDSL
 
-SHALLOW_BUDGET = 500   # iterations per task during seed bank construction
+SHALLOW_BUDGET = 500  # default iterations per task during seed bank construction
 
 
 def log(msg: str) -> None:
@@ -31,13 +33,64 @@ def log(msg: str) -> None:
 
 
 def load_tasks(data_dir: Path) -> dict[str, dict]:
+    """Load aggregate ARC training challenges or individual task files."""
+    aggregate = sorted(data_dir.glob("**/arc-agi_training_challenges.json"))
+    if aggregate:
+        data = json.loads(aggregate[0].read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            raise ValueError(f"Expected task mapping in {aggregate[0]}")
+        return data
+
     tasks: dict[str, dict] = {}
     for fpath in sorted(data_dir.glob("**/*.json")):
         try:
-            tasks[fpath.stem] = json.loads(fpath.read_text())
-        except Exception:
-            pass
+            task = json.loads(fpath.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if isinstance(task, dict) and isinstance(task.get("train"), list):
+            tasks[fpath.stem] = task
     return tasks
+
+
+def deterministic_program(name: str) -> DSLProgram | None:
+    """Translate a safe subset of exact-candidate names into the legacy DSL."""
+    if name.endswith("+remap") or name.startswith("crop_mode+"):
+        return None
+    parts = name.split("+")
+    program: DSLProgram = []
+    for part in parts:
+        if part == "crop0":
+            program.append(("crop_to_bbox", {"background": 0}))
+        elif part == "identity":
+            continue
+        elif part.startswith("rotate"):
+            program.append(("rotate", {"degrees": int(part.removeprefix("rotate"))}))
+        elif part == "reflect_horizontal":
+            program.append(("reflect", {"axis": "horizontal"}))
+        elif part == "reflect_vertical":
+            program.append(("reflect", {"axis": "vertical"}))
+        elif part.startswith("upscale"):
+            program.append(
+                ("scale_integer", {"factor": int(part.removeprefix("upscale"))})
+            )
+        elif part.startswith("tile"):
+            height, width = part.removeprefix("tile").split("x", maxsplit=1)
+            program.append(
+                ("tile", {"repeats_h": int(height), "repeats_w": int(width)})
+            )
+        else:
+            return None
+    return program
+
+
+def replays_exactly(program: DSLProgram, task: dict) -> bool:
+    dsl = SpatialDSL()
+    pairs = task.get("train", [])
+    return bool(pairs) and all(
+        dsl.apply_program(ESB.from_grid(pair["input"]), program).to_grid()
+        == pair["output"]
+        for pair in pairs
+    )
 
 
 def main() -> int:
@@ -60,11 +113,29 @@ def main() -> int:
         default="hyper_arc/seed_bank.json",
         help="Output path for the seed bank JSON.",
     )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=0,
+        help="Deterministic task sampling/search seed (default: 0).",
+    )
+    parser.add_argument(
+        "--max-iterations",
+        type=int,
+        default=SHALLOW_BUDGET,
+        help=f"MCTS iterations per task (default: {SHALLOW_BUDGET}).",
+    )
+    parser.add_argument(
+        "--strategy",
+        choices=("deterministic", "hybrid", "mcts"),
+        default="hybrid",
+        help="Seed-mining strategy (default: hybrid).",
+    )
     args = parser.parse_args()
 
-    data_dir    = Path(args.data_dir)
+    data_dir = Path(args.data_dir)
     output_path = Path(args.output)
-    n_tasks     = args.n_tasks
+    n_tasks = args.n_tasks
 
     if not data_dir.exists():
         log(f"[ERROR] data-dir not found: {data_dir}")
@@ -75,54 +146,89 @@ def main() -> int:
         log(f"[ERROR] No task JSON files found in {data_dir}")
         return 1
 
-    # Sample a random subset
+    # Sample a deterministic subset
     task_ids = list(tasks.keys())
-    random.shuffle(task_ids)
-    sampled  = task_ids[:n_tasks]
+    import random
+
+    rng = random.Random(args.seed)
+    rng.shuffle(task_ids)
+    sampled = task_ids[:n_tasks]
 
     log(f"[INFO] {len(tasks)} tasks found. Sampling {len(sampled)} for seed bank.")
 
     global_bank = GlobalMemoryBank(k=5)
     attempted = 0
-    solved    = 0
+    solved = 0
+    seen_programs: set[str] = set()
 
     for task_id in sampled:
         task = tasks[task_id]
         attempted += 1
         try:
-            local_memory = LocalTaskBuffer(k=5)
-            # Shallow MCTS with reduced budget
-            from hyper_arc import mcts as mcts_module
-            orig_max = mcts_module.MAX_ITERATIONS
-            mcts_module.MAX_ITERATIONS = SHALLOW_BUDGET
+            if args.strategy in {"deterministic", "hybrid"}:
+                raw_pairs = [
+                    (pair["input"], pair["output"])
+                    for pair in task.get("train", [])
+                ]
+                for candidate in exact_candidates(raw_pairs):
+                    program = deterministic_program(candidate.name)
+                    if program is None or not replays_exactly(program, task):
+                        continue
+                    digest = json.dumps(program, sort_keys=True, separators=(",", ":"))
+                    if digest not in seen_programs:
+                        global_bank.add(program)
+                        seen_programs.add(digest)
+                    solved += 1
+                    log(
+                        f"[SOLVED] {task_id} channel=deterministic "
+                        f"program={candidate.name} ({len(global_bank)} unique seeds)"
+                    )
+                    break
+                else:
+                    program = None
+                if program is not None:
+                    continue
 
+            if args.strategy == "deterministic":
+                log(f"[UNSOLVED] {task_id} channel=deterministic")
+                continue
+
+            local_memory = LocalTaskBuffer(k=5)
             engine = MCTSEngine(
                 global_memory=global_bank,
                 local_memory=local_memory,
-                global_prior_weight=0.0,   # no seed bank yet
+                global_prior_weight=0.2 if len(global_bank) else 0.0,
+                max_iterations=args.max_iterations,
+                random_seed=args.seed + attempted,
             )
             train_pairs = [
                 (ESB.from_grid(p["input"]), ESB.from_grid(p["output"]))
                 for p in task.get("train", [])
             ]
             program = engine.solve(train_pairs)
+            score, exact = engine.score_program(program, train_pairs)
 
-            mcts_module.MAX_ITERATIONS = orig_max
-
-            if program:
-                global_bank.add(program)
+            if exact:
+                digest = json.dumps(program, sort_keys=True, separators=(",", ":"))
+                if digest not in seen_programs:
+                    global_bank.add(program)
+                    seen_programs.add(digest)
                 solved += 1
-                log(f"[SOLVED] {task_id}  program_len={len(program)}  "
-                    f"({solved} embedded so far)")
+                log(
+                    f"[SOLVED] {task_id}  score={score:.4f}  program_len={len(program)}  "
+                    f"({solved} embedded so far)"
+                )
             else:
-                log(f"[UNSOLVED] {task_id}")
+                log(f"[UNSOLVED] {task_id}  best_score={score:.4f}")
 
         except Exception as exc:
             log(f"[ERROR] {task_id}: {exc}")
             traceback.print_exc(file=sys.stdout)
 
-    log(f"\n[SUMMARY] attempted={attempted}  solved={solved}  "
-        f"programs_embedded={len(global_bank)}")
+    log(
+        f"\n[SUMMARY] attempted={attempted}  solved={solved}  "
+        f"programs_embedded={len(global_bank)}"
+    )
 
     if len(global_bank) == 0:
         log("[WARN] No programs solved. Seed bank will be empty.")

@@ -1,0 +1,14 @@
+{
+  "partition": "nested-validation-prefix-diagnostic",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen3:8b",
+  "tasks": 1,
+  "max_candidates": 4,
+  "exact_fit_tasks": 0,
+  "exact_hypotheses": 0,
+  "model_pass_at_2": 0,
+  "production_pass_at_2": 1,
+  "model_unique_vs_production": 0,
+  "failures": {},
+  "elapsed_seconds": 4.6541440999999395
+}

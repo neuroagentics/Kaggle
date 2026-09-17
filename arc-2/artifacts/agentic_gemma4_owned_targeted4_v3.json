@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "gemma4:latest",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 4,
+  "rounds": 3,
+  "candidates_per_round": 4,
+  "ordering": "dataset",
+  "thinking": false,
+  "demonstration_exact_tasks": 0,
+  "full_task_exact_pass_at_2": 0,
+  "unique_vs_owned_production": 0,
+  "candidates_generated": 44,
+  "candidates_executed": 24,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "44f52bb0",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 9,
+      "executed": 5,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: ine 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 2, in transform UnboundLocalError: cannot access local variable 'background_color' where it is no",
+        "r0c1:ValueError:method is not allowed: add",
+        "r0c2:ValueError:method is not allowed: add",
+        "r0c3:ValueError:worker rejected program: ine 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 2, in transform UnboundLocalError: cannot access local variable 'background_color' where it is no",
+        "r1c0:non-exact:3:If the input grid contains any non-background color, the output is a 1x1 grid filled with the color ",
+        "r2c0:non-exact:2:If the input grid contains any non-background color, the output is a 1x1 grid filled with the color ",
+        "r2c1:non-exact:3:The output color is 1 if the input grid contains at least two distinct colors (excluding background)",
+        "r2c2:non-exact:5:The output is 1 if the input grid has a background color of 0 OR if the number of distinct non-backg",
+        "r2c3:non-exact:2:The output is 1 if the number of unique non-background colors is 2, OR if the background color is 2 "
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "a85d4709",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 12,
+      "executed": 4,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker returned an invalid ARC grid",
+        "r0c1:ValueError:worker returned an invalid ARC grid",
+        "r0c2:ValueError:worker returned an invalid ARC grid",
+        "r0c3:ValueError:worker returned an invalid ARC grid",
+        "r1c0:non-exact:21:The output is a solid block of a single color, derived from the background color of the input, filli",
+        "r1c1:non-exact:21:The output is a pattern derived from the input's structure, where the output grid is filled with a s",
+        "r1c2:duplicate",
+        "r1c3:non-exact:27:The output is a solid block of the color 2, filling the entire grid, if the input contains any color",
+        "r2c0:ValueError:invalid Python: invalid syntax",
+        "r2c1:non-exact:36:The output is a solid block filling the entire grid using a single color derived from the most frequ",
+        "r2c2:ValueError:invalid Python: invalid syntax",
+        "r2c3:ValueError:invalid Python: unmatched ']'"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "0520fde7",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 12,
+      "executed": 8,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: ontender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 4, in transform TypeError: make_grid() got an unexpected keyword ar",
+        "r0c1:ValueError:worker rejected program: ontender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform TypeError: make_grid() got an unexpected keyword ar",
+        "r0c2:non-exact:20:The output is a 3x3 grid where the color of each cell (r, c) is determined by the color of the cell ",
+        "r0c3:non-exact:17:The output is a 3x3 grid where the color of the cell (r, c) is determined by the color of the cell a",
+        "r1c0:non-exact:17:The output is a 3x3 grid. The color of the cell at (r, c) in the output is determined by the color o",
+        "r1c1:non-exact:20:The output is a 3x3 grid formed by taking the 3x3 subgrid centered around the input's central column",
+        "r1c2:non-exact:20:The output is a 3x3 grid formed by taking the 3x3 subgrid starting from column index 1 (i.e., column",
+        "r1c3:ValueError:invalid Python: unmatched '}'",
+        "r2c0:non-exact:20:The output is a 3x3 grid. The color at (r, c) in the output is determined by the color at (r, c+1) i",
+        "r2c1:non-exact:17:The output is a 3x3 grid. The color at (r, c) in the output is determined by the color at (r, c+2) i",
+        "r2c2:duplicate",
+        "r2c3:non-exact:20:The output is a 3x3 grid. The color at (r, c) in the output is determined by the color at (r, c+1) i"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "88a62173",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 11,
+      "executed": 7,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:non-exact:4:Extract the top-left 2x2 subgrid formed by the non-background colors, and then rotate it 180 degrees",
+        "r0c1:non-exact:4:Extract the colors present in the top-left 2x2 area of the input grid, and then construct a new 2x2 ",
+        "r0c2:ValueError:method is not allowed: add",
+        "r0c3:duplicate",
+        "r1c0:non-exact:4:The output is the 2x2 grid formed by the colors at the top-left (0,0) and bottom-right (1,1) corners",
+        "r1c1:duplicate",
+        "r1c2:non-exact:4:The output is the 2x2 grid formed by the colors at the top-left (0,0) and bottom-right (1,1) corners",
+        "r2c0:non-exact:9:Extract the colors from the four corners of the input grid: Output[0][0] = Input[0][0], Output[0][1]",
+        "r2c1:duplicate",
+        "r2c2:non-exact:6:The output is a 2x2 grid formed by taking the colors from the center 2x2 subgrid (rows 1-2, columns ",
+        "r2c3:non-exact:2:The output is a 2x2 grid formed by taking the colors from the four corners of the input grid, but ma"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 338.861061100004,
+  "telemetry": {
+    "wall_seconds": 338.8610085999826,
+    "cpu_seconds": 48.640625,
+    "peak_rss_bytes": 251420672,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

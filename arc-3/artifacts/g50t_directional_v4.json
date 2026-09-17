@@ -1,0 +1,5358 @@
+{
+  "aggregate": {
+    "actions": 201,
+    "actions_per_level": null,
+    "games": 1,
+    "levels_completed": 0,
+    "score": 0.0
+  },
+  "games": [
+    {
+      "summary": {
+        "actions_per_level": null,
+        "actions_selected": 201,
+        "avatar_color": 5,
+        "changed_transitions": 20,
+        "current_level_unique_states": 9,
+        "deadly_transitions": 1,
+        "decision_latency_ms": {
+          "max": 14.075899998715613,
+          "mean": 8.854996517317401
+        },
+        "delta_classes": {
+          "local": 3,
+          "sparse": 17,
+          "unchanged": 180
+        },
+        "final_state": "NOT_FINISHED",
+        "framework_action_count": 201,
+        "game_id": "g50t",
+        "levels_completed": 0,
+        "levels_gained": 0,
+        "movement_model": {
+          "1": [
+            0,
+            -6
+          ]
+        },
+        "no_op_rate": 0.9,
+        "no_ops": 180,
+        "novel_transitions": 8,
+        "plan_invalidations": 0,
+        "replans": 7,
+        "schema_version": 1,
+        "selection_reasons": {
+          "return to a known state with untested actions": 7,
+          "reuse the most promising observed transition": 162,
+          "select the highest-value untested local transition": 31,
+          "start or recover the level": 1
+        },
+        "transitions_observed": 200,
+        "unique_states": 9
+      },
+      "transitions": [
+        {
+          "action": {
+            "id": 2,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 1,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 4,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              14,
+              8,
+              18,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 48,
+            "class": "sparse"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": true,
+          "status": "NOT_FINISHED",
+          "step": 2,
+          "to_state": "6ac28359d5b804fde486998e"
+        },
+        {
+          "action": {
+            "id": 3,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "6ac28359d5b804fde486998e",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 3,
+          "to_state": "6ac28359d5b804fde486998e"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "6ac28359d5b804fde486998e",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 4,
+          "to_state": "6ac28359d5b804fde486998e"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              1,
+              2,
+              18,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 65,
+            "class": "sparse"
+          },
+          "from_state": "6ac28359d5b804fde486998e",
+          "level_delta": 0,
+          "novel": true,
+          "status": "NOT_FINISHED",
+          "step": 5,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 4,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 6,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              14,
+              8,
+              24,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 72,
+            "class": "sparse"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": true,
+          "status": "NOT_FINISHED",
+          "step": 7,
+          "to_state": "1ba45b11a9011882a28374f5"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "1ba45b11a9011882a28374f5",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 8,
+          "to_state": "1ba45b11a9011882a28374f5"
+        },
+        {
+          "action": {
+            "id": 4,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "1ba45b11a9011882a28374f5",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 9,
+          "to_state": "1ba45b11a9011882a28374f5"
+        },
+        {
+          "action": {
+            "id": 2,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              20,
+              8,
+              30,
+              12
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 48,
+            "class": "sparse"
+          },
+          "from_state": "1ba45b11a9011882a28374f5",
+          "level_delta": 0,
+          "novel": true,
+          "status": "NOT_FINISHED",
+          "step": 10,
+          "to_state": "c6a901e081cbef1b0023aab7"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              26,
+              8,
+              30,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 48,
+            "class": "sparse"
+          },
+          "from_state": "c6a901e081cbef1b0023aab7",
+          "level_delta": 0,
+          "novel": true,
+          "status": "NOT_FINISHED",
+          "step": 11,
+          "to_state": "89cd317d26221e77202b451e"
+        },
+        {
+          "action": {
+            "id": 2,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              26,
+              8,
+              30,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 48,
+            "class": "sparse"
+          },
+          "from_state": "89cd317d26221e77202b451e",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 12,
+          "to_state": "c6a901e081cbef1b0023aab7"
+        },
+        {
+          "action": {
+            "id": 3,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              26,
+              8,
+              30,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 48,
+            "class": "sparse"
+          },
+          "from_state": "c6a901e081cbef1b0023aab7",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 13,
+          "to_state": "89cd317d26221e77202b451e"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "89cd317d26221e77202b451e",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 14,
+          "to_state": "89cd317d26221e77202b451e"
+        },
+        {
+          "action": {
+            "id": 4,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              1,
+              2,
+              30,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 89,
+            "class": "local"
+          },
+          "from_state": "89cd317d26221e77202b451e",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 15,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              14,
+              8,
+              24,
+              12
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 48,
+            "class": "sparse"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": true,
+          "status": "NOT_FINISHED",
+          "step": 16,
+          "to_state": "be8bd39d2db97ce197f6b2ed"
+        },
+        {
+          "action": {
+            "id": 2,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              1,
+              2,
+              24,
+              12
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 65,
+            "class": "sparse"
+          },
+          "from_state": "be8bd39d2db97ce197f6b2ed",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 17,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              14,
+              8,
+              24,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 72,
+            "class": "sparse"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": true,
+          "status": "NOT_FINISHED",
+          "step": 18,
+          "to_state": "ce82d580d8fd9e80abb66ae3"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              1,
+              2,
+              24,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 89,
+            "class": "local"
+          },
+          "from_state": "ce82d580d8fd9e80abb66ae3",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 19,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 3,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 20,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 21,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 4,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 22,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              14,
+              8,
+              24,
+              12
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 48,
+            "class": "sparse"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 23,
+          "to_state": "be8bd39d2db97ce197f6b2ed"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              1,
+              2,
+              24,
+              12
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 65,
+            "class": "sparse"
+          },
+          "from_state": "be8bd39d2db97ce197f6b2ed",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 24,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 2,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 25,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 3,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              14,
+              8,
+              24,
+              18
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 72,
+            "class": "sparse"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 26,
+          "to_state": "ce82d580d8fd9e80abb66ae3"
+        },
+        {
+          "action": {
+            "id": 4,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "ce82d580d8fd9e80abb66ae3",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 27,
+          "to_state": "ce82d580d8fd9e80abb66ae3"
+        },
+        {
+          "action": {
+            "id": 2,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "ce82d580d8fd9e80abb66ae3",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 28,
+          "to_state": "ce82d580d8fd9e80abb66ae3"
+        },
+        {
+          "action": {
+            "id": 3,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              14,
+              14,
+              18,
+              24
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 48,
+            "class": "sparse"
+          },
+          "from_state": "ce82d580d8fd9e80abb66ae3",
+          "level_delta": 0,
+          "novel": true,
+          "status": "NOT_FINISHED",
+          "step": 29,
+          "to_state": "e5b0f265fa2afc579d659b95"
+        },
+        {
+          "action": {
+            "id": 3,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "e5b0f265fa2afc579d659b95",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 30,
+          "to_state": "e5b0f265fa2afc579d659b95"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "e5b0f265fa2afc579d659b95",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 31,
+          "to_state": "e5b0f265fa2afc579d659b95"
+        },
+        {
+          "action": {
+            "id": 4,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              1,
+              2,
+              24,
+              24
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 89,
+            "class": "local"
+          },
+          "from_state": "e5b0f265fa2afc579d659b95",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 32,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              14,
+              8,
+              24,
+              12
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 48,
+            "class": "sparse"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 33,
+          "to_state": "be8bd39d2db97ce197f6b2ed"
+        },
+        {
+          "action": {
+            "id": 3,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              1,
+              2,
+              24,
+              12
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 65,
+            "class": "sparse"
+          },
+          "from_state": "be8bd39d2db97ce197f6b2ed",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 34,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 35,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 36,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 3,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 37,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 38,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 39,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 40,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 41,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 42,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 43,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 44,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 45,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 46,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 47,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 48,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 49,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 50,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 51,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 52,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 53,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 54,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 55,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 56,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 57,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 58,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 59,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 60,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 61,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 62,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 63,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 64,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 65,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 66,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 67,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 68,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 69,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 70,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 71,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 72,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 73,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 74,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 75,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 76,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 77,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 78,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 79,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 80,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 81,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 82,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 83,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 84,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 85,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 86,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 87,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 88,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 89,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 90,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 91,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 92,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 93,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 94,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 95,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 96,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 97,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 98,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 99,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 100,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 101,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 102,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 103,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 104,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 105,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 106,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 107,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 108,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 109,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 110,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 111,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 112,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 113,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 114,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 115,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 116,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 117,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 118,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 119,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 120,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 121,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 122,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 123,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 124,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 125,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 126,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 127,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 128,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 129,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "GAME_OVER",
+          "step": 130,
+          "to_state": "baf97e6ce662d2a033ecb62c"
+        },
+        {
+          "action": {
+            "id": 0,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": [
+              1,
+              2,
+              7,
+              5
+            ],
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 17,
+            "class": "sparse"
+          },
+          "from_state": "baf97e6ce662d2a033ecb62c",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 131,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 5,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 132,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 133,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 134,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 135,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 136,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 137,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 138,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 139,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 140,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 141,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 142,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 143,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 144,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 145,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 146,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 147,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 148,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 149,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 150,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 151,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 152,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 153,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 154,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 155,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 156,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 157,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 158,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 159,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 160,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 161,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 162,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 163,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 164,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 165,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 166,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 167,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 168,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 169,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 170,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 171,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 172,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 173,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 174,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 175,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 176,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 177,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 178,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 179,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 180,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 181,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 182,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 183,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 184,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 185,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 186,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 187,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 188,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 189,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 190,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 191,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 192,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 193,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 194,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 195,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 196,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 197,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 198,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 199,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        },
+        {
+          "action": {
+            "id": 1,
+            "x": null,
+            "y": null
+          },
+          "delta": {
+            "after_shape": [
+              64,
+              64
+            ],
+            "bbox": null,
+            "before_shape": [
+              64,
+              64
+            ],
+            "changed_cells": 0,
+            "class": "unchanged"
+          },
+          "from_state": "09a08a2bbe91ef15c51970d1",
+          "level_delta": 0,
+          "novel": false,
+          "status": "NOT_FINISHED",
+          "step": 200,
+          "to_state": "09a08a2bbe91ef15c51970d1"
+        }
+      ]
+    }
+  ],
+  "schema_version": 1
+}

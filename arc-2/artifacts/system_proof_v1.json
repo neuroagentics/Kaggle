@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "claim": "Hyper-ARC implementation and end-to-end runtime proof",
+  "neural_specialist": {
+    "checkpoint": "C:\\Kaggle\\arc-2\\artifacts\\recursive_specialist_full_v2.pt",
+    "sha256": "b6746f37d885a92d6a33a8e764349cb3bcd51111d96cc89dd8b72560d665e9d5",
+    "bytes": 550401,
+    "class": "RecursiveGridSpecialist",
+    "parameter_count": 135750,
+    "strict_state_load": true,
+    "inference_executed": true,
+    "deterministic_repeat": true,
+    "output_shape": [
+      1,
+      1
+    ],
+    "promoted_to_submission_solver": false,
+    "promotion_blocker": {
+      "leave_one_out_eligible_tasks": 0,
+      "specialist_pass_at_2": 0,
+      "unique_exact_contribution": 0
+    }
+  },
+  "procedural_memory": {
+    "path": "C:\\Kaggle\\arc-2\\hyper_arc\\procedural_memory_v1.json",
+    "sha256": "3be572869d50d9cd474eede8357da152a9df0104d1f07cb4f49383d00ca1ef07",
+    "bank_id": "0620b8e1686d357411c2fb7d9bbbb1a5f125bede7c769012475623fffd9b6e20",
+    "records": 25,
+    "exact_success_episodes": 30,
+    "transfer_failure_episodes": 6,
+    "integrity_verified": true
+  },
+  "recursive_solver_exact_evidence": {
+    "validation": {
+      "tasks": 160,
+      "world_model_pass_at_2": 12,
+      "combined_pass_at_2": 14,
+      "combined_regressions": []
+    },
+    "holdout": {
+      "tasks": 200,
+      "world_model_pass_at_2": 10,
+      "combined_pass_at_2": 12,
+      "combined_regressions": []
+    },
+    "metric": "full-task exact pass@2"
+  },
+  "end_to_end": {
+    "exit_code": 0,
+    "submission_schema_valid": true,
+    "submission_sha256_verified": true,
+    "exact_fixture_results": {
+      "identity-proof": true,
+      "world-model-proof": true
+    },
+    "all_fixtures_exact": true,
+    "failures": [],
+    "timeouts": [],
+    "channels": {
+      "run_signature": "2ad98a1941c11d2c32151823897089bd2442b403d9d6699f90e8397a75e43fcf",
+      "global_timeout_seconds": 30.0,
+      "task_timeout_seconds": 5.0,
+      "max_iterations": 1,
+      "world_model_enabled": true,
+      "world_memory_enabled": false,
+      "experience_memory_enabled": false,
+      "procedural_memory_enabled": true,
+      "legacy_seed_memory_enabled": false,
+      "task_failure_policy": "record-input"
+    }
+  }
+}

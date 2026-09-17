@@ -1,0 +1,19 @@
+{
+  "partition": "validation",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "builder_tasks": 640,
+  "validation_tasks": 160,
+  "holdout_tasks": 200,
+  "evaluated_tasks": 160,
+  "diagnostic_limit": null,
+  "object_fit_tasks": 3,
+  "object_candidate_count": 4,
+  "baseline_pass_at_2": 5,
+  "object_first_pass_at_2": 8,
+  "stable_object_pass_at_2": 8,
+  "object_first_unique": 3,
+  "object_first_regressions": 0,
+  "stable_object_unique": 3,
+  "stable_object_regressions": 0,
+  "elapsed_seconds": 17.558022500001243
+}

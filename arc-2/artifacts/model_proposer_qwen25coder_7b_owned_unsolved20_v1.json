@@ -1,0 +1,72 @@
+{
+  "partition": "nested-validation-owned-production-diagnostic",
+  "comparison_solver": "hyper-arc-owned-production",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "contract": "wrapper-v1",
+  "selection": "production-unsolved",
+  "tasks": 20,
+  "selected_task_ids": [
+    "73ccf9c2",
+    "72a961c9",
+    "b7fb29bc",
+    "ff72ca3e",
+    "60a26a3e",
+    "b4a43f3b",
+    "af726779",
+    "e9bb6954",
+    "25094a63",
+    "a406ac07",
+    "37ce87bb",
+    "0e671a1a",
+    "99caaf76",
+    "15663ba9",
+    "e734a0e8",
+    "fea12743",
+    "ce039d91",
+    "e6de6e8f",
+    "9f8de559",
+    "9ba4a9aa"
+  ],
+  "max_candidates": 4,
+  "max_output_tokens": 512,
+  "exact_fit_tasks": 0,
+  "exact_hypotheses": 0,
+  "requested_programs": 69,
+  "parsed_programs": 69,
+  "rejections": {
+    "non-exact": 59,
+    "invalid": 10
+  },
+  "rejection_details": [
+    "0:non-exact",
+    "1:invalid:ExecutionError:scale_integer failed: ARC grids cannot exceed 30x30",
+    "2:non-exact",
+    "3:non-exact",
+    "0:non-exact",
+    "1:non-exact",
+    "2:non-exact",
+    "3:non-exact",
+    "0:non-exact",
+    "0:non-exact",
+    "1:non-exact",
+    "2:non-exact"
+  ],
+  "model_pass_at_2": 0,
+  "production_pass_at_2": 0,
+  "model_unique_vs_production": 0,
+  "failures": {
+    "Model content is not valid JSON: Unterminated string starting at: line 103 column 11 (char 2492); length=2493; done_reas": 2
+  },
+  "elapsed_seconds": 157.55172220000532,
+  "telemetry": {
+    "wall_seconds": 157.550330699989,
+    "cpu_seconds": 41.765625,
+    "peak_rss_bytes": 280125440,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 2,
+    "sampler": "psutil-process-tree"
+  }
+}

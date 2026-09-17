@@ -1,0 +1,1034 @@
+{
+  "schema_version": 1,
+  "solver": "recursive-world-model-v1",
+  "ownership": "hyper-arc-owned-only",
+  "partition": "validation",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "evaluated_tasks": 160,
+  "exact_fit_tasks": 10,
+  "recursive_fit_tasks": 0,
+  "retrieved_seed_tasks": 0,
+  "executed_candidates": 12157,
+  "world_distinct_attempt_outputs": 11,
+  "owned_baseline_pass_at_2": 8,
+  "world_model_pass_at_2": 10,
+  "combined_pass_at_2": 11,
+  "world_unique_vs_owned": [
+    "25ff71a9",
+    "9565186b",
+    "b2862040"
+  ],
+  "world_regressions_vs_owned": [
+    "a416b8f3"
+  ],
+  "combined_unique_vs_owned": [
+    "25ff71a9",
+    "9565186b",
+    "b2862040"
+  ],
+  "combined_regressions_vs_owned": [],
+  "world_solved_task_ids": [
+    "25ff71a9",
+    "5adee1b2",
+    "67a3c6ac",
+    "68b16354",
+    "9565186b",
+    "9dfd6313",
+    "b2862040",
+    "c62e2108",
+    "db118e2a",
+    "ed36ccf7"
+  ],
+  "world_solved_details": {
+    "c62e2108": [
+      {
+        "hypothesis_id": "5dc79074db7c2fd96773c9942680761425f5cab6fc0bbd6132701d43a40b84da",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "edge-marker-motif-propagation",
+          "source": "relational-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "edge_marker_motif_propagation",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ],
+    "5adee1b2": [
+      {
+        "hypothesis_id": "ed2bf161f24fbb2fd0d34f60859641703a2de29294d719edfdc1219e6db1b5ba",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "keyed-object-frames",
+          "source": "relational-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "keyed_object_frames",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ],
+    "db118e2a": [
+      {
+        "hypothesis_id": "0fb39a33581f8746236492c77e0d8265a7fa6aa9b35d9ef17e3602ca40378cf8",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "frame-signal-repeat",
+          "source": "relational-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "frame_signal_repeat",
+          "output_type": "grid",
+          "arguments": {
+            "height": 15,
+            "motif_height": 5,
+            "motif_width": 5,
+            "positions": [
+              [
+                2,
+                2
+              ],
+              [
+                8,
+                8
+              ]
+            ],
+            "width": 15
+          },
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ],
+    "68b16354": [
+      {
+        "hypothesis_id": "c03a59fdb793bffb762c02d5fb70a351f7643198c39f6bad0972c401be5e7901",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "reflect-horizontal",
+          "source": "world-prior",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "reflect",
+          "output_type": "grid",
+          "arguments": {
+            "axis": "horizontal"
+          },
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ],
+    "9565186b": [
+      {
+        "hypothesis_id": "4ae2f79f165fe7d310f939ff22760a94f7f2ecf294448125dc411bee2c613399",
+        "confidence": 0.8057142857142857,
+        "complexity": 6,
+        "provenance": {
+          "seed": "recolor:all:5",
+          "source": "object-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "render_objects",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            },
+            {
+              "arguments": {
+                "item_register": "item"
+              },
+              "children": [
+                {
+                  "arguments": {},
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [],
+                      "op": "input",
+                      "output_type": "grid",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {
+                    "color": 5
+                  },
+                  "children": [
+                    {
+                      "arguments": {
+                        "name": "item"
+                      },
+                      "children": [],
+                      "op": "load",
+                      "output_type": "object",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "recolor_object",
+                  "output_type": "object",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "map_objects",
+              "output_type": "object_set",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ],
+    "b2862040": [
+      {
+        "hypothesis_id": "87157d581cf3a4d59990197b315a5ffb6d9d763025835c6e70f8d2184b9cde25",
+        "confidence": 0.805,
+        "complexity": 7,
+        "provenance": {
+          "seed": "recolor:holes=1:8",
+          "source": "object-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "render_objects",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            },
+            {
+              "arguments": {
+                "item_register": "item"
+              },
+              "children": [
+                {
+                  "arguments": {
+                    "where": {
+                      "holes": 1
+                    }
+                  },
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [
+                        {
+                          "arguments": {},
+                          "children": [],
+                          "op": "input",
+                          "output_type": "grid",
+                          "postconditions": [],
+                          "preconditions": []
+                        }
+                      ],
+                      "op": "objects",
+                      "output_type": "object_set",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "select_objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {
+                    "color": 8
+                  },
+                  "children": [
+                    {
+                      "arguments": {
+                        "name": "item"
+                      },
+                      "children": [],
+                      "op": "load",
+                      "output_type": "object",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "recolor_object",
+                  "output_type": "object",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "map_objects",
+              "output_type": "object_set",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      },
+      {
+        "hypothesis_id": "2224e8d21363b3cacb0ceb5afe6cfcb21313fc1c77a4e8dd1b4376b33fe96ffe",
+        "confidence": 0.8033333333333333,
+        "complexity": 11,
+        "provenance": {
+          "seed": "move-recolor:holes=1:0,0:8",
+          "source": "object-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "render_objects",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [
+                {
+                  "arguments": {},
+                  "children": [],
+                  "op": "input",
+                  "output_type": "grid",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {
+                    "where": {
+                      "holes": 1
+                    }
+                  },
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [
+                        {
+                          "arguments": {},
+                          "children": [],
+                          "op": "input",
+                          "output_type": "grid",
+                          "postconditions": [],
+                          "preconditions": []
+                        }
+                      ],
+                      "op": "objects",
+                      "output_type": "object_set",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "select_objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {},
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [],
+                      "op": "input",
+                      "output_type": "grid",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "background_color",
+                  "output_type": "color",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "erase_objects",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            },
+            {
+              "arguments": {
+                "item_register": "item"
+              },
+              "children": [
+                {
+                  "arguments": {
+                    "where": {
+                      "holes": 1
+                    }
+                  },
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [
+                        {
+                          "arguments": {},
+                          "children": [],
+                          "op": "input",
+                          "output_type": "grid",
+                          "postconditions": [],
+                          "preconditions": []
+                        }
+                      ],
+                      "op": "objects",
+                      "output_type": "object_set",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "select_objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {
+                    "color": 8
+                  },
+                  "children": [
+                    {
+                      "arguments": {
+                        "name": "item"
+                      },
+                      "children": [],
+                      "op": "load",
+                      "output_type": "object",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "recolor_object",
+                  "output_type": "object",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "map_objects",
+              "output_type": "object_set",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ],
+    "67a3c6ac": [
+      {
+        "hypothesis_id": "3e8c1e03fb85985332179b378a687a3b90e436683c3eff9cb3fdbc7fc796d710",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "reflect-vertical",
+          "source": "world-prior",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "reflect",
+          "output_type": "grid",
+          "arguments": {
+            "axis": "vertical"
+          },
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ],
+    "ed36ccf7": [
+      {
+        "hypothesis_id": "039cd6640c563bdcead82b06ef9be81c353259610350d4878e2813ee449a4ef6",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "rotate-270",
+          "source": "world-prior",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "rotate",
+          "output_type": "grid",
+          "arguments": {
+            "degrees": 270
+          },
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ],
+    "9dfd6313": [
+      {
+        "hypothesis_id": "0d372b0631572cc8b64bbf74c58f23ecd8e1ef7a803cb3f0445f409fcfd647f7",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "anti-transpose",
+          "source": "world-prior",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "anti_transpose",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      },
+      {
+        "hypothesis_id": "4d8fb5d4fbd4667169552462655f939fa46bbbb4c6b0e21e43bee28b74987f80",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "transpose",
+          "source": "world-prior",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "transpose",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ],
+    "25ff71a9": [
+      {
+        "hypothesis_id": "e3cde0d7dd82272dfe3b1ff128da9daf4bc5492710625bdeb17b24b19755a137",
+        "confidence": 0.804,
+        "complexity": 9,
+        "provenance": {
+          "seed": "move:all:1,0",
+          "source": "object-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "render_objects",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [
+                {
+                  "arguments": {},
+                  "children": [],
+                  "op": "input",
+                  "output_type": "grid",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {},
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [],
+                      "op": "input",
+                      "output_type": "grid",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {},
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [],
+                      "op": "input",
+                      "output_type": "grid",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "background_color",
+                  "output_type": "color",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "erase_objects",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            },
+            {
+              "arguments": {
+                "item_register": "item"
+              },
+              "children": [
+                {
+                  "arguments": {},
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [],
+                      "op": "input",
+                      "output_type": "grid",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {
+                    "dx": 0,
+                    "dy": 1
+                  },
+                  "children": [
+                    {
+                      "arguments": {
+                        "name": "item"
+                      },
+                      "children": [],
+                      "op": "load",
+                      "output_type": "object",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "translate_object",
+                  "output_type": "object",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "map_objects",
+              "output_type": "object_set",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      },
+      {
+        "hypothesis_id": "34d6436401ee967211fa55b435ea3b7c3fcd2559a14b33b8f68709d1b6d44587",
+        "confidence": 0.8033333333333333,
+        "complexity": 11,
+        "provenance": {
+          "seed": "move:smallest:1,0",
+          "source": "object-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "render_objects",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [
+                {
+                  "arguments": {},
+                  "children": [],
+                  "op": "input",
+                  "output_type": "grid",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {
+                    "extremum": "smallest",
+                    "where": {}
+                  },
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [
+                        {
+                          "arguments": {},
+                          "children": [],
+                          "op": "input",
+                          "output_type": "grid",
+                          "postconditions": [],
+                          "preconditions": []
+                        }
+                      ],
+                      "op": "objects",
+                      "output_type": "object_set",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "select_objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {},
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [],
+                      "op": "input",
+                      "output_type": "grid",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "background_color",
+                  "output_type": "color",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "erase_objects",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            },
+            {
+              "arguments": {
+                "item_register": "item"
+              },
+              "children": [
+                {
+                  "arguments": {
+                    "extremum": "smallest",
+                    "where": {}
+                  },
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [
+                        {
+                          "arguments": {},
+                          "children": [],
+                          "op": "input",
+                          "output_type": "grid",
+                          "postconditions": [],
+                          "preconditions": []
+                        }
+                      ],
+                      "op": "objects",
+                      "output_type": "object_set",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "select_objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {
+                    "dx": 0,
+                    "dy": 1
+                  },
+                  "children": [
+                    {
+                      "arguments": {
+                        "name": "item"
+                      },
+                      "children": [],
+                      "op": "load",
+                      "output_type": "object",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "translate_object",
+                  "output_type": "object",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "map_objects",
+              "output_type": "object_set",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      },
+      {
+        "hypothesis_id": "afbb5de30747b97a97121a7c4d871a51c5a20a11ce80bbf3447fe121160a1eb8",
+        "confidence": 0.8033333333333333,
+        "complexity": 11,
+        "provenance": {
+          "seed": "move:largest:1,0",
+          "source": "object-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "render_objects",
+          "output_type": "grid",
+          "arguments": {},
+          "children": [
+            {
+              "arguments": {},
+              "children": [
+                {
+                  "arguments": {},
+                  "children": [],
+                  "op": "input",
+                  "output_type": "grid",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {
+                    "extremum": "largest",
+                    "where": {}
+                  },
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [
+                        {
+                          "arguments": {},
+                          "children": [],
+                          "op": "input",
+                          "output_type": "grid",
+                          "postconditions": [],
+                          "preconditions": []
+                        }
+                      ],
+                      "op": "objects",
+                      "output_type": "object_set",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "select_objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {},
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [],
+                      "op": "input",
+                      "output_type": "grid",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "background_color",
+                  "output_type": "color",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "erase_objects",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            },
+            {
+              "arguments": {
+                "item_register": "item"
+              },
+              "children": [
+                {
+                  "arguments": {
+                    "extremum": "largest",
+                    "where": {}
+                  },
+                  "children": [
+                    {
+                      "arguments": {},
+                      "children": [
+                        {
+                          "arguments": {},
+                          "children": [],
+                          "op": "input",
+                          "output_type": "grid",
+                          "postconditions": [],
+                          "preconditions": []
+                        }
+                      ],
+                      "op": "objects",
+                      "output_type": "object_set",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "select_objects",
+                  "output_type": "object_set",
+                  "postconditions": [],
+                  "preconditions": []
+                },
+                {
+                  "arguments": {
+                    "dx": 0,
+                    "dy": 1
+                  },
+                  "children": [
+                    {
+                      "arguments": {
+                        "name": "item"
+                      },
+                      "children": [],
+                      "op": "load",
+                      "output_type": "object",
+                      "postconditions": [],
+                      "preconditions": []
+                    }
+                  ],
+                  "op": "translate_object",
+                  "output_type": "object",
+                  "postconditions": [],
+                  "preconditions": []
+                }
+              ],
+              "op": "map_objects",
+              "output_type": "object_set",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ]
+  },
+  "elapsed_seconds": 39.86723509999865
+}

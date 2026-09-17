@@ -1,264 +1,141 @@
-"""export_winning_path.py — Export MCTS winning program to annotated JSON.
-
-Runs the solver on a single ARC task and exports:
-  - The winning DSL program (step-by-step operations)
-  - The grid state after each step (for Blender animation)
-  - Loop/redundancy warnings (e.g., rotate applied 4+ times in a row)
-
-Usage:
-    python export_winning_path.py --task-file ./data/arc-agi-2/some_task.json
-    python export_winning_path.py --task-file ./data/arc-agi-2/some_task.json \\
-        --output winning_path.json --seed-bank hyper_arc/seed_bank.json
-"""
-from __future__ import annotations
-
 import argparse
 import json
-import sys
-from collections import Counter
-from pathlib import Path
+import torch
 
+# Project Imports
 from hyper_arc.esb import ESB
+from hyper_arc.mcts import MCTSEngine
 from hyper_arc.hpm import GlobalMemoryBank, LocalTaskBuffer
-from hyper_arc.mcts import MCTSEngine, DEFAULT_GLOBAL_PRIOR_WEIGHT
-from hyper_arc.spatial_dsl import SpatialDSL
-
-_DSL = SpatialDSL()
 
 
-# ── Loop / redundancy detection ───────────────────────────────────────────
+def load_task_data(challenge_file: str, task_id: str):
+    """Load task from aggregate JSON file."""
+    with open(challenge_file, "r") as f:
+        data = json.load(f)
 
-# How many consecutive identical primitive calls triggers a warning
-LOOP_THRESHOLD = 3
+    if isinstance(data, dict) and task_id in data:
+        return data[task_id]
+    if isinstance(data, list):
+        for task in data:
+            if task.get("task_id") == task_id:
+                return task
 
-# Pairs of operations that cancel each other out
-CANCEL_PAIRS: list[tuple[str, str]] = [
-    ("rotate",  "rotate"),    # 90+270 or 180+180
-    ("reflect", "reflect"),   # same axis twice
-    ("translate", "translate"),  # (dx,dy) + (-dx,-dy)
-]
-
-
-def _degrees_sum(steps: list[dict]) -> dict[str, int]:
-    """Sum rotation degrees per consecutive run of rotate steps."""
-    totals: dict[str, int] = {}
-    i = 0
-    while i < len(steps):
-        if steps[i]["primitive"] == "rotate":
-            run_start = i
-            total = 0
-            while i < len(steps) and steps[i]["primitive"] == "rotate":
-                total += steps[i]["kwargs"].get("degrees", 0)
-                i += 1
-            key = f"rotate_run_{run_start}"
-            totals[key] = total % 360
-        else:
-            i += 1
-    return totals
+    raise ValueError(f"Task ID '{task_id}' not found in {challenge_file}")
 
 
-def detect_warnings(steps: list[dict]) -> list[str]:
-    """Analyse a program for illogical patterns; return human-readable warnings."""
-    warnings: list[str] = []
-
-    if not steps:
-        return warnings
-
-    # ── Count per-primitive usage ─────────────────────────────────────────
-    counts = Counter(s["primitive"] for s in steps)
-    for prim, count in counts.items():
-        if prim == "rotate" and count >= 4:
-            warnings.append(
-                f"LOOP: 'rotate' called {count} times — "
-                f"4×90° is identity; program may be cycling."
-            )
-        if prim in ("reflect", "symmetrize") and count >= 2:
-            warnings.append(
-                f"REDUNDANCY: '{prim}' called {count} times — "
-                f"applying it twice on the same axis is identity."
-            )
-
-    # ── Check for net-zero rotation runs ─────────────────────────────────
-    rotation_sums = _degrees_sum(steps)
-    for key, net in rotation_sums.items():
-        if net == 0:
-            warnings.append(
-                f"NET-ZERO ROTATION in {key}: "
-                f"consecutive rotations sum to 0° (identity). "
-                f"Remove these steps."
-            )
-
-    # ── Check for consecutive identical primitives ────────────────────────
-    run_prim = steps[0]["primitive"]
-    run_len  = 1
-    for i in range(1, len(steps)):
-        if steps[i]["primitive"] == run_prim:
-            run_len += 1
-            if run_len >= LOOP_THRESHOLD:
-                warnings.append(
-                    f"CONSECUTIVE LOOP: '{run_prim}' repeated "
-                    f"{run_len} times starting at step {i - run_len + 1}."
-                )
-        else:
-            run_prim = steps[i]["primitive"]
-            run_len  = 1
-
-    # ── Check for translate that immediately cancels ──────────────────────
-    for i in range(len(steps) - 1):
-        a, b = steps[i], steps[i + 1]
-        if a["primitive"] == "translate" and b["primitive"] == "translate":
-            adx = a["kwargs"].get("dx", 0)
-            ady = a["kwargs"].get("dy", 0)
-            bdx = b["kwargs"].get("dx", 0)
-            bdy = b["kwargs"].get("dy", 0)
-            if adx + bdx == 0 and ady + bdy == 0:
-                warnings.append(
-                    f"CANCEL: translate at step {i} "
-                    f"({adx},{ady}) cancelled by step {i+1} "
-                    f"({bdx},{bdy}) — net displacement zero."
-                )
-
-    return warnings
+def grid_to_esb(grid_2d):
+    """Convert 2D list grid to ESB object with shape (1, H, W)."""
+    tensor_2d = torch.tensor(grid_2d, dtype=torch.int8)
+    tensor_3d = tensor_2d.unsqueeze(0)  # Add channel dimension: (H,W) -> (1,H,W)
+    return ESB(tensor_3d)
 
 
-# ── Grid state capture ────────────────────────────────────────────────────
-
-def _esb_to_serialisable(esb: ESB) -> list[list[int]]:
-    return esb.to_grid()
-
-
-def trace_program(
-    start: ESB,
-    program: list[tuple[str, dict]],
-) -> list[dict]:
-    """Execute program step by step, capturing grid state after each op."""
-    steps: list[dict] = []
-    state = start
-    for i, (name, kwargs) in enumerate(program):
-        # Serialise kwargs (ESB values aren't JSON-serialisable)
-        safe_kwargs = {
-            k: (v if not isinstance(v, ESB) else "<ESB>")
-            for k, v in kwargs.items()
-        }
-        try:
-            fn = getattr(_DSL, name)
-            # overlay foreground must reference current state
-            if name == "overlay":
-                kwargs = {**kwargs, "foreground": state}
-            new_state = fn(state, **kwargs)
-            steps.append({
-                "step":       i,
-                "primitive":  name,
-                "kwargs":     safe_kwargs,
-                "grid_after": _esb_to_serialisable(new_state),
-                "error":      None,
-            })
-            state = new_state
-        except Exception as exc:
-            steps.append({
-                "step":       i,
-                "primitive":  name,
-                "kwargs":     safe_kwargs,
-                "grid_after": _esb_to_serialisable(state),  # unchanged
-                "error":      str(exc),
-            })
-    return steps
+def esb_to_2d_list(esb_obj):
+    """Extract 2D list from ESB object for Blender."""
+    grid = esb_obj.data
+    if grid.dim() == 3 and grid.shape[0] == 1:
+        grid = grid.squeeze(0)
+    return grid.tolist()
 
 
-# ── Main ──────────────────────────────────────────────────────────────────
-
-def main() -> int:
+def main():
+    # CRITICAL FIX: Renamed to 'cli_args' to completely prevent variable shadowing
     parser = argparse.ArgumentParser(
-        description="Export MCTS winning path to annotated JSON."
+        description="Export MCTS winning path for Blender."
     )
     parser.add_argument(
-        "--task-file",
+        "--challenge-file",
+        type=str,
         required=True,
-        help="Path to a single ARC task JSON file.",
+        help="Path to aggregate challenges JSON",
     )
     parser.add_argument(
-        "--output",
-        default="winning_path.json",
-        help="Output JSON path (default: winning_path.json).",
+        "--task-id", type=str, required=True, help="The specific Task ID to solve"
     )
     parser.add_argument(
-        "--seed-bank",
-        default="hyper_arc/seed_bank.json",
-        help="Optional seed bank path.",
+        "--output", type=str, default="winning_path.json", help="Output JSON file"
     )
-    args = parser.parse_args()
+    cli_args = parser.parse_args()
 
-    task_path = Path(args.task_file)
-    if not task_path.exists():
-        print(f"[ERROR] Task file not found: {task_path}", flush=True)
-        return 1
+    print(f"[1/4] Loading task {cli_args.task_id} from {cli_args.challenge_file}...")
+    task_data = load_task_data(cli_args.challenge_file, cli_args.task_id)
 
-    task = json.loads(task_path.read_text())
+    train_pairs = task_data["train"]
+    test_input = task_data["test"][0]["input"]
 
-    # ── Load memory ───────────────────────────────────────────────────────
-    global_memory = GlobalMemoryBank(k=5)
-    global_prior_weight = 0.0
-    seed_path = Path(args.seed_bank)
-    if seed_path.exists():
-        try:
-            global_memory.load_seed_bank(seed_path)
-            global_prior_weight = DEFAULT_GLOBAL_PRIOR_WEIGHT
-            print(f"[INFO] Seed bank loaded: {len(global_memory)} programs", flush=True)
-        except Exception as exc:
-            print(f"[WARN] Seed bank load failed ({exc}), using empty bank.", flush=True)
+    print("[2/4] Converting grids to Eidetic Spatial Buffers...")
+    test_esb = grid_to_esb(test_input)
 
-    local_memory = LocalTaskBuffer(k=5)
+    esb_pairs = []
+    for pair in train_pairs:
+        inp_esb = grid_to_esb(pair["input"])
+        out_esb = grid_to_esb(pair["output"])
+        esb_pairs.append((inp_esb, out_esb))
+
+    print("[3/4] Running MCTS Search (this may take 1-5 minutes on CPU)...")
+    global_mem = GlobalMemoryBank()
+    local_mem = LocalTaskBuffer()
+
     engine = MCTSEngine(
-        global_memory=global_memory,
-        local_memory=local_memory,
-        global_prior_weight=global_prior_weight,
+        global_memory=global_mem,
+        local_memory=local_mem,
+        C=1.41,
+        global_prior_weight=0.0,
     )
 
-    # ── Solve ─────────────────────────────────────────────────────────────
-    train_pairs = [
-        (ESB.from_grid(p["input"]), ESB.from_grid(p["output"]))
-        for p in task.get("train", [])
-    ]
-    print(f"[INFO] Solving '{task_path.stem}' with "
-          f"{len(train_pairs)} training pairs ...", flush=True)
+    # Solve returns the symbolic program!
+    program = engine.solve(training_pairs=esb_pairs)
 
-    program = engine.solve(train_pairs)
-    print(f"[INFO] Program found: {len(program)} steps.", flush=True)
+    print("[4/4] Applying program to test input to generate animation...")
+    path_to_export = []
 
-    if not program:
-        print("[WARN] No program found — exporting empty path.", flush=True)
+    # Record initial state
+    current_esb = test_esb
+    path_to_export.append(esb_to_2d_list(current_esb))
 
-    # ── Trace grid states ─────────────────────────────────────────────────
-    input_esb = train_pairs[0][0] if train_pairs else ESB.from_grid([[0]])
-    steps = trace_program(input_esb, program)
+    # Extract operations from the DSLProgram
+    ops = None
+    for attr in ["ops", "operations", "actions", "sequence", "program", "steps"]:
+        if hasattr(program, attr):
+            ops = getattr(program, attr)
+            break
 
-    # ── Loop / redundancy warnings ────────────────────────────────────────
-    warnings = detect_warnings(steps)
-    if warnings:
-        print(f"\n[AUDIT] {len(warnings)} warning(s) detected:", flush=True)
-        for w in warnings:
-            print(f"  ⚠  {w}", flush=True)
+    if ops is None and hasattr(program, "__iter__"):
+        ops = list(program)
+
+    if ops:
+        print(f"   Found {len(ops)} operations in program.")
+        for i, op in enumerate(ops):
+            try:
+                # Case 1: Operation is already a callable function
+                if callable(op):
+                    current_esb = op(current_esb)
+
+                # Case 2: Operation is a tuple like ('translate', {'dx': -2, 'dy': -2})
+                elif isinstance(op, tuple) and len(op) >= 1:
+                    current_esb = engine._apply_action(current_esb, op)
+
+                # Record the new state after applying the operation
+                path_to_export.append(esb_to_2d_list(current_esb))
+
+            except Exception as e:
+                print(f"   Warning: Failed to apply operation {i} ({op}): {e}")
     else:
-        print("[AUDIT] No loops or redundancies detected.", flush=True)
+        print(
+            "   Warning: No operations found in DSLProgram. Path only contains initial state."
+        )
 
-    # ── Build output document ─────────────────────────────────────────────
-    output = {
-        "task_id":       task_path.stem,
-        "program_length": len(program),
-        "warnings":      warnings,
-        "initial_grid":  _esb_to_serialisable(input_esb),
-        "steps":         steps,
-        # Blender-friendly flat list of (primitive, kwargs) for keyframing
-        "blender_keyframes": [
-            {"frame": i + 1, "primitive": s["primitive"], "kwargs": s["kwargs"]}
-            for i, s in enumerate(steps)
-        ],
-    }
+    # Save the path using the original cli_args namespace
+    with open(cli_args.output, "w") as f:
+        json.dump(path_to_export, f, indent=2)
 
-    Path(args.output).write_text(json.dumps(output, indent=2))
-    print(f"[INFO] Exported to {args.output}", flush=True)
-    return 0
+    print(
+        f"\n✓ Success! Created '{cli_args.output}' with {len(path_to_export)} frames."
+    )
+    print(
+        "  Next: Copy to Blender folder, rename to 'mcts_path.json', and run visualizer."
+    )
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

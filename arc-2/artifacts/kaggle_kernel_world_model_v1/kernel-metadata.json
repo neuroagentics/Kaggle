@@ -1,0 +1,24 @@
+{
+  "id": "jthomaslockhart/hyper-arc-v10-agentic",
+  "title": "Hyper-ARC v10 Agentic",
+  "code_file": "notebook6a96ea823f.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "jthomaslockhart/arc-solver-code",
+    "jthomaslockhart/hyper-arc-gemma4-runtime"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "arc-prize-2026-arc-agi-2"
+  ],
+  "model_sources": [
+    "google/gemma-4/Transformers/gemma-4-e4b-it/1"
+  ],
+  "machine_shape": "NvidiaL4"
+}

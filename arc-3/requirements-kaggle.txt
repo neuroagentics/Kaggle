@@ -1,0 +1,37 @@
+# ARC-AGI-3 — KAGGLE RUNTIME dependencies.
+#
+# This is the dependency set for the offline competition notebook. It runs on a
+# CUDA GPU (blueprint §6: single 16-24 GB GPU target).
+#
+# CRITICAL — PyTorch:
+#   Do NOT add a "+cpu" torch wheel here. On Kaggle, PyTorch (CUDA build) is
+#   pre-installed in the notebook image. The exact version must be PINNED ONLY
+#   AFTER testing the actual Kaggle image (blueprint §7); do not invent a version
+#   from a different machine. Until that image is verified, torch is intentionally
+#   left unpinned here and consumed from the Kaggle base image.
+#
+#   scripts/preflight.py `check_torch_build_matches_device` fails closed if the
+#   loaded torch is a +cpu build while a cuda:* device is requested — this catches
+#   an accidental CPU wheel before any real run.
+#
+# Runtime deps (kept in sync with `make setup`; offline wheels bundled as a
+# versioned Kaggle input per blueprint §7):
+arc-agi>=0.9.6
+pandas
+pyarrow
+
+# Deliberator (R11) stack — REQUIRED for the world-model agent's 4-bit reasoner.
+# On Kaggle these must be present in the base image OR bundled as offline wheels
+# in a versioned Kaggle input (networking is disabled at runtime). Verified
+# locally with the versions below; pin exact Kaggle-image-compatible versions
+# during the G8 rehearsal.
+#   transformers>=4.44
+#   accelerate>=0.33
+#   bitsandbytes>=0.43     # 4-bit NF4; requires CUDA
+# Left unpinned/commented until the Kaggle image is verified, same discipline as
+# torch: do not invent a version matrix from a different machine.
+
+# torch: CUDA build supplied by the Kaggle base image. Pin the exact version
+# here only after the G8 rehearsal confirms the Kaggle image torch/CUDA tuple.
+# Example (DO NOT enable until verified on the real image):
+#   torch==<verified-kaggle-cuda-version>

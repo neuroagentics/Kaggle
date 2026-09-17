@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "bank_id": "3501eb3591c781b97557e27218c6321635607b47d2a128508b6f946c00d264e7",
+  "partition": "holdout",
+  "evaluated_tasks": 200,
+  "memory_fit_tasks": 6,
+  "memory_candidate_count": 6,
+  "memory_second_distinct": 8,
+  "owned_baseline_pass_at_2": 7,
+  "memory_pass_at_2": 8,
+  "production_pass_at_2": 69,
+  "production_memory_pass_at_2": 69,
+  "memory_unique_vs_owned": [
+    "810b9b61"
+  ],
+  "memory_regressions_vs_owned": [],
+  "production_memory_unique": [],
+  "production_memory_regressions": [],
+  "memory_unique_details": {
+    "810b9b61": [
+      {
+        "name": "bound:object:recolor:holes=1:3",
+        "family": "object",
+        "source": "memory-ranked-generator",
+        "confidence": 0.21444570109216218,
+        "complexity": 10
+      }
+    ]
+  },
+  "production_memory_unique_details": {},
+  "elapsed_seconds": 82.05381380000108
+}

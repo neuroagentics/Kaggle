@@ -1,0 +1,225 @@
+"""Exact held-out evaluation for Hyper-ARC's execution-guided neural agent."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import time
+from pathlib import Path
+
+from evaluate_model_proposer import _production_attempts
+from hyper_arc.contender.agentic_memory import AgenticMemoryBank, AgenticMemoryRecord
+from hyper_arc.contender.agentic_reasoner import AgenticReasoner
+from hyper_arc.contender.data_protocol import load_verified_split
+from hyper_arc.contender.model_proposer import _ollama_transport
+from hyper_arc.contender.procedural_memory import ProceduralMemoryBank
+from hyper_arc.contender.telemetry import ResourceMonitor
+
+
+def _arguments() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model", default="qwen2.5-coder:7b")
+    parser.add_argument("--count", type=int, default=10)
+    parser.add_argument("--rounds", type=int, default=3)
+    parser.add_argument("--candidates", type=int, default=4)
+    parser.add_argument("--timeout", type=float, default=120.0)
+    parser.add_argument("--max-output-tokens", type=int, default=2400)
+    parser.add_argument("--ordering", choices=("dataset", "smallest"), default="dataset")
+    parser.add_argument("--thinking", action="store_true")
+    parser.add_argument("--task-ids", nargs="*")
+    parser.add_argument("--partition", choices=("builder", "validation"), default="validation")
+    parser.add_argument("--memory-output", type=Path)
+    parser.add_argument("--output", type=Path)
+    return parser.parse_args()
+
+
+def _canonical(grid):
+    return tuple(tuple(row) for row in grid)
+
+
+def _grid_area(grid) -> int:
+    return len(grid) * len(grid[0]) if grid else 0
+
+
+def main() -> int:
+    arguments = _arguments()
+    development, _ = load_verified_split(
+        "data/arc-agi-2/arc-agi_training_challenges.json",
+        "config/arc2_split_v1.json",
+    )
+    ids = list(development)
+    builder_ids = ids[:640]
+    validation_ids = ids[640:]
+    partition_ids = builder_ids if arguments.partition == "builder" else validation_ids
+    partition_digest = hashlib.sha256(
+        json.dumps(
+            {"builder": ids[:640], "validation": validation_ids},
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode()
+    ).hexdigest()
+    solutions = json.loads(
+        Path("data/arc-agi-2/arc-agi_training_solutions.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    memory = ProceduralMemoryBank.load("hyper_arc/procedural_memory_v1.json")
+    candidate_ids = list(arguments.task_ids or partition_ids)
+    unknown = sorted(set(candidate_ids) - set(partition_ids))
+    if unknown:
+        raise ValueError(f"Task IDs are outside the frozen validation partition: {unknown}")
+    if arguments.ordering == "smallest":
+        candidate_ids.sort(
+            key=lambda task_id: sum(
+                _grid_area(pair["input"]) + _grid_area(pair.get("output"))
+                for split in ("train", "test")
+                for pair in development[task_id].get(split, [])
+            )
+        )
+    selected: list[tuple[str, list]] = []
+    for task_id in candidate_ids:
+        attempts = _production_attempts(task_id, development[task_id], memory)
+        if all(
+            target in options
+            for target, options in zip(solutions[task_id], attempts)
+        ):
+            continue
+        selected.append((task_id, attempts))
+        if len(selected) == arguments.count:
+            break
+
+    reasoner = AgenticReasoner(
+        _ollama_transport(
+            arguments.model,
+            "http://127.0.0.1:11434/api/chat",
+            arguments.timeout,
+        ),
+        model=arguments.model,
+        rounds=arguments.rounds,
+        candidates_per_round=arguments.candidates,
+        max_output_tokens=arguments.max_output_tokens,
+        thinking=arguments.thinking,
+    )
+    solved = 0
+    exact_fit = 0
+    generated = 0
+    executed = 0
+    failures: dict[str, int] = {}
+    details = []
+    learned_records = []
+    started = time.perf_counter()
+    with ResourceMonitor() as monitor:
+        for ordinal, (task_id, production_attempts) in enumerate(selected, start=1):
+            try:
+                result = reasoner.solve(
+                    task_id,
+                    development[task_id],
+                    memory_cues=memory.retrieve_cues(development[task_id]),
+                )
+            except Exception as exc:
+                key = f"{type(exc).__name__}:{str(exc)[:100]}"
+                failures[key] = failures.get(key, 0) + 1
+                print(json.dumps({"completed": ordinal, "status": "agent-error"}), flush=True)
+                continue
+            exact_fit += bool(result.hypotheses)
+            generated += result.candidates_generated
+            executed += result.candidates_executed
+            targets = [_canonical(grid) for grid in solutions[task_id]]
+            test_exact = bool(result.hypotheses) and all(
+                target in options
+                for target, options in zip(targets, result.test_predictions)
+            )
+            solved += test_exact
+            if test_exact:
+                for hypothesis in result.hypotheses:
+                    learned_records.append(
+                        AgenticMemoryRecord.create(
+                            source_task_id=task_id,
+                            summary=hypothesis.summary,
+                            code=hypothesis.code,
+                            model=arguments.model,
+                            task_data=development[task_id],
+                            validation_scope=arguments.partition,
+                        )
+                    )
+            details.append(
+                {
+                    "task_id": task_id,
+                    "demonstration_exact": bool(result.hypotheses),
+                    "test_exact": test_exact,
+                    "rounds": result.rounds_executed,
+                    "generated": result.candidates_generated,
+                    "executed": result.candidates_executed,
+                    "hypotheses": [
+                        {
+                            "digest": item.digest,
+                            "summary": item.summary,
+                            "complexity": item.complexity,
+                            "round": item.round_index,
+                            "code": item.code,
+                        }
+                        for item in result.hypotheses
+                    ],
+                    "rejections": list(result.failures[:12]),
+                    "owned_production_exact": all(
+                        target in options
+                        for target, options in zip(solutions[task_id], production_attempts)
+                    ),
+                }
+            )
+            print(
+                json.dumps(
+                    {
+                        "completed": ordinal,
+                        "demo_exact": bool(result.hypotheses),
+                        "test_exact": test_exact,
+                        "elapsed_seconds": time.perf_counter() - started,
+                    }
+                ),
+                flush=True,
+            )
+    telemetry = monitor.result(failure_count=sum(failures.values()))
+    report = {
+        "schema_version": 1,
+        "partition": f"nested-{arguments.partition}-owned-production-unsolved",
+        "partition_sha256": partition_digest,
+        "model": arguments.model,
+        "agent": "execution-guided-code-refinement-v1",
+        "tasks": len(selected),
+        "rounds": arguments.rounds,
+        "candidates_per_round": arguments.candidates,
+        "ordering": arguments.ordering,
+        "thinking": arguments.thinking,
+        "demonstration_exact_tasks": exact_fit,
+        "full_task_exact_pass_at_2": solved,
+        "unique_vs_owned_production": solved,
+        "candidates_generated": generated,
+        "candidates_executed": executed,
+        "failures": failures,
+        "details": details,
+        "elapsed_seconds": time.perf_counter() - started,
+        "telemetry": telemetry.to_dict(),
+    }
+    if arguments.memory_output:
+        existing = (
+            AgenticMemoryBank.load(arguments.memory_output)
+            if arguments.memory_output.is_file()
+            else AgenticMemoryBank()
+        )
+        merged = existing.merged(learned_records)
+        merged.save(arguments.memory_output)
+        report["agentic_memory"] = {
+            "path": str(arguments.memory_output),
+            "new_records": len(learned_records),
+            "total_records": len(merged.records),
+        }
+    if arguments.output:
+        arguments.output.parent.mkdir(parents=True, exist_ok=True)
+        arguments.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps(report, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

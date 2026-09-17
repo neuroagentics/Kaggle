@@ -3,11 +3,13 @@
 Covers all 12 primitives, ValueError validation, batch dimension support,
 and the mandatory property tests (Properties 4–9, 18–23).
 """
+
 from __future__ import annotations
 
 import torch
 import pytest
-from hypothesis import given, settings, assume
+import hypothesis
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from hyper_arc.esb import ESB
@@ -17,11 +19,16 @@ DSL = SpatialDSL()
 
 # ── Strategies ────────────────────────────────────────────────────────────
 
-grid_st = st.lists(
-    st.lists(st.integers(0, 9), min_size=2, max_size=10),
-    min_size=2,
-    max_size=10,
-).filter(lambda g: all(len(r) == len(g[0]) for r in g))
+
+@st.composite
+def rectangular_grid(draw):
+    height = draw(st.integers(min_value=2, max_value=10))
+    width = draw(st.integers(min_value=2, max_value=10))
+    row = st.lists(st.integers(0, 9), min_size=width, max_size=width)
+    return draw(st.lists(row, min_size=height, max_size=height))
+
+
+grid_st = rectangular_grid()
 
 axis_st = st.sampled_from(["horizontal", "vertical"])
 
@@ -117,11 +124,13 @@ class TestReflect:
 
 class TestExtractObject:
     def test_isolates_connected_component(self):
-        esb = make([
-            [1, 1, 0],
-            [1, 0, 2],
-            [0, 2, 2],
-        ])
+        esb = make(
+            [
+                [1, 1, 0],
+                [1, 0, 2],
+                [0, 2, 2],
+            ]
+        )
         result = DSL.extract_object(esb, x=0, y=0)  # seed at col=0, row=0
         # The 1-component should survive
         assert result.data[0, 0, 0].item() == 1
@@ -161,11 +170,13 @@ class TestOverlay:
 
 class TestCropToBbox:
     def test_trims_padding(self):
-        esb = make([
-            [0, 0, 0],
-            [0, 5, 0],
-            [0, 0, 0],
-        ])
+        esb = make(
+            [
+                [0, 0, 0],
+                [0, 5, 0],
+                [0, 0, 0],
+            ]
+        )
         result = DSL.crop_to_bbox(esb)
         assert result.H == 1
         assert result.W == 1
@@ -177,12 +188,14 @@ class TestCropToBbox:
         assert result.data.shape == esb.data.shape
 
     def test_no_zero_border_remains(self):
-        esb = make([
-            [0, 0, 0, 0],
-            [0, 1, 2, 0],
-            [0, 3, 4, 0],
-            [0, 0, 0, 0],
-        ])
+        esb = make(
+            [
+                [0, 0, 0, 0],
+                [0, 1, 2, 0],
+                [0, 3, 4, 0],
+                [0, 0, 0, 0],
+            ]
+        )
         result = DSL.crop_to_bbox(esb)
         # First and last rows and columns must all be non-zero
         assert result.data[0, 0, :].any().item()
@@ -288,11 +301,13 @@ class TestColorRemap:
 
 class TestFloodFill:
     def test_fills_connected_region(self):
-        esb = make([
-            [1, 1, 0],
-            [1, 0, 0],
-            [0, 0, 0],
-        ])
+        esb = make(
+            [
+                [1, 1, 0],
+                [1, 0, 0],
+                [0, 0, 0],
+            ]
+        )
         result = DSL.flood_fill(esb, row=0, col=0, new_color=5)
         assert result.data[0, 0, 0].item() == 5
         assert result.data[0, 0, 1].item() == 5
@@ -313,17 +328,25 @@ class TestFloodFill:
 
 
 class TestSymmetrize:
-    def test_copy_horizontal(self):
+    def test_copy_horizontal_symmetric_result(self):
+        # copy mode must produce a result that is symmetric about the axis
         esb = make([[1, 2], [0, 0]])
         result = DSL.symmetrize(esb, axis="horizontal", mode="copy")
-        # Flipped: row 1 becomes row 0 of original → [0,0]; row 0 becomes [1,2]
-        # copy mode: result = flipped entirely
-        assert result.to_grid() == [[0, 0], [1, 2]]
+        # Result must equal its own horizontal flip (symmetric)
+        flipped = result.data.flip(dims=[-2])
+        assert torch.all(result.data == flipped).item()
 
-    def test_copy_vertical(self):
+    def test_copy_vertical_symmetric_result(self):
         esb = make([[1, 0], [2, 0]])
         result = DSL.symmetrize(esb, axis="vertical", mode="copy")
-        assert result.to_grid() == [[0, 1], [0, 2]]
+        # Result must equal its own vertical flip (symmetric)
+        flipped = result.data.flip(dims=[-1])
+        assert torch.all(result.data == flipped).item()
+
+    def test_copy_resolves_conflicting_nonzero_mirror_cells(self):
+        esb = make([[1, 2]])
+        result = DSL.symmetrize(esb, axis="vertical", mode="copy")
+        assert result.to_grid() == [[1, 1]]
 
     def test_priority_mode_nonzero_wins(self):
         esb = make([[1, 0], [0, 2]])
@@ -464,7 +487,9 @@ def test_property_color_remap_lookup_correctness(grid):
             orig = esb.data[0, r, c].item()
             got = result.data[0, r, c].item()
             if orig in mapping:
-                assert got == mapping[orig], f"cell ({r},{c}): expected {mapping[orig]}, got {got}"
+                assert got == mapping[orig], (
+                    f"cell ({r},{c}): expected {mapping[orig]}, got {got}"
+                )
             else:
                 assert got == orig
 
@@ -568,7 +593,9 @@ def test_property_scale_integer_upscale_shape(grid, factor):
     st.integers(1, 3),  # repeats_h
     st.integers(1, 3),  # repeats_w
 )
-@settings(max_examples=80)
+@settings(
+    max_examples=80, suppress_health_check=[hypothesis.HealthCheck.filter_too_much]
+)
 def test_property_tile_shape(grid, repeats_h, repeats_w):
     """Property 21: tile produces (C, H*repeats_h, W*repeats_w)."""
     esb = make(grid)

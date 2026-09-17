@@ -1,0 +1,681 @@
+{
+  "bank_id": "9d01d50c1ce9be4163f44f065a8b784b465e0dfff3aaf6bd4e58973c9a61dacc",
+  "miner_version": "typed-exact-v1",
+  "schema_version": 1,
+  "schemas": [
+    {
+      "complexity": 1,
+      "evidence_count": 2,
+      "legacy_name": "transpose",
+      "program": {
+        "arguments": {},
+        "children": [
+          {
+            "arguments": {},
+            "children": [],
+            "op": "input",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "transpose",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "28e7a1e7766b3cd266c10f8f6ad4bda1fc1049a965a5b71a2891ea59125faf88",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "same",
+            "same",
+            "same",
+            "same"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "train_count": 4
+        },
+        {
+          "dimension_rules": [
+            "same",
+            "same",
+            "same"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            0,
+            0,
+            0
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0,
+            0
+          ],
+          "train_count": 3
+        }
+      ],
+      "source_task_ids": [
+        "74dd1130",
+        "9dfd6313"
+      ]
+    },
+    {
+      "complexity": 1,
+      "evidence_count": 1,
+      "legacy_name": "identity",
+      "program": {
+        "arguments": {},
+        "children": [
+          {
+            "arguments": {},
+            "children": [],
+            "op": "input",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "identity",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "e5f84787d13f209faf93f563d79d4dc060f46ca1a8420e852730ead3a8215d1f",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "same",
+            "same",
+            "same"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            0,
+            0,
+            0
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0,
+            0
+          ],
+          "train_count": 3
+        }
+      ],
+      "source_task_ids": [
+        "c8f0f002"
+      ]
+    },
+    {
+      "complexity": 1,
+      "evidence_count": 1,
+      "legacy_name": "reflect_horizontal",
+      "program": {
+        "arguments": {
+          "axis": "horizontal"
+        },
+        "children": [
+          {
+            "arguments": {},
+            "children": [],
+            "op": "input",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "reflect",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "107881871ab8bd3973258757ac550dccd3a891e184259676f4dd86b5b4432045",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "same",
+            "same",
+            "same"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            0,
+            0,
+            0
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0,
+            0
+          ],
+          "train_count": 3
+        }
+      ],
+      "source_task_ids": [
+        "68b16354"
+      ]
+    },
+    {
+      "complexity": 1,
+      "evidence_count": 1,
+      "legacy_name": "reflect_vertical",
+      "program": {
+        "arguments": {
+          "axis": "vertical"
+        },
+        "children": [
+          {
+            "arguments": {},
+            "children": [],
+            "op": "input",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "reflect",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "b4753178f32e534832807754ce52e48eae48a75501b791d98333b598766aaa0c",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "same",
+            "same",
+            "same"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            0,
+            0,
+            0
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0,
+            0
+          ],
+          "train_count": 3
+        }
+      ],
+      "source_task_ids": [
+        "67a3c6ac"
+      ]
+    },
+    {
+      "complexity": 1,
+      "evidence_count": 1,
+      "legacy_name": "rotate180",
+      "program": {
+        "arguments": {
+          "degrees": 180
+        },
+        "children": [
+          {
+            "arguments": {},
+            "children": [],
+            "op": "input",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "rotate",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "87c4d0f5c333581562197abcaf54f549c4bb02389ded1374d48c5fe89b3ce5c1",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "same",
+            "same"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            0,
+            0
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0
+          ],
+          "train_count": 2
+        }
+      ],
+      "source_task_ids": [
+        "6150a2bd"
+      ]
+    },
+    {
+      "complexity": 1,
+      "evidence_count": 1,
+      "legacy_name": "rotate270",
+      "program": {
+        "arguments": {
+          "degrees": 270
+        },
+        "children": [
+          {
+            "arguments": {},
+            "children": [],
+            "op": "input",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "rotate",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "ae4ca4b6028f181e67a94e52532ed72de6060b18ba278ddec2eeff62e5bbd1f1",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "same",
+            "same",
+            "same",
+            "same"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "train_count": 4
+        }
+      ],
+      "source_task_ids": [
+        "ed36ccf7"
+      ]
+    },
+    {
+      "complexity": 2,
+      "evidence_count": 1,
+      "legacy_name": "crop0+identity",
+      "program": {
+        "arguments": {},
+        "children": [
+          {
+            "arguments": {
+              "background": 0
+            },
+            "children": [
+              {
+                "arguments": {},
+                "children": [],
+                "op": "input",
+                "output_type": "grid",
+                "postconditions": [],
+                "preconditions": []
+              }
+            ],
+            "op": "crop_to_bbox",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "identity",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "a459aecda798f5bf1cdf534674ea2bcd8a3dc443d7096893e783ad81127f572d",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "contract",
+            "contract",
+            "contract"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            2,
+            2,
+            3
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0,
+            0
+          ],
+          "train_count": 3
+        }
+      ],
+      "source_task_ids": [
+        "1cf80156"
+      ]
+    },
+    {
+      "complexity": 2,
+      "evidence_count": 1,
+      "legacy_name": "crop0+reflect_vertical",
+      "program": {
+        "arguments": {
+          "axis": "vertical"
+        },
+        "children": [
+          {
+            "arguments": {
+              "background": 0
+            },
+            "children": [
+              {
+                "arguments": {},
+                "children": [],
+                "op": "input",
+                "output_type": "grid",
+                "postconditions": [],
+                "preconditions": []
+              }
+            ],
+            "op": "crop_to_bbox",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "reflect",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "8ce54d82cf2ed71205cba677f7a969f27899875d802da8582897773152c2ac5e",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "contract",
+            "contract",
+            "contract"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            -2,
+            -1,
+            -1
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            -1,
+            -1,
+            -1
+          ],
+          "train_count": 3
+        }
+      ],
+      "source_task_ids": [
+        "7468f01a"
+      ]
+    },
+    {
+      "complexity": 2,
+      "evidence_count": 1,
+      "legacy_name": "crop_mode+identity",
+      "program": {
+        "arguments": {},
+        "children": [
+          {
+            "arguments": {},
+            "children": [
+              {
+                "arguments": {},
+                "children": [],
+                "op": "input",
+                "output_type": "grid",
+                "postconditions": [],
+                "preconditions": []
+              }
+            ],
+            "op": "crop_mode",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "identity",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "314432a9518f92aacd878573140583ecd6cc191eab55365e446b602dbaad6d4b",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "contract",
+            "contract",
+            "contract"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            -1,
+            0,
+            0
+          ],
+          "output_symmetries": [
+            "horizontal",
+            "vertical"
+          ],
+          "palette_deltas": [
+            -1,
+            0,
+            0
+          ],
+          "train_count": 3
+        }
+      ],
+      "source_task_ids": [
+        "a740d043"
+      ]
+    },
+    {
+      "complexity": 2,
+      "evidence_count": 1,
+      "legacy_name": "identity+tile1x2",
+      "program": {
+        "arguments": {
+          "repeats_h": 1,
+          "repeats_w": 2
+        },
+        "children": [
+          {
+            "arguments": {},
+            "children": [
+              {
+                "arguments": {},
+                "children": [],
+                "op": "input",
+                "output_type": "grid",
+                "postconditions": [],
+                "preconditions": []
+              }
+            ],
+            "op": "identity",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "tile",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "6cc87fe90e17d06f56a2ee496eb4b219717b8c499b9ac1bec5420ea25c754674",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "expand:1x2",
+            "expand:1x2",
+            "expand:1x2"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            2,
+            5,
+            9
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0,
+            0
+          ],
+          "train_count": 3
+        }
+      ],
+      "source_task_ids": [
+        "a416b8f3"
+      ]
+    },
+    {
+      "complexity": 2,
+      "evidence_count": 1,
+      "legacy_name": "identity+upscale2",
+      "program": {
+        "arguments": {
+          "factor": 2
+        },
+        "children": [
+          {
+            "arguments": {},
+            "children": [
+              {
+                "arguments": {},
+                "children": [],
+                "op": "input",
+                "output_type": "grid",
+                "postconditions": [],
+                "preconditions": []
+              }
+            ],
+            "op": "identity",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "scale_integer",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "9381c835b013f676a2cd0b71129c89dfdc4c64e84c2db5e71ea449270199566e",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "expand:2x2",
+            "expand:2x2"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            0,
+            0
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0
+          ],
+          "train_count": 2
+        }
+      ],
+      "source_task_ids": [
+        "60c09cac"
+      ]
+    },
+    {
+      "complexity": 2,
+      "evidence_count": 1,
+      "legacy_name": "identity+upscale3",
+      "program": {
+        "arguments": {
+          "factor": 3
+        },
+        "children": [
+          {
+            "arguments": {},
+            "children": [
+              {
+                "arguments": {},
+                "children": [],
+                "op": "input",
+                "output_type": "grid",
+                "postconditions": [],
+                "preconditions": []
+              }
+            ],
+            "op": "identity",
+            "output_type": "grid",
+            "postconditions": [],
+            "preconditions": []
+          }
+        ],
+        "op": "scale_integer",
+        "output_type": "grid",
+        "postconditions": [],
+        "preconditions": []
+      },
+      "schema_id": "5d7492a919a6fd6353416bcfe3f5c47347927e154f8e6e2c1036c3229b8c6fb6",
+      "source_fingerprints": [
+        {
+          "dimension_rules": [
+            "expand:3x3",
+            "expand:3x3"
+          ],
+          "input_symmetries": [],
+          "object_deltas": [
+            0,
+            0
+          ],
+          "output_symmetries": [],
+          "palette_deltas": [
+            0,
+            0
+          ],
+          "train_count": 2
+        }
+      ],
+      "source_task_ids": [
+        "9172f3a0"
+      ]
+    }
+  ],
+  "split_sha256": "c517d5be39fb9a47df876d363db87b72e745721f38d9a10ddd9c1935d67bb064",
+  "training_dataset_sha256": "779eaba89790ebad9af02514a7efc0aefaf2cf8236f046a31bbf8b9ec48f20f5"
+}

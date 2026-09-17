@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "partition": "validation",
+  "evaluated_tasks": 160,
+  "bank_id": "21b6d80f12565891b910952c622cca6465c3c521faccca092b2880d5b5510356",
+  "default_pass_at_2": 7,
+  "memory_ranked_pass_at_2": 7,
+  "oracle_any_exact_candidate": 7,
+  "memory_unique": [],
+  "memory_regressions": [],
+  "default_solved": {
+    "68b16354": [
+      "crop-largest-foreground-raw+reflect_horizontal",
+      "reflect_horizontal"
+    ],
+    "67a3c6ac": [
+      "input-fallback",
+      "reflect_vertical"
+    ],
+    "ed36ccf7": [
+      "crop0+rotate270",
+      "rotate270"
+    ],
+    "a416b8f3": [
+      "identity+tile1x2",
+      "input-fallback"
+    ],
+    "9dfd6313": [
+      "input-fallback",
+      "transpose"
+    ],
+    "c909285e": [
+      "crop-rarest-color-raw+identity",
+      "input-fallback"
+    ],
+    "4c4377d9": [
+      "input-fallback",
+      "vcat-reflect_horizontal-identity"
+    ]
+  },
+  "memory_solved": {
+    "68b16354": [
+      "crop-largest-foreground-raw+reflect_horizontal",
+      "reflect_horizontal"
+    ],
+    "67a3c6ac": [
+      "input-fallback",
+      "reflect_vertical"
+    ],
+    "ed36ccf7": [
+      "crop0+rotate270",
+      "rotate270"
+    ],
+    "a416b8f3": [
+      "identity+tile1x2",
+      "input-fallback"
+    ],
+    "9dfd6313": [
+      "input-fallback",
+      "transpose"
+    ],
+    "c909285e": [
+      "crop-rarest-color-raw+identity",
+      "input-fallback"
+    ],
+    "4c4377d9": [
+      "input-fallback",
+      "vcat-reflect_horizontal-identity"
+    ]
+  },
+  "oracle_solved": {
+    "68b16354": [
+      "reflect_horizontal"
+    ],
+    "67a3c6ac": [
+      "reflect_vertical"
+    ],
+    "ed36ccf7": [
+      "rotate270"
+    ],
+    "a416b8f3": [
+      "identity+tile1x2"
+    ],
+    "9dfd6313": [
+      "transpose"
+    ],
+    "c909285e": [
+      "crop-rarest-color-raw+identity"
+    ],
+    "4c4377d9": [
+      "vcat-reflect_horizontal-identity"
+    ]
+  },
+  "elapsed_seconds": 38.661204600008205
+}

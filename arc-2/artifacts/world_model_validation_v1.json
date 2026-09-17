@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "solver": "recursive-world-model-v1",
+  "ownership": "hyper-arc-owned-only",
+  "partition": "validation",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "evaluated_tasks": 160,
+  "exact_fit_tasks": 11,
+  "recursive_fit_tasks": 6,
+  "retrieved_seed_tasks": 160,
+  "executed_candidates": 33286,
+  "world_distinct_attempt_outputs": 12,
+  "owned_baseline_pass_at_2": 8,
+  "world_model_pass_at_2": 11,
+  "combined_pass_at_2": 12,
+  "world_unique_vs_owned": [
+    "25ff71a9",
+    "9565186b",
+    "b2862040",
+    "d2abd087"
+  ],
+  "world_regressions_vs_owned": [
+    "a416b8f3"
+  ],
+  "combined_unique_vs_owned": [
+    "25ff71a9",
+    "9565186b",
+    "b2862040",
+    "d2abd087"
+  ],
+  "combined_regressions_vs_owned": [],
+  "world_solved_task_ids": [
+    "25ff71a9",
+    "5adee1b2",
+    "67a3c6ac",
+    "68b16354",
+    "9565186b",
+    "9dfd6313",
+    "b2862040",
+    "c62e2108",
+    "d2abd087",
+    "db118e2a",
+    "ed36ccf7"
+  ],
+  "elapsed_seconds": 142.55569079999987
+}

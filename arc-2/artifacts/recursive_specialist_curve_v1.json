@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "split_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "builder_tasks_used": 128,
+  "validation_tasks_used": 16,
+  "train_episodes": 850,
+  "validation_episodes": 53,
+  "augmentations": 2,
+  "config": {
+    "hidden_channels": 64,
+    "recurrent_steps": 3,
+    "max_demos": 4,
+    "max_grid": 30
+  },
+  "parameter_count": 135750,
+  "device": "cpu",
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 2.833199941109274,
+      "validation_loss": 2.6260735307421004,
+      "validation_exact_episodes": 0,
+      "validation_episodes": 53
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.279872183487794,
+      "validation_loss": 2.3768573829105923,
+      "validation_exact_episodes": 0,
+      "validation_episodes": 53
+    },
+    {
+      "epoch": 3,
+      "train_loss": 2.024936189161283,
+      "validation_loss": 2.262432200568063,
+      "validation_exact_episodes": 0,
+      "validation_episodes": 53
+    }
+  ],
+  "elapsed_seconds": 19.492783899999722
+}

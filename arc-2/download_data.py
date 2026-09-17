@@ -4,6 +4,7 @@ Usage:
     python download_data.py
     python download_data.py --dest ./data/arc-agi-2
 """
+
 from __future__ import annotations
 
 import argparse
@@ -11,15 +12,16 @@ import subprocess
 import sys
 from pathlib import Path
 
-COMPETITION = "arc-prize-2025"
+COMPETITION = "arc-prize-2026-arc-agi-2"
 DEFAULT_DIR = "./data/arc-agi-2"
+EXPECTED_FILE = "arc-agi_test_challenges.json"
 
 
-def download(dest: str = DEFAULT_DIR) -> int:
+def download(dest: str = DEFAULT_DIR, competition: str = COMPETITION) -> int:
     dest_path = Path(dest)
 
-    # Skip if already present and non-empty
-    if dest_path.exists() and any(dest_path.iterdir()):
+    # Skip only when the required extracted competition file is present.
+    if (dest_path / EXPECTED_FILE).is_file():
         print(f"[INFO] Dataset already present at {dest_path}, skipping download.")
         return 0
 
@@ -48,22 +50,26 @@ def download(dest: str = DEFAULT_DIR) -> int:
 
     dest_path.mkdir(parents=True, exist_ok=True)
 
-    print(f"[INFO] Downloading {COMPETITION} dataset to {dest_path} ...")
+    print(f"[INFO] Downloading {competition} dataset to {dest_path} ...")
     result = subprocess.run(
         [
             "kaggle",
             "competitions",
             "download",
-            "-c", COMPETITION,
-            "-p", str(dest_path),
+            "-c",
+            competition,
+            "-p",
+            str(dest_path),
             "--unzip",
         ],
     )
     if result.returncode == 0:
         print(f"[INFO] Download complete: {dest_path}")
     else:
-        print(f"[ERROR] kaggle download failed with exit code {result.returncode}",
-              file=sys.stderr)
+        print(
+            f"[ERROR] kaggle download failed with exit code {result.returncode}",
+            file=sys.stderr,
+        )
     return result.returncode
 
 
@@ -76,5 +82,10 @@ if __name__ == "__main__":
         default=DEFAULT_DIR,
         help=f"Destination directory (default: {DEFAULT_DIR})",
     )
+    parser.add_argument(
+        "--competition",
+        default=COMPETITION,
+        help=f"Kaggle competition slug (default: {COMPETITION})",
+    )
     args = parser.parse_args()
-    sys.exit(download(args.dest))
+    sys.exit(download(args.dest, args.competition))

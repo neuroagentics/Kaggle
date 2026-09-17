@@ -1,0 +1,19 @@
+{
+  "id": "jthomaslockhart/hyper-arc-experience-memory-v2",
+  "title": "Hyper-ARC Experience Memory v2",
+  "code_file": "hyper_arc_experience_v2.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "jthomaslockhart/arc-offline-wheels",
+    "jthomaslockhart/arc-solver-code"
+  ],
+  "competition_sources": [
+    "arc-prize-2026-arc-agi-2"
+  ],
+  "kernel_sources": [],
+  "model_sources": []
+}

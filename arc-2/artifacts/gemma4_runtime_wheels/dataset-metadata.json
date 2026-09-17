@@ -1,0 +1,10 @@
+{
+  "id": "jthomaslockhart/hyper-arc-gemma4-runtime",
+  "title": "Hyper-ARC Gemma 4 Offline Runtime",
+  "licenses": [
+    {
+      "name": "Apache 2.0"
+    }
+  ],
+  "isPrivate": true
+}

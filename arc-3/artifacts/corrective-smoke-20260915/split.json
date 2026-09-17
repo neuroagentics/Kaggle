@@ -1,0 +1,11 @@
+{
+  "train_games": [
+    "ar25",
+    "bp35"
+  ],
+  "holdout_games": [
+    "cd82"
+  ],
+  "holdout_fraction": 0.3,
+  "seed": 1234
+}

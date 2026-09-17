@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "partition": "public-evaluation",
+  "evaluated_tasks": 120,
+  "bank_id": "21b6d80f12565891b910952c622cca6465c3c521faccca092b2880d5b5510356",
+  "default_pass_at_2": 0,
+  "memory_ranked_pass_at_2": 0,
+  "oracle_any_exact_candidate": 0,
+  "memory_unique": [],
+  "memory_regressions": [],
+  "default_solved": {},
+  "memory_solved": {},
+  "oracle_solved": {},
+  "elapsed_seconds": 39.64946470000723
+}

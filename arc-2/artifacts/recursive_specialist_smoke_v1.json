@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "split_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "builder_tasks_used": 16,
+  "validation_tasks_used": 4,
+  "train_episodes": 46,
+  "validation_episodes": 14,
+  "augmentations": 1,
+  "config": {
+    "hidden_channels": 32,
+    "recurrent_steps": 2,
+    "max_demos": 4,
+    "max_grid": 30
+  },
+  "parameter_count": 49478,
+  "device": "cpu",
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 3.7880102594693503,
+      "validation_loss": 2.9035186171531677,
+      "validation_exact_episodes": 0,
+      "validation_episodes": 14
+    }
+  ],
+  "elapsed_seconds": 0.25975730000027397
+}

@@ -1,0 +1,118 @@
+[{"stream_name":"stderr","time":7.138872728,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.13893111,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.138934646,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.138937116,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.7427831860000005,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.742807709,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.742810822,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.742813053,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.910832661,"data":"=== 1. VERIFYING COMPETITION DATA AND OFFLINE MODEL ===\n"}
+,{"stream_name":"stdout","time":9.007664271,"data":"Validated 240 tasks and model at /kaggle/input/models/google/gemma-4/transformers/gemma-4-e4b-it/1\n"}
+,{"stream_name":"stdout","time":9.008369181,"data":"=== 2. LOCATING AND VERIFYING IMMUTABLE SOLVER BUNDLE ===\n"}
+,{"stream_name":"stdout","time":9.161219387,"data":"Verified and prepared 30 active files\n"}
+,{"stream_name":"stdout","time":18.471928407,"data":"=== 3. CHECKING KAGGLE RUNTIME AND ACTIVE CHANNELS ===\n"}
+,{"stream_name":"stdout","time":34.592245117,"data":"{\"cuda_available\": true, \"cuda_version\": \"12.8\", \"device\": \"NVIDIA L4\", \"numpy\": \"2.0.2\", \"python\": \"3.12.13\", \"torch\": \"2.10.0+cu128\", \"transformers\": \"5.7.0\"}\n"}
+,{"stream_name":"stdout","time":38.658064528,"data":"{\"agentic_memory_records\": 1, \"agentic_pipeline_exact\": true, \"deterministic_exact\": true, \"inactive_channels_packaged\": false, \"procedural_records\": 25, \"recursive_world_model_exact\": true, \"status\": \"PASS\"}\n"}
+,{"stream_name":"stdout","time":38.658694584,"data":"=== 4. RUNNING BOUNDED SOLVER ===\n"}
+,{"stream_name":"stdout","time":42466.147107601,"data":"=== 5. POST-FLIGHT AUDIT AND ATOMIC PROMOTION ===\n"}
+,{"stream_name":"stdout","time":42466.22382915,"data":"SUCCESS: atomically promoted 240 solved tasks\n"}
+,{"stream_name":"stdout","time":42466.224537504,"data":"{\n"}
+,{"stream_name":"stdout","time":42466.224548406,"data":"  \"channels\": {\n"}
+,{"stream_name":"stdout","time":42466.22455183,"data":"    \"agentic_candidates_executed\": 0,\n"}
+,{"stream_name":"stdout","time":42466.224554565,"data":"    \"agentic_candidates_generated\": 0,\n"}
+,{"stream_name":"stdout","time":42466.2245573,"data":"    \"agentic_demo_exact\": 0,\n"}
+,{"stream_name":"stdout","time":42466.224559812,"data":"    \"agentic_invocations\": 196,\n"}
+,{"stream_name":"stdout","time":42466.22456242,"data":"    \"agentic_memory_records\": 1,\n"}
+,{"stream_name":"stdout","time":42466.224565031,"data":"    \"experience_records\": 0,\n"}
+,{"stream_name":"stdout","time":42466.224567576,"data":"    \"procedural_records\": 25,\n"}
+,{"stream_name":"stdout","time":42466.22457008,"data":"    \"seed_records\": 0,\n"}
+,{"stream_name":"stdout","time":42466.22457268,"data":"    \"world_memory_records\": 0\n"}
+,{"stream_name":"stdout","time":42466.224575265,"data":"  },\n"}
+,{"stream_name":"stdout","time":42466.224577637,"data":"  \"configuration\": {\n"}
+,{"stream_name":"stdout","time":42466.224580077,"data":"    \"agentic_ai_enabled\": true,\n"}
+,{"stream_name":"stdout","time":42466.224582734,"data":"    \"agentic_candidates\": 4,\n"}
+,{"stream_name":"stdout","time":42466.224597364,"data":"    \"agentic_device\": \"cuda\",\n"}
+,{"stream_name":"stdout","time":42466.224599785,"data":"    \"agentic_max_output_tokens\": 3000,\n"}
+,{"stream_name":"stdout","time":42466.224601744,"data":"    \"agentic_memory_enabled\": true,\n"}
+,{"stream_name":"stdout","time":42466.22460386,"data":"    \"agentic_model_name\": \"google/gemma-4-e4b-it\",\n"}
+,{"stream_name":"stdout","time":42466.224606105,"data":"    \"agentic_model_path\": \"/kaggle/input/models/google/gemma-4/transformers/gemma-4-e4b-it/1\",\n"}
+,{"stream_name":"stdout","time":42466.2246082,"data":"    \"agentic_rounds\": 3,\n"}
+,{"stream_name":"stdout","time":42466.224610013,"data":"    \"agentic_thinking\": false,\n"}
+,{"stream_name":"stdout","time":42466.224611963,"data":"    \"competition_run\": true,\n"}
+,{"stream_name":"stdout","time":42466.224613891,"data":"    \"experience_memory_enabled\": false,\n"}
+,{"stream_name":"stdout","time":42466.224615887,"data":"    \"global_timeout_seconds\": 42000.0,\n"}
+,{"stream_name":"stdout","time":42466.224617813,"data":"    \"legacy_seed_memory_enabled\": false,\n"}
+,{"stream_name":"stdout","time":42466.224619836,"data":"    \"max_iterations\": 2000,\n"}
+,{"stream_name":"stdout","time":42466.224621723,"data":"    \"procedural_memory_enabled\": true,\n"}
+,{"stream_name":"stdout","time":42466.224623623,"data":"    \"run_signature\": \"f7b82adf60dc47d620f4b5f63bc8c3f84d0519aed22d167e40912c5a8b8cff05\",\n"}
+,{"stream_name":"stdout","time":42466.224625651,"data":"    \"task_failure_policy\": \"record-input\",\n"}
+,{"stream_name":"stdout","time":42466.224627642,"data":"    \"task_timeout_seconds\": 20.0,\n"}
+,{"stream_name":"stdout","time":42466.224629577,"data":"    \"world_memory_enabled\": false,\n"}
+,{"stream_name":"stdout","time":42466.224631464,"data":"    \"world_model_enabled\": true\n"}
+,{"stream_name":"stdout","time":42466.224633388,"data":"  },\n"}
+,{"stream_name":"stdout","time":42466.224635235,"data":"  \"elapsed_seconds\": 42237.118252074,\n"}
+,{"stream_name":"stdout","time":42466.224637179,"data":"  \"environment\": {\n"}
+,{"stream_name":"stdout","time":42466.224639036,"data":"    \"cuda_available\": true,\n"}
+,{"stream_name":"stdout","time":42466.224640873,"data":"    \"cuda_version\": \"12.8\",\n"}
+,{"stream_name":"stdout","time":42466.224642775,"data":"    \"device\": \"NVIDIA L4\",\n"}
+,{"stream_name":"stdout","time":42466.224644761,"data":"    \"implementation\": \"CPython\",\n"}
+,{"stream_name":"stdout","time":42466.224646705,"data":"    \"platform\": \"linux\",\n"}
+,{"stream_name":"stdout","time":42466.224648625,"data":"    \"python\": \"3.12.13\",\n"}
+,{"stream_name":"stdout","time":42466.224650552,"data":"    \"torch\": \"2.10.0+cu128\"\n"}
+,{"stream_name":"stdout","time":42466.224652465,"data":"  },\n"}
+,{"stream_name":"stdout","time":42466.22465419,"data":"  \"result_type\": \"agentic-competition-submission\",\n"}
+,{"stream_name":"stdout","time":42466.224656135,"data":"  \"schema_version\": 1,\n"}
+,{"stream_name":"stdout","time":42466.224657993,"data":"  \"solver\": \"Hyper-ARC\",\n"}
+,{"stream_name":"stdout","time":42466.224659933,"data":"  \"submission\": {\n"}
+,{"stream_name":"stdout","time":42466.224661793,"data":"    \"distinct_attempt_pairs\": 8,\n"}
+,{"stream_name":"stdout","time":42466.224663666,"data":"    \"identity_attempts\": 287,\n"}
+,{"stream_name":"stdout","time":42466.224665603,"data":"    \"sha256\": \"89ff35a1529c0c78a271b458bd7c1aa463eae7314f08241e45d35e2f733b4ecc\"\n"}
+,{"stream_name":"stdout","time":42466.224667625,"data":"  },\n"}
+,{"stream_name":"stdout","time":42466.224669341,"data":"  \"tasks\": {\n"}
+,{"stream_name":"stdout","time":42466.224673711,"data":"    \"demonstration_exact\": 15,\n"}
+,{"stream_name":"stdout","time":42466.224675728,"data":"    \"failures\": [],\n"}
+,{"stream_name":"stdout","time":42466.224677595,"data":"    \"outputs\": 259,\n"}
+,{"stream_name":"stdout","time":42466.224679425,"data":"    \"timed_out\": [\n"}
+,{"stream_name":"stdout","time":42466.224681358,"data":"      \"3ac3eb23\",\n"}
+,{"stream_name":"stdout","time":42466.224683286,"data":"      \"3ad05f52\",\n"}
+,{"stream_name":"stdout","time":42466.224685084,"data":"      \"3af2c5a8\",\n"}
+,{"stream_name":"stdout","time":42466.224686833,"data":"      \"3b4c2228\",\n"}
+,{"stream_name":"stdout","time":42466.224688602,"data":"      \"3bd292e8\",\n"}
+,{"stream_name":"stdout","time":42466.224690343,"data":"      \"3bd67248\",\n"}
+,{"stream_name":"stdout","time":42466.224692189,"data":"      \"3bdb4ada\",\n"}
+,{"stream_name":"stdout","time":42466.224693985,"data":"      \"3befdf3e\",\n"}
+,{"stream_name":"stdout","time":42466.224695788,"data":"      \"3c9b0459\",\n"}
+,{"stream_name":"stdout","time":42466.224697586,"data":"      \"3cd86f4f\",\n"}
+,{"stream_name":"stdout","time":42466.224699393,"data":"      \"3d31c5b3\",\n"}
+,{"stream_name":"stdout","time":42466.224701151,"data":"      \"3d588dc9\",\n"}
+,{"stream_name":"stdout","time":42466.224702931,"data":"      \"3d6c6e23\",\n"}
+,{"stream_name":"stdout","time":42466.224704702,"data":"      \"3de23699\",\n"}
+,{"stream_name":"stdout","time":42466.224706585,"data":"      \"3e980e27\",\n"}
+,{"stream_name":"stdout","time":42466.224708763,"data":"      \"3eda0437\",\n"}
+,{"stream_name":"stdout","time":42466.224710637,"data":"      \"3ee1011a\",\n"}
+,{"stream_name":"stdout","time":42466.224712463,"data":"      \"3f23242b\",\n"}
+,{"stream_name":"stdout","time":42466.224714257,"data":"      \"3f7978a0\",\n"}
+,{"stream_name":"stdout","time":42466.224716008,"data":"      \"4093f84a\",\n"}
+,{"stream_name":"stdout","time":42466.224717785,"data":"      \"40f6cd08\",\n"}
+,{"stream_name":"stdout","time":42466.224719541,"data":"      \"412b6263\",\n"}
+,{"stream_name":"stdout","time":42466.224721388,"data":"      \"414297c0\",\n"}
+,{"stream_name":"stdout","time":42466.224723177,"data":"      \"41ace6b5\",\n"}
+,{"stream_name":"stdout","time":42466.224724971,"data":"      \"41e4d17e\",\n"}
+,{"stream_name":"stdout","time":42466.224726786,"data":"      \"423a55dc\",\n"}
+,{"stream_name":"stdout","time":42466.224728641,"data":"      \"4258a5f9\",\n"}
+,{"stream_name":"stdout","time":42466.224730623,"data":"      \"4290ef0e\",\n"}
+,{"stream_name":"stdout","time":42466.224732371,"data":"      \"42918530\"\n"}
+,{"stream_name":"stdout","time":42466.224734221,"data":"    ],\n"}
+,{"stream_name":"stdout","time":42466.224736064,"data":"    \"total\": 240\n"}
+,{"stream_name":"stdout","time":42466.224738017,"data":"  }\n"}
+,{"stream_name":"stdout","time":42466.224739806,"data":"}\n"}
+,{"stream_name":"stdout","time":42466.225851075,"data":"FINAL ARTIFACT: /kaggle/working/submission.json (258843 bytes)\n"}
+,{"stream_name":"stderr","time":42469.215534325,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":42469.215561137,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":42469.378089492,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":42469.378111947,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":42470.112922823,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":42470.427564314,"data":"[NbConvertApp] Writing 20047 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":42472.897435042,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":42473.760780258,"data":"[NbConvertApp] Writing 332096 bytes to __results__.html\n"}
+]

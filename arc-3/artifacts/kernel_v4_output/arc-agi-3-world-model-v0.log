@@ -1,0 +1,34 @@
+[{"stream_name":"stderr","time":6.298081443,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.298146807,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.298151414,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.298153907,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.863302201,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.863333003,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.863338093,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.863342038,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.839093807,"data":"Looking in links: /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels\n"}
+,{"stream_name":"stdout","time":8.864079984,"data":"Processing /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels/arc_agi-0.9.8-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":8.877959531,"data":"Processing /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels/arcengine-0.9.3-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":8.892670676,"data":"Processing /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels/pillow-12.2.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl\n"}
+,{"stream_name":"stdout","time":9.041630803,"data":"Looking in links: /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels\n"}
+,{"stream_name":"stdout","time":9.041659023,"data":"Processing /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels/arc_agi-0.9.8-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":9.04166236,"data":"Processing /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels/arcengine-0.9.3-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":9.041665086,"data":"Processing /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels/pillow-12.2.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl\n"}
+,{"stream_name":"stdout","time":9.147324837,"data":"Installing collected packages: pillow, arcengine, arc-agi\n"}
+,{"stream_name":"stdout","time":9.349536819,"data":"Installing collected packages: pillow, arcengine, arc-agi\n"}
+,{"stream_name":"stdout","time":9.599118955,"data":"Successfully installed arc-agi-0.9.8 arcengine-0.9.3 pillow-12.2.0\n"}
+,{"stream_name":"stdout","time":9.802881041,"data":"Successfully installed arc-agi-0.9.8 arcengine-0.9.3 pillow-12.2.0\n"}
+,{"stream_name":"stdout","time":10.97838677,"data":"ARC runtime OK: 0.9.8 0.9.3 12.2.0 1.2.2\n"}
+,{"stream_name":"stdout","time":10.978417296,"data":"ARC runtime path: /tmp/arc3_runtime/arc_agi/__init__.py\n"}
+,{"stream_name":"stdout","time":11.0029242,"data":"Writing /tmp/my_agent.py\n"}
+,{"stream_name":"stdout","time":11.018445633,"data":"RUN_MODE=commit_smoke_test: the private gateway is unavailable; the scored agent run starts only after Submit to Competition.\n"}
+,{"stream_name":"stdout","time":11.943782842,"data":"COMMIT_ARTIFACT=dummy: wrote schema-valid, unscored /kaggle/working/submission.parquet; rows=1\n"}
+,{"stream_name":"stderr","time":14.368077464,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":14.368106132,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":14.518077552,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":14.518101154,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":15.153705584,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":15.447012052,"data":"[NbConvertApp] Writing 41346 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":17.780711289,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":18.643096748,"data":"[NbConvertApp] Writing 420332 bytes to __results__.html\n"}
+]

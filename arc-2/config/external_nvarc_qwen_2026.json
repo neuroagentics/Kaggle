@@ -1,0 +1,15 @@
+{
+  "component": "NVARC Qwen3 4B ARC-AGI-2 2025 notebook",
+  "source_kernel": "sorokin/arc2-qwen3-unsloth-flash-lora-batch4-queue",
+  "source_repository": "https://github.com/1ytic/NVARC",
+  "source_repository_commit": "846d0198efa752534594e321fc3289fc0a06c657",
+  "source_model": "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1",
+  "source_install_kernel": "sorokin/pip-install-unsloth-flash-patch",
+  "source_notebook_license": "Apache-2.0",
+  "adaptation": "Withdrawn compatibility experiment; no model execution and no competition submission.",
+  "target_competition": "arc-prize-2026-arc-agi-2",
+  "retrieved_on": "2026-09-02",
+  "withdrawn_on": "2026-09-02",
+  "use_policy": "Reference-only comparative research. Do not package, run, or submit as Hyper-ARC.",
+  "evidence_class": "public external model and code; excluded from the Hyper-ARC submission path"
+}

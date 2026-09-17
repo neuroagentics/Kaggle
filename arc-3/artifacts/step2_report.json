@@ -1,0 +1,148 @@
+{
+  "results": [
+    {
+      "mechanic": "movement",
+      "params": 1794484,
+      "train_trajectories": 64,
+      "eval_trajectories": 16,
+      "steps_per_traj": 8,
+      "epochs": 60,
+      "grid": 12,
+      "train_seconds": 51.75,
+      "metrics": {
+        "k=1": {
+          "n": 80,
+          "frame_acc": 0.9931,
+          "changed_acc": 0.5,
+          "changed_cells": 144,
+          "false_change_rate": 0.0007,
+          "baseline_persist_acc": 0.9875
+        },
+        "k=2": {
+          "n": 80,
+          "frame_acc": 0.9931,
+          "changed_acc": 0.5,
+          "changed_cells": 106,
+          "false_change_rate": 0.0024,
+          "baseline_persist_acc": 0.9908
+        },
+        "k=4": {
+          "n": 80,
+          "frame_acc": 0.9931,
+          "changed_acc": 0.5,
+          "changed_cells": 118,
+          "false_change_rate": 0.0018,
+          "baseline_persist_acc": 0.9898
+        }
+      }
+    },
+    {
+      "mechanic": "collision",
+      "params": 1794484,
+      "train_trajectories": 64,
+      "eval_trajectories": 16,
+      "steps_per_traj": 8,
+      "epochs": 60,
+      "grid": 12,
+      "train_seconds": 48.67,
+      "metrics": {
+        "k=1": {
+          "n": 80,
+          "frame_acc": 0.9931,
+          "changed_acc": 0.5,
+          "changed_cells": 150,
+          "false_change_rate": 0.0004,
+          "baseline_persist_acc": 0.987
+        },
+        "k=2": {
+          "n": 80,
+          "frame_acc": 0.9931,
+          "changed_acc": 0.5,
+          "changed_cells": 114,
+          "false_change_rate": 0.002,
+          "baseline_persist_acc": 0.9901
+        },
+        "k=4": {
+          "n": 80,
+          "frame_acc": 0.9931,
+          "changed_acc": 0.5,
+          "changed_cells": 118,
+          "false_change_rate": 0.0018,
+          "baseline_persist_acc": 0.9898
+        }
+      }
+    },
+    {
+      "mechanic": "click",
+      "params": 1794484,
+      "train_trajectories": 64,
+      "eval_trajectories": 16,
+      "steps_per_traj": 8,
+      "epochs": 60,
+      "grid": 12,
+      "train_seconds": 49.3,
+      "metrics": {
+        "k=1": {
+          "n": 80,
+          "frame_acc": 0.9993,
+          "changed_acc": 0.6875,
+          "changed_cells": 16,
+          "false_change_rate": 0.0003,
+          "baseline_persist_acc": 0.9986
+        },
+        "k=2": {
+          "n": 80,
+          "frame_acc": 0.9995,
+          "changed_acc": 0.7222,
+          "changed_cells": 18,
+          "false_change_rate": 0.0001,
+          "baseline_persist_acc": 0.9984
+        },
+        "k=4": {
+          "n": 80,
+          "frame_acc": 0.9996,
+          "changed_acc": 0.7368,
+          "changed_cells": 19,
+          "false_change_rate": 0.0,
+          "baseline_persist_acc": 0.9984
+        }
+      }
+    },
+    {
+      "mechanic": "delayed",
+      "params": 1794484,
+      "train_trajectories": 64,
+      "eval_trajectories": 16,
+      "steps_per_traj": 8,
+      "epochs": 60,
+      "grid": 12,
+      "train_seconds": 48.94,
+      "metrics": {
+        "k=1": {
+          "n": 80,
+          "frame_acc": 0.9987,
+          "changed_acc": 0.0,
+          "changed_cells": 15,
+          "false_change_rate": 0.0,
+          "baseline_persist_acc": 0.9987
+        },
+        "k=2": {
+          "n": 80,
+          "frame_acc": 0.9974,
+          "changed_acc": 0.0,
+          "changed_cells": 30,
+          "false_change_rate": 0.0,
+          "baseline_persist_acc": 0.9974
+        },
+        "k=4": {
+          "n": 80,
+          "frame_acc": 0.9982,
+          "changed_acc": 0.6667,
+          "changed_cells": 48,
+          "false_change_rate": 0.0004,
+          "baseline_persist_acc": 0.9958
+        }
+      }
+    }
+  ]
+}

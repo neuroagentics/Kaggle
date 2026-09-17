@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "gemma4:latest",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 5,
+  "rounds": 2,
+  "candidates_per_round": 4,
+  "ordering": "smallest",
+  "thinking": false,
+  "demonstration_exact_tasks": 1,
+  "full_task_exact_pass_at_2": 1,
+  "unique_vs_owned_production": 1,
+  "candidates_generated": 25,
+  "candidates_executed": 5,
+  "failures": {
+    "AgenticReasoningError:model JSON is missing hypotheses": 1
+  },
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": true,
+      "test_exact": true,
+      "rounds": 1,
+      "generated": 4,
+      "executed": 2,
+      "hypotheses": [
+        {
+          "digest": "3042bdf341c30e772ee30fe4e712ea0de326a1d7fc81193b27c59ffce8d22b31",
+          "summary": "The output grid is formed by taking the colors from the first column of the input grid and alternating them across the rows of the output grid, while simultaneously alternating the colors from the second row's first column across the columns of the output grid. Specifically, O[r, c] = Input[r, 0] if c is even, and O[r, c] = Input[1-r, 0] if c is odd. This is equivalent to tiling the pattern [C_in_0, C_in_1, C_in_0, C_in_1, ...] across both rows, but swapping the roles of the two input colors bas",
+          "complexity": 101,
+          "round": 0
+        },
+        {
+          "digest": "f1609aa924b8782afbceb236794fdde38c19cd92e3281df342cfad8ef224c141",
+          "summary": "The output grid is constructed by alternating the background color of the input grid's rows. Specifically, if the input row 0 has color C_in_0 and row 1 has color C_in_1, the output row 0 will alternate between C_in_0 and C_in_1, starting with C_in_0 at column 0. The output row 1 will alternate between C_in_1 and C_in_0, starting with C_in_1 at column 0.",
+          "complexity": 101,
+          "round": 0
+        }
+      ],
+      "rejections": [
+        "r0c2:duplicate",
+        "r0c3:duplicate"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "44f52bb0",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 8,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: ine 57, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 2, in transform UnboundLocalError: cannot access local variable 'background_color' where it is no",
+        "r0c1:duplicate",
+        "r0c2:duplicate",
+        "r0c3:duplicate",
+        "r1c0:ValueError:worker rejected program: tic-transform>\", line 13, in transform   File \"C:\\Kaggle\\arc-2\\agentic_primitives.py\", line 23, in make_grid     return [[color for _ in range(width)] for _ in range(height)]                                                    ~~~~~^^^^^^^^ TypeError: 'list' object cannot be ",
+        "r1c1:duplicate",
+        "r1c2:ValueError:worker rejected program: tic-transform>\", line 13, in transform   File \"C:\\Kaggle\\arc-2\\agentic_primitives.py\", line 23, in make_grid     return [[color for _ in range(width)] for _ in range(height)]                                                    ~~~~~^^^^^^^^ TypeError: 'list' object cannot be ",
+        "r1c3:ValueError:invalid Python: unmatched '}'"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "a85d4709",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 5,
+      "executed": 3,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:program must define transform(grid)",
+        "r1c0:non-exact:36:The output is a solid horizontal line of the color of the top row of the input, spanning the width o",
+        "r1c1:ValueError:worker returned an invalid ARC grid",
+        "r1c2:non-exact:18:The output is a sequence of solid horizontal lines, where the color of row i is determined by a fixe",
+        "r1c3:non-exact:18:The output is a transformation that combines the input's structure into distinct, solid horizontal b"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "88a62173",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 8,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: ontender\\agentic_worker.py\", line 57, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 7, in transform TypeError: make_grid() got an unexpected keyword ar",
+        "r0c1:ValueError:worker rejected program: ontender\\agentic_worker.py\", line 57, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 6, in transform TypeError: make_grid() got an unexpected keyword ar",
+        "r0c2:ValueError:worker rejected program: ontender\\agentic_worker.py\", line 57, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 7, in transform TypeError: make_grid() got an unexpected keyword ar",
+        "r0c3:ValueError:worker rejected program: ontender\\agentic_worker.py\", line 57, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 9, in transform TypeError: make_grid() got an unexpected keyword ar",
+        "r1c0:ValueError:worker rejected program: ontender\\agentic_worker.py\", line 57, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 3, in transform TypeError: make_grid() got an unexpected keyword ar",
+        "r1c1:ValueError:program must define transform(grid)",
+        "r1c2:duplicate",
+        "r1c3:duplicate"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 206.79691800000728,
+  "telemetry": {
+    "wall_seconds": 206.79687999999442,
+    "cpu_seconds": 34.75,
+    "peak_rss_bytes": 253165568,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 1,
+    "sampler": "psutil-process-tree"
+  }
+}

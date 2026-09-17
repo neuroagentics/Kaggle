@@ -1,0 +1,582 @@
+[{"stream_name":"stderr","time":8.223330694,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.223425314,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.223431414,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.223435154,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.856645635,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.856685435,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.856690835,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.856694684,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.978955396,"data":"=== 1. PRE-FLIGHT INPUT INVENTORY ===\n"}
+,{"stream_name":"stdout","time":10.024883202,"data":" - /kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json\n"}
+,{"stream_name":"stdout","time":10.025681682,"data":" - /kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_solutions.json\n"}
+,{"stream_name":"stdout","time":10.026332503,"data":" - /kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_test_challenges.json\n"}
+,{"stream_name":"stdout","time":10.027029053,"data":" - /kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_training_challenges.json\n"}
+,{"stream_name":"stdout","time":10.027713873,"data":" - /kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_training_solutions.json\n"}
+,{"stream_name":"stdout","time":10.028426233,"data":" - /kaggle/input/competitions/arc-prize-2026-arc-agi-2/sample_submission.json\n"}
+,{"stream_name":"stdout","time":10.029144723,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-offline-wheels/geoopt-0.5.1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":10.029871033,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/main.py\n"}
+,{"stream_name":"stdout","time":10.030495503,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/requirements.txt\n"}
+,{"stream_name":"stdout","time":10.031103273,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/hyper_arc/__init__.py\n"}
+,{"stream_name":"stdout","time":10.031740773,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/hyper_arc/cost.py\n"}
+,{"stream_name":"stdout","time":10.032328923,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/hyper_arc/deterministic.py\n"}
+,{"stream_name":"stdout","time":10.032877193,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/hyper_arc/esb.py\n"}
+,{"stream_name":"stdout","time":10.033549674,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/hyper_arc/hpm.py\n"}
+,{"stream_name":"stdout","time":10.034547314,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/hyper_arc/mcts.py\n"}
+,{"stream_name":"stdout","time":10.034647254,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/hyper_arc/spatial_dsl.py\n"}
+,{"stream_name":"stdout","time":10.035322314,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/hyper_arc/verified_adapter.py\n"}
+,{"stream_name":"stdout","time":10.035923824,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/main.py\n"}
+,{"stream_name":"stdout","time":10.036506764,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/requirements.txt\n"}
+,{"stream_name":"stdout","time":10.037109344,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/LICENSE\n"}
+,{"stream_name":"stdout","time":10.037765654,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/_hero.py\n"}
+,{"stream_name":"stdout","time":10.038297374,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/detectors.py\n"}
+,{"stream_name":"stdout","time":10.039028444,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/__init__.py\n"}
+,{"stream_name":"stdout","time":10.039665284,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/color_neighbor.py\n"}
+,{"stream_name":"stdout","time":10.040378774,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/composition.py\n"}
+,{"stream_name":"stdout","time":10.040874375,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/counting.py\n"}
+,{"stream_name":"stdout","time":10.041481974,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/denoise.py\n"}
+,{"stream_name":"stdout","time":10.042072065,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/downsample_presence.py\n"}
+,{"stream_name":"stdout","time":10.042694845,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/lines_flood.py\n"}
+,{"stream_name":"stdout","time":10.043301285,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/mirror_concat.py\n"}
+,{"stream_name":"stdout","time":10.043920895,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/obj_recolor.py\n"}
+,{"stream_name":"stdout","time":10.044545285,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/obj_select_crop.py\n"}
+,{"stream_name":"stdout","time":10.045149615,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/panel_overlay.py\n"}
+,{"stream_name":"stdout","time":10.045787895,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/panel_select.py\n"}
+,{"stream_name":"stdout","time":10.046564305,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/periodicity.py\n"}
+,{"stream_name":"stdout","time":10.047080405,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r2_b0.py\n"}
+,{"stream_name":"stdout","time":10.047730696,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r2_b1.py\n"}
+,{"stream_name":"stdout","time":10.048348966,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r2_b2.py\n"}
+,{"stream_name":"stdout","time":10.049020486,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r2_b3.py\n"}
+,{"stream_name":"stdout","time":10.049606765,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r2_b4.py\n"}
+,{"stream_name":"stdout","time":10.050228126,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r2_b5.py\n"}
+,{"stream_name":"stdout","time":10.050837316,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r3_connect_dots.py\n"}
+,{"stream_name":"stdout","time":10.051520916,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r3_containment.py\n"}
+,{"stream_name":"stdout","time":10.052107756,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r3_frames_rect.py\n"}
+,{"stream_name":"stdout","time":10.052676756,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r3_grid_split_color.py\n"}
+,{"stream_name":"stdout","time":10.053308176,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r3_obj_complete.py\n"}
+,{"stream_name":"stdout","time":10.053867416,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r3_obj_move.py\n"}
+,{"stream_name":"stdout","time":10.054557096,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r3_pattern_growth.py\n"}
+,{"stream_name":"stdout","time":10.055164086,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r4_b0.py\n"}
+,{"stream_name":"stdout","time":10.056414737,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r4_b1.py\n"}
+,{"stream_name":"stdout","time":10.057746236,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r4_b2.py\n"}
+,{"stream_name":"stdout","time":10.058338157,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r4_b3.py\n"}
+,{"stream_name":"stdout","time":10.059040197,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r4_b4.py\n"}
+,{"stream_name":"stdout","time":10.059712877,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r4_b5.py\n"}
+,{"stream_name":"stdout","time":10.060313177,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r5_b0.py\n"}
+,{"stream_name":"stdout","time":10.060884207,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r5_b1.py\n"}
+,{"stream_name":"stdout","time":10.061440937,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r5_b2.py\n"}
+,{"stream_name":"stdout","time":10.061960837,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r5_b3.py\n"}
+,{"stream_name":"stdout","time":10.062629377,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r5_b4.py\n"}
+,{"stream_name":"stdout","time":10.063140767,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r5_b5.py\n"}
+,{"stream_name":"stdout","time":10.063773017,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/r6_b2.py\n"}
+,{"stream_name":"stdout","time":10.064302227,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/search.py\n"}
+,{"stream_name":"stdout","time":10.064866518,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/shape_dict.py\n"}
+,{"stream_name":"stdout","time":10.065449237,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/gen/sym_repair.py\n"}
+,{"stream_name":"stdout","time":10.066070218,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/harness.py\n"}
+,{"stream_name":"stdout","time":10.066683088,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/registry.py\n"}
+,{"stream_name":"stdout","time":10.067264218,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/run.py\n"}
+,{"stream_name":"stdout","time":10.067846708,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/selftest.py\n"}
+,{"stream_name":"stdout","time":10.068358538,"data":" - /kaggle/input/datasets/jthomaslockhart/arc-solver-code/solver_code/verified_symbolic/show.py\n"}
+,{"stream_name":"stdout","time":10.069011488,"data":"=== 2. PREPARING SOLVER SOURCE ===\n"}
+,{"stream_name":"stdout","time":10.116860754,"data":"=== 3. VERIFYING PORTABLE DEPENDENCIES ===\n"}
+,{"stream_name":"stdout","time":15.993394361,"data":"=== 4. SELECTING COMPETITION DATA ===\n"}
+,{"stream_name":"stdout","time":16.004323012,"data":"Using /kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_test_challenges.json\n"}
+,{"stream_name":"stdout","time":16.004934213,"data":"=== 5. RUNNING CHECKPOINTED SOLVER ===\n"}
+,{"stream_name":"stdout","time":18.615607154,"data":"[INFO] Loading challenges from /kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_test_challenges.json\n"}
+,{"stream_name":"stdout","time":18.651057229,"data":"[INFO] Found 240 tasks\n"}
+,{"stream_name":"stdout","time":18.722263928,"data":"[WARN] No seed bank found; using uniform search priors\n"}
+,{"stream_name":"stdout","time":18.81792812,"data":"[INFO] Loading challenges from /kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_test_challenges.json\n"}
+,{"stream_name":"stdout","time":18.81796998,"data":"[INFO] Found 240 tasks\n"}
+,{"stream_name":"stdout","time":18.81797674,"data":"[WARN] No seed bank found; using uniform search priors\n"}
+,{"stream_name":"stdout","time":60.854298504,"data":"[TASK] 00576224 exact_match=False score=0.6667 program_len=1 (1/240)\n"}
+,{"stream_name":"stdout","time":61.060160371,"data":"[TASK] 00576224 exact_match=False score=0.6667 program_len=1 (1/240)\n"}
+,{"stream_name":"stdout","time":150.912760307,"data":"[TASK] 007bbfb7 exact_match=False score=0.8123 program_len=2 (2/240)\n"}
+,{"stream_name":"stdout","time":151.118316544,"data":"[TASK] 007bbfb7 exact_match=False score=0.8123 program_len=2 (2/240)\n"}
+,{"stream_name":"stdout","time":241.00050321,"data":"[TASK] 009d5c81 exact_match=False score=0.9092 program_len=1 (3/240)\n"}
+,{"stream_name":"stdout","time":241.205983925,"data":"[TASK] 009d5c81 exact_match=False score=0.9092 program_len=1 (3/240)\n"}
+,{"stream_name":"stdout","time":331.060933796,"data":"[TASK] 00d62c1b exact_match=False score=0.9414 program_len=0 (4/240)\n"}
+,{"stream_name":"stdout","time":331.270334608,"data":"[TASK] 00d62c1b exact_match=False score=0.9414 program_len=0 (4/240)\n"}
+,{"stream_name":"stdout","time":421.11324348,"data":"[TASK] 00dbd492 exact_match=False score=0.7756 program_len=0 (5/240)\n"}
+,{"stream_name":"stdout","time":421.322899263,"data":"[TASK] 00dbd492 exact_match=False score=0.7756 program_len=0 (5/240)\n"}
+,{"stream_name":"stdout","time":511.129933056,"data":"[TASK] 017c7c7b exact_match=False score=0.0000 program_len=0 (6/240)\n"}
+,{"stream_name":"stdout","time":511.336209899,"data":"[TASK] 017c7c7b exact_match=False score=0.0000 program_len=0 (6/240)\n"}
+,{"stream_name":"stdout","time":601.168931289,"data":"[TASK] 025d127b exact_match=False score=0.9544 program_len=1 (7/240)\n"}
+,{"stream_name":"stdout","time":601.378550465,"data":"[TASK] 025d127b exact_match=False score=0.9544 program_len=1 (7/240)\n"}
+,{"stream_name":"stdout","time":691.21422693,"data":"[TASK] 03560426 exact_match=False score=0.8933 program_len=9 (8/240)\n"}
+,{"stream_name":"stdout","time":691.421886618,"data":"[TASK] 03560426 exact_match=False score=0.8933 program_len=9 (8/240)\n"}
+,{"stream_name":"stdout","time":781.273138686,"data":"[TASK] 045e512c exact_match=False score=0.9305 program_len=0 (9/240)\n"}
+,{"stream_name":"stdout","time":781.48261099,"data":"[TASK] 045e512c exact_match=False score=0.9305 program_len=0 (9/240)\n"}
+,{"stream_name":"stdout","time":871.293552703,"data":"[TASK] 0520fde7 exact_match=False score=0.2593 program_len=8 (10/240)\n"}
+,{"stream_name":"stdout","time":871.503772977,"data":"[TASK] 0520fde7 exact_match=False score=0.2593 program_len=8 (10/240)\n"}
+,{"stream_name":"stdout","time":961.315623897,"data":"[TASK] 05269061 exact_match=False score=0.4762 program_len=2 (11/240)\n"}
+,{"stream_name":"stdout","time":961.525323492,"data":"[TASK] 05269061 exact_match=False score=0.4762 program_len=2 (11/240)\n"}
+,{"stream_name":"stdout","time":1051.483307088,"data":"[TASK] 05a7bcf2 exact_match=False score=0.7430 program_len=1 (12/240)\n"}
+,{"stream_name":"stdout","time":1051.689146633,"data":"[TASK] 05a7bcf2 exact_match=False score=0.7430 program_len=1 (12/240)\n"}
+,{"stream_name":"stdout","time":1141.517060943,"data":"[TASK] 05f2a901 exact_match=False score=0.9205 program_len=1 (13/240)\n"}
+,{"stream_name":"stdout","time":1141.723345227,"data":"[TASK] 05f2a901 exact_match=False score=0.9205 program_len=1 (13/240)\n"}
+,{"stream_name":"stdout","time":1231.63274014,"data":"[TASK] 0607ce86 exact_match=False score=0.9156 program_len=2 (14/240)\n"}
+,{"stream_name":"stdout","time":1231.839654315,"data":"[TASK] 0607ce86 exact_match=False score=0.9156 program_len=2 (14/240)\n"}
+,{"stream_name":"stdout","time":1308.319186959,"data":"[TASK] 0692e18c exact_match=False score=0.8272 program_len=2 (15/240)\n"}
+,{"stream_name":"stdout","time":1308.526495819,"data":"[TASK] 0692e18c exact_match=False score=0.8272 program_len=2 (15/240)\n"}
+,{"stream_name":"stdout","time":1398.442786898,"data":"[TASK] 06df4c85 exact_match=False score=0.9380 program_len=0 (16/240)\n"}
+,{"stream_name":"stdout","time":1398.653135377,"data":"[TASK] 06df4c85 exact_match=False score=0.9380 program_len=0 (16/240)\n"}
+,{"stream_name":"stdout","time":1488.493670483,"data":"[TASK] 070dd51e exact_match=False score=0.9267 program_len=0 (17/240)\n"}
+,{"stream_name":"stdout","time":1488.699992752,"data":"[TASK] 070dd51e exact_match=False score=0.9267 program_len=0 (17/240)\n"}
+,{"stream_name":"stdout","time":1578.52734697,"data":"[TASK] 08ed6ac7 exact_match=False score=0.8272 program_len=1 (18/240)\n"}
+,{"stream_name":"stdout","time":1578.738786334,"data":"[TASK] 08ed6ac7 exact_match=False score=0.8272 program_len=1 (18/240)\n"}
+,{"stream_name":"stdout","time":1668.59077946,"data":"[TASK] 09629e4f exact_match=False score=0.6591 program_len=6 (19/240)\n"}
+,{"stream_name":"stdout","time":1668.796980534,"data":"[TASK] 09629e4f exact_match=False score=0.6591 program_len=6 (19/240)\n"}
+,{"stream_name":"stdout","time":1758.627275602,"data":"[TASK] 0962bcdd exact_match=False score=0.8333 program_len=0 (20/240)\n"}
+,{"stream_name":"stdout","time":1758.833525985,"data":"[TASK] 0962bcdd exact_match=False score=0.8333 program_len=0 (20/240)\n"}
+,{"stream_name":"stdout","time":1848.738209924,"data":"[TASK] 09c534e7 exact_match=False score=0.9313 program_len=0 (21/240)\n"}
+,{"stream_name":"stdout","time":1848.947942822,"data":"[TASK] 09c534e7 exact_match=False score=0.9313 program_len=0 (21/240)\n"}
+,{"stream_name":"stdout","time":1938.944518872,"data":"[TASK] 0a1d4ef5 exact_match=False score=0.0000 program_len=0 (22/240)\n"}
+,{"stream_name":"stdout","time":1939.15118977,"data":"[TASK] 0a1d4ef5 exact_match=False score=0.0000 program_len=0 (22/240)\n"}
+,{"stream_name":"stdout","time":2029.001707022,"data":"[TASK] 0a2355a6 exact_match=False score=0.7827 program_len=1 (23/240)\n"}
+,{"stream_name":"stdout","time":2029.212228371,"data":"[TASK] 0a2355a6 exact_match=False score=0.7827 program_len=1 (23/240)\n"}
+,{"stream_name":"stdout","time":2119.058051732,"data":"[TASK] 0a938d79 exact_match=False score=0.6989 program_len=1 (24/240)\n"}
+,{"stream_name":"stdout","time":2119.268576943,"data":"[TASK] 0a938d79 exact_match=False score=0.6989 program_len=1 (24/240)\n"}
+,{"stream_name":"stdout","time":2209.145678104,"data":"[TASK] 0b148d64 exact_match=False score=0.0000 program_len=0 (25/240)\n"}
+,{"stream_name":"stdout","time":2209.352122925,"data":"[TASK] 0b148d64 exact_match=False score=0.0000 program_len=0 (25/240)\n"}
+,{"stream_name":"stdout","time":2299.182099106,"data":"[TASK] 0b17323b exact_match=False score=0.9889 program_len=0 (26/240)\n"}
+,{"stream_name":"stdout","time":2299.388588626,"data":"[TASK] 0b17323b exact_match=False score=0.9889 program_len=0 (26/240)\n"}
+,{"stream_name":"stdout","time":2389.234357737,"data":"[TASK] 0bb8deee exact_match=False score=0.0000 program_len=0 (27/240)\n"}
+,{"stream_name":"stdout","time":2389.440906494,"data":"[TASK] 0bb8deee exact_match=False score=0.0000 program_len=0 (27/240)\n"}
+,{"stream_name":"stdout","time":2479.266935418,"data":"[TASK] 0becf7df exact_match=False score=0.8433 program_len=2 (28/240)\n"}
+,{"stream_name":"stdout","time":2479.477660785,"data":"[TASK] 0becf7df exact_match=False score=0.8433 program_len=2 (28/240)\n"}
+,{"stream_name":"stdout","time":2551.543901475,"data":"[TASK] 0c786b71 exact_match=False score=0.5139 program_len=2 (29/240)\n"}
+,{"stream_name":"stdout","time":2551.750194162,"data":"[TASK] 0c786b71 exact_match=False score=0.5139 program_len=2 (29/240)\n"}
+,{"stream_name":"stdout","time":2641.587876355,"data":"[TASK] 0c9aba6e exact_match=False score=0.0000 program_len=0 (30/240)\n"}
+,{"stream_name":"stdout","time":2641.794356842,"data":"[TASK] 0c9aba6e exact_match=False score=0.0000 program_len=0 (30/240)\n"}
+,{"stream_name":"stdout","time":2731.621262466,"data":"[TASK] 0ca9ddb6 exact_match=False score=0.8683 program_len=0 (31/240)\n"}
+,{"stream_name":"stdout","time":2731.638796846,"data":"[TASK] 0d3d703e exact_match=True score=1.0000 program_len=8 (32/240)\n"}
+,{"stream_name":"stdout","time":2731.827843053,"data":"[TASK] 0ca9ddb6 exact_match=False score=0.8683 program_len=0 (31/240)\n"}
+,{"stream_name":"stdout","time":2731.827874643,"data":"[TASK] 0d3d703e exact_match=True score=1.0000 program_len=8 (32/240)\n"}
+,{"stream_name":"stdout","time":2821.705522386,"data":"[TASK] 0d87d2a6 exact_match=False score=0.8194 program_len=1 (33/240)\n"}
+,{"stream_name":"stdout","time":2821.911829433,"data":"[TASK] 0d87d2a6 exact_match=False score=0.8194 program_len=1 (33/240)\n"}
+,{"stream_name":"stdout","time":2911.761351207,"data":"[TASK] 0e206a2e exact_match=False score=0.9481 program_len=1 (34/240)\n"}
+,{"stream_name":"stdout","time":2911.967774642,"data":"[TASK] 0e206a2e exact_match=False score=0.9481 program_len=1 (34/240)\n"}
+,{"stream_name":"stdout","time":3001.823569227,"data":"[TASK] 0e671a1a exact_match=False score=0.8713 program_len=0 (35/240)\n"}
+,{"stream_name":"stdout","time":3002.030518232,"data":"[TASK] 0e671a1a exact_match=False score=0.8713 program_len=0 (35/240)\n"}
+,{"stream_name":"stdout","time":3091.879254037,"data":"[TASK] 0f63c0b9 exact_match=False score=0.6278 program_len=7 (36/240)\n"}
+,{"stream_name":"stdout","time":3092.090014932,"data":"[TASK] 0f63c0b9 exact_match=False score=0.6278 program_len=7 (36/240)\n"}
+,{"stream_name":"stdout","time":3181.933666597,"data":"[TASK] 103eff5b exact_match=False score=0.8869 program_len=1 (37/240)\n"}
+,{"stream_name":"stdout","time":3182.143217462,"data":"[TASK] 103eff5b exact_match=False score=0.8869 program_len=1 (37/240)\n"}
+,{"stream_name":"stdout","time":3271.951802558,"data":"[TASK] 10fcaaa3 exact_match=False score=0.6708 program_len=1 (38/240)\n"}
+,{"stream_name":"stdout","time":3272.162848953,"data":"[TASK] 10fcaaa3 exact_match=False score=0.6708 program_len=1 (38/240)\n"}
+,{"stream_name":"stdout","time":3361.985725551,"data":"[TASK] 11852cab exact_match=False score=0.9700 program_len=0 (39/240)\n"}
+,{"stream_name":"stdout","time":3362.196480223,"data":"[TASK] 11852cab exact_match=False score=0.9700 program_len=0 (39/240)\n"}
+,{"stream_name":"stdout","time":3452.016123152,"data":"[TASK] 1190bc91 exact_match=False score=0.4275 program_len=3 (40/240)\n"}
+,{"stream_name":"stdout","time":3452.227743883,"data":"[TASK] 1190bc91 exact_match=False score=0.4275 program_len=3 (40/240)\n"}
+,{"stream_name":"stdout","time":3542.11916818,"data":"[TASK] 1190e5a7 exact_match=False score=0.0000 program_len=0 (41/240)\n"}
+,{"stream_name":"stdout","time":3542.330943241,"data":"[TASK] 1190e5a7 exact_match=False score=0.0000 program_len=0 (41/240)\n"}
+,{"stream_name":"stdout","time":3632.202373139,"data":"[TASK] 11dc524f exact_match=False score=0.9645 program_len=1 (42/240)\n"}
+,{"stream_name":"stdout","time":3632.409859751,"data":"[TASK] 11dc524f exact_match=False score=0.9645 program_len=1 (42/240)\n"}
+,{"stream_name":"stdout","time":3722.22756878,"data":"[TASK] 11e1fe23 exact_match=False score=0.9682 program_len=0 (43/240)\n"}
+,{"stream_name":"stdout","time":3722.434765322,"data":"[TASK] 11e1fe23 exact_match=False score=0.9682 program_len=0 (43/240)\n"}
+,{"stream_name":"stdout","time":3812.27141734,"data":"[TASK] 12422b43 exact_match=False score=0.8298 program_len=0 (44/240)\n"}
+,{"stream_name":"stdout","time":3812.478622212,"data":"[TASK] 12422b43 exact_match=False score=0.8298 program_len=0 (44/240)\n"}
+,{"stream_name":"stdout","time":3902.349065654,"data":"[TASK] 12997ef3 exact_match=False score=0.0694 program_len=11 (45/240)\n"}
+,{"stream_name":"stdout","time":3902.556271218,"data":"[TASK] 12997ef3 exact_match=False score=0.0694 program_len=11 (45/240)\n"}
+,{"stream_name":"stdout","time":3992.385584469,"data":"[TASK] 12eac192 exact_match=False score=0.8235 program_len=1 (46/240)\n"}
+,{"stream_name":"stdout","time":3992.592939142,"data":"[TASK] 12eac192 exact_match=False score=0.8235 program_len=1 (46/240)\n"}
+,{"stream_name":"stdout","time":4082.446795133,"data":"[TASK] 13713586 exact_match=False score=0.6349 program_len=0 (47/240)\n"}
+,{"stream_name":"stdout","time":4082.654906067,"data":"[TASK] 13713586 exact_match=False score=0.6349 program_len=0 (47/240)\n"}
+,{"stream_name":"stdout","time":4172.483505567,"data":"[TASK] 137eaa0f exact_match=False score=0.0000 program_len=0 (48/240)\n"}
+,{"stream_name":"stdout","time":4172.690620481,"data":"[TASK] 137eaa0f exact_match=False score=0.0000 program_len=0 (48/240)\n"}
+,{"stream_name":"stdout","time":4262.527356511,"data":"[TASK] 137f0df0 exact_match=False score=0.6400 program_len=1 (49/240)\n"}
+,{"stream_name":"stdout","time":4262.734437564,"data":"[TASK] 137f0df0 exact_match=False score=0.6400 program_len=1 (49/240)\n"}
+,{"stream_name":"stdout","time":4352.580716854,"data":"[TASK] 13f06aa5 exact_match=False score=0.8767 program_len=2 (50/240)\n"}
+,{"stream_name":"stdout","time":4352.788551478,"data":"[TASK] 13f06aa5 exact_match=False score=0.8767 program_len=2 (50/240)\n"}
+,{"stream_name":"stdout","time":4442.643186827,"data":"[TASK] 140c817e exact_match=False score=0.4859 program_len=9 (51/240)\n"}
+,{"stream_name":"stdout","time":4442.850502771,"data":"[TASK] 140c817e exact_match=False score=0.4859 program_len=9 (51/240)\n"}
+,{"stream_name":"stdout","time":4532.739626278,"data":"[TASK] 14754a24 exact_match=False score=0.9608 program_len=0 (52/240)\n"}
+,{"stream_name":"stdout","time":4532.947214592,"data":"[TASK] 14754a24 exact_match=False score=0.9608 program_len=0 (52/240)\n"}
+,{"stream_name":"stdout","time":4622.772444522,"data":"[TASK] 1478ab18 exact_match=False score=0.7969 program_len=0 (53/240)\n"}
+,{"stream_name":"stdout","time":4622.979672626,"data":"[TASK] 1478ab18 exact_match=False score=0.7969 program_len=0 (53/240)\n"}
+,{"stream_name":"stdout","time":4712.817880336,"data":"[TASK] 14b8e18c exact_match=False score=0.8933 program_len=0 (54/240)\n"}
+,{"stream_name":"stdout","time":4713.02536186,"data":"[TASK] 14b8e18c exact_match=False score=0.8933 program_len=0 (54/240)\n"}
+,{"stream_name":"stdout","time":4802.854646789,"data":"[TASK] 150deff5 exact_match=False score=0.9044 program_len=1 (55/240)\n"}
+,{"stream_name":"stdout","time":4803.061980423,"data":"[TASK] 150deff5 exact_match=False score=0.9044 program_len=1 (55/240)\n"}
+,{"stream_name":"stdout","time":4892.98736473,"data":"[TASK] 15113be4 exact_match=False score=0.9811 program_len=0 (56/240)\n"}
+,{"stream_name":"stdout","time":4893.194661554,"data":"[TASK] 15113be4 exact_match=False score=0.9811 program_len=0 (56/240)\n"}
+,{"stream_name":"stdout","time":4983.099490108,"data":"[TASK] 15660dd6 exact_match=False score=0.0000 program_len=0 (57/240)\n"}
+,{"stream_name":"stdout","time":4983.306434223,"data":"[TASK] 15660dd6 exact_match=False score=0.0000 program_len=0 (57/240)\n"}
+,{"stream_name":"stdout","time":5073.156254478,"data":"[TASK] 15663ba9 exact_match=False score=0.8880 program_len=0 (58/240)\n"}
+,{"stream_name":"stdout","time":5073.363822934,"data":"[TASK] 15663ba9 exact_match=False score=0.8880 program_len=0 (58/240)\n"}
+,{"stream_name":"stdout","time":5163.203430329,"data":"[TASK] 15696249 exact_match=False score=0.7099 program_len=10 (59/240)\n"}
+,{"stream_name":"stdout","time":5163.416361575,"data":"[TASK] 15696249 exact_match=False score=0.7099 program_len=10 (59/240)\n"}
+,{"stream_name":"stdout","time":5253.27214779,"data":"[TASK] 17829a00 exact_match=False score=0.8281 program_len=3 (60/240)\n"}
+,{"stream_name":"stdout","time":5253.484726536,"data":"[TASK] 17829a00 exact_match=False score=0.8281 program_len=3 (60/240)\n"}
+,{"stream_name":"stdout","time":5343.302160672,"data":"[TASK] 178fcbfb exact_match=False score=0.6852 program_len=1 (61/240)\n"}
+,{"stream_name":"stdout","time":5343.515259967,"data":"[TASK] 178fcbfb exact_match=False score=0.6852 program_len=1 (61/240)\n"}
+,{"stream_name":"stdout","time":5433.354407863,"data":"[TASK] 17b80ad2 exact_match=False score=0.8840 program_len=0 (62/240)\n"}
+,{"stream_name":"stdout","time":5433.561937558,"data":"[TASK] 17b80ad2 exact_match=False score=0.8840 program_len=0 (62/240)\n"}
+,{"stream_name":"stdout","time":5523.425395493,"data":"[TASK] 17b866bd exact_match=False score=0.8925 program_len=1 (63/240)\n"}
+,{"stream_name":"stdout","time":5523.638359389,"data":"[TASK] 17b866bd exact_match=False score=0.8925 program_len=1 (63/240)\n"}
+,{"stream_name":"stdout","time":5613.460487865,"data":"[TASK] 17cae0c1 exact_match=False score=0.3333 program_len=6 (64/240)\n"}
+,{"stream_name":"stdout","time":5613.67354385,"data":"[TASK] 17cae0c1 exact_match=False score=0.3333 program_len=6 (64/240)\n"}
+,{"stream_name":"stdout","time":5703.519337046,"data":"[TASK] 18286ef8 exact_match=False score=0.9820 program_len=1 (65/240)\n"}
+,{"stream_name":"stdout","time":5703.732644011,"data":"[TASK] 18286ef8 exact_match=False score=0.9820 program_len=1 (65/240)\n"}
+,{"stream_name":"stdout","time":5793.568831507,"data":"[TASK] 182e5d0f exact_match=False score=0.9244 program_len=1 (66/240)\n"}
+,{"stream_name":"stdout","time":5793.776726073,"data":"[TASK] 182e5d0f exact_match=False score=0.9244 program_len=1 (66/240)\n"}
+,{"stream_name":"stdout","time":5883.634223568,"data":"[TASK] 18419cfa exact_match=False score=0.9782 program_len=0 (67/240)\n"}
+,{"stream_name":"stdout","time":5883.841928564,"data":"[TASK] 18419cfa exact_match=False score=0.9782 program_len=0 (67/240)\n"}
+,{"stream_name":"stdout","time":5973.687846609,"data":"[TASK] 18447a8d exact_match=False score=0.7388 program_len=2 (68/240)\n"}
+,{"stream_name":"stdout","time":5973.895766137,"data":"[TASK] 18447a8d exact_match=False score=0.7388 program_len=2 (68/240)\n"}
+,{"stream_name":"stdout","time":6063.799728983,"data":"[TASK] 184a9768 exact_match=False score=0.8769 program_len=3 (69/240)\n"}
+,{"stream_name":"stdout","time":6064.012903952,"data":"[TASK] 184a9768 exact_match=False score=0.8769 program_len=3 (69/240)\n"}
+,{"stream_name":"stdout","time":6153.84088916,"data":"[TASK] 195ba7dc exact_match=False score=0.0000 program_len=0 (70/240)\n"}
+,{"stream_name":"stdout","time":6154.053886678,"data":"[TASK] 195ba7dc exact_match=False score=0.0000 program_len=0 (70/240)\n"}
+,{"stream_name":"stdout","time":6243.908907936,"data":"[TASK] 1990f7a8 exact_match=False score=0.0000 program_len=0 (71/240)\n"}
+,{"stream_name":"stdout","time":6244.122866654,"data":"[TASK] 1990f7a8 exact_match=False score=0.0000 program_len=0 (71/240)\n"}
+,{"stream_name":"stdout","time":6333.972960892,"data":"[TASK] 19bb5feb exact_match=False score=0.0000 program_len=0 (72/240)\n"}
+,{"stream_name":"stdout","time":6334.18639845,"data":"[TASK] 19bb5feb exact_match=False score=0.0000 program_len=0 (72/240)\n"}
+,{"stream_name":"stdout","time":6424.034622858,"data":"[TASK] 1a07d186 exact_match=False score=0.9627 program_len=0 (73/240)\n"}
+,{"stream_name":"stdout","time":6424.248387387,"data":"[TASK] 1a07d186 exact_match=False score=0.9627 program_len=0 (73/240)\n"}
+,{"stream_name":"stdout","time":6514.088940514,"data":"[TASK] 1a244afd exact_match=False score=0.9744 program_len=1 (74/240)\n"}
+,{"stream_name":"stdout","time":6514.297122693,"data":"[TASK] 1a244afd exact_match=False score=0.9744 program_len=1 (74/240)\n"}
+,{"stream_name":"stdout","time":6604.154958981,"data":"[TASK] 1a2e2828 exact_match=False score=0.2000 program_len=5 (75/240)\n"}
+,{"stream_name":"stdout","time":6604.363196419,"data":"[TASK] 1a2e2828 exact_match=False score=0.2000 program_len=5 (75/240)\n"}
+,{"stream_name":"stdout","time":6694.258432817,"data":"[TASK] 1a6449f1 exact_match=False score=0.0000 program_len=0 (76/240)\n"}
+,{"stream_name":"stdout","time":6694.466349895,"data":"[TASK] 1a6449f1 exact_match=False score=0.0000 program_len=0 (76/240)\n"}
+,{"stream_name":"stdout","time":6784.314139033,"data":"[TASK] 1acc24af exact_match=False score=0.9688 program_len=1 (77/240)\n"}
+,{"stream_name":"stdout","time":6784.521906011,"data":"[TASK] 1acc24af exact_match=False score=0.9688 program_len=1 (77/240)\n"}
+,{"stream_name":"stdout","time":6874.363404069,"data":"[TASK] 1b2d62fb exact_match=False score=0.0267 program_len=6 (78/240)\n"}
+,{"stream_name":"stdout","time":6874.571008277,"data":"[TASK] 1b2d62fb exact_match=False score=0.0267 program_len=6 (78/240)\n"}
+,{"stream_name":"stdout","time":6964.445431425,"data":"[TASK] 1b59e163 exact_match=False score=0.9228 program_len=4 (79/240)\n"}
+,{"stream_name":"stdout","time":6964.653772284,"data":"[TASK] 1b59e163 exact_match=False score=0.9228 program_len=4 (79/240)\n"}
+,{"stream_name":"stdout","time":7054.498201544,"data":"[TASK] 1b60fb0c exact_match=False score=0.9067 program_len=0 (80/240)\n"}
+,{"stream_name":"stdout","time":7054.70601758,"data":"[TASK] 1b60fb0c exact_match=False score=0.9067 program_len=0 (80/240)\n"}
+,{"stream_name":"stdout","time":7144.55176181,"data":"[TASK] 1b8318e3 exact_match=False score=0.9244 program_len=5 (81/240)\n"}
+,{"stream_name":"stdout","time":7144.759949786,"data":"[TASK] 1b8318e3 exact_match=False score=0.9244 program_len=5 (81/240)\n"}
+,{"stream_name":"stdout","time":7234.623895835,"data":"[TASK] 1be83260 exact_match=False score=0.3777 program_len=8 (82/240)\n"}
+,{"stream_name":"stdout","time":7234.83236666,"data":"[TASK] 1be83260 exact_match=False score=0.3777 program_len=8 (82/240)\n"}
+,{"stream_name":"stdout","time":7324.662353181,"data":"[TASK] 1bfc4729 exact_match=False score=0.6000 program_len=3 (83/240)\n"}
+,{"stream_name":"stdout","time":7324.870527667,"data":"[TASK] 1bfc4729 exact_match=False score=0.6000 program_len=3 (83/240)\n"}
+,{"stream_name":"stdout","time":7414.738650536,"data":"[TASK] 1c02dbbe exact_match=False score=0.7348 program_len=1 (84/240)\n"}
+,{"stream_name":"stdout","time":7414.946584622,"data":"[TASK] 1c02dbbe exact_match=False score=0.7348 program_len=1 (84/240)\n"}
+,{"stream_name":"stdout","time":7504.786501702,"data":"[TASK] 1c0d0a4b exact_match=False score=0.8287 program_len=7 (85/240)\n"}
+,{"stream_name":"stdout","time":7505.000697837,"data":"[TASK] 1c0d0a4b exact_match=False score=0.8287 program_len=7 (85/240)\n"}
+,{"stream_name":"stdout","time":7594.865105637,"data":"[TASK] 1c56ad9f exact_match=False score=0.8970 program_len=0 (86/240)\n"}
+,{"stream_name":"stdout","time":7595.072771202,"data":"[TASK] 1c56ad9f exact_match=False score=0.8970 program_len=0 (86/240)\n"}
+,{"stream_name":"stdout","time":7684.976569331,"data":"[TASK] 1c786137 exact_match=False score=0.0000 program_len=0 (87/240)\n"}
+,{"stream_name":"stdout","time":7685.184933306,"data":"[TASK] 1c786137 exact_match=False score=0.0000 program_len=0 (87/240)\n"}
+,{"stream_name":"stdout","time":7775.011567877,"data":"[TASK] 1caeab9d exact_match=False score=0.8667 program_len=2 (88/240)\n"}
+,{"stream_name":"stdout","time":7775.046201806,"data":"[TASK] 1cf80156 exact_match=True score=1.0000 program_len=1 (89/240)\n"}
+,{"stream_name":"stdout","time":7775.226129971,"data":"[TASK] 1caeab9d exact_match=False score=0.8667 program_len=2 (88/240)\n"}
+,{"stream_name":"stdout","time":7775.226170902,"data":"[TASK] 1cf80156 exact_match=True score=1.0000 program_len=1 (89/240)\n"}
+,{"stream_name":"stdout","time":7865.215781909,"data":"[TASK] 1d0a4b61 exact_match=False score=0.9333 program_len=1 (90/240)\n"}
+,{"stream_name":"stdout","time":7865.425130254,"data":"[TASK] 1d0a4b61 exact_match=False score=0.9333 program_len=1 (90/240)\n"}
+,{"stream_name":"stdout","time":7955.263155635,"data":"[TASK] 1d398264 exact_match=False score=0.8145 program_len=0 (91/240)\n"}
+,{"stream_name":"stdout","time":7955.47153044,"data":"[TASK] 1d398264 exact_match=False score=0.8145 program_len=0 (91/240)\n"}
+,{"stream_name":"stdout","time":8045.330858844,"data":"[TASK] 1d61978c exact_match=False score=0.9551 program_len=1 (92/240)\n"}
+,{"stream_name":"stdout","time":8045.540188841,"data":"[TASK] 1d61978c exact_match=False score=0.9551 program_len=1 (92/240)\n"}
+,{"stream_name":"stdout","time":8135.391298717,"data":"[TASK] 1da012fc exact_match=False score=0.9146 program_len=1 (93/240)\n"}
+,{"stream_name":"stdout","time":8135.606161494,"data":"[TASK] 1da012fc exact_match=False score=0.9146 program_len=1 (93/240)\n"}
+,{"stream_name":"stdout","time":8210.092202368,"data":"[TASK] 1e0a9b12 exact_match=False score=0.7852 program_len=2 (94/240)\n"}
+,{"stream_name":"stdout","time":8210.300840625,"data":"[TASK] 1e0a9b12 exact_match=False score=0.7852 program_len=2 (94/240)\n"}
+,{"stream_name":"stdout","time":8300.173522696,"data":"[TASK] 1e32b0e9 exact_match=False score=0.8651 program_len=0 (95/240)\n"}
+,{"stream_name":"stdout","time":8300.382702713,"data":"[TASK] 1e32b0e9 exact_match=False score=0.8651 program_len=0 (95/240)\n"}
+,{"stream_name":"stdout","time":8390.210172065,"data":"[TASK] 1e5d6875 exact_match=False score=0.8594 program_len=0 (96/240)\n"}
+,{"stream_name":"stdout","time":8390.420066942,"data":"[TASK] 1e5d6875 exact_match=False score=0.8594 program_len=0 (96/240)\n"}
+,{"stream_name":"stdout","time":8480.280345483,"data":"[TASK] 1e81d6f9 exact_match=False score=0.9807 program_len=0 (97/240)\n"}
+,{"stream_name":"stdout","time":8480.48908507,"data":"[TASK] 1e81d6f9 exact_match=False score=0.9807 program_len=0 (97/240)\n"}
+,{"stream_name":"stdout","time":8570.332985572,"data":"[TASK] 1efba499 exact_match=False score=0.9150 program_len=1 (98/240)\n"}
+,{"stream_name":"stdout","time":8570.541565379,"data":"[TASK] 1efba499 exact_match=False score=0.9150 program_len=1 (98/240)\n"}
+,{"stream_name":"stdout","time":8660.373202111,"data":"[TASK] 1f0c79e5 exact_match=False score=0.7469 program_len=1 (99/240)\n"}
+,{"stream_name":"stdout","time":8660.581976527,"data":"[TASK] 1f0c79e5 exact_match=False score=0.7469 program_len=1 (99/240)\n"}
+,{"stream_name":"stdout","time":8750.424733309,"data":"[TASK] 1f642eb9 exact_match=False score=0.9533 program_len=0 (100/240)\n"}
+,{"stream_name":"stdout","time":8750.633117886,"data":"[TASK] 1f642eb9 exact_match=False score=0.9533 program_len=0 (100/240)\n"}
+,{"stream_name":"stdout","time":8840.569016806,"data":"[TASK] 1f85a75f exact_match=False score=0.5000 program_len=5 (101/240)\n"}
+,{"stream_name":"stdout","time":8840.777339403,"data":"[TASK] 1f85a75f exact_match=False score=0.5000 program_len=5 (101/240)\n"}
+,{"stream_name":"stdout","time":8930.613244955,"data":"[TASK] 1f876c06 exact_match=False score=0.9067 program_len=0 (102/240)\n"}
+,{"stream_name":"stdout","time":8930.821929272,"data":"[TASK] 1f876c06 exact_match=False score=0.9067 program_len=0 (102/240)\n"}
+,{"stream_name":"stdout","time":9020.658179934,"data":"[TASK] 1fad071e exact_match=False score=0.0000 program_len=0 (103/240)\n"}
+,{"stream_name":"stdout","time":9020.866911451,"data":"[TASK] 1fad071e exact_match=False score=0.0000 program_len=0 (103/240)\n"}
+,{"stream_name":"stdout","time":9110.692445989,"data":"[TASK] 2013d3e2 exact_match=False score=0.0000 program_len=0 (104/240)\n"}
+,{"stream_name":"stdout","time":9110.901290657,"data":"[TASK] 2013d3e2 exact_match=False score=0.0000 program_len=0 (104/240)\n"}
+,{"stream_name":"stdout","time":9200.800591709,"data":"[TASK] 2037f2c7 exact_match=False score=0.0000 program_len=0 (105/240)\n"}
+,{"stream_name":"stdout","time":9201.009706098,"data":"[TASK] 2037f2c7 exact_match=False score=0.0000 program_len=0 (105/240)\n"}
+,{"stream_name":"stdout","time":9276.862330567,"data":"[TASK] 2072aba6 exact_match=False score=0.7593 program_len=2 (106/240)\n"}
+,{"stream_name":"stdout","time":9277.070909296,"data":"[TASK] 2072aba6 exact_match=False score=0.7593 program_len=2 (106/240)\n"}
+,{"stream_name":"stdout","time":9366.933137128,"data":"[TASK] 20818e16 exact_match=False score=0.0000 program_len=0 (107/240)\n"}
+,{"stream_name":"stdout","time":9367.141676497,"data":"[TASK] 20818e16 exact_match=False score=0.0000 program_len=0 (107/240)\n"}
+,{"stream_name":"stdout","time":9457.003163249,"data":"[TASK] 20981f0e exact_match=False score=0.9147 program_len=2 (108/240)\n"}
+,{"stream_name":"stdout","time":9457.212313498,"data":"[TASK] 20981f0e exact_match=False score=0.9147 program_len=2 (108/240)\n"}
+,{"stream_name":"stdout","time":9547.05953177,"data":"[TASK] 20fb2937 exact_match=False score=0.0000 program_len=0 (109/240)\n"}
+,{"stream_name":"stdout","time":9547.268368319,"data":"[TASK] 20fb2937 exact_match=False score=0.0000 program_len=0 (109/240)\n"}
+,{"stream_name":"stdout","time":9637.137211921,"data":"[TASK] 212895b5 exact_match=False score=0.8845 program_len=0 (110/240)\n"}
+,{"stream_name":"stdout","time":9637.34604955,"data":"[TASK] 212895b5 exact_match=False score=0.8845 program_len=0 (110/240)\n"}
+,{"stream_name":"stdout","time":9727.179845172,"data":"[TASK] 21f83797 exact_match=False score=0.6183 program_len=1 (111/240)\n"}
+,{"stream_name":"stdout","time":9727.396482451,"data":"[TASK] 21f83797 exact_match=False score=0.6183 program_len=1 (111/240)\n"}
+,{"stream_name":"stdout","time":9817.241493484,"data":"[TASK] 2204b7a8 exact_match=False score=0.9633 program_len=1 (112/240)\n"}
+,{"stream_name":"stdout","time":9817.457307482,"data":"[TASK] 2204b7a8 exact_match=False score=0.9633 program_len=1 (112/240)\n"}
+,{"stream_name":"stdout","time":9907.296599865,"data":"[TASK] 22168020 exact_match=False score=0.8600 program_len=0 (113/240)\n"}
+,{"stream_name":"stdout","time":9907.505474894,"data":"[TASK] 22168020 exact_match=False score=0.8600 program_len=0 (113/240)\n"}
+,{"stream_name":"stdout","time":9997.399585257,"data":"[TASK] 22208ba4 exact_match=False score=0.8567 program_len=2 (114/240)\n"}
+,{"stream_name":"stdout","time":9997.608751546,"data":"[TASK] 22208ba4 exact_match=False score=0.8567 program_len=2 (114/240)\n"}
+,{"stream_name":"stdout","time":10087.448966989,"data":"[TASK] 22233c11 exact_match=False score=0.9600 program_len=0 (115/240)\n"}
+,{"stream_name":"stdout","time":10087.657412697,"data":"[TASK] 22233c11 exact_match=False score=0.9600 program_len=0 (115/240)\n"}
+,{"stream_name":"stdout","time":10177.521494705,"data":"[TASK] 22425bda exact_match=False score=0.0000 program_len=0 (116/240)\n"}
+,{"stream_name":"stdout","time":10177.730655142,"data":"[TASK] 22425bda exact_match=False score=0.0000 program_len=0 (116/240)\n"}
+,{"stream_name":"stdout","time":10267.603433285,"data":"[TASK] 22806e14 exact_match=False score=0.9740 program_len=0 (117/240)\n"}
+,{"stream_name":"stdout","time":10267.812617071,"data":"[TASK] 22806e14 exact_match=False score=0.9740 program_len=0 (117/240)\n"}
+,{"stream_name":"stdout","time":10357.653001254,"data":"[TASK] 2281f1f4 exact_match=False score=0.8733 program_len=0 (118/240)\n"}
+,{"stream_name":"stdout","time":10357.86926093,"data":"[TASK] 2281f1f4 exact_match=False score=0.8733 program_len=0 (118/240)\n"}
+,{"stream_name":"stdout","time":10447.708029124,"data":"[TASK] 228f6490 exact_match=False score=0.8400 program_len=1 (119/240)\n"}
+,{"stream_name":"stdout","time":10447.91688359,"data":"[TASK] 228f6490 exact_match=False score=0.8400 program_len=1 (119/240)\n"}
+,{"stream_name":"stdout","time":10537.769988513,"data":"[TASK] 22a4bbc2 exact_match=False score=0.7969 program_len=1 (120/240)\n"}
+,{"stream_name":"stdout","time":10537.979532109,"data":"[TASK] 22a4bbc2 exact_match=False score=0.7969 program_len=1 (120/240)\n"}
+,{"stream_name":"stdout","time":10627.828921572,"data":"[TASK] 22eb0ac0 exact_match=False score=0.9200 program_len=0 (121/240)\n"}
+,{"stream_name":"stdout","time":10628.037850099,"data":"[TASK] 22eb0ac0 exact_match=False score=0.9200 program_len=0 (121/240)\n"}
+,{"stream_name":"stdout","time":10717.886932222,"data":"[TASK] 230f2e48 exact_match=False score=0.9175 program_len=3 (122/240)\n"}
+,{"stream_name":"stdout","time":10718.095956578,"data":"[TASK] 230f2e48 exact_match=False score=0.9175 program_len=3 (122/240)\n"}
+,{"stream_name":"stdout","time":10807.924174792,"data":"[TASK] 234bbc79 exact_match=False score=0.2526 program_len=9 (123/240)\n"}
+,{"stream_name":"stdout","time":10808.133299148,"data":"[TASK] 234bbc79 exact_match=False score=0.2526 program_len=9 (123/240)\n"}
+,{"stream_name":"stdout","time":10897.967591062,"data":"[TASK] 23581191 exact_match=False score=0.6790 program_len=3 (124/240)\n"}
+,{"stream_name":"stdout","time":10898.176690608,"data":"[TASK] 23581191 exact_match=False score=0.6790 program_len=3 (124/240)\n"}
+,{"stream_name":"stdout","time":10988.022333801,"data":"[TASK] 239be575 exact_match=False score=0.1667 program_len=3 (125/240)\n"}
+,{"stream_name":"stdout","time":10988.231248707,"data":"[TASK] 239be575 exact_match=False score=0.1667 program_len=3 (125/240)\n"}
+,{"stream_name":"stdout","time":11078.13535868,"data":"[TASK] 23b5c85d exact_match=False score=0.0000 program_len=0 (126/240)\n"}
+,{"stream_name":"stdout","time":11078.351534165,"data":"[TASK] 23b5c85d exact_match=False score=0.0000 program_len=0 (126/240)\n"}
+,{"stream_name":"stdout","time":11168.320510499,"data":"[TASK] 25094a63 exact_match=False score=0.8867 program_len=1 (127/240)\n"}
+,{"stream_name":"stdout","time":11168.537289866,"data":"[TASK] 25094a63 exact_match=False score=0.8867 program_len=1 (127/240)\n"}
+,{"stream_name":"stdout","time":11223.69008912,"data":"[TASK] 252143c9 exact_match=False score=0.9344 program_len=7 (128/240)\n"}
+,{"stream_name":"stdout","time":11223.899298756,"data":"[TASK] 252143c9 exact_match=False score=0.9344 program_len=7 (128/240)\n"}
+,{"stream_name":"stdout","time":11313.781361051,"data":"[TASK] 253bf280 exact_match=False score=0.9393 program_len=0 (129/240)\n"}
+,{"stream_name":"stdout","time":11313.990878897,"data":"[TASK] 253bf280 exact_match=False score=0.9393 program_len=0 (129/240)\n"}
+,{"stream_name":"stdout","time":11403.850721902,"data":"[TASK] 2546ccf6 exact_match=False score=0.9776 program_len=0 (130/240)\n"}
+,{"stream_name":"stdout","time":11404.060236389,"data":"[TASK] 2546ccf6 exact_match=False score=0.9776 program_len=0 (130/240)\n"}
+,{"stream_name":"stdout","time":11493.971896162,"data":"[TASK] 256b0a75 exact_match=False score=0.4691 program_len=1 (131/240)\n"}
+,{"stream_name":"stdout","time":11494.180886049,"data":"[TASK] 256b0a75 exact_match=False score=0.4691 program_len=1 (131/240)\n"}
+,{"stream_name":"stdout","time":11584.047893533,"data":"[TASK] 25c199f5 exact_match=False score=0.0000 program_len=0 (132/240)\n"}
+,{"stream_name":"stdout","time":11584.25768552,"data":"[TASK] 25c199f5 exact_match=False score=0.0000 program_len=0 (132/240)\n"}
+,{"stream_name":"stdout","time":11674.094663855,"data":"[TASK] 25d487eb exact_match=False score=0.9499 program_len=0 (133/240)\n"}
+,{"stream_name":"stdout","time":11674.304346762,"data":"[TASK] 25d487eb exact_match=False score=0.9499 program_len=0 (133/240)\n"}
+,{"stream_name":"stdout","time":11763.446555128,"data":"[TASK] 25d8a9c8 exact_match=False score=0.7778 program_len=12 (134/240)\n"}
+,{"stream_name":"stdout","time":11763.663225504,"data":"[TASK] 25d8a9c8 exact_match=False score=0.7778 program_len=12 (134/240)\n"}
+,{"stream_name":"stdout","time":11853.517781719,"data":"[TASK] 25e02866 exact_match=False score=0.3400 program_len=10 (135/240)\n"}
+,{"stream_name":"stdout","time":11853.647594277,"data":"[TASK] 25ff71a9 exact_match=True score=1.0000 program_len=1 (136/240)\n"}
+,{"stream_name":"stdout","time":11853.727469626,"data":"[TASK] 25e02866 exact_match=False score=0.3400 program_len=10 (135/240)\n"}
+,{"stream_name":"stdout","time":11853.727527586,"data":"[TASK] 25ff71a9 exact_match=True score=1.0000 program_len=1 (136/240)\n"}
+,{"stream_name":"stdout","time":11943.705583998,"data":"[TASK] 2601afb7 exact_match=False score=0.8233 program_len=5 (137/240)\n"}
+,{"stream_name":"stdout","time":11943.915267875,"data":"[TASK] 2601afb7 exact_match=False score=0.8233 program_len=5 (137/240)\n"}
+,{"stream_name":"stdout","time":12033.942448087,"data":"[TASK] 264363fd exact_match=False score=0.9115 program_len=0 (138/240)\n"}
+,{"stream_name":"stdout","time":12034.152166285,"data":"[TASK] 264363fd exact_match=False score=0.9115 program_len=0 (138/240)\n"}
+,{"stream_name":"stdout","time":12124.024908934,"data":"[TASK] 2685904e exact_match=False score=0.9167 program_len=0 (139/240)\n"}
+,{"stream_name":"stdout","time":12124.234878031,"data":"[TASK] 2685904e exact_match=False score=0.9167 program_len=0 (139/240)\n"}
+,{"stream_name":"stdout","time":12214.081646322,"data":"[TASK] 2697da3f exact_match=False score=0.2233 program_len=4 (140/240)\n"}
+,{"stream_name":"stdout","time":12214.291579168,"data":"[TASK] 2697da3f exact_match=False score=0.2233 program_len=4 (140/240)\n"}
+,{"stream_name":"stdout","time":12304.141990287,"data":"[TASK] 272f95fa exact_match=False score=0.6518 program_len=1 (141/240)\n"}
+,{"stream_name":"stdout","time":12304.352271622,"data":"[TASK] 272f95fa exact_match=False score=0.6518 program_len=1 (141/240)\n"}
+,{"stream_name":"stdout","time":12394.220748791,"data":"[TASK] 2753e76c exact_match=False score=0.0000 program_len=0 (142/240)\n"}
+,{"stream_name":"stdout","time":12394.431024117,"data":"[TASK] 2753e76c exact_match=False score=0.0000 program_len=0 (142/240)\n"}
+,{"stream_name":"stdout","time":12484.312742195,"data":"[TASK] 278e5215 exact_match=False score=0.1083 program_len=10 (143/240)\n"}
+,{"stream_name":"stdout","time":12484.522815481,"data":"[TASK] 278e5215 exact_match=False score=0.1083 program_len=10 (143/240)\n"}
+,{"stream_name":"stdout","time":12574.370906799,"data":"[TASK] 27a28665 exact_match=False score=0.2857 program_len=10 (144/240)\n"}
+,{"stream_name":"stdout","time":12574.580645515,"data":"[TASK] 27a28665 exact_match=False score=0.2857 program_len=10 (144/240)\n"}
+,{"stream_name":"stdout","time":12640.2851078,"data":"[TASK] 27a77e38 exact_match=False score=0.9428 program_len=0 (145/240)\n"}
+,{"stream_name":"stdout","time":12640.494931666,"data":"[TASK] 27a77e38 exact_match=False score=0.9428 program_len=0 (145/240)\n"}
+,{"stream_name":"stdout","time":12724.280884344,"data":"[TASK] 27f8ce4f exact_match=False score=0.6235 program_len=7 (146/240)\n"}
+,{"stream_name":"stdout","time":12724.49075891,"data":"[TASK] 27f8ce4f exact_match=False score=0.6235 program_len=7 (146/240)\n"}
+,{"stream_name":"stdout","time":12814.357762819,"data":"[TASK] 281123b4 exact_match=False score=0.0000 program_len=0 (147/240)\n"}
+,{"stream_name":"stdout","time":12814.393380178,"data":"[TASK] 28bf18c6 exact_match=True score=1.0000 program_len=3 (148/240)\n"}
+,{"stream_name":"stdout","time":12814.567621315,"data":"[TASK] 281123b4 exact_match=False score=0.0000 program_len=0 (147/240)\n"}
+,{"stream_name":"stdout","time":12814.567672635,"data":"[TASK] 28bf18c6 exact_match=True score=1.0000 program_len=3 (148/240)\n"}
+,{"stream_name":"stdout","time":12904.493272942,"data":"[TASK] 28e73c20 exact_match=False score=0.6203 program_len=9 (149/240)\n"}
+,{"stream_name":"stdout","time":12904.703078988,"data":"[TASK] 28e73c20 exact_match=False score=0.6203 program_len=9 (149/240)\n"}
+,{"stream_name":"stdout","time":12994.546762266,"data":"[TASK] 292dd178 exact_match=False score=0.8798 program_len=0 (150/240)\n"}
+,{"stream_name":"stdout","time":12994.756587953,"data":"[TASK] 292dd178 exact_match=False score=0.8798 program_len=0 (150/240)\n"}
+,{"stream_name":"stdout","time":13084.602497581,"data":"[TASK] 29623171 exact_match=False score=0.8815 program_len=2 (151/240)\n"}
+,{"stream_name":"stdout","time":13084.812766527,"data":"[TASK] 29623171 exact_match=False score=0.8815 program_len=2 (151/240)\n"}
+,{"stream_name":"stdout","time":13174.653100206,"data":"[TASK] 29700607 exact_match=False score=0.8136 program_len=0 (152/240)\n"}
+,{"stream_name":"stdout","time":13174.863018432,"data":"[TASK] 29700607 exact_match=False score=0.8136 program_len=0 (152/240)\n"}
+,{"stream_name":"stdout","time":13264.686428525,"data":"[TASK] 29c11459 exact_match=False score=0.8364 program_len=0 (153/240)\n"}
+,{"stream_name":"stdout","time":13264.896598301,"data":"[TASK] 29c11459 exact_match=False score=0.8364 program_len=0 (153/240)\n"}
+,{"stream_name":"stdout","time":13342.029751076,"data":"[TASK] 2a28add5 exact_match=False score=0.8100 program_len=10 (154/240)\n"}
+,{"stream_name":"stdout","time":13342.239541792,"data":"[TASK] 2a28add5 exact_match=False score=0.8100 program_len=10 (154/240)\n"}
+,{"stream_name":"stdout","time":13432.074807569,"data":"[TASK] 2a5f8217 exact_match=False score=0.9134 program_len=1 (155/240)\n"}
+,{"stream_name":"stdout","time":13432.285128335,"data":"[TASK] 2a5f8217 exact_match=False score=0.9134 program_len=1 (155/240)\n"}
+,{"stream_name":"stdout","time":13522.137584162,"data":"[TASK] 2b01abd0 exact_match=False score=0.8933 program_len=1 (156/240)\n"}
+,{"stream_name":"stdout","time":13522.348054078,"data":"[TASK] 2b01abd0 exact_match=False score=0.8933 program_len=1 (156/240)\n"}
+,{"stream_name":"stdout","time":13612.303836313,"data":"[TASK] 2b9ef948 exact_match=False score=0.5159 program_len=5 (157/240)\n"}
+,{"stream_name":"stdout","time":13612.514030729,"data":"[TASK] 2b9ef948 exact_match=False score=0.5159 program_len=5 (157/240)\n"}
+,{"stream_name":"stdout","time":13702.352318896,"data":"[TASK] 2bcee788 exact_match=False score=0.9575 program_len=1 (158/240)\n"}
+,{"stream_name":"stdout","time":13702.563031072,"data":"[TASK] 2bcee788 exact_match=False score=0.9575 program_len=1 (158/240)\n"}
+,{"stream_name":"stdout","time":13792.418051089,"data":"[TASK] 2bee17df exact_match=False score=0.7708 program_len=1 (159/240)\n"}
+,{"stream_name":"stdout","time":13792.628600495,"data":"[TASK] 2bee17df exact_match=False score=0.7708 program_len=1 (159/240)\n"}
+,{"stream_name":"stdout","time":13882.587155239,"data":"[TASK] 2c0b0aff exact_match=False score=0.0000 program_len=0 (160/240)\n"}
+,{"stream_name":"stdout","time":13882.804092945,"data":"[TASK] 2c0b0aff exact_match=False score=0.0000 program_len=0 (160/240)\n"}
+,{"stream_name":"stdout","time":13972.667502062,"data":"[TASK] 2c608aff exact_match=False score=0.9676 program_len=0 (161/240)\n"}
+,{"stream_name":"stdout","time":13972.885201878,"data":"[TASK] 2c608aff exact_match=False score=0.9676 program_len=0 (161/240)\n"}
+,{"stream_name":"stdout","time":14062.715407046,"data":"[TASK] 2c737e39 exact_match=False score=0.9324 program_len=0 (162/240)\n"}
+,{"stream_name":"stdout","time":14062.926423783,"data":"[TASK] 2c737e39 exact_match=False score=0.9324 program_len=0 (162/240)\n"}
+,{"stream_name":"stdout","time":14152.785570484,"data":"[TASK] 2ccd9fef exact_match=False score=0.0000 program_len=0 (163/240)\n"}
+,{"stream_name":"stdout","time":14152.99636769,"data":"[TASK] 2ccd9fef exact_match=False score=0.0000 program_len=0 (163/240)\n"}
+,{"stream_name":"stdout","time":14242.840516926,"data":"[TASK] 2dc579da exact_match=False score=0.6163 program_len=3 (164/240)\n"}
+,{"stream_name":"stdout","time":14243.051720372,"data":"[TASK] 2dc579da exact_match=False score=0.6163 program_len=3 (164/240)\n"}
+,{"stream_name":"stdout","time":14332.916887886,"data":"[TASK] 2dd70a9a exact_match=False score=0.9374 program_len=0 (165/240)\n"}
+,{"stream_name":"stdout","time":14333.128062183,"data":"[TASK] 2dd70a9a exact_match=False score=0.9374 program_len=0 (165/240)\n"}
+,{"stream_name":"stdout","time":14422.955777308,"data":"[TASK] 2de01db2 exact_match=False score=0.7667 program_len=2 (166/240)\n"}
+,{"stream_name":"stdout","time":14423.166379964,"data":"[TASK] 2de01db2 exact_match=False score=0.7667 program_len=2 (166/240)\n"}
+,{"stream_name":"stdout","time":14477.248946628,"data":"[TASK] 2dee498d exact_match=False score=0.0000 program_len=0 (167/240)\n"}
+,{"stream_name":"stdout","time":14477.459968254,"data":"[TASK] 2dee498d exact_match=False score=0.0000 program_len=0 (167/240)\n"}
+,{"stream_name":"stdout","time":14567.348491848,"data":"[TASK] 2e65ae53 exact_match=False score=0.8812 program_len=3 (168/240)\n"}
+,{"stream_name":"stdout","time":14567.559750235,"data":"[TASK] 2e65ae53 exact_match=False score=0.8812 program_len=3 (168/240)\n"}
+,{"stream_name":"stdout","time":14657.487787358,"data":"[TASK] 2f0c5170 exact_match=False score=0.0000 program_len=0 (169/240)\n"}
+,{"stream_name":"stdout","time":14657.699297485,"data":"[TASK] 2f0c5170 exact_match=False score=0.0000 program_len=0 (169/240)\n"}
+,{"stream_name":"stdout","time":14747.551709549,"data":"[TASK] 2f767503 exact_match=False score=0.9505 program_len=0 (170/240)\n"}
+,{"stream_name":"stdout","time":14747.762820225,"data":"[TASK] 2f767503 exact_match=False score=0.9505 program_len=0 (170/240)\n"}
+,{"stream_name":"stdout","time":14837.610400419,"data":"[TASK] 2faf500b exact_match=False score=0.8009 program_len=1 (171/240)\n"}
+,{"stream_name":"stdout","time":14837.821492016,"data":"[TASK] 2faf500b exact_match=False score=0.8009 program_len=1 (171/240)\n"}
+,{"stream_name":"stdout","time":14927.70528179,"data":"[TASK] 305b1341 exact_match=False score=0.6392 program_len=5 (172/240)\n"}
+,{"stream_name":"stdout","time":14927.916253936,"data":"[TASK] 305b1341 exact_match=False score=0.6392 program_len=5 (172/240)\n"}
+,{"stream_name":"stdout","time":15017.762634051,"data":"[TASK] 30f42897 exact_match=False score=0.8317 program_len=1 (173/240)\n"}
+,{"stream_name":"stdout","time":15017.979253867,"data":"[TASK] 30f42897 exact_match=False score=0.8317 program_len=1 (173/240)\n"}
+,{"stream_name":"stdout","time":15107.807509152,"data":"[TASK] 310f3251 exact_match=False score=0.8743 program_len=1 (174/240)\n"}
+,{"stream_name":"stdout","time":15108.018653088,"data":"[TASK] 310f3251 exact_match=False score=0.8743 program_len=1 (174/240)\n"}
+,{"stream_name":"stdout","time":15197.933196102,"data":"[TASK] 3194b014 exact_match=False score=0.0000 program_len=0 (175/240)\n"}
+,{"stream_name":"stdout","time":15198.143921518,"data":"[TASK] 3194b014 exact_match=False score=0.0000 program_len=0 (175/240)\n"}
+,{"stream_name":"stdout","time":15288.07027955,"data":"[TASK] 319f2597 exact_match=False score=0.8442 program_len=0 (176/240)\n"}
+,{"stream_name":"stdout","time":15288.280733426,"data":"[TASK] 319f2597 exact_match=False score=0.8442 program_len=0 (176/240)\n"}
+,{"stream_name":"stdout","time":15378.127706666,"data":"[TASK] 31aa019c exact_match=False score=0.9100 program_len=1 (177/240)\n"}
+,{"stream_name":"stdout","time":15378.338332252,"data":"[TASK] 31aa019c exact_match=False score=0.9100 program_len=1 (177/240)\n"}
+,{"stream_name":"stdout","time":15468.181289691,"data":"[TASK] 31adaf00 exact_match=False score=0.7600 program_len=0 (178/240)\n"}
+,{"stream_name":"stdout","time":15468.392646417,"data":"[TASK] 31adaf00 exact_match=False score=0.7600 program_len=0 (178/240)\n"}
+,{"stream_name":"stdout","time":15558.259589655,"data":"[TASK] 31d5ba1a exact_match=False score=0.2667 program_len=10 (179/240)\n"}
+,{"stream_name":"stdout","time":15558.471187892,"data":"[TASK] 31d5ba1a exact_match=False score=0.2667 program_len=10 (179/240)\n"}
+,{"stream_name":"stdout","time":15648.405691299,"data":"[TASK] 320afe60 exact_match=False score=0.8974 program_len=1 (180/240)\n"}
+,{"stream_name":"stdout","time":15648.617069706,"data":"[TASK] 320afe60 exact_match=False score=0.8974 program_len=1 (180/240)\n"}
+,{"stream_name":"stdout","time":15738.452363324,"data":"[TASK] 321b1fc6 exact_match=False score=0.8950 program_len=2 (181/240)\n"}
+,{"stream_name":"stdout","time":15738.663789581,"data":"[TASK] 321b1fc6 exact_match=False score=0.8950 program_len=2 (181/240)\n"}
+,{"stream_name":"stdout","time":15828.545960759,"data":"[TASK] 32597951 exact_match=False score=0.9642 program_len=0 (182/240)\n"}
+,{"stream_name":"stdout","time":15828.757362806,"data":"[TASK] 32597951 exact_match=False score=0.9642 program_len=0 (182/240)\n"}
+,{"stream_name":"stdout","time":15918.592066875,"data":"[TASK] 32e9702f exact_match=False score=0.9081 program_len=1 (183/240)\n"}
+,{"stream_name":"stdout","time":15918.803166701,"data":"[TASK] 32e9702f exact_match=False score=0.9081 program_len=1 (183/240)\n"}
+,{"stream_name":"stdout","time":16008.63954689,"data":"[TASK] 33067df9 exact_match=False score=0.0000 program_len=0 (184/240)\n"}
+,{"stream_name":"stdout","time":16008.850799687,"data":"[TASK] 33067df9 exact_match=False score=0.0000 program_len=0 (184/240)\n"}
+,{"stream_name":"stdout","time":16098.737854616,"data":"[TASK] 332202d5 exact_match=False score=0.3919 program_len=2 (185/240)\n"}
+,{"stream_name":"stdout","time":16098.949059623,"data":"[TASK] 332202d5 exact_match=False score=0.3919 program_len=2 (185/240)\n"}
+,{"stream_name":"stdout","time":16188.779568837,"data":"[TASK] 332efdb3 exact_match=False score=0.8196 program_len=1 (186/240)\n"}
+,{"stream_name":"stdout","time":16188.990809143,"data":"[TASK] 332efdb3 exact_match=False score=0.8196 program_len=1 (186/240)\n"}
+,{"stream_name":"stdout","time":16278.872185121,"data":"[TASK] 3345333e exact_match=False score=0.9727 program_len=7 (187/240)\n"}
+,{"stream_name":"stdout","time":16279.083722957,"data":"[TASK] 3345333e exact_match=False score=0.9727 program_len=7 (187/240)\n"}
+,{"stream_name":"stdout","time":16368.948108957,"data":"[TASK] 337b420f exact_match=False score=0.0600 program_len=10 (188/240)\n"}
+,{"stream_name":"stdout","time":16369.159285083,"data":"[TASK] 337b420f exact_match=False score=0.0600 program_len=10 (188/240)\n"}
+,{"stream_name":"stdout","time":16459.021529668,"data":"[TASK] 3391f8c0 exact_match=False score=0.8644 program_len=1 (189/240)\n"}
+,{"stream_name":"stdout","time":16459.232856145,"data":"[TASK] 3391f8c0 exact_match=False score=0.8644 program_len=1 (189/240)\n"}
+,{"stream_name":"stdout","time":16549.12255419,"data":"[TASK] 33b52de3 exact_match=False score=0.8932 program_len=1 (190/240)\n"}
+,{"stream_name":"stdout","time":16549.333973947,"data":"[TASK] 33b52de3 exact_match=False score=0.8932 program_len=1 (190/240)\n"}
+,{"stream_name":"stdout","time":16639.182210222,"data":"[TASK] 3428a4f5 exact_match=False score=0.0000 program_len=0 (191/240)\n"}
+,{"stream_name":"stdout","time":16639.394000049,"data":"[TASK] 3428a4f5 exact_match=False score=0.0000 program_len=0 (191/240)\n"}
+,{"stream_name":"stdout","time":16729.275170724,"data":"[TASK] 342ae2ed exact_match=False score=0.9453 program_len=0 (192/240)\n"}
+,{"stream_name":"stdout","time":16729.486640361,"data":"[TASK] 342ae2ed exact_match=False score=0.9453 program_len=0 (192/240)\n"}
+,{"stream_name":"stdout","time":16819.365204256,"data":"[TASK] 342dd610 exact_match=False score=0.9825 program_len=11 (193/240)\n"}
+,{"stream_name":"stdout","time":16819.576624432,"data":"[TASK] 342dd610 exact_match=False score=0.9825 program_len=11 (193/240)\n"}
+,{"stream_name":"stdout","time":16909.509130457,"data":"[TASK] 3490cc26 exact_match=False score=0.9124 program_len=0 (194/240)\n"}
+,{"stream_name":"stdout","time":16909.720376753,"data":"[TASK] 3490cc26 exact_match=False score=0.9124 program_len=0 (194/240)\n"}
+,{"stream_name":"stdout","time":16999.562043279,"data":"[TASK] 34b99a2b exact_match=False score=0.0000 program_len=0 (195/240)\n"}
+,{"stream_name":"stdout","time":16999.774299196,"data":"[TASK] 34b99a2b exact_match=False score=0.0000 program_len=0 (195/240)\n"}
+,{"stream_name":"stdout","time":17089.648034561,"data":"[TASK] 34cfa167 exact_match=False score=0.7751 program_len=1 (196/240)\n"}
+,{"stream_name":"stdout","time":17089.859407028,"data":"[TASK] 34cfa167 exact_match=False score=0.7751 program_len=1 (196/240)\n"}
+,{"stream_name":"stdout","time":17179.706751153,"data":"[TASK] 351d6448 exact_match=False score=0.0000 program_len=0 (197/240)\n"}
+,{"stream_name":"stdout","time":17179.91851629,"data":"[TASK] 351d6448 exact_match=False score=0.0000 program_len=0 (197/240)\n"}
+,{"stream_name":"stdout","time":17269.838957714,"data":"[TASK] 358ba94e exact_match=False score=0.2200 program_len=2 (198/240)\n"}
+,{"stream_name":"stdout","time":17270.050292871,"data":"[TASK] 358ba94e exact_match=False score=0.2200 program_len=2 (198/240)\n"}
+,{"stream_name":"stdout","time":17359.891860442,"data":"[TASK] 3618c87e exact_match=False score=0.9333 program_len=1 (199/240)\n"}
+,{"stream_name":"stdout","time":17360.103610149,"data":"[TASK] 3618c87e exact_match=False score=0.9333 program_len=1 (199/240)\n"}
+,{"stream_name":"stdout","time":17449.96288283,"data":"[TASK] 363442ee exact_match=False score=0.6809 program_len=1 (200/240)\n"}
+,{"stream_name":"stdout","time":17450.174591527,"data":"[TASK] 363442ee exact_match=False score=0.6809 program_len=1 (200/240)\n"}
+,{"stream_name":"stdout","time":17540.039611829,"data":"[TASK] 36d67576 exact_match=False score=0.9527 program_len=0 (201/240)\n"}
+,{"stream_name":"stdout","time":17540.251022816,"data":"[TASK] 36d67576 exact_match=False score=0.9527 program_len=0 (201/240)\n"}
+,{"stream_name":"stdout","time":17630.136423827,"data":"[TASK] 36fdfd69 exact_match=False score=0.9489 program_len=0 (202/240)\n"}
+,{"stream_name":"stdout","time":17630.347966184,"data":"[TASK] 36fdfd69 exact_match=False score=0.9489 program_len=0 (202/240)\n"}
+,{"stream_name":"stdout","time":17720.185607185,"data":"[TASK] 37ce87bb exact_match=False score=0.9372 program_len=0 (203/240)\n"}
+,{"stream_name":"stdout","time":17720.397287272,"data":"[TASK] 37ce87bb exact_match=False score=0.9372 program_len=0 (203/240)\n"}
+,{"stream_name":"stdout","time":17810.278305773,"data":"[TASK] 37d3e8b2 exact_match=False score=0.7437 program_len=1 (204/240)\n"}
+,{"stream_name":"stdout","time":17810.49065009,"data":"[TASK] 37d3e8b2 exact_match=False score=0.7437 program_len=1 (204/240)\n"}
+,{"stream_name":"stdout","time":17900.332612462,"data":"[TASK] 3906de3d exact_match=False score=0.9333 program_len=1 (205/240)\n"}
+,{"stream_name":"stdout","time":17900.544361069,"data":"[TASK] 3906de3d exact_match=False score=0.9333 program_len=1 (205/240)\n"}
+,{"stream_name":"stdout","time":17990.401368671,"data":"[TASK] 396d80d7 exact_match=False score=0.9473 program_len=0 (206/240)\n"}
+,{"stream_name":"stdout","time":17990.613271108,"data":"[TASK] 396d80d7 exact_match=False score=0.9473 program_len=0 (206/240)\n"}
+,{"stream_name":"stdout","time":18051.947331202,"data":"[TASK] 3979b1a8 exact_match=False score=0.4250 program_len=2 (207/240)\n"}
+,{"stream_name":"stdout","time":18052.174202908,"data":"[TASK] 3979b1a8 exact_match=False score=0.4250 program_len=2 (207/240)\n"}
+,{"stream_name":"stdout","time":18142.018399263,"data":"[TASK] 39a8645d exact_match=False score=0.0000 program_len=0 (208/240)\n"}
+,{"stream_name":"stdout","time":18142.2300929,"data":"[TASK] 39a8645d exact_match=False score=0.0000 program_len=0 (208/240)\n"}
+,{"stream_name":"stdout","time":18232.212499006,"data":"[TASK] 39e1d7f9 exact_match=False score=0.9023 program_len=0 (209/240)\n"}
+,{"stream_name":"stdout","time":18232.424732502,"data":"[TASK] 39e1d7f9 exact_match=False score=0.9023 program_len=0 (209/240)\n"}
+,{"stream_name":"stdout","time":18322.307186363,"data":"[TASK] 3a301edc exact_match=False score=0.7664 program_len=1 (210/240)\n"}
+,{"stream_name":"stdout","time":18322.51894006,"data":"[TASK] 3a301edc exact_match=False score=0.7664 program_len=1 (210/240)\n"}
+,{"stream_name":"stdout","time":18412.352265077,"data":"[TASK] 3aa6fb7a exact_match=False score=0.9490 program_len=0 (211/240)\n"}
+,{"stream_name":"stdout","time":18412.564218095,"data":"[TASK] 3aa6fb7a exact_match=False score=0.9490 program_len=0 (211/240)\n"}
+,{"stream_name":"stdout","time":18502.393494162,"data":"[TASK] 3ac3eb23 exact_match=False score=0.7714 program_len=0 (212/240)\n"}
+,{"stream_name":"stdout","time":18502.60539503,"data":"[TASK] 3ac3eb23 exact_match=False score=0.7714 program_len=0 (212/240)\n"}
+,{"stream_name":"stdout","time":18592.541912466,"data":"[TASK] 3ad05f52 exact_match=False score=0.7947 program_len=0 (213/240)\n"}
+,{"stream_name":"stdout","time":18592.753891765,"data":"[TASK] 3ad05f52 exact_match=False score=0.7947 program_len=0 (213/240)\n"}
+,{"stream_name":"stdout","time":18679.748982445,"data":"[TASK] 3af2c5a8 exact_match=False score=0.8333 program_len=2 (214/240)\n"}
+,{"stream_name":"stdout","time":18679.960848864,"data":"[TASK] 3af2c5a8 exact_match=False score=0.8333 program_len=2 (214/240)\n"}
+,{"stream_name":"stdout","time":18769.81632215,"data":"[TASK] 3b4c2228 exact_match=False score=0.1556 program_len=5 (215/240)\n"}
+,{"stream_name":"stdout","time":18770.034503419,"data":"[TASK] 3b4c2228 exact_match=False score=0.1556 program_len=5 (215/240)\n"}
+,{"stream_name":"stdout","time":18859.873974676,"data":"[TASK] 3bd292e8 exact_match=False score=0.8414 program_len=2 (216/240)\n"}
+,{"stream_name":"stdout","time":18860.086294335,"data":"[TASK] 3bd292e8 exact_match=False score=0.8414 program_len=2 (216/240)\n"}
+,{"stream_name":"stdout","time":18949.924223851,"data":"[TASK] 3bd67248 exact_match=False score=0.7409 program_len=5 (217/240)\n"}
+,{"stream_name":"stdout","time":18950.136170719,"data":"[TASK] 3bd67248 exact_match=False score=0.7409 program_len=5 (217/240)\n"}
+,{"stream_name":"stdout","time":19039.996415505,"data":"[TASK] 3bdb4ada exact_match=False score=0.9302 program_len=0 (218/240)\n"}
+,{"stream_name":"stdout","time":19040.208651295,"data":"[TASK] 3bdb4ada exact_match=False score=0.9302 program_len=0 (218/240)\n"}
+,{"stream_name":"stdout","time":19130.047135041,"data":"[TASK] 3befdf3e exact_match=False score=0.7567 program_len=3 (219/240)\n"}
+,{"stream_name":"stdout","time":19130.08786366,"data":"[TASK] 3c9b0459 exact_match=True score=1.0000 program_len=1 (220/240)\n"}
+,{"stream_name":"stdout","time":19130.259212249,"data":"[TASK] 3befdf3e exact_match=False score=0.7567 program_len=3 (219/240)\n"}
+,{"stream_name":"stdout","time":19130.25925336,"data":"[TASK] 3c9b0459 exact_match=True score=1.0000 program_len=1 (220/240)\n"}
+,{"stream_name":"stdout","time":19196.009186255,"data":"[TASK] 3cd86f4f exact_match=False score=0.0000 program_len=0 (221/240)\n"}
+,{"stream_name":"stdout","time":19196.221208544,"data":"[TASK] 3cd86f4f exact_match=False score=0.0000 program_len=0 (221/240)\n"}
+,{"stream_name":"stdout","time":19286.10369725,"data":"[TASK] 3d31c5b3 exact_match=False score=0.0000 program_len=0 (222/240)\n"}
+,{"stream_name":"stdout","time":19286.316317019,"data":"[TASK] 3d31c5b3 exact_match=False score=0.0000 program_len=0 (222/240)\n"}
+,{"stream_name":"stdout","time":19376.176168845,"data":"[TASK] 3d588dc9 exact_match=False score=0.9785 program_len=0 (223/240)\n"}
+,{"stream_name":"stdout","time":19376.388355224,"data":"[TASK] 3d588dc9 exact_match=False score=0.9785 program_len=0 (223/240)\n"}
+,{"stream_name":"stdout","time":19466.246868363,"data":"[TASK] 3d6c6e23 exact_match=False score=0.9621 program_len=1 (224/240)\n"}
+,{"stream_name":"stdout","time":19466.46977612,"data":"[TASK] 3d6c6e23 exact_match=False score=0.9621 program_len=1 (224/240)\n"}
+,{"stream_name":"stdout","time":19556.317609509,"data":"[TASK] 3de23699 exact_match=False score=0.0000 program_len=0 (225/240)\n"}
+,{"stream_name":"stdout","time":19556.529615826,"data":"[TASK] 3de23699 exact_match=False score=0.0000 program_len=0 (225/240)\n"}
+,{"stream_name":"stdout","time":19646.387118566,"data":"[TASK] 3e980e27 exact_match=False score=0.9497 program_len=0 (226/240)\n"}
+,{"stream_name":"stdout","time":19646.599827403,"data":"[TASK] 3e980e27 exact_match=False score=0.9497 program_len=0 (226/240)\n"}
+,{"stream_name":"stdout","time":19736.456610502,"data":"[TASK] 3eda0437 exact_match=False score=0.8684 program_len=0 (227/240)\n"}
+,{"stream_name":"stdout","time":19736.676111719,"data":"[TASK] 3eda0437 exact_match=False score=0.8684 program_len=0 (227/240)\n"}
+,{"stream_name":"stdout","time":19826.567993568,"data":"[TASK] 3ee1011a exact_match=False score=0.0000 program_len=0 (228/240)\n"}
+,{"stream_name":"stdout","time":19826.781410655,"data":"[TASK] 3ee1011a exact_match=False score=0.0000 program_len=0 (228/240)\n"}
+,{"stream_name":"stdout","time":19916.625590234,"data":"[TASK] 3f23242b exact_match=False score=0.7806 program_len=0 (229/240)\n"}
+,{"stream_name":"stdout","time":19916.844890491,"data":"[TASK] 3f23242b exact_match=False score=0.7806 program_len=0 (229/240)\n"}
+,{"stream_name":"stdout","time":20006.685843001,"data":"[TASK] 3f7978a0 exact_match=False score=0.0000 program_len=0 (230/240)\n"}
+,{"stream_name":"stdout","time":20006.906013698,"data":"[TASK] 3f7978a0 exact_match=False score=0.0000 program_len=0 (230/240)\n"}
+,{"stream_name":"stdout","time":20096.769130098,"data":"[TASK] 4093f84a exact_match=False score=0.9541 program_len=1 (231/240)\n"}
+,{"stream_name":"stdout","time":20096.981394055,"data":"[TASK] 4093f84a exact_match=False score=0.9541 program_len=1 (231/240)\n"}
+,{"stream_name":"stdout","time":20186.966145785,"data":"[TASK] 40f6cd08 exact_match=False score=0.9046 program_len=0 (232/240)\n"}
+,{"stream_name":"stdout","time":20187.178276542,"data":"[TASK] 40f6cd08 exact_match=False score=0.9046 program_len=0 (232/240)\n"}
+,{"stream_name":"stdout","time":20277.018388421,"data":"[TASK] 412b6263 exact_match=False score=0.0000 program_len=0 (233/240)\n"}
+,{"stream_name":"stdout","time":20277.230874797,"data":"[TASK] 412b6263 exact_match=False score=0.0000 program_len=0 (233/240)\n"}
+,{"stream_name":"stdout","time":20367.113775736,"data":"[TASK] 414297c0 exact_match=False score=0.0000 program_len=0 (234/240)\n"}
+,{"stream_name":"stdout","time":20367.332650883,"data":"[TASK] 414297c0 exact_match=False score=0.0000 program_len=0 (234/240)\n"}
+,{"stream_name":"stdout","time":20457.183586432,"data":"[TASK] 41ace6b5 exact_match=False score=0.7335 program_len=1 (235/240)\n"}
+,{"stream_name":"stdout","time":20457.396323099,"data":"[TASK] 41ace6b5 exact_match=False score=0.7335 program_len=1 (235/240)\n"}
+,{"stream_name":"stdout","time":20547.252677242,"data":"[TASK] 41e4d17e exact_match=False score=0.8378 program_len=0 (236/240)\n"}
+,{"stream_name":"stdout","time":20547.471581088,"data":"[TASK] 41e4d17e exact_match=False score=0.8378 program_len=0 (236/240)\n"}
+,{"stream_name":"stdout","time":20637.332966541,"data":"[TASK] 423a55dc exact_match=False score=0.8952 program_len=2 (237/240)\n"}
+,{"stream_name":"stdout","time":20637.551451158,"data":"[TASK] 423a55dc exact_match=False score=0.8952 program_len=2 (237/240)\n"}
+,{"stream_name":"stdout","time":20727.382258621,"data":"[TASK] 4258a5f9 exact_match=False score=0.6543 program_len=0 (238/240)\n"}
+,{"stream_name":"stdout","time":20727.594838697,"data":"[TASK] 4258a5f9 exact_match=False score=0.6543 program_len=0 (238/240)\n"}
+,{"stream_name":"stdout","time":20817.503092569,"data":"[TASK] 4290ef0e exact_match=False score=0.0000 program_len=0 (239/240)\n"}
+,{"stream_name":"stdout","time":20817.724141066,"data":"[TASK] 4290ef0e exact_match=False score=0.0000 program_len=0 (239/240)\n"}
+,{"stream_name":"stdout","time":20907.647191767,"data":"[TASK] 42918530 exact_match=False score=0.9694 program_len=0 (240/240)\n"}
+,{"stream_name":"stdout","time":20907.700866937,"data":"[SUCCESS] Saved validated submission to /kaggle/working/submission.json\n"}
+,{"stream_name":"stdout","time":20907.864593744,"data":"[TASK] 42918530 exact_match=False score=0.9694 program_len=0 (240/240)\n"}
+,{"stream_name":"stdout","time":20907.864638374,"data":"[SUCCESS] Saved validated submission to /kaggle/working/submission.json\n"}
+,{"stream_name":"stdout","time":20908.211943359,"data":"=== 6. POST-FLIGHT SUBMISSION AUDIT ===\n"}
+,{"stream_name":"stdout","time":20908.695236832,"data":"SUCCESS: validated 240 tasks at /kaggle/working/submission.json\n"}
+,{"stream_name":"stderr","time":20911.848793615,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":20911.848836445,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":20912.026922212,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":20912.026947192,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":20912.743407601,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":20913.017563547,"data":"[NbConvertApp] Writing 33811 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":20915.423544991,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":20916.18056553,"data":"[NbConvertApp] Writing 314336 bytes to __results__.html\n"}
+]

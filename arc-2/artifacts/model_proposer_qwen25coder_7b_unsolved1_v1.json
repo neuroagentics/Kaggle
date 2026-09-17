@@ -1,0 +1,21 @@
+{
+  "partition": "nested-validation-prefix-diagnostic",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "selection": "production-unsolved",
+  "tasks": 1,
+  "max_candidates": 4,
+  "exact_fit_tasks": 0,
+  "exact_hypotheses": 0,
+  "requested_programs": 0,
+  "parsed_programs": 0,
+  "rejections": {},
+  "rejection_details": [],
+  "model_pass_at_2": 0,
+  "production_pass_at_2": 0,
+  "model_unique_vs_production": 0,
+  "failures": {
+    "Model content is not valid JSON: Expecting value: line 20 column 59 (char 1297)": 1
+  },
+  "elapsed_seconds": 47.32267839999986
+}

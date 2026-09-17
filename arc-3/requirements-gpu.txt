@@ -1,0 +1,34 @@
+# ARC-AGI-3 — LOCAL GPU DEVELOPMENT dependencies.
+#
+# For a developer machine WITH an NVIDIA GPU + CUDA toolkit (e.g. RTX 3060).
+# This is the stack that actually trains the simulator and runs the 4-bit
+# deliberator locally. Verified working on: RTX 3060 (12 GiB), driver 616.56,
+# CUDA UMD 13.4, Windows.
+#
+# NOTE: this is still a LOCAL dev stack, not the Kaggle bundle. On Kaggle the
+# notebook uses the base image's CUDA PyTorch; pin the exact Kaggle torch/CUDA
+# tuple only after the G8 rehearsal (see requirements-kaggle.txt, blueprint §7).
+#
+# Install:
+#   .venv/Scripts/python.exe -m pip install torch --index-url https://download.pytorch.org/whl/cu121
+#   .venv/Scripts/python.exe -m pip install -r requirements-gpu.txt
+#
+# (torch is installed separately from the cu121 index; the versions below are
+#  what was verified in slice 9.)
+
+# Runtime deps shared with Kaggle (kept in sync with `make setup`):
+arc-agi>=0.9.6
+kaggle>=2.2
+python-dotenv
+pandas
+pyarrow
+
+# CUDA PyTorch — install from the cu121 index (see command above), verified:
+#   torch==2.5.1+cu121
+# Deliberator (R11) 4-bit stack — requires CUDA:
+transformers>=4.44
+accelerate>=0.33
+bitsandbytes>=0.43
+
+# Weight download utility (R11):
+huggingface_hub>=1.0

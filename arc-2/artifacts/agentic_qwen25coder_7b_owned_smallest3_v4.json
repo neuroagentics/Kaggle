@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 3,
+  "rounds": 2,
+  "candidates_per_round": 4,
+  "ordering": "smallest",
+  "demonstration_exact_tasks": 0,
+  "full_task_exact_pass_at_2": 0,
+  "unique_vs_owned_production": 0,
+  "candidates_generated": 24,
+  "candidates_executed": 5,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 8,
+      "executed": 4,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:non-exact:12:Mirror the input grid horizontally and then replace each 4 with 8 and each 3 with 9.",
+        "r0c1:non-exact:12:Mirror the input grid vertically and then replace each 4 with 8 and each 3 with 9.",
+        "r0c2:non-exact:12:Mirror the input grid horizontally and then replace each 4 with 8 and each 3 with 9, but only if the",
+        "r0c3:non-exact:12:Mirror the input grid vertically and then replace each 4 with 8 and each 3 with 9, but only if the i",
+        "r1c0:ValueError:method is not allowed: replace",
+        "r1c1:ValueError:method is not allowed: replace",
+        "r1c2:ValueError:method is not allowed: replace",
+        "r1c3:ValueError:method is not allowed: replace"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "44f52bb0",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 8,
+      "executed": 1,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:non-exact:6:Mirror the input grid horizontally and then take the top-left element.",
+        "r0c1:duplicate",
+        "r0c2:duplicate",
+        "r0c3:duplicate",
+        "r1c0:ValueError:worker returned an invalid ARC grid",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r1c3:ValueError:worker returned an invalid ARC grid"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "a85d4709",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 8,
+      "executed": 0,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:attribute is not allowed: get",
+        "r0c1:ValueError:attribute is not allowed: get",
+        "r0c2:ValueError:attribute is not allowed: get",
+        "r0c3:ValueError:attribute is not allowed: get",
+        "r1c0:ValueError:worker returned an invalid ARC grid",
+        "r1c1:ValueError:worker returned an invalid ARC grid",
+        "r1c2:ValueError:worker returned an invalid ARC grid",
+        "r1c3:ValueError:worker returned an invalid ARC grid"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 86.40734050000901,
+  "telemetry": {
+    "wall_seconds": 86.40730500000063,
+    "cpu_seconds": 14.140625,
+    "peak_rss_bytes": 250806272,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

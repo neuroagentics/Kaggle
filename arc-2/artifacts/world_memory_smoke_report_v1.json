@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "builder_tasks": 10,
+  "builder_fold_total": 640,
+  "diagnostic_limit": 10,
+  "fit_tasks": 1,
+  "recursive_fit_tasks": 0,
+  "memory_programs": 4,
+  "source_counts": {
+    "object-world": 4
+  },
+  "memory_path": "artifacts\\world_memory_smoke_v1.json",
+  "elapsed_seconds": 3.494487099997059
+}

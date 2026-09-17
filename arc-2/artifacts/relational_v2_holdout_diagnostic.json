@@ -1,0 +1,55 @@
+{
+  "partition": "holdout",
+  "partition_sha256": "c517d5be39fb9a47df876d363db87b72e745721f38d9a10ddd9c1935d67bb064",
+  "tasks": 200,
+  "outputs": 210,
+  "design_cases_present": [],
+  "relational_fit_tasks": 0,
+  "relational_candidate_count": 0,
+  "production_pass_at_2": 69,
+  "relational_pass_at_2": 0,
+  "combined_pass_at_2": 69,
+  "combined_unique": [],
+  "combined_regressions": [],
+  "non_design_tasks": 200,
+  "non_design_relational_fits": 0,
+  "non_design_combined_unique": [],
+  "combined_distinct_attempt_outputs": 86,
+  "combined_attempt_diversity_rate": 0.4095238095238095,
+  "family_metrics": {
+    "contract": {
+      "tasks": 38,
+      "production_pass_at_2": 16,
+      "relational_pass_at_2": 0,
+      "combined_pass_at_2": 16
+    },
+    "expand": {
+      "tasks": 12,
+      "production_pass_at_2": 9,
+      "relational_pass_at_2": 0,
+      "combined_pass_at_2": 9
+    },
+    "mixed-demonstrations": {
+      "tasks": 2,
+      "production_pass_at_2": 0,
+      "relational_pass_at_2": 0,
+      "combined_pass_at_2": 0
+    },
+    "same-size": {
+      "tasks": 148,
+      "production_pass_at_2": 44,
+      "relational_pass_at_2": 0,
+      "combined_pass_at_2": 44
+    }
+  },
+  "telemetry": {
+    "wall_seconds": 74.14439879999918,
+    "cpu_seconds": 73.28125,
+    "peak_rss_bytes": 284545024,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

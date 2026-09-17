@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "builder_tasks": 640,
+  "builder_fold_total": 640,
+  "diagnostic_limit": null,
+  "fit_tasks": 19,
+  "recursive_fit_tasks": 15,
+  "memory_programs": 47,
+  "source_counts": {
+    "object-world": 29,
+    "world-prior": 18
+  },
+  "memory_path": "hyper_arc\\world_memory_v1.json",
+  "elapsed_seconds": 291.7077122999981
+}

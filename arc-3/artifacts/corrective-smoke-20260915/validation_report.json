@@ -1,0 +1,59 @@
+{
+  "model_version": "corrective-v2-smoke",
+  "holdout_games": [
+    "cd82"
+  ],
+  "train_games": [
+    "ar25",
+    "bp35"
+  ],
+  "horizons": [
+    1,
+    2,
+    4
+  ],
+  "steps": [
+    {
+      "horizon": 1,
+      "n_transitions": 12,
+      "model_changed_error": 0.9931448157669237,
+      "persistence_changed_error": 1.0,
+      "model_overall_error": 0.9595743815104166,
+      "persistence_overall_error": 0.02374267578125
+    },
+    {
+      "horizon": 2,
+      "n_transitions": 12,
+      "model_changed_error": 0.9965841161400513,
+      "persistence_changed_error": 1.0,
+      "model_overall_error": 0.963623046875,
+      "persistence_overall_error": 0.023824055989583332
+    },
+    {
+      "horizon": 4,
+      "n_transitions": 8,
+      "model_changed_error": 0.9957894736842106,
+      "persistence_changed_error": 1.0,
+      "model_overall_error": 0.96392822265625,
+      "persistence_overall_error": 0.02899169921875
+    }
+  ],
+  "summary": {
+    "h1": {
+      "model_changed_err": 0.9931,
+      "persistence_changed_err": 1.0,
+      "beats_persistence": true
+    },
+    "h2": {
+      "model_changed_err": 0.9966,
+      "persistence_changed_err": 1.0,
+      "beats_persistence": true
+    },
+    "h4": {
+      "model_changed_err": 0.9958,
+      "persistence_changed_err": 1.0,
+      "beats_persistence": true
+    }
+  },
+  "note": "Changed-cell error is the primary metric. A credible simulator beats persistence on changed cells at multi-step horizons."
+}

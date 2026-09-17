@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "gemma4:latest",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 1,
+  "rounds": 2,
+  "candidates_per_round": 4,
+  "ordering": "smallest",
+  "thinking": false,
+  "demonstration_exact_tasks": 1,
+  "full_task_exact_pass_at_2": 1,
+  "unique_vs_owned_production": 1,
+  "candidates_generated": 4,
+  "candidates_executed": 1,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": true,
+      "test_exact": true,
+      "rounds": 1,
+      "generated": 4,
+      "executed": 1,
+      "hypotheses": [
+        {
+          "digest": "975adc53e882b881f61acb9b43504bb16d9d3514c418b3b785333d64c9aacb5b",
+          "summary": "The output grid alternates colors from the input grid's top row and bottom row, starting with the top row's color in the first column, and repeating this pattern across all columns. Specifically, for column $j$, the top cell (row 0) takes the color from the top row of the input at column $j$ (Input[0][j]), and the bottom cell (row 1) takes the color from the bottom row of the input at column $j$ (Input[1][j]).",
+          "complexity": 129,
+          "round": 0
+        }
+      ],
+      "rejections": [
+        "r0c1:duplicate",
+        "r0c2:duplicate",
+        "r0c3:duplicate"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 74.83216679999896,
+  "telemetry": {
+    "wall_seconds": 74.83212239999557,
+    "cpu_seconds": 11.859375,
+    "peak_rss_bytes": 249303040,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

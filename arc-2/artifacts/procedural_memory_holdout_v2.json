@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "partition": "holdout",
+  "evaluated_tasks": 200,
+  "bank_id": "0620b8e1686d357411c2fb7d9bbbb1a5f125bede7c769012475623fffd9b6e20",
+  "default_pass_at_2": 8,
+  "memory_ranked_pass_at_2": 8,
+  "oracle_any_exact_candidate": 8,
+  "memory_unique": [],
+  "memory_regressions": [],
+  "default_solved": {
+    "c9e6f938": [
+      "hcat-identity-reflect_vertical",
+      "input-fallback"
+    ],
+    "f25fbde4": [
+      "crop0+identity+upscale2",
+      "input-fallback"
+    ],
+    "c59eb873": [
+      "identity+upscale2",
+      "input-fallback"
+    ],
+    "b1948b0a": [
+      "identity+remap",
+      "input-fallback"
+    ],
+    "d511f180": [
+      "identity+remap",
+      "input-fallback"
+    ],
+    "0d3d703e": [
+      "identity+remap",
+      "input-fallback"
+    ],
+    "3c9b0459": [
+      "input-fallback",
+      "rotate180"
+    ],
+    "28bf18c6": [
+      "crop0+identity+tile1x2",
+      "input-fallback"
+    ]
+  },
+  "memory_solved": {
+    "c9e6f938": [
+      "hcat-identity-reflect_vertical",
+      "input-fallback"
+    ],
+    "f25fbde4": [
+      "crop0+identity+upscale2",
+      "input-fallback"
+    ],
+    "c59eb873": [
+      "identity+upscale2",
+      "input-fallback"
+    ],
+    "b1948b0a": [
+      "identity+remap",
+      "input-fallback"
+    ],
+    "d511f180": [
+      "identity+remap",
+      "input-fallback"
+    ],
+    "0d3d703e": [
+      "identity+remap",
+      "input-fallback"
+    ],
+    "3c9b0459": [
+      "input-fallback",
+      "rotate180"
+    ],
+    "28bf18c6": [
+      "crop0+identity+tile1x2",
+      "input-fallback"
+    ]
+  },
+  "oracle_solved": {
+    "c9e6f938": [
+      "hcat-identity-reflect_vertical"
+    ],
+    "f25fbde4": [
+      "crop0+identity+upscale2"
+    ],
+    "c59eb873": [
+      "identity+upscale2"
+    ],
+    "b1948b0a": [
+      "identity+remap"
+    ],
+    "d511f180": [
+      "identity+remap"
+    ],
+    "0d3d703e": [
+      "identity+remap"
+    ],
+    "3c9b0459": [
+      "rotate180"
+    ],
+    "28bf18c6": [
+      "crop0+identity+tile1x2"
+    ]
+  },
+  "elapsed_seconds": 38.296896899992134
+}

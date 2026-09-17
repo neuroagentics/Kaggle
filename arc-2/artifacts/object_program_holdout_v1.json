@@ -1,0 +1,23 @@
+{
+  "partition": "holdout",
+  "partition_sha256": "c517d5be39fb9a47df876d363db87b72e745721f38d9a10ddd9c1935d67bb064",
+  "builder_tasks": 640,
+  "validation_tasks": 160,
+  "holdout_tasks": 200,
+  "evaluated_tasks": 200,
+  "diagnostic_limit": null,
+  "object_fit_tasks": 1,
+  "object_candidate_count": 1,
+  "baseline_pass_at_2": 7,
+  "object_first_pass_at_2": 8,
+  "stable_object_pass_at_2": 8,
+  "object_first_unique": 1,
+  "object_first_regressions": 0,
+  "stable_object_unique": 1,
+  "stable_object_regressions": 0,
+  "production_pass_at_2": 69,
+  "production_stable_object_pass_at_2": 69,
+  "production_stable_object_unique": 0,
+  "production_stable_object_regressions": 0,
+  "elapsed_seconds": 73.54807679999794
+}

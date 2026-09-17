@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 5,
+  "rounds": 3,
+  "candidates_per_round": 4,
+  "demonstration_exact_tasks": 0,
+  "full_task_exact_pass_at_2": 0,
+  "unique_vs_owned_production": 0,
+  "candidates_generated": 60,
+  "candidates_executed": 14,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "73ccf9c2",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 12,
+      "executed": 3,
+      "hypotheses": [],
+      "rejections": [
+        "r0c2:ValueError:invalid Python: invalid syntax",
+        "r1c0:duplicate",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r1c3:duplicate",
+        "r2c0:duplicate",
+        "r2c1:duplicate",
+        "r2c2:duplicate",
+        "r2c3:duplicate"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "72a961c9",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 12,
+      "executed": 6,
+      "hypotheses": [],
+      "rejections": [
+        "r1c2:ValueError:worker returned an invalid ARC grid",
+        "r1c3:ValueError:worker returned an invalid ARC grid",
+        "r2c0:duplicate",
+        "r2c1:duplicate",
+        "r2c2:duplicate",
+        "r2c3:duplicate"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "b7fb29bc",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 12,
+      "executed": 2,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker returned an invalid ARC grid",
+        "r0c1:ValueError:invalid Python: invalid syntax",
+        "r1c0:duplicate",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r1c3:duplicate",
+        "r2c0:duplicate",
+        "r2c1:duplicate",
+        "r2c2:duplicate",
+        "r2c3:duplicate"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "ff72ca3e",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 12,
+      "executed": 1,
+      "hypotheses": [],
+      "rejections": [
+        "r0c0:ValueError:worker returned an invalid ARC grid",
+        "r0c1:ValueError:forbidden syntax: Attribute",
+        "r0c3:ValueError:forbidden syntax: Attribute",
+        "r1c0:duplicate",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r1c3:duplicate",
+        "r2c0:duplicate",
+        "r2c1:duplicate",
+        "r2c2:duplicate",
+        "r2c3:duplicate"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "60a26a3e",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 3,
+      "generated": 12,
+      "executed": 2,
+      "hypotheses": [],
+      "rejections": [
+        "r0c1:ValueError:forbidden syntax: Attribute",
+        "r0c3:ValueError:forbidden syntax: Attribute",
+        "r1c0:duplicate",
+        "r1c1:duplicate",
+        "r1c2:duplicate",
+        "r1c3:duplicate",
+        "r2c0:duplicate",
+        "r2c1:duplicate",
+        "r2c2:duplicate",
+        "r2c3:duplicate"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 84.7159929000045,
+  "telemetry": {
+    "wall_seconds": 84.71594259999983,
+    "cpu_seconds": 14.1875,
+    "peak_rss_bytes": 261480448,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

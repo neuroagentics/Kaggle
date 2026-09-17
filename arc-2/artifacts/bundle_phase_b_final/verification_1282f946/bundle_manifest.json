@@ -1,0 +1,164 @@
+{
+  "channels": {
+    "deterministic": {
+      "enabled": true,
+      "required": true
+    },
+    "experience_memory": {
+      "enabled": false,
+      "reason": "Not promoted: clean evaluation added zero owned exact solves",
+      "records": 1920,
+      "required": false
+    },
+    "external_symbolic": {
+      "enabled": false,
+      "reason": "Reference-only external implementation is excluded",
+      "required": false
+    },
+    "legacy_seed_memory": {
+      "enabled": false,
+      "reason": "Not promoted: 0/120 exact pass@2 with no unique solves",
+      "records": 5,
+      "required": false
+    },
+    "recursive_world_model": {
+      "enabled": true,
+      "reason": "Promoted: combined exact pass@2 improved from 8/200 to 11/200 on the untouched holdout; local evaluation remains 0/120",
+      "required": false
+    },
+    "world_memory": {
+      "enabled": false,
+      "reason": "Not promoted: memory retrieval added zero evaluation solves",
+      "records": 47,
+      "required": false
+    }
+  },
+  "files": {
+    "bundle_self_test.py": {
+      "sha256": "cd4cc807fff9ed592237b5c2a0f0bec1a7738a4a3406191e20bd65b6c30cc6f4",
+      "size": 4226
+    },
+    "hyper_arc/__init__.py": {
+      "sha256": "91dbbe52e1775f95542576c721aaea3555be13d36d82b46acea3dcf160fd8566",
+      "size": 664
+    },
+    "hyper_arc/contender/__init__.py": {
+      "sha256": "aebd4be498174a1dede2ef1e4afa1cfa3c567195b861911ecb1ea47616a8ded9",
+      "size": 208
+    },
+    "hyper_arc/contender/executor.py": {
+      "sha256": "a9572baaf86b89792c9f8d320ab0241149f59735423b89a0402ff96186396ab2",
+      "size": 35812
+    },
+    "hyper_arc/contender/experience_bank.py": {
+      "sha256": "55c17e729e8812ad19af2a5e5cb799d1e653fbaf050326a435f0f337763577b7",
+      "size": 20557
+    },
+    "hyper_arc/contender/hyperbolic_memory.py": {
+      "sha256": "125522a28bde59a6451fae39c53e846c4e53eb23330330ec7355bd10e4cdbddb",
+      "size": 11554
+    },
+    "hyper_arc/contender/object_programs.py": {
+      "sha256": "6a221b96c9bfd051e8e0c1225916ea1eb498b760f439d004fdbe0061d3ce2d9f",
+      "size": 11655
+    },
+    "hyper_arc/contender/perception.py": {
+      "sha256": "b758e3cf5303853f181ebe7b5cb9e5ed078eebf0f43c4d6844ec93d35d07a9fc",
+      "size": 16449
+    },
+    "hyper_arc/contender/relational_plans.py": {
+      "sha256": "46714ef57f25d4bb421400ac7c711ff03ba3e69a42e71bcbf1ad18e0de691c00",
+      "size": 4215
+    },
+    "hyper_arc/contender/relational_primitives.py": {
+      "sha256": "f138361bf23179ebb3e700d2dea864d8e54db6d404a165f7521f2dd9f019db37",
+      "size": 12017
+    },
+    "hyper_arc/contender/repair.py": {
+      "sha256": "aed0e2754c908b84f7ea9b4dd2fef22a73a5616c0a6c2a4a4d741ed5ed505743",
+      "size": 10270
+    },
+    "hyper_arc/contender/schemas.py": {
+      "sha256": "d2b4e9ebed4324e95325c58c2d6e55fe178bade36aab8dfdb67ceb2ae2158c6f",
+      "size": 7088
+    },
+    "hyper_arc/contender/structural_rules.py": {
+      "sha256": "808807657e31441496c8c49938596483474e68a245c2175bfb049e9eb9cb219e",
+      "size": 5026
+    },
+    "hyper_arc/contender/world_model.py": {
+      "sha256": "f82e75527d40189db963e4ee8085587bfdb902dee08862c0059717392b53f548",
+      "size": 13578
+    },
+    "hyper_arc/cost.py": {
+      "sha256": "f7cdfea799a22fa9144b0175813205c8f681aa3d6a69cf2c8d447b0871dfb589",
+      "size": 791
+    },
+    "hyper_arc/deterministic.py": {
+      "sha256": "0f9f6b64a2b1847f0aa03f73e22e6c5b3da242ddde86c224e172bbac5a7b17e7",
+      "size": 7983
+    },
+    "hyper_arc/esb.py": {
+      "sha256": "a8fa66a13d66358901f6d62305090fd5f54d1c664c5ce2f0f4a597200bf4794d",
+      "size": 5042
+    },
+    "hyper_arc/experience_bank_v2.json": {
+      "sha256": "6480f0bcf75e3574c3f36b3fbacf6896c2711be8b7cd05fffb380634cf952efe",
+      "size": 2523653
+    },
+    "hyper_arc/hpm.py": {
+      "sha256": "45238f0d9f32d05bcacb95b97584d98a1bed3154ccb1050fc9ac35eba2ba864a",
+      "size": 8667
+    },
+    "hyper_arc/mcts.py": {
+      "sha256": "e5fda89fbbfa418780cb5f8a31ed3912593acc38855e7dac62b832a70dbcf800",
+      "size": 20938
+    },
+    "hyper_arc/seed_bank.json": {
+      "sha256": "e559bb7119136b5446588c7ff51689bf2e0849159fdbca9ee223be24194824c5",
+      "size": 2160
+    },
+    "hyper_arc/spatial_dsl.py": {
+      "sha256": "458816ecd172569b49f2075b093a0e01bd445249d83e2b39c2a8f4359ef6fc48",
+      "size": 16707
+    },
+    "hyper_arc/world_memory_v1.json": {
+      "sha256": "58423ac1a0c5d75c6023af0ee9f35419dda9929caf803a8b0a0c9d093391eb28",
+      "size": 261937
+    },
+    "main.py": {
+      "sha256": "895399007d32c4732274ac493d6704363ea16c6364c7ac458370bfaf1c618d60",
+      "size": 23091
+    }
+  },
+  "project": "Hyper-ARC",
+  "release": {
+    "competition_release_ready": false,
+    "public_license": "PENDING",
+    "reason": "Owner must select the permissive public license before release"
+  },
+  "runtime": {
+    "dependencies": [
+      {
+        "bundled": false,
+        "name": "python",
+        "version": ">=3.10"
+      },
+      {
+        "bundled": false,
+        "name": "numpy",
+        "version": ">=1.26,<3"
+      },
+      {
+        "bundled": false,
+        "name": "torch",
+        "version": ">=2.3,<3"
+      }
+    ],
+    "network_required": false
+  },
+  "schema_version": 1,
+  "source_revision": "433d63dc410b1535120358cd34f78e6ddec699a9",
+  "source_tree_sha256": "64ded5318bef74bacae790b6578bab189f9e7a837beb30818daec16a4eb63df7",
+  "target": "ARC Prize 2026 ARC-AGI-2 Kaggle runtime"
+}

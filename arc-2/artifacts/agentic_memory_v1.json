@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "policy": "model-authored-full-task-exact-only",
+  "records": [
+    {
+      "record_id": "7d05d963747ff66f458fa56d116c860a7c3c7fae82c5e28982608be71745253a",
+      "source_task_id": "e9afcf9a",
+      "summary": "The output grid is a checkerboard pattern formed by alternating the two colors present in the input grid, starting with the color of the top-left cell (0,0) in the top row, and alternating across both rows and columns.",
+      "code": "def transform(grid):\n    rows = len(grid)\n    cols = len(grid[0])\n    c1 = grid[0][0]\n    c2 = grid[1][0] if rows > 1 and cols > 0 else grid[0][1] if cols > 1 else None\n    if c2 is None:\n        return grid\n    output = [[0] * cols for _ in range(rows)]\n    for r in range(rows):\n        for c in range(cols):\n            if (r + c) % 2 == 0:\n                output[r][c] = c1\n            else:\n                output[r][c] = c2\n    return output",
+      "model": "gemma4:latest",
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      },
+      "validation_scope": "validation",
+      "full_task_exact": true
+    }
+  ]
+}

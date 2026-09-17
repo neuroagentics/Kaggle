@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-02",
+  "split_freeze_date": "2026-08-31",
+  "evidence_policy": {
+    "highest_confidence": "hidden-kaggle-score",
+    "generalization_floor": "public-evaluation-2-of-120",
+    "training_partitions": "diagnostic-unless-every-channel-has-auditable-pre-split-provenance"
+  },
+  "channels": {
+    "verified-symbolic": {
+      "source": "https://github.com/tanmaybisen31/arc-agi-solver",
+      "commit": "e151937e34c8b34f953833a0dab75797fc737ba4",
+      "predates_split": true,
+      "explicit_task_references": {
+        "training": 111,
+        "public_evaluation": 0,
+        "nested_validation": 18
+      },
+      "internal_training_evidence": "contaminated",
+      "competition_inference": "allowed-with-license-and-provenance",
+      "clean_validation_claims": "excluded"
+    },
+    "legacy-deterministic": {
+      "predates_split": true,
+      "internal_training_evidence": "provenance-not-auditable",
+      "clean_validation_claims": "excluded"
+    },
+    "object-program-v1": {
+      "predates_split": false,
+      "tuned_on": "nested-validation",
+      "internal_holdout_observed": true,
+      "clean_validation_claims": "exhausted-after-first-frozen-evaluation"
+    },
+    "residual-repair-v1": {
+      "predates_split": false,
+      "tuned_on": "nested-validation",
+      "clean_validation_claims": "diagnostic-only"
+    },
+    "model-proposer-v1": {
+      "predates_split": false,
+      "tuned_on": "three-production-unsolved-nested-validation-tasks",
+      "clean_validation_claims": "diagnostic-only"
+    },
+    "recursive-specialist-v1": {
+      "predates_split": false,
+      "trained_on": "640-task-builder-fold",
+      "evaluated_on": "160-task-nested-validation-fold",
+      "clean_validation_claims": "valid-for-the-frozen-checkpoint-only"
+    },
+    "experience-bank-v2": {
+      "predates_split": false,
+      "mined_from": "640-task-builder-fold",
+      "records": 1920,
+      "contains": "structural fingerprints, typed programs, successes, and failures",
+      "evaluated_on": "160-task-nested-validation and exhausted 200-task-internal-holdout",
+      "public_evaluation": "0-of-120-owned-no-memory-candidates",
+      "competition_inference": "enabled-with-exact-demonstration-replay",
+      "persistent_writes_during_inference": false,
+      "clean_validation_claims": "valid-for-bank-3501eb3591c7"
+    }
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "solver": "recursive-world-model-v1",
+  "ownership": "hyper-arc-owned-only",
+  "partition": "validation",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "evaluated_tasks": 1,
+  "exact_fit_tasks": 1,
+  "recursive_fit_tasks": 0,
+  "retrieved_seed_tasks": 0,
+  "executed_candidates": 138,
+  "world_distinct_attempt_outputs": 1,
+  "owned_baseline_pass_at_2": 0,
+  "world_model_pass_at_2": 1,
+  "combined_pass_at_2": 0,
+  "world_unique_vs_owned": [
+    "ae58858e"
+  ],
+  "world_regressions_vs_owned": [],
+  "combined_unique_vs_owned": [],
+  "combined_regressions_vs_owned": [],
+  "world_solved_task_ids": [
+    "ae58858e"
+  ],
+  "world_solved_details": {
+    "ae58858e": [
+      {
+        "hypothesis_id": "32a746b4645991671f83b95414a37db423f18661dfebdcd01c808009c381c6c3",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "component-recolor:area",
+          "source": "structural-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "component_recolor",
+          "output_type": "grid",
+          "arguments": {
+            "features": [
+              "area"
+            ],
+            "rules": [
+              {
+                "color": 6,
+                "when": {
+                  "area": 4
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 5
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 6
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 7
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 8
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      },
+      {
+        "hypothesis_id": "4022b8d6bacb388414358d6629cdfbe1cf757e2445dcaa3c47c1efb6103f4fe7",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "component-recolor:color+area",
+          "source": "structural-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "component_recolor",
+          "output_type": "grid",
+          "arguments": {
+            "features": [
+              "color",
+              "area"
+            ],
+            "rules": [
+              {
+                "color": 6,
+                "when": {
+                  "area": 4,
+                  "color": 2
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 5,
+                  "color": 2
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 6,
+                  "color": 2
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 7,
+                  "color": 2
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 8,
+                  "color": 2
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      },
+      {
+        "hypothesis_id": "aa24f3af27ab70eb4bb4c5175721780e8728a3f7dba6142b553b29730d9d7d08",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "component-recolor:area+height",
+          "source": "structural-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "component_recolor",
+          "output_type": "grid",
+          "arguments": {
+            "features": [
+              "area",
+              "height"
+            ],
+            "rules": [
+              {
+                "color": 6,
+                "when": {
+                  "area": 4,
+                  "height": 2
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 5,
+                  "height": 3
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 6,
+                  "height": 3
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 7,
+                  "height": 3
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 8,
+                  "height": 3
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      },
+      {
+        "hypothesis_id": "c007826eba242e6da2a831e0d94cdc12319ec77a3d60bfd015663e5089e216da",
+        "confidence": 0.8200000000000001,
+        "complexity": 1,
+        "provenance": {
+          "seed": "component-recolor:area+holes",
+          "source": "structural-world",
+          "repair_depth": 0,
+          "memory_distance": null
+        },
+        "program": {
+          "op": "component_recolor",
+          "output_type": "grid",
+          "arguments": {
+            "features": [
+              "area",
+              "holes"
+            ],
+            "rules": [
+              {
+                "color": 6,
+                "when": {
+                  "area": 4,
+                  "holes": 0
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 5,
+                  "holes": 0
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 6,
+                  "holes": 0
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 7,
+                  "holes": 0
+                }
+              },
+              {
+                "color": 6,
+                "when": {
+                  "area": 8,
+                  "holes": 0
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "arguments": {},
+              "children": [],
+              "op": "input",
+              "output_type": "grid",
+              "postconditions": [],
+              "preconditions": []
+            }
+          ],
+          "preconditions": [],
+          "postconditions": []
+        }
+      }
+    ]
+  },
+  "elapsed_seconds": 0.29697630000009667
+}

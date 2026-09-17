@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "bank_id": "3501eb3591c781b97557e27218c6321635607b47d2a128508b6f946c00d264e7",
+  "partition": "validation",
+  "evaluated_tasks": 160,
+  "memory_fit_tasks": 6,
+  "memory_candidate_count": 7,
+  "memory_second_distinct": 12,
+  "owned_baseline_pass_at_2": 8,
+  "memory_pass_at_2": 11,
+  "production_pass_at_2": 57,
+  "production_memory_pass_at_2": 61,
+  "memory_unique_vs_owned": [
+    "25ff71a9",
+    "9565186b",
+    "b2862040"
+  ],
+  "memory_regressions_vs_owned": [],
+  "production_memory_unique": [
+    "5adee1b2",
+    "9565186b",
+    "c62e2108",
+    "db118e2a"
+  ],
+  "production_memory_regressions": [],
+  "elapsed_seconds": 92.11925569999948
+}

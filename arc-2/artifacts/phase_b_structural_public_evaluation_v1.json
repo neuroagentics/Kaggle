@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "solver": "recursive-world-model-v1",
+  "ownership": "hyper-arc-owned-only",
+  "partition": "public-evaluation",
+  "partition_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+  "evaluated_tasks": 120,
+  "exact_fit_tasks": 1,
+  "recursive_fit_tasks": 0,
+  "retrieved_seed_tasks": 0,
+  "executed_candidates": 29209,
+  "world_distinct_attempt_outputs": 1,
+  "owned_baseline_pass_at_2": 0,
+  "world_model_pass_at_2": 0,
+  "combined_pass_at_2": 0,
+  "world_unique_vs_owned": [],
+  "world_regressions_vs_owned": [],
+  "combined_unique_vs_owned": [],
+  "combined_regressions_vs_owned": [],
+  "world_solved_task_ids": [],
+  "world_solved_details": {},
+  "elapsed_seconds": 109.9172322999948
+}

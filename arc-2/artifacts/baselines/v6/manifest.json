@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "baseline_id": "arc2-v6-verified-symbolic-2026-08-31",
+  "verified_at": "2026-08-31",
+  "artifacts": {
+    "solver_code.zip": "dd306ccf1302af34583c9dba3491076ef4bf94e13dfcc2afc01c7ce091a2d175",
+    "submission.json": "3bce171cb9df981e46579c435185f770ac87d776a2d041c190e814fbe3aa570",
+    "notebook6a96ea823f.ipynb": "937007634d9a6afe2031fc549e42a80f03d30f99a478ded60a2e16e5c2aae1dd"
+  },
+  "verification": {
+    "tests_passed": 126,
+    "test_warnings": 73,
+    "submission_tasks": 240,
+    "submission_test_inputs": 259,
+    "submission_attempts": 518,
+    "submission_validation": "passed",
+    "public_evaluation": {
+      "task_pass_at_2": "2/120",
+      "task_pass_at_2_rate": 0.016666666666666666,
+      "output_pass_at_2": "2/172",
+      "output_pass_at_2_rate": 0.011627906976744186,
+      "tasks_with_fitting_rule": 18,
+      "solved_task_ids": ["1818057f", "981571dc"]
+    }
+  },
+  "external_sources": {
+    "verified_symbolic_commit": "e151937e34c8b34f953833a0dab75797fc737ba4",
+    "verified_symbolic_license": "MIT"
+  }
+}

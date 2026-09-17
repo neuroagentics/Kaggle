@@ -1,0 +1,1583 @@
+{
+  "schema_version": 1,
+  "miner_version": "exact-procedure-chains-v1",
+  "bank_id": "0620b8e1686d357411c2fb7d9bbbb1a5f125bede7c769012475623fffd9b6e20",
+  "split_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "training_dataset_sha256": "779eaba89790ebad9af02514a7efc0aefaf2cf8236f046a31bbf8b9ec48f20f5",
+  "records": [
+    {
+      "name": "block-minority2x2+identity",
+      "family": "scale-and-repetition",
+      "steps": [
+        "block-minority2x2",
+        "identity"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-an-integer-shape-ratio"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "68b67ca3",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 3.6109179126442243,
+              "input_objects": 5.0,
+              "object_delta": -0.6666666666666666,
+              "output_area_log": 2.302585092994046,
+              "output_objects": 4.333333333333333,
+              "palette_delta": 0.0,
+              "separator_delta": -6.0,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "block-minority5x5+identity",
+      "family": "scale-and-repetition",
+      "steps": [
+        "block-minority5x5",
+        "identity"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-an-integer-shape-ratio"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "e57337a4",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 5.420534999272287,
+              "input_objects": 2.0,
+              "object_delta": -0.3333333333333333,
+              "output_area_log": 2.302585092994046,
+              "output_objects": 1.6666666666666667,
+              "palette_delta": 0.0,
+              "separator_delta": -23.666666666666668,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "block-mode3x3+identity",
+      "family": "scale-and-repetition",
+      "steps": [
+        "block-mode3x3",
+        "identity"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-an-integer-shape-ratio"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "5614dbcf",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 4.406719247264253,
+              "input_objects": 9.5,
+              "object_delta": -6.0,
+              "output_area_log": 2.302585092994046,
+              "output_objects": 3.5,
+              "palette_delta": -1.0,
+              "separator_delta": -0.5,
+              "train_count": 2.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "output:separated",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "block-mode3x3+reflect_vertical+remap",
+      "family": "scale-and-repetition",
+      "steps": [
+        "block-mode3x3",
+        "reflect_vertical",
+        "bind-colors"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-an-integer-shape-ratio",
+        "requires-a-consistent-demonstration-color-map"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 0,
+      "transfer_failures": 1,
+      "episodes": [
+        {
+          "source_task_id": "5614dbcf",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 4.406719247264253,
+              "input_objects": 9.5,
+              "object_delta": -6.0,
+              "output_area_log": 2.302585092994046,
+              "output_objects": 3.5,
+              "palette_delta": -1.0,
+              "separator_delta": -0.5,
+              "train_count": 2.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "output:separated",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": false
+        }
+      ]
+    },
+    {
+      "name": "compress-lines+identity",
+      "family": "pattern-compression",
+      "steps": [
+        "compress-lines",
+        "identity"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-redundant-adjacent-lines"
+      ],
+      "demonstration_fits": 4,
+      "exact_successes": 4,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "ce8d95cc",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 4.795394084996246,
+              "input_objects": 8.75,
+              "object_delta": 0.0,
+              "output_area_log": 3.2994307842933703,
+              "output_objects": 8.75,
+              "palette_delta": 0.0,
+              "separator_delta": 0.0,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        },
+        {
+          "source_task_id": "eb5a1d5d",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 6.294133985326109,
+              "input_objects": 2.0,
+              "object_delta": 0.0,
+              "output_area_log": 3.1575682121478916,
+              "output_objects": 2.0,
+              "palette_delta": 0.0,
+              "separator_delta": -12.666666666666666,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        },
+        {
+          "source_task_id": "e1baa8a4",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 5.295101626725486,
+              "input_objects": 5.5,
+              "object_delta": 0.0,
+              "output_area_log": 2.0165518920015657,
+              "output_objects": 5.5,
+              "palette_delta": 0.0,
+              "separator_delta": -1.25,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": true
+        },
+        {
+          "source_task_id": "746b3537",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.5587718620864583,
+              "input_objects": 2.2,
+              "object_delta": 0.0,
+              "output_area_log": 1.4755517816455745,
+              "output_objects": 2.2,
+              "palette_delta": 0.0,
+              "separator_delta": -0.8,
+              "train_count": 5.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input_symmetry:horizontal",
+              "input_symmetry:horizontal",
+              "input_symmetry:horizontal",
+              "input_symmetry:rotational_180",
+              "input_symmetry:vertical",
+              "input_symmetry:vertical",
+              "input_symmetry:vertical",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "crop-most-common-color-raw+identity",
+      "family": "object-extraction",
+      "steps": [
+        "crop-most-common-color-raw",
+        "identity"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-selected-object-or-color-region"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "be94b721",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 4.204297478131001,
+              "input_objects": 3.0,
+              "object_delta": -1.5,
+              "output_area_log": 2.344598489243108,
+              "output_objects": 1.5,
+              "palette_delta": -2.25,
+              "separator_delta": -2.25,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "crop-rarest-color-raw+identity",
+      "family": "object-extraction",
+      "steps": [
+        "crop-rarest-color-raw",
+        "identity"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-selected-object-or-color-region"
+      ],
+      "demonstration_fits": 3,
+      "exact_successes": 3,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "0b148d64",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 5.903261281678655,
+              "input_objects": 16.666666666666668,
+              "object_delta": -5.666666666666667,
+              "output_area_log": 4.260445595144468,
+              "output_objects": 11.0,
+              "palette_delta": -1.0,
+              "separator_delta": -6.0,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": true
+        },
+        {
+          "source_task_id": "1f85a75f",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 6.803505257608338,
+              "input_objects": 62.0,
+              "object_delta": -59.0,
+              "output_area_log": 2.5375869076169133,
+              "output_objects": 3.0,
+              "palette_delta": -1.5,
+              "separator_delta": -3.0,
+              "train_count": 2.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:rotational_180"
+            ]
+          },
+          "test_exact": true
+        },
+        {
+          "source_task_id": "23b5c85d",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 5.301319052214595,
+              "input_objects": 3.2,
+              "object_delta": -3.2,
+              "output_area_log": 2.073758532200062,
+              "output_objects": 0.0,
+              "palette_delta": -3.2,
+              "separator_delta": -1.6,
+              "train_count": 5.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "crop0+identity",
+      "family": "object-extraction",
+      "steps": [
+        "crop0",
+        "identity"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-selected-object-or-color-region"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "1cf80156",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 4.88762447207969,
+              "input_objects": 1.0,
+              "object_delta": 2.3333333333333335,
+              "output_area_log": 2.792796929511926,
+              "output_objects": 3.3333333333333335,
+              "palette_delta": 0.0,
+              "separator_delta": -14.0,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "crop0+reflect_vertical",
+      "family": "object-extraction",
+      "steps": [
+        "crop0",
+        "reflect_vertical"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-selected-object-or-color-region"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "7468f01a",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 5.275049156733124,
+              "input_objects": 3.0,
+              "object_delta": -1.3333333333333333,
+              "output_area_log": 3.3244933081187207,
+              "output_objects": 1.6666666666666667,
+              "palette_delta": -1.0,
+              "separator_delta": -14.0,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "crop_mode+identity+remap",
+      "family": "object-extraction",
+      "steps": [
+        "crop_mode",
+        "identity",
+        "bind-colors"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-selected-object-or-color-region",
+        "requires-a-consistent-demonstration-color-map"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "a740d043",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 3.752247353192606,
+              "input_objects": 2.3333333333333335,
+              "object_delta": -0.3333333333333333,
+              "output_area_log": 2.064801797034891,
+              "output_objects": 2.0,
+              "palette_delta": -0.3333333333333333,
+              "separator_delta": -6.0,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "hcat-identity-reflect_vertical",
+      "family": "spatial-composition",
+      "steps": [
+        "hcat-identity-reflect_vertical"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "6d0aefbc",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.302585092994046,
+              "input_objects": 2.75,
+              "object_delta": 1.5,
+              "output_area_log": 2.9444389791664403,
+              "output_objects": 4.25,
+              "palette_delta": 0.0,
+              "separator_delta": 0.0,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:expand:1x2",
+              "dimension:expand:1x2",
+              "dimension:expand:1x2",
+              "dimension:expand:1x2",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "identity+remap",
+      "family": "color-binding",
+      "steps": [
+        "identity",
+        "bind-colors"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-consistent-demonstration-color-map"
+      ],
+      "demonstration_fits": 2,
+      "exact_successes": 1,
+      "transfer_failures": 1,
+      "episodes": [
+        {
+          "source_task_id": "aabf363d",
+          "fingerprint": {
+            "features": {
+              "changed_ratio_bucket": 3.0,
+              "input_area_log": 3.912023005428146,
+              "input_objects": 2.0,
+              "object_delta": -1.0,
+              "output_area_log": 3.912023005428146,
+              "output_objects": 1.0,
+              "palette_delta": -1.0,
+              "separator_delta": 2.0,
+              "train_count": 2.0
+            },
+            "tags": [
+              "dimension:same",
+              "dimension:same",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": false
+        },
+        {
+          "source_task_id": "c8f0f002",
+          "fingerprint": {
+            "features": {
+              "changed_ratio_bucket": 4.0,
+              "input_area_log": 2.760659019622586,
+              "input_objects": 4.0,
+              "object_delta": 0.0,
+              "output_area_log": 2.760659019622586,
+              "output_objects": 4.0,
+              "palette_delta": 0.0,
+              "separator_delta": 0.0,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:same",
+              "dimension:same",
+              "dimension:same",
+              "input:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "identity+upscale2",
+      "family": "scale-and-repetition",
+      "steps": [
+        "identity",
+        "upscale2"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-an-integer-shape-ratio"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "60c09cac",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.567899218525131,
+              "input_objects": 2.5,
+              "object_delta": 0.0,
+              "output_area_log": 3.892652591269931,
+              "output_objects": 2.5,
+              "palette_delta": 0.0,
+              "separator_delta": 2.0,
+              "train_count": 2.0
+            },
+            "tags": [
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "identity+upscale3",
+      "family": "scale-and-repetition",
+      "steps": [
+        "identity",
+        "upscale3"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-an-integer-shape-ratio"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "9172f3a0",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.302585092994046,
+              "input_objects": 3.5,
+              "object_delta": 0.0,
+              "output_area_log": 4.406719247264253,
+              "output_objects": 3.5,
+              "palette_delta": 0.0,
+              "separator_delta": 0.0,
+              "train_count": 2.0
+            },
+            "tags": [
+              "dimension:expand:3x3",
+              "dimension:expand:3x3"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "mirror-quad-bottom-right",
+      "family": "spatial-composition",
+      "steps": [
+        "mirror-quad-bottom-right"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid"
+      ],
+      "demonstration_fits": 2,
+      "exact_successes": 2,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "833dafe3",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.567899218525131,
+              "input_objects": 3.5,
+              "object_delta": 7.0,
+              "output_area_log": 3.892652591269931,
+              "output_objects": 10.5,
+              "palette_delta": 0.0,
+              "separator_delta": 0.5,
+              "train_count": 2.0
+            },
+            "tags": [
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "input:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        },
+        {
+          "source_task_id": "0c786b71",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.5649493574615367,
+              "input_objects": 4.333333333333333,
+              "object_delta": 7.0,
+              "output_area_log": 3.8918202981106265,
+              "output_objects": 11.333333333333334,
+              "palette_delta": 0.0,
+              "separator_delta": 0.3333333333333333,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "input:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "mirror-quad-top-left",
+      "family": "spatial-composition",
+      "steps": [
+        "mirror-quad-top-left"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid"
+      ],
+      "demonstration_fits": 3,
+      "exact_successes": 3,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "3af2c5a8",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.5649493574615367,
+              "input_objects": 2.6666666666666665,
+              "object_delta": 4.666666666666667,
+              "output_area_log": 3.8918202981106265,
+              "output_objects": 7.333333333333333,
+              "palette_delta": 0.0,
+              "separator_delta": 1.0,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "input:separated",
+              "input:separated",
+              "input_symmetry:horizontal",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        },
+        {
+          "source_task_id": "67e8384a",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.302585092994046,
+              "input_objects": 4.0,
+              "object_delta": 8.0,
+              "output_area_log": 3.6109179126442243,
+              "output_objects": 12.0,
+              "palette_delta": 0.0,
+              "separator_delta": 0.5,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "input:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        },
+        {
+          "source_task_id": "62c24649",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.302585092994046,
+              "input_objects": 4.666666666666667,
+              "object_delta": 7.333333333333333,
+              "output_area_log": 3.6109179126442243,
+              "output_objects": 12.0,
+              "palette_delta": 0.0,
+              "separator_delta": 0.3333333333333333,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "dimension:expand:2x2",
+              "input:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "panel2+rotate90",
+      "family": "spatial-composition",
+      "steps": [
+        "panel2",
+        "rotate90"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "be03b35f",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 3.258096538021482,
+              "input_objects": 4.0,
+              "object_delta": -3.0,
+              "output_area_log": 1.6094379124341003,
+              "output_objects": 1.0,
+              "palette_delta": -1.0,
+              "separator_delta": 0.0,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "rotate180",
+      "family": "geometric",
+      "steps": [
+        "rotate180"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "6150a2bd",
+          "fingerprint": {
+            "features": {
+              "changed_ratio_bucket": 9.0,
+              "input_area_log": 2.302585092994046,
+              "input_objects": 3.5,
+              "object_delta": 0.0,
+              "output_area_log": 2.302585092994046,
+              "output_objects": 3.5,
+              "palette_delta": 0.0,
+              "separator_delta": 0.0,
+              "train_count": 2.0
+            },
+            "tags": [
+              "dimension:same",
+              "dimension:same",
+              "input:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "select-color-least-cells+remap",
+      "family": "color-selection",
+      "steps": [
+        "select-color-least-cells",
+        "bind-colors"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-color-statistic-extremum",
+        "requires-a-consistent-demonstration-color-map"
+      ],
+      "demonstration_fits": 2,
+      "exact_successes": 0,
+      "transfer_failures": 2,
+      "episodes": [
+        {
+          "source_task_id": "de1cd16c",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 5.554314471788826,
+              "input_objects": 8.75,
+              "object_delta": -8.75,
+              "output_area_log": 0.6931471805599453,
+              "output_objects": 0.0,
+              "palette_delta": -3.5,
+              "separator_delta": -1.0,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": false
+        },
+        {
+          "source_task_id": "b9b7f026",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 5.477587966298347,
+              "input_objects": 5.333333333333333,
+              "object_delta": -5.333333333333333,
+              "output_area_log": 0.6931471805599453,
+              "output_objects": 0.0,
+              "palette_delta": -5.333333333333333,
+              "separator_delta": -2.3333333333333335,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": false
+        }
+      ]
+    },
+    {
+      "name": "select-color-least-components",
+      "family": "color-selection",
+      "steps": [
+        "select-color-least-components"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-color-statistic-extremum"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "1a2e2828",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 4.235367286088106,
+              "input_objects": 8.2,
+              "object_delta": -8.2,
+              "output_area_log": 0.6931471805599453,
+              "output_objects": 0.0,
+              "palette_delta": -4.0,
+              "separator_delta": 0.8,
+              "train_count": 5.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input_symmetry:horizontal",
+              "input_symmetry:rotational_180",
+              "input_symmetry:vertical",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "select-color-least-components+remap",
+      "family": "color-selection",
+      "steps": [
+        "select-color-least-components",
+        "bind-colors"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-color-statistic-extremum",
+        "requires-a-consistent-demonstration-color-map"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 0,
+      "transfer_failures": 1,
+      "episodes": [
+        {
+          "source_task_id": "d9fac9be",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 4.370760948514652,
+              "input_objects": 15.75,
+              "object_delta": -15.75,
+              "output_area_log": 0.6931471805599453,
+              "output_objects": 0.0,
+              "palette_delta": -2.0,
+              "separator_delta": 1.0,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": false
+        }
+      ]
+    },
+    {
+      "name": "select-color-most-cells+remap",
+      "family": "color-selection",
+      "steps": [
+        "select-color-most-cells",
+        "bind-colors"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-color-statistic-extremum",
+        "requires-a-consistent-demonstration-color-map"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 0,
+      "transfer_failures": 1,
+      "episodes": [
+        {
+          "source_task_id": "de1cd16c",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 5.554314471788826,
+              "input_objects": 8.75,
+              "object_delta": -8.75,
+              "output_area_log": 0.6931471805599453,
+              "output_objects": 0.0,
+              "palette_delta": -3.5,
+              "separator_delta": -1.0,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": false
+        }
+      ]
+    },
+    {
+      "name": "select-color-smallest-largest-component",
+      "family": "color-selection",
+      "steps": [
+        "select-color-smallest-largest-component"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid",
+        "requires-a-unique-color-statistic-extremum"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "d9fac9be",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 4.370760948514652,
+              "input_objects": 15.75,
+              "object_delta": -15.75,
+              "output_area_log": 0.6931471805599453,
+              "output_objects": 0.0,
+              "palette_delta": -2.0,
+              "separator_delta": 1.0,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "dimension:contract",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "transpose",
+      "family": "geometric",
+      "steps": [
+        "transpose"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid"
+      ],
+      "demonstration_fits": 1,
+      "exact_successes": 1,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "74dd1130",
+          "fingerprint": {
+            "features": {
+              "changed_ratio_bucket": 5.0,
+              "input_area_log": 2.302585092994046,
+              "input_objects": 3.25,
+              "object_delta": 0.0,
+              "output_area_log": 2.302585092994046,
+              "output_objects": 3.25,
+              "palette_delta": 0.0,
+              "separator_delta": 0.0,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:same",
+              "dimension:same",
+              "dimension:same",
+              "dimension:same",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    },
+    {
+      "name": "vcat-identity-reflect_horizontal",
+      "family": "spatial-composition",
+      "steps": [
+        "vcat-identity-reflect_horizontal"
+      ],
+      "invariants": [
+        "must-exactly-replay-all-demonstrations",
+        "must-produce-a-valid-arc-grid"
+      ],
+      "demonstration_fits": 2,
+      "exact_successes": 2,
+      "transfer_failures": 0,
+      "episodes": [
+        {
+          "source_task_id": "8be77c9e",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.302585092994046,
+              "input_objects": 1.6666666666666667,
+              "object_delta": 0.6666666666666666,
+              "output_area_log": 2.9444389791664403,
+              "output_objects": 2.3333333333333335,
+              "palette_delta": 0.0,
+              "separator_delta": 1.3333333333333333,
+              "train_count": 3.0
+            },
+            "tags": [
+              "dimension:expand:2x1",
+              "dimension:expand:2x1",
+              "dimension:expand:2x1",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal"
+            ]
+          },
+          "test_exact": true
+        },
+        {
+          "source_task_id": "6fa7a44f",
+          "fingerprint": {
+            "features": {
+              "input_area_log": 2.302585092994046,
+              "input_objects": 4.0,
+              "object_delta": 2.75,
+              "output_area_log": 2.9444389791664403,
+              "output_objects": 6.75,
+              "palette_delta": 0.0,
+              "separator_delta": 0.25,
+              "train_count": 4.0
+            },
+            "tags": [
+              "dimension:expand:2x1",
+              "dimension:expand:2x1",
+              "dimension:expand:2x1",
+              "dimension:expand:2x1",
+              "input:separated",
+              "input:separated",
+              "input:separated",
+              "input_symmetry:vertical",
+              "output:separated",
+              "output:separated",
+              "output:separated",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:horizontal",
+              "output_symmetry:rotational_180",
+              "output_symmetry:vertical"
+            ]
+          },
+          "test_exact": true
+        }
+      ]
+    }
+  ]
+}

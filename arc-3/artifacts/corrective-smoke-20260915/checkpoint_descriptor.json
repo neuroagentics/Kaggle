@@ -1,0 +1,9 @@
+{
+  "model_name": "arc-simulator",
+  "model_version": "corrective-v2-smoke",
+  "role": "simulator",
+  "parameter_count": 620387,
+  "quantization": "fp32",
+  "device": "cuda:0",
+  "artifact_hash": "82a020d70bb6aba757bf920e577d7bc03f2ac0ca2e309c89f2a6ccdab1d4202d"
+}

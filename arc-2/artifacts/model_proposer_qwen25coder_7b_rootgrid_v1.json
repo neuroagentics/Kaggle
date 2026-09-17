@@ -1,0 +1,24 @@
+{
+  "partition": "nested-validation-prefix-diagnostic",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "selection": "production-unsolved",
+  "tasks": 1,
+  "max_candidates": 1,
+  "max_output_tokens": 4096,
+  "exact_fit_tasks": 0,
+  "exact_hypotheses": 0,
+  "requested_programs": 1,
+  "parsed_programs": 1,
+  "rejections": {
+    "non-exact": 1
+  },
+  "rejection_details": [
+    "0:non-exact"
+  ],
+  "model_pass_at_2": 0,
+  "production_pass_at_2": 0,
+  "model_unique_vs_production": 0,
+  "failures": {},
+  "elapsed_seconds": 1.5192138999996132
+}

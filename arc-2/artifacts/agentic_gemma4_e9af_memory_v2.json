@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "gemma4:latest",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 1,
+  "rounds": 4,
+  "candidates_per_round": 4,
+  "ordering": "dataset",
+  "thinking": false,
+  "demonstration_exact_tasks": 1,
+  "full_task_exact_pass_at_2": 1,
+  "unique_vs_owned_production": 1,
+  "candidates_generated": 9,
+  "candidates_executed": 4,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": true,
+      "test_exact": true,
+      "rounds": 3,
+      "generated": 9,
+      "executed": 4,
+      "hypotheses": [
+        {
+          "digest": "08c1b25f1a82dba595a23afb33adec414386d90f69f099ed8459c9c773ab3d91",
+          "summary": "The output grid is a checkerboard pattern formed by alternating the two colors present in the input grid, starting with the color of the top-left cell (0,0) in the top row, and alternating across both rows and columns.",
+          "complexity": 159,
+          "round": 2,
+          "code": "def transform(grid):\n    rows = len(grid)\n    cols = len(grid[0])\n    c1 = grid[0][0]\n    c2 = grid[1][0] if rows > 1 and cols > 0 else grid[0][1] if cols > 1 else None\n    if c2 is None:\n        return grid\n    output = [[0] * cols for _ in range(rows)]\n    for r in range(rows):\n        for c in range(cols):\n            if (r + c) % 2 == 0:\n                output[r][c] = c1\n            else:\n                output[r][c] = c2\n    return output"
+        }
+      ],
+      "rejections": [
+        "r0c0:ValueError:worker rejected program: ontender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 4, in transform TypeError: make_grid() got an unexpected keyword ar",
+        "r0c1:non-exact:12:The output is the input grid reflected vertically (row 0 swaps with row 1).",
+        "r0c2:non-exact:12:The output is the input grid reflected horizontally (column 0 swaps with column 5).",
+        "r0c3:non-exact:12:The output is the input grid transformed by replacing all colors with their alternating pattern base",
+        "r1c0:ValueError:worker rejected program: c-2\\hyper_arc\\contender\\agentic_worker.py\", line 61, in main     outputs = [transform([list(row) for row in grid]) for grid in grids]                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File \"<agentic-transform>\", line 9, in transform TypeError: list indices must be inte",
+        "r2c1:duplicate",
+        "r2c2:duplicate",
+        "r2c3:duplicate"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 49.735424700018484,
+  "telemetry": {
+    "wall_seconds": 49.73538800000097,
+    "cpu_seconds": 7.375,
+    "peak_rss_bytes": 250277888,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  },
+  "agentic_memory": {
+    "path": "artifacts\\agentic_memory_v1.json",
+    "new_records": 1,
+    "total_records": 1
+  }
+}

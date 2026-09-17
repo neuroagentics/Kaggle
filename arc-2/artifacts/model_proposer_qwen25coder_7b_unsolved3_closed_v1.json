@@ -1,0 +1,37 @@
+{
+  "partition": "nested-validation-prefix-diagnostic",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "selection": "production-unsolved",
+  "tasks": 3,
+  "max_candidates": 4,
+  "max_output_tokens": 4096,
+  "exact_fit_tasks": 0,
+  "exact_hypotheses": 0,
+  "requested_programs": 12,
+  "parsed_programs": 12,
+  "rejections": {
+    "non-exact": 2,
+    "invalid": 8,
+    "duplicate": 2
+  },
+  "rejection_details": [
+    "0:non-exact",
+    "1:invalid:ExecutionError:rotate expects 1 children, found 0",
+    "2:duplicate",
+    "3:duplicate",
+    "0:invalid:ExecutionError:rotate failed: SpatialDSL.rotate() missing 1 required positional argument: 'degrees'",
+    "1:invalid:ExecutionError:reflect failed: SpatialDSL.reflect() missing 1 required positional argument: 'axis'",
+    "2:non-exact",
+    "3:invalid:ExecutionError:scale_integer failed: SpatialDSL.scale_integer() missing 1 required positional argument: 'factor'",
+    "0:invalid:ExecutionError:identity expects 1 children, found 0",
+    "1:invalid:ExecutionError:identity expects 1 children, found 0",
+    "2:invalid:ExecutionError:identity expects 1 children, found 0",
+    "3:invalid:ExecutionError:identity expects 1 children, found 0"
+  ],
+  "model_pass_at_2": 0,
+  "production_pass_at_2": 0,
+  "model_unique_vs_production": 0,
+  "failures": {},
+  "elapsed_seconds": 16.472250099999656
+}

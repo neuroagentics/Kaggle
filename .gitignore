@@ -1,0 +1,14 @@
+**/__pycache__/
+**/.pytest_cache/
+**/.hypothesis/
+*.py[cod]
+*.whl
+*.zip
+*.blend*
+
+arc-2/data/
+arc-2/checkpoint.pt*
+arc-2/submission.json
+arc-2/mcts_path.json
+arc-2/winning_path.json
+arc-2/reference/

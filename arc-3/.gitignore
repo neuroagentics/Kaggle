@@ -1,0 +1,28 @@
+# Kaggle credentials (project-local, never check in)
+.kaggle/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Vendored framework + downloaded game source + agent recordings
+vendor/
+environment_files/
+recordings/
+logs.log
+
+# Generated artefacts
+notebooks/submission.ipynb
+reference/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Local model weights (large; never commit)
+models/
+
+# Generated training trajectories (regenerate via collect_trajectories.py)
+training/data/

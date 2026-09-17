@@ -1,0 +1,44 @@
+{
+  "partition": "nested-validation-prefix-diagnostic",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "contract": "relational-v2",
+  "selection": "production-unsolved",
+  "tasks": 3,
+  "selected_task_ids": [
+    "c62e2108",
+    "5adee1b2",
+    "db118e2a"
+  ],
+  "max_candidates": 3,
+  "max_output_tokens": 512,
+  "exact_fit_tasks": 2,
+  "exact_hypotheses": 2,
+  "requested_programs": 6,
+  "parsed_programs": 6,
+  "rejections": {
+    "unbound": 2,
+    "invalid": 2
+  },
+  "rejection_details": [
+    "0:unbound",
+    "1:unbound",
+    "0:invalid:edge_marker_motif_propagation failed: Marker propagation requires markers and motifs",
+    "1:invalid:keyed_object_frames failed: No isolated frame keys found"
+  ],
+  "model_pass_at_2": 2,
+  "production_pass_at_2": 0,
+  "model_unique_vs_production": 2,
+  "failures": {},
+  "elapsed_seconds": 5.886071999999331,
+  "telemetry": {
+    "wall_seconds": 5.886025699999664,
+    "cpu_seconds": 2.9375,
+    "peak_rss_bytes": 282546176,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

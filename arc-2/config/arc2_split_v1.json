@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-08-31",
+  "purpose": "Freeze memory-development and internal-holdout membership before contender development.",
+  "datasets": {
+    "training_challenges": {
+      "path": "data/arc-agi-2/arc-agi_training_challenges.json",
+      "sha256": "779eaba89790ebad9af02514a7efc0aefaf2cf8236f046a31bbf8b9ec48f20f5",
+      "access": "development-and-internal-holdout"
+    },
+    "training_solutions": {
+      "path": "data/arc-agi-2/arc-agi_training_solutions.json",
+      "sha256": "9f07a38bd25af5e83aa5bf85c5cb1a1fefdb30f6a755256fa65429e697ca97f9",
+      "access": "same-partition-as-training-challenges"
+    },
+    "public_evaluation_challenges": {
+      "path": "data/arc-agi-2/arc-agi_evaluation_challenges.json",
+      "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "access": "sealed-evaluation-only"
+    },
+    "public_evaluation_solutions": {
+      "path": "data/arc-agi-2/arc-agi_evaluation_solutions.json",
+      "sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "access": "scoring-only-never-memory-or-training"
+    }
+  },
+  "training_split": {
+    "task_count": 1000,
+    "development_count": 800,
+    "holdout_count": 200,
+    "algorithm": "sha256-salted-rank-v1",
+    "salt": "arc2-contender-v1-2026-08-31",
+    "split_sha256": "c517d5be39fb9a47df876d363db87b72e745721f38d9a10ddd9c1935d67bb064"
+  },
+  "iteration_split": {
+    "parent": "training_split.development",
+    "builder_count": 640,
+    "validation_count": 160,
+    "algorithm": "ordered-parent-prefix-v1",
+    "split_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+    "policy": "Tune object grammar and ranking on this validation fold; do not query the 200-task internal holdout until the next design is frozen."
+  },
+  "write_policy": {
+    "development": "memory-writes-allowed-with-provenance",
+    "internal_holdout": "read-and-score-only-no-memory-writes",
+    "public_evaluation": "read-and-score-only-no-memory-writes",
+    "hidden_test": "inference-only-no-persistent-writes"
+  }
+}

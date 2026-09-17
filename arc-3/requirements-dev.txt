@@ -1,0 +1,29 @@
+# ARC-AGI-3 — LOCAL DEVELOPMENT dependencies ONLY.
+#
+# WARNING: This file installs a CPU-ONLY build of PyTorch so the simulator and
+# training tests can run on a developer machine without a GPU. It MUST NOT be
+# used to build the Kaggle submission bundle.
+#
+# On Kaggle the notebook runs on a CUDA GPU and uses Kaggle's pre-installed
+# CUDA build of PyTorch (see requirements-kaggle.txt). Shipping the +cpu wheel
+# to Kaggle would silently run the model on CPU and blow the time budget.
+#
+# The scripts/preflight.py `check_torch_build_matches_device` guard fails closed
+# if a +cpu build is detected while a cuda:* device is requested, so a mistaken
+# CPU wheel cannot pass preflight unnoticed.
+#
+# Install locally with:
+#   .venv/Scripts/python.exe -m pip install -r requirements-dev.txt \
+#       --extra-index-url https://download.pytorch.org/whl/cpu
+#
+# Runtime deps shared with Kaggle (kept in sync with `make setup`):
+arc-agi>=0.9.6
+kaggle>=2.2
+python-dotenv
+pandas
+pyarrow
+
+# CPU-only PyTorch for local tests. Resolved from the PyTorch CPU index.
+# Pin is a dev convenience; the Kaggle-bundled CUDA version is pinned separately
+# only after testing the actual Kaggle image (blueprint §7).
+torch==2.14.0+cpu

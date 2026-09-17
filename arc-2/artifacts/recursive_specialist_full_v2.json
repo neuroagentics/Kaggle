@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "split_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "builder_tasks_used": 640,
+  "validation_tasks_used": 160,
+  "train_episodes": 4148,
+  "validation_episodes": 513,
+  "augmentations": 2,
+  "config": {
+    "hidden_channels": 64,
+    "recurrent_steps": 3,
+    "max_demos": 4,
+    "max_grid": 30
+  },
+  "parameter_count": 135750,
+  "device": "cpu",
+  "resumed_from": "artifacts\\recursive_specialist_full_v1.pt",
+  "epochs": [
+    {
+      "epoch": 6,
+      "train_loss": 1.5838243481281407,
+      "validation_loss": 1.9321864604949952,
+      "validation_exact_episodes": 1,
+      "validation_episodes": 513,
+      "validation_shape_accuracy": 0.3469785575048733,
+      "validation_cell_accuracy": 0.7967945324156519,
+      "validation_nonzero_cell_accuracy": 0.6711432506887053
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.5343310452839773,
+      "validation_loss": 1.9311032386926503,
+      "validation_exact_episodes": 0,
+      "validation_episodes": 513,
+      "validation_shape_accuracy": 0.3508771929824561,
+      "validation_cell_accuracy": 0.789815661548828,
+      "validation_nonzero_cell_accuracy": 0.6654399104683195
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.4963844239367226,
+      "validation_loss": 1.9259021052947412,
+      "validation_exact_episodes": 0,
+      "validation_episodes": 513,
+      "validation_shape_accuracy": 0.33528265107212474,
+      "validation_cell_accuracy": 0.7917047696972614,
+      "validation_nonzero_cell_accuracy": 0.6555828168044077
+    }
+  ],
+  "elapsed_seconds": 96.57854459999999
+}

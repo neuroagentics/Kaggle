@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "partition": "nested-validation-owned-production-unsolved",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "model": "qwen2.5-coder:7b",
+  "agent": "execution-guided-code-refinement-v1",
+  "tasks": 3,
+  "rounds": 2,
+  "candidates_per_round": 4,
+  "ordering": "smallest",
+  "demonstration_exact_tasks": 0,
+  "full_task_exact_pass_at_2": 0,
+  "unique_vs_owned_production": 0,
+  "candidates_generated": 21,
+  "candidates_executed": 8,
+  "failures": {},
+  "details": [
+    {
+      "task_id": "e9afcf9a",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 8,
+      "executed": 3,
+      "hypotheses": [],
+      "rejections": [
+        "r0c3:duplicate",
+        "r1c0:ValueError:invalid Python: unexpected character after line continuation character",
+        "r1c1:ValueError:invalid Python: unexpected character after line continuation character",
+        "r1c2:ValueError:invalid Python: unexpected character after line continuation character",
+        "r1c3:ValueError:invalid Python: unexpected character after line continuation character"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "44f52bb0",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 5,
+      "executed": 1,
+      "hypotheses": [],
+      "rejections": [
+        "r0c1:duplicate",
+        "r0c2:duplicate",
+        "r0c3:duplicate",
+        "r1c0:duplicate"
+      ],
+      "owned_production_exact": false
+    },
+    {
+      "task_id": "a85d4709",
+      "demonstration_exact": false,
+      "test_exact": false,
+      "rounds": 2,
+      "generated": 8,
+      "executed": 4,
+      "hypotheses": [],
+      "rejections": [
+        "r1c0:ValueError:worker rejected program: ~~~~^^   File \"C:\\Kaggle\\arc-2\\hyper_arc\\contender\\agentic_worker.py\", line 29, in main     out",
+        "r1c1:ValueError:worker rejected program: ~~~~^^   File \"C:\\Kaggle\\arc-2\\hyper_arc\\contender\\agentic_worker.py\", line 29, in main     out",
+        "r1c2:ValueError:worker rejected program: ~~~~^^   File \"C:\\Kaggle\\arc-2\\hyper_arc\\contender\\agentic_worker.py\", line 29, in main     out",
+        "r1c3:ValueError:worker rejected program: ~~~~^^   File \"C:\\Kaggle\\arc-2\\hyper_arc\\contender\\agentic_worker.py\", line 29, in main     out"
+      ],
+      "owned_production_exact": false
+    }
+  ],
+  "elapsed_seconds": 95.2751336000074,
+  "telemetry": {
+    "wall_seconds": 95.27508709998801,
+    "cpu_seconds": 15.296875,
+    "peak_rss_bytes": 251359232,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "competition": "arc-prize-2026-arc-agi-3",
+  "artifacts": {},
+  "checks": {},
+  "note": "Intentionally blocked. Populate only with reviewed, hash-bound evidence; do not mark planned work PASS. The 'substantive_improvement' check requires improved level completion OR action efficiency on UNTOUCHED dev games, across REPEATED SEEDS, versus MATCHED component-disabled controls, produced by the LIVE agent (not the controlled-world diagnostics). As of the 2026-09-11 milestone, the spatial simulator, hypothesis loop, and memory-transfer improvements are validated ONLY in controlled worlds and are NOT wired into the live agent, so this check cannot honestly PASS yet."
+}

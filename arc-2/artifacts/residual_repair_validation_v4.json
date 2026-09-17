@@ -1,0 +1,93 @@
+{
+  "partition": "validation",
+  "partition_sha256": "d9ee5061059a770ff5afc6cc720cf30c068c2da2b162b0c6586c492f1e8180cc",
+  "builder_tasks": 640,
+  "validation_tasks": 160,
+  "holdout_tasks": 200,
+  "evaluated_tasks": 160,
+  "diagnostic_limit": null,
+  "object_fit_tasks": 3,
+  "object_candidate_count": 4,
+  "repair_fit_tasks": 8,
+  "repair_candidate_count": 8,
+  "revised_candidate_count": 5,
+  "baseline_pass_at_2": 5,
+  "object_first_pass_at_2": 8,
+  "stable_object_pass_at_2": 8,
+  "object_first_unique": 3,
+  "object_first_regressions": 0,
+  "stable_object_unique": 3,
+  "stable_object_regressions": 0,
+  "production_pass_at_2": 57,
+  "production_stable_object_pass_at_2": 58,
+  "production_stable_object_unique": 1,
+  "production_stable_object_regressions": 0,
+  "repair_first_pass_at_2": 9,
+  "repair_first_unique_vs_object": 1,
+  "production_repair_pass_at_2": 58,
+  "production_repair_unique": 1,
+  "production_repair_regressions": 0,
+  "elapsed_seconds": 155.76884530000007,
+  "telemetry": {
+    "wall_seconds": 155.76862849999998,
+    "cpu_seconds": 155.15625,
+    "peak_rss_bytes": 317673472,
+    "peak_gpu_memory_bytes": null,
+    "timeout_count": 0,
+    "fallback_count": 0,
+    "failure_count": 0,
+    "sampler": "psutil-process-tree"
+  },
+  "family_metrics": {
+    "contract": {
+      "task_count": 31,
+      "baseline_pass_at_2": 0,
+      "object_first_pass_at_2": 0,
+      "stable_object_pass_at_2": 0,
+      "production_pass_at_2": 14,
+      "production_stable_object_pass_at_2": 14,
+      "repair_first_pass_at_2": 0,
+      "production_repair_pass_at_2": 14
+    },
+    "expand": {
+      "task_count": 12,
+      "baseline_pass_at_2": 1,
+      "object_first_pass_at_2": 1,
+      "stable_object_pass_at_2": 1,
+      "production_pass_at_2": 6,
+      "production_stable_object_pass_at_2": 6,
+      "repair_first_pass_at_2": 1,
+      "production_repair_pass_at_2": 6
+    },
+    "mixed-axis": {
+      "task_count": 1,
+      "baseline_pass_at_2": 0,
+      "object_first_pass_at_2": 0,
+      "stable_object_pass_at_2": 0,
+      "production_pass_at_2": 0,
+      "production_stable_object_pass_at_2": 0,
+      "repair_first_pass_at_2": 0,
+      "production_repair_pass_at_2": 0
+    },
+    "mixed-demonstrations": {
+      "task_count": 5,
+      "baseline_pass_at_2": 0,
+      "object_first_pass_at_2": 0,
+      "stable_object_pass_at_2": 0,
+      "production_pass_at_2": 1,
+      "production_stable_object_pass_at_2": 1,
+      "repair_first_pass_at_2": 0,
+      "production_repair_pass_at_2": 1
+    },
+    "same-size": {
+      "task_count": 111,
+      "baseline_pass_at_2": 4,
+      "object_first_pass_at_2": 7,
+      "stable_object_pass_at_2": 7,
+      "production_pass_at_2": 36,
+      "production_stable_object_pass_at_2": 37,
+      "repair_first_pass_at_2": 8,
+      "production_repair_pass_at_2": 37
+    }
+  }
+}

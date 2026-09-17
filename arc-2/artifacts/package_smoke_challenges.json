@@ -1,0 +1,12 @@
+{
+  "package-smoke": {
+    "train": [
+      {"input": [[1, 0]], "output": [[1, 0]]},
+      {"input": [[2], [0]], "output": [[2], [0]]}
+    ],
+    "test": [
+      {"input": [[3, 0]]},
+      {"input": [[4], [0]]}
+    ]
+  }
+}

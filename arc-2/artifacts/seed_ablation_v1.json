@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-08-31",
+  "experiment_id": "structured-seed-v1-fixed-800-200",
+  "bank": {
+    "path": "artifacts/seed_bank_v1.json",
+    "bank_id": "9d01d50c1ce9be4163f44f065a8b784b465e0dfff3aaf6bd4e58973c9a61dacc",
+    "file_sha256": "892ac3863f6f1f91d43981dca15d5df453b55c9c0e251189dabd0cb3165a3db9",
+    "schemas": 12,
+    "development_evidence": 13,
+    "development_mining_seconds": 46.306
+  },
+  "protocol": {
+    "split_sha256": "c517d5be39fb9a47df876d363db87b72e745721f38d9a10ddd9c1935d67bb064",
+    "development_tasks": 800,
+    "holdout_tasks": 200,
+    "retrieval_limit": 8,
+    "holdout_tuning": false
+  },
+  "results": {
+    "baseline_pass_at_2": 7,
+    "memory_pass_at_2": 7,
+    "unique_memory_solves": [],
+    "memory_regressions": [],
+    "holdout_elapsed_seconds": 13.769040800019866,
+    "solved_task_ids": [
+      "0d3d703e",
+      "28bf18c6",
+      "3c9b0459",
+      "b1948b0a",
+      "c59eb873",
+      "d511f180",
+      "f25fbde4"
+    ]
+  },
+  "gate": {
+    "required_unique_holdout_solves": 3,
+    "observed_unique_holdout_solves": 0,
+    "status": "failed",
+    "decision": "Do not integrate seed-bank v1 into the competition runtime. Mine richer typed object programs before another fixed ablation."
+  }
+}
