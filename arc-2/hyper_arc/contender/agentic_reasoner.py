@@ -301,37 +301,80 @@ def _planning_schema(max_candidates: int) -> dict[str, Any]:
     }
 
 
+# A hypothesis counts as a near-miss (refine rather than replace) whenever it
+# produced OUTPUT OF THE RIGHT GEOMETRY but with wrong cells. We deliberately
+# bias toward exploitation: the observed solve had a candidate 12 of 24 cells
+# wrong (50%) that was still refinable to exact, because the rule family was
+# right and only the phase was off — a phase error flips ~half the cells yet is
+# a one-line fix. Blocking such a refinement costs a solve; allowing it costs
+# little, since remaining candidate slots still explore alternatives.
+#
+# Therefore: any non-shape residual up to nearly all cells is treated as
+# refinable. Only a shape/geometry error (encoded as >=900 per pair by
+# _grid_error) or no attempt at all is a "big miss" that warrants full diversity.
+_SHAPE_ERROR_FLOOR = 900
+# Guard against a candidate that is essentially 100% wrong on a large grid
+# (right shape, but no cell correct) — that is a wrong rule, not a near-miss.
+_NEAR_MISS_MAX_FRACTION = 0.95
+
+
+def _is_near_miss(best_residual: int | None, total_output_cells: int) -> bool:
+    if best_residual is None or total_output_cells <= 0:
+        return False
+    if best_residual >= _SHAPE_ERROR_FLOOR:
+        return False  # wrong output geometry — not a phase/parameter fix
+    # Right geometry with at least a few correct cells: refinable.
+    return best_residual <= int(_NEAR_MISS_MAX_FRACTION * total_output_cells)
+
+
 def _diversity_directive(
     max_candidates: int,
     prior_summaries: Sequence[str],
     failed_families: Sequence[str] = (),
+    *,
+    best_residual: int | None = None,
+    near_miss: bool = False,
 ) -> str:
-    """Explicit anti-duplication pressure for multi-candidate planning.
+    """Balance exploration (distinct hypotheses) against exploitation (repair).
 
-    The model tends to emit near-identical hypotheses when asked for several at
-    once, which wastes the whole round after digest dedup. Require each
-    hypothesis to differ in substance, list approaches already produced for this
-    task so it does not repeat them, and surface families that were already
-    tried-and-failed on structurally similar tasks so it steers to an untried
-    direction instead of rediscovering a known dead end.
+    When there is a near-miss (a prior candidate already close to exact), forcing
+    every hypothesis into a *different* family pushes the model off the productive
+    trajectory — this regressed a solve where residual grew 12 -> 18 under blanket
+    diversity pressure. So: on a near-miss, prioritize refining that specific
+    hypothesis and only spend spare slots on alternatives. Only when the best
+    attempt is still a big miss do we apply full anti-duplication pressure to
+    broaden the search.
     """
-    directive = (
-        f"DIVERSITY REQUIREMENT: the {max_candidates} hypotheses MUST be mutually "
-        "distinct. Each must use a different rule FAMILY or a materially different "
-        "mechanism from every other hypothesis in this response — not a reworded "
-        "restatement and not the same code with cosmetic changes. Draw from "
-        "different families such as geometric transform, color remap, object "
-        "selection/move, counting/classification, panel selection, symmetry "
-        "completion, scaling/tiling, or cropping. If you can only justify one rule "
-        "confidently, return that one plus genuinely different alternative theories "
-        "for the remaining slots rather than duplicates. Two hypotheses whose "
-        "transform(grid) would return identical outputs on the demonstrations are "
-        "duplicates and are forbidden."
-    )
+    if near_miss:
+        residual_note = (
+            f" (residual {best_residual} cells)" if best_residual is not None else ""
+        )
+        directive = (
+            f"REFINE-FIRST: a previous hypothesis is close{residual_note}. Devote the "
+            "first hypothesis to REPAIRING that near-miss — keep its rule family and "
+            "fix the specific failing detail (phase, offset, color binding, ordering, "
+            "or boundary), guided by the verifier feedback. Use any remaining slots "
+            "for genuinely different alternatives, but do not abandon a nearly-correct "
+            "rule just to be different."
+        )
+    else:
+        directive = (
+            f"DIVERSITY REQUIREMENT: the {max_candidates} hypotheses MUST be mutually "
+            "distinct. Each must use a different rule FAMILY or a materially "
+            "different mechanism from every other hypothesis in this response — not a "
+            "reworded restatement and not the same code with cosmetic changes. Draw "
+            "from different families such as geometric transform, color remap, object "
+            "selection/move, counting/classification, panel selection, symmetry "
+            "completion, scaling/tiling, or cropping. If you can only justify one rule "
+            "confidently, return that one plus genuinely different alternative "
+            "theories for the remaining slots rather than duplicates. Two hypotheses "
+            "whose transform(grid) would return identical outputs on the "
+            "demonstrations are duplicates and are forbidden."
+        )
     if prior_summaries:
         directive += (
             " You have ALREADY proposed these approaches for this task; do not "
-            "repeat any of them unless verifier feedback names a concrete repair: "
+            "repeat any of them verbatim unless you are repairing a named near-miss: "
             + json.dumps(list(prior_summaries[-16:]))
         )
     if failed_families:
@@ -353,13 +396,21 @@ def _planning_prompt(
     max_candidates: int,
     prior_summaries: Sequence[str] = (),
     failed_families: Sequence[str] = (),
+    best_residual: int | None = None,
+    near_miss: bool = False,
 ) -> str:
     return (
         "Act as the perception and hypothesis-planning role in a verified ARC "
         "agent. Infer a single general rule from all demonstrations. Use the raw "
         "grids and deterministic object/relationship scene graph together. Return "
-        f"up to {max_candidates} genuinely different hypotheses as JSON only. "
-        + _diversity_directive(max_candidates, prior_summaries, failed_families)
+        f"up to {max_candidates} hypotheses as JSON only. "
+        + _diversity_directive(
+            max_candidates,
+            prior_summaries,
+            failed_families,
+            best_residual=best_residual,
+            near_miss=near_miss,
+        )
         + " Each "
         "hypothesis requires id, rule, evidence, algorithm, and code fields. Code must "
         "define transform(grid), use pure bounded Python, and implement that exact rule. "
@@ -372,6 +423,10 @@ def _planning_prompt(
         f"plus {', '.join(sorted(SAFE_CALLS))} and list methods "
         f"{', '.join(sorted(SAFE_METHODS))}. No imports, classes, while loops, I/O, "
         "exceptions, or prose outside the JSON. The algorithm and code must be precise. "
+        "The scene graph is DATA, not an API: fields like objects, object_count, "
+        "periodicity, symmetries, and relations are precomputed values for your "
+        "reasoning only — never call them as functions in code; recompute what you "
+        "need from the grid using the trusted functions above. "
         "Favor object transformations, relations, counts, symmetry, topology, and "
         "input-derived parameters over coordinate memorization. For grids separated "
         "into repeated panels, explicitly test whether the output is the unique panel. "
@@ -511,11 +566,15 @@ class AgenticReasoner:
             raise ValueError("agentic reasoning requires train and test inputs")
         task = _task_payload(task_data)
         scene = _scene_payload(task_id, task_data)
+        total_output_cells = sum(
+            len(grid) * len(grid[0]) for grid in train_outputs if grid and grid[0]
+        )
         exact: list[CodeHypothesis] = []
         failures: list[str] = []
         seen: set[str] = set()
         rejected_summaries: list[str] = []
         feedback = ""
+        best_residual: int | None = None
         generated = 0
         executed = 0
         rounds_executed = 0
@@ -556,6 +615,10 @@ class AgenticReasoner:
                                 self.candidates_per_round,
                                 prior_summaries=rejected_summaries,
                                 failed_families=failure_cues,
+                                best_residual=best_residual,
+                                near_miss=_is_near_miss(
+                                    best_residual, total_output_cells
+                                ),
                             ),
                         },
                     ],
@@ -651,6 +714,13 @@ class AgenticReasoner:
             if exact:
                 break
             feedback = _feedback(evaluated)
+            # Track the best (lowest) demonstration residual seen so far so the
+            # next round can switch from diversity to refine-first on a near-miss.
+            round_best = min((item[1] for item in evaluated), default=None)
+            if round_best is not None and (
+                best_residual is None or round_best < best_residual
+            ):
+                best_residual = round_best
         exact.sort(key=lambda item: (item.complexity, item.round_index, item.digest))
         predictions = tuple(
             tuple(hypothesis.test_predictions[test_index] for hypothesis in exact[:2])

@@ -210,6 +210,34 @@ def test_diversity_directive_demands_distinct_hypotheses():
     assert "duplicates are forbidden" in directive or "forbidden" in directive
 
 
+def test_diversity_directive_switches_to_refine_on_near_miss():
+    # A near-miss must prioritize repairing rather than forcing a different
+    # family (blanket diversity regressed a solve, residual 12 -> 18).
+    near = _diversity_directive(3, prior_summaries=(), best_residual=12, near_miss=True)
+    assert "REFINE-FIRST" in near
+    assert "DIVERSITY REQUIREMENT" not in near
+    # A big miss keeps full diversity pressure.
+    far = _diversity_directive(3, prior_summaries=(), best_residual=500, near_miss=False)
+    assert "DIVERSITY REQUIREMENT" in far
+    assert "REFINE-FIRST" not in far
+
+
+def test_is_near_miss_biases_toward_exploitation_but_excludes_big_misses():
+    from hyper_arc.contender.agentic_reasoner import _is_near_miss, _SHAPE_ERROR_FLOOR
+
+    # The regressed solve: 12 of 24 cells wrong (50%) with correct geometry was
+    # refinable to exact — it MUST count as a near-miss now.
+    assert _is_near_miss(12, total_output_cells=24) is True
+    # Right geometry, mostly-but-not-entirely wrong still refines.
+    assert _is_near_miss(18, total_output_cells=24) is True
+    # A shape error (wrong output geometry) is a big miss, not a phase fix.
+    assert _is_near_miss(_SHAPE_ERROR_FLOOR + 5, total_output_cells=1000) is False
+    # Essentially 100% wrong on a large grid: wrong rule, force diversity.
+    assert _is_near_miss(1000, total_output_cells=1000) is False
+    # No prior attempt: not a near-miss.
+    assert _is_near_miss(None, total_output_cells=100) is False
+
+
 def test_diversity_directive_lists_already_tried_approaches():
     directive = _diversity_directive(
         4, prior_summaries=["reflect horizontally", "rotate 180 degrees"]
