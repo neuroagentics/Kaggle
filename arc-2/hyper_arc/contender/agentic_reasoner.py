@@ -269,13 +269,19 @@ def _planning_schema(max_candidates: int) -> dict[str, Any]:
     }
 
 
-def _diversity_directive(max_candidates: int, prior_summaries: Sequence[str]) -> str:
+def _diversity_directive(
+    max_candidates: int,
+    prior_summaries: Sequence[str],
+    failed_families: Sequence[str] = (),
+) -> str:
     """Explicit anti-duplication pressure for multi-candidate planning.
 
     The model tends to emit near-identical hypotheses when asked for several at
     once, which wastes the whole round after digest dedup. Require each
-    hypothesis to differ in substance, and list approaches already produced for
-    this task so it does not repeat them.
+    hypothesis to differ in substance, list approaches already produced for this
+    task so it does not repeat them, and surface families that were already
+    tried-and-failed on structurally similar tasks so it steers to an untried
+    direction instead of rediscovering a known dead end.
     """
     directive = (
         f"DIVERSITY REQUIREMENT: the {max_candidates} hypotheses MUST be mutually "
@@ -296,6 +302,13 @@ def _diversity_directive(max_candidates: int, prior_summaries: Sequence[str]) ->
             "repeat any of them unless verifier feedback names a concrete repair: "
             + json.dumps(list(prior_summaries[-16:]))
         )
+    if failed_families:
+        directive += (
+            " MEMORY — these approach families were tried on structurally similar "
+            "tasks and did NOT reproduce the demonstrations exactly; do not repeat "
+            "them, choose a genuinely different direction: "
+            + json.dumps(list(failed_families[:12]))
+        )
     return directive
 
 
@@ -307,13 +320,14 @@ def _planning_prompt(
     rejected_summaries: Sequence[str],
     max_candidates: int,
     prior_summaries: Sequence[str] = (),
+    failed_families: Sequence[str] = (),
 ) -> str:
     return (
         "Act as the perception and hypothesis-planning role in a verified ARC "
         "agent. Infer a single general rule from all demonstrations. Use the raw "
         "grids and deterministic object/relationship scene graph together. Return "
         f"up to {max_candidates} genuinely different hypotheses as JSON only. "
-        + _diversity_directive(max_candidates, prior_summaries)
+        + _diversity_directive(max_candidates, prior_summaries, failed_families)
         + " Each "
         "hypothesis requires id, rule, evidence, algorithm, and code fields. Code must "
         "define transform(grid), use pure bounded Python, and implement that exact rule. "
@@ -456,6 +470,7 @@ class AgenticReasoner:
         task_data: Mapping[str, Any],
         *,
         memory_cues: Sequence[str] = (),
+        failure_cues: Sequence[str] = (),
     ) -> AgenticResult:
         train_inputs = [pair["input"] for pair in task_data.get("train", [])]
         train_outputs = [pair["output"] for pair in task_data.get("train", [])]
@@ -508,6 +523,7 @@ class AgenticReasoner:
                                 rejected_summaries,
                                 self.candidates_per_round,
                                 prior_summaries=rejected_summaries,
+                                failed_families=failure_cues,
                             ),
                         },
                     ],

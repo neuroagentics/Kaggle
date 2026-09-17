@@ -12,6 +12,10 @@ from evaluate_model_proposer import _production_attempts
 from hyper_arc.contender.agentic_memory import AgenticMemoryBank, AgenticMemoryRecord
 from hyper_arc.contender.agentic_reasoner import AgenticReasoner
 from hyper_arc.contender.data_protocol import load_verified_split
+from hyper_arc.contender.failure_memory import (
+    FailureMemoryBank,
+    extract_failed_families,
+)
 from hyper_arc.contender.model_proposer import _ollama_transport
 from hyper_arc.contender.procedural_memory import ProceduralMemoryBank
 from hyper_arc.contender.telemetry import ResourceMonitor
@@ -30,6 +34,12 @@ def _arguments() -> argparse.Namespace:
     parser.add_argument("--task-ids", nargs="*")
     parser.add_argument("--partition", choices=("builder", "validation"), default="validation")
     parser.add_argument("--memory-output", type=Path)
+    parser.add_argument(
+        "--failure-memory",
+        type=Path,
+        help="Failure-memory bank: recalled to steer away from tried-and-failed "
+        "approaches, and updated with this run's non-exact families.",
+    )
     parser.add_argument("--output", type=Path)
     return parser.parse_args()
 
@@ -101,6 +111,11 @@ def main() -> int:
         max_output_tokens=arguments.max_output_tokens,
         thinking=arguments.thinking,
     )
+    failure_bank = FailureMemoryBank()
+    if arguments.failure_memory and arguments.failure_memory.is_file():
+        failure_bank = FailureMemoryBank.load(arguments.failure_memory)
+    learned_failures: list = []
+
     solved = 0
     exact_fit = 0
     generated = 0
@@ -111,11 +126,13 @@ def main() -> int:
     started = time.perf_counter()
     with ResourceMonitor() as monitor:
         for ordinal, (task_id, production_attempts) in enumerate(selected, start=1):
+            failure_cues = failure_bank.recall(development[task_id])
             try:
                 result = reasoner.solve(
                     task_id,
                     development[task_id],
                     memory_cues=memory.retrieve_cues(development[task_id]),
+                    failure_cues=failure_cues,
                 )
             except Exception as exc:
                 key = f"{type(exc).__name__}:{str(exc)[:100]}"
@@ -143,6 +160,14 @@ def main() -> int:
                             validation_scope=arguments.partition,
                         )
                     )
+            else:
+                # Persist only genuine executed-but-non-exact approach families
+                # so future runs on similar tasks avoid them and try new ones.
+                learned_failures.extend(
+                    extract_failed_families(
+                        task_id, development[task_id], result.failures
+                    )
+                )
             details.append(
                 {
                     "task_id": task_id,
@@ -213,6 +238,15 @@ def main() -> int:
             "path": str(arguments.memory_output),
             "new_records": len(learned_records),
             "total_records": len(merged.records),
+        }
+    if arguments.failure_memory:
+        merged_failures = failure_bank.merged(learned_failures)
+        merged_failures.save(arguments.failure_memory)
+        report["failure_memory"] = {
+            "path": str(arguments.failure_memory),
+            "recalled_and_avoided": True,
+            "new_failed_families": len(learned_failures),
+            "total_failed_families": len(merged_failures.records),
         }
     if arguments.output:
         arguments.output.parent.mkdir(parents=True, exist_ok=True)

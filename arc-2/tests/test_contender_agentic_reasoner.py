@@ -213,6 +213,20 @@ def test_planning_prompt_embeds_diversity_directive_and_prior_summaries():
     assert "mirror the grid" in prompt
 
 
+def test_planning_prompt_surfaces_recalled_failed_families():
+    prompt = _planning_prompt(
+        task={"train": [], "test": []},
+        scene={},
+        memory_cues=(),
+        feedback="",
+        rejected_summaries=(),
+        max_candidates=4,
+        failed_families=("recolor by area (executed but off by 30 cells/shape)",),
+    )
+    assert "MEMORY" in prompt
+    assert "recolor by area" in prompt
+
+
 def test_extract_json_object_prefers_the_object_carrying_hypotheses():
     # A stray fragment precedes the real payload. The first-object-wins behavior
     # would have returned {"note": ...} and failed as "missing hypotheses".
