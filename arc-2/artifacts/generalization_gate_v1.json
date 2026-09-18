@@ -1,0 +1,22 @@
+{
+  "validation": {
+    "tasks_with_demo_fit": 3,
+    "demo_fitting_programs": 7,
+    "raw_precision(test_correct/fit)": "85.7%",
+    "gate_passed_programs": 4,
+    "gated_precision(test_correct/gate_pass)": "75.0%",
+    "true_solves_lost_to_gate": 3,
+    "task_pass2_raw": 3,
+    "task_pass2_gated": 3
+  },
+  "public_eval": {
+    "tasks_with_demo_fit": 0,
+    "demo_fitting_programs": 0,
+    "raw_precision(test_correct/fit)": "n/a",
+    "gate_passed_programs": 0,
+    "gated_precision(test_correct/gate_pass)": "n/a",
+    "true_solves_lost_to_gate": 0,
+    "task_pass2_raw": 0,
+    "task_pass2_gated": 0
+  }
+}
