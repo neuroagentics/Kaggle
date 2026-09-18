@@ -1,0 +1,1063 @@
+{
+  "schema_version": 1,
+  "policy": "executed-but-non-exact-approaches-only",
+  "records": [
+    {
+      "record_id": "1f8571a5875d049ae3badf83a2105c00de2d3cc2754da224fb3d8c22360c1c08",
+      "source_task_id": "dae9d2b5",
+      "family": "object counting and color classification",
+      "reason": "executed but off by 4515 cells/shape on the demonstrations",
+      "residual": 4515,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 2.9444389791664403,
+          "input_objects": 3.8,
+          "object_delta": -2.0,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.8,
+          "palette_delta": -1.0,
+          "separator_delta": -0.2,
+          "train_count": 5.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated"
+        ]
+      }
+    },
+    {
+      "record_id": "2e500e6abdb9008f1b647a2c22efa2337540b78f5d75ae8d47132321bce98e9f",
+      "source_task_id": "e9afcf9a",
+      "family": "alternating color pattern with column-wise inversion and symmetry",
+      "reason": "executed but off by 12 cells/shape on the demonstrations",
+      "residual": 12,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "2f20f7ab06af95299b46ef39f1ae3ece471c71f8a3719d4f0530323dde2bb13e",
+      "source_task_id": "a85d4709",
+      "family": "color assignment based on object position and grid shape",
+      "reason": "executed but off by 21 cells/shape on the demonstrations",
+      "residual": 21,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 10.0,
+          "input_area_log": 2.302585092994046,
+          "input_objects": 2.5,
+          "object_delta": -1.5,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.0,
+          "palette_delta": 0.0,
+          "separator_delta": 2.5,
+          "train_count": 4.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:rotational_180",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "30158fd90dd4f4067e4bfee77052fa417890a97a986d7ab836d300476c809014",
+      "source_task_id": "88a62173",
+      "family": "color inversion and panel selection based on symmetry and spatial relationships",
+      "reason": "executed but off by 4 cells/shape on the demonstrations",
+      "residual": 4,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 3.258096538021482,
+          "input_objects": 5.333333333333333,
+          "object_delta": -4.0,
+          "output_area_log": 1.6094379124341003,
+          "output_objects": 1.3333333333333333,
+          "palette_delta": 0.0,
+          "separator_delta": -0.6666666666666666,
+          "train_count": 3.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "44721cae10b87b81b1bb715d1c14431dd65ca71b7e46d8d3f3d4926386eb74e1",
+      "source_task_id": "e9afcf9a",
+      "family": "alternating color pattern with rotational symmetry",
+      "reason": "executed but off by 12 cells/shape on the demonstrations",
+      "residual": 12,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "5bb41062f2b11be54f8f04552667c5f747174430ca0ecb97bd79e06a091022ad",
+      "source_task_id": "a85d4709",
+      "family": "color remapping based on symmetry and position",
+      "reason": "executed but off by 21 cells/shape on the demonstrations",
+      "residual": 21,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 10.0,
+          "input_area_log": 2.302585092994046,
+          "input_objects": 2.5,
+          "object_delta": -1.5,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.0,
+          "palette_delta": 0.0,
+          "separator_delta": 2.5,
+          "train_count": 4.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:rotational_180",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "63a832921e2b1a8f96b8570187fa770f60c1801fce5dde473e489ed9b1419c37",
+      "source_task_id": "e9afcf9a",
+      "family": "color swapping with column-based alternation and rotational symmetry",
+      "reason": "executed but off by 12 cells/shape on the demonstrations",
+      "residual": 12,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "6f135b49e2285445cf64191c61fd5ba68c79050bc4e66296288ed0eb85eec9b6",
+      "source_task_id": "e9afcf9a",
+      "family": "geometric scaling with tiling and color inversion",
+      "reason": "executed but off by 1816 cells/shape on the demonstrations",
+      "residual": 1816,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "7587682f6dbdeb03e1f845792061c696637d9d57a7951afa08b72ce95869374d",
+      "source_task_id": "a85d4709",
+      "family": "color assignment based on object count and grid symmetry",
+      "reason": "executed but off by 24 cells/shape on the demonstrations",
+      "residual": 24,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 10.0,
+          "input_area_log": 2.302585092994046,
+          "input_objects": 2.5,
+          "object_delta": -1.5,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.0,
+          "palette_delta": 0.0,
+          "separator_delta": 2.5,
+          "train_count": 4.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:rotational_180",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "7c9bf634f25cc24efc113d2b78764f02362097cbb3d8aea9d15bc8dfd7b002b2",
+      "source_task_id": "e9afcf9a",
+      "family": "symmetry completion with panel selection and column-wise inversion",
+      "reason": "executed but off by 12 cells/shape on the demonstrations",
+      "residual": 12,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "88a8a170591caadaa21dea424a7e7b2857b65954cf79e327fc37bb6063ca6e9d",
+      "source_task_id": "88a62173",
+      "family": "geometric transformation and spatial reconfiguration based on object positioning and color inversion",
+      "reason": "executed but off by 5 cells/shape on the demonstrations",
+      "residual": 5,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 3.258096538021482,
+          "input_objects": 5.333333333333333,
+          "object_delta": -4.0,
+          "output_area_log": 1.6094379124341003,
+          "output_objects": 1.3333333333333333,
+          "palette_delta": 0.0,
+          "separator_delta": -0.6666666666666666,
+          "train_count": 3.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "8925e3331c31df8811ddf6473ff0b6aaf98a01d210af58c58add3a6f9532b8dc",
+      "source_task_id": "a85d4709",
+      "family": "color remapping based on symmetry and position with offset correction",
+      "reason": "executed but off by 21 cells/shape on the demonstrations",
+      "residual": 21,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 10.0,
+          "input_area_log": 2.302585092994046,
+          "input_objects": 2.5,
+          "object_delta": -1.5,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.0,
+          "palette_delta": 0.0,
+          "separator_delta": 2.5,
+          "train_count": 4.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:rotational_180",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "8a3a39db77342c04d60bfe0c738c35caf374bd13caccc8f29fb7af8d80b8355e",
+      "source_task_id": "0520fde7",
+      "family": "select the central column and apply a vertical symmetry to the entire grid",
+      "reason": "executed but off by 2712 cells/shape on the demonstrations",
+      "residual": 2712,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 3.091042453358316,
+          "input_objects": 6.0,
+          "object_delta": -4.0,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 2.0,
+          "palette_delta": -1.0,
+          "separator_delta": 0.3333333333333333,
+          "train_count": 3.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "8f6b9875768ac06d7a6dbf40c9373c7ca55198e400c6c7755733c331a00f32f1",
+      "source_task_id": "0520fde7",
+      "family": "select and color the central column",
+      "reason": "executed but off by 2715 cells/shape on the demonstrations",
+      "residual": 2715,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 3.091042453358316,
+          "input_objects": 6.0,
+          "object_delta": -4.0,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 2.0,
+          "palette_delta": -1.0,
+          "separator_delta": 0.3333333333333333,
+          "train_count": 3.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "96fdf97ef0525ab674c8c0cea56b16c6e0dc983a928c0e67d34916cc9c741afa",
+      "source_task_id": "a85d4709",
+      "family": "color mapping based on row parity with offset correction",
+      "reason": "executed but off by 26 cells/shape on the demonstrations",
+      "residual": 26,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 10.0,
+          "input_area_log": 2.302585092994046,
+          "input_objects": 2.5,
+          "object_delta": -1.5,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.0,
+          "palette_delta": 0.0,
+          "separator_delta": 2.5,
+          "train_count": 4.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:rotational_180",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "a06b5d4606ada2f8a938bc8e6d1ed92b4b617a7e703981736f993a645b17650c",
+      "source_task_id": "a85d4709",
+      "family": "object-based color assignment based on position and symmetry",
+      "reason": "executed but off by 21 cells/shape on the demonstrations",
+      "residual": 21,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 10.0,
+          "input_area_log": 2.302585092994046,
+          "input_objects": 2.5,
+          "object_delta": -1.5,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.0,
+          "palette_delta": 0.0,
+          "separator_delta": 2.5,
+          "train_count": 4.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:rotational_180",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "a82f6df16b997924fef80c1f5f70ddf80cac98f232d8d9e14f2bbe1d9a1da48b",
+      "source_task_id": "a85d4709",
+      "family": "color mapping based on symmetry and grid shape",
+      "reason": "executed but off by 26 cells/shape on the demonstrations",
+      "residual": 26,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 10.0,
+          "input_area_log": 2.302585092994046,
+          "input_objects": 2.5,
+          "object_delta": -1.5,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.0,
+          "palette_delta": 0.0,
+          "separator_delta": 2.5,
+          "train_count": 4.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:rotational_180",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "aabae5601b46696ca6e0d17ec10afaa628742a212c276b919b3a474a7926e96b",
+      "source_task_id": "e9afcf9a",
+      "family": "alternating color pattern with column-wise inversion",
+      "reason": "executed but off by 12 cells/shape on the demonstrations",
+      "residual": 12,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "b6f4daaae28418bb4264776f3552c6066d40ee4b002afd2ec7aed7728bad6364",
+      "source_task_id": "e9afcf9a",
+      "family": "symmetry completion with panel selection and shape inversion",
+      "reason": "executed but off by 12 cells/shape on the demonstrations",
+      "residual": 12,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "b723f340f1009ae5148918152f5928b5dbf54a04afb029fe84a771d88125327e",
+      "source_task_id": "e9afcf9a",
+      "family": "color inversion with column-wise alternation and symmetry",
+      "reason": "executed but off by 12 cells/shape on the demonstrations",
+      "residual": 12,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "ba22606d7edc3427f6926fe5ac9a1795a050db6e22ae67e348bafca8709d3f2e",
+      "source_task_id": "a85d4709",
+      "family": "color assignment based on object count and position",
+      "reason": "executed but off by 26 cells/shape on the demonstrations",
+      "residual": 26,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 10.0,
+          "input_area_log": 2.302585092994046,
+          "input_objects": 2.5,
+          "object_delta": -1.5,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.0,
+          "palette_delta": 0.0,
+          "separator_delta": 2.5,
+          "train_count": 4.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:rotational_180",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "c3e28159107d5524639566a73f6737b770ef9d114a50e1adbf3398cd428f946e",
+      "source_task_id": "0520fde7",
+      "family": "select and color the central column of the input grid",
+      "reason": "executed but off by 2712 cells/shape on the demonstrations",
+      "residual": 2712,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 3.091042453358316,
+          "input_objects": 6.0,
+          "object_delta": -4.0,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 2.0,
+          "palette_delta": -1.0,
+          "separator_delta": 0.3333333333333333,
+          "train_count": 3.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "cdce4baefc7fb9d2f04d6b233f3d9d67a915f2d155036fd0132b2b48a785dfb5",
+      "source_task_id": "0520fde7",
+      "family": "select the central column and apply vertical symmetry to the entire grid",
+      "reason": "executed but off by 2712 cells/shape on the demonstrations",
+      "residual": 2712,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 3.091042453358316,
+          "input_objects": 6.0,
+          "object_delta": -4.0,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 2.0,
+          "palette_delta": -1.0,
+          "separator_delta": 0.3333333333333333,
+          "train_count": 3.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "d18d8263b5c424c99f386e56bc89645c36cb3c003dedef0d9576e0755b913ba6",
+      "source_task_id": "dae9d2b5",
+      "family": "color remap with object selection",
+      "reason": "executed but off by 4515 cells/shape on the demonstrations",
+      "residual": 4515,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 2.9444389791664403,
+          "input_objects": 3.8,
+          "object_delta": -2.0,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.8,
+          "palette_delta": -1.0,
+          "separator_delta": -0.2,
+          "train_count": 5.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated"
+        ]
+      }
+    },
+    {
+      "record_id": "d203f9d38c99ea69e28cc89a4a66522496fdf7d12a18ee6a974d3e8fcfd1f34e",
+      "source_task_id": "e9afcf9a",
+      "family": "color swapping with column-based alternation",
+      "reason": "executed but off by 12 cells/shape on the demonstrations",
+      "residual": 12,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "d9e02ce5ef3d62f0990fb2af746080277c6eedf1d26df335b88ba4c91b9c318c",
+      "source_task_id": "e9afcf9a",
+      "family": "symmetry completion with panel selection and color swapping",
+      "reason": "executed but off by 12 cells/shape on the demonstrations",
+      "residual": 12,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 5.0,
+          "input_area_log": 2.5649493574615367,
+          "input_objects": 1.0,
+          "object_delta": 5.0,
+          "output_area_log": 2.5649493574615367,
+          "output_objects": 6.0,
+          "palette_delta": 0.0,
+          "separator_delta": -2.0,
+          "train_count": 2.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:vertical",
+          "input_symmetry:vertical",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180"
+        ]
+      }
+    },
+    {
+      "record_id": "da0955fa70975c5ce85320104ad036f5bd0264756b5a650a74dd5b1274d0b0bb",
+      "source_task_id": "0520fde7",
+      "family": "identify and color the vertical line of objects that are connected to the center of the grid",
+      "reason": "executed but off by 2712 cells/shape on the demonstrations",
+      "residual": 2712,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 3.091042453358316,
+          "input_objects": 6.0,
+          "object_delta": -4.0,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 2.0,
+          "palette_delta": -1.0,
+          "separator_delta": 0.3333333333333333,
+          "train_count": 3.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "edb2f1ca6b2855739038f31d31a946b301e5ea15975a70fec56bb48d5e2fa163",
+      "source_task_id": "a85d4709",
+      "family": "symmetry-based color assignment with row and column indexing",
+      "reason": "executed but off by 26 cells/shape on the demonstrations",
+      "residual": 26,
+      "fingerprint": {
+        "features": {
+          "changed_ratio_bucket": 10.0,
+          "input_area_log": 2.302585092994046,
+          "input_objects": 2.5,
+          "object_delta": -1.5,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.0,
+          "palette_delta": 0.0,
+          "separator_delta": 2.5,
+          "train_count": 4.0
+        },
+        "tags": [
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "dimension:same",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:horizontal",
+          "input_symmetry:rotational_180",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:horizontal",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:rotational_180",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical",
+          "output_symmetry:vertical"
+        ]
+      }
+    },
+    {
+      "record_id": "fe32a3e80f60bc976f82d76c4939b1878637db5d6664e9b42ab284f3b8984f17",
+      "source_task_id": "dae9d2b5",
+      "family": "object selection and color remapping",
+      "reason": "executed but off by 4515 cells/shape on the demonstrations",
+      "residual": 4515,
+      "fingerprint": {
+        "features": {
+          "input_area_log": 2.9444389791664403,
+          "input_objects": 3.8,
+          "object_delta": -2.0,
+          "output_area_log": 2.302585092994046,
+          "output_objects": 1.8,
+          "palette_delta": -1.0,
+          "separator_delta": -0.2,
+          "train_count": 5.0
+        },
+        "tags": [
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "dimension:contract",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "input:separated",
+          "output:separated",
+          "output:separated",
+          "output:separated"
+        ]
+      }
+    }
+  ]
+}
