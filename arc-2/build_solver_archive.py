@@ -44,6 +44,7 @@ RUNTIME_FILES = (
     "hyper_arc/contender/relational_plans.py",
     "hyper_arc/contender/repair.py",
     "hyper_arc/contender/world_model.py",
+    "hyper_arc/contender/failure_memory.py",
     "hyper_arc/procedural_memory_v1.json",
     "hyper_arc/agentic_memory_v1.json",
 )

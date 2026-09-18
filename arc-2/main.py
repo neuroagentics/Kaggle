@@ -19,6 +19,10 @@ from hyper_arc.contender.experience_bank import ExperienceBank, experience_candi
 from hyper_arc.contender.agentic_reasoner import AgenticReasoner, validate_code
 from hyper_arc.contender.agentic_memory import AgenticMemoryBank
 from hyper_arc.contender.hyperbolic_memory import HyperbolicWorldMemory
+from hyper_arc.contender.failure_memory import (
+    FailureMemoryBank,
+    extract_failed_families,
+)
 from hyper_arc.contender.offline_model import OfflineTransformersTransport
 from hyper_arc.contender.procedural_memory import ProceduralMemoryBank
 from hyper_arc.contender.relational_plans import exact_relational_candidates
@@ -53,6 +57,7 @@ DEFAULT_EXPERIENCE_BANK = Path("./hyper_arc/experience_bank_v2.json")
 DEFAULT_WORLD_MEMORY = Path("./hyper_arc/world_memory_v1.json")
 DEFAULT_PROCEDURAL_MEMORY = Path("./hyper_arc/procedural_memory_v1.json")
 DEFAULT_AGENTIC_MEMORY = Path("./hyper_arc/agentic_memory_v1.json")
+DEFAULT_FAILURE_MEMORY = Path("./hyper_arc/failure_memory_v1.json")
 
 
 def log(message: str) -> None:
@@ -256,6 +261,8 @@ def solve_task(
     procedural_memory: ProceduralMemoryBank | None = None,
     agentic_memory: AgenticMemoryBank | None = None,
     agentic_reasoner: AgenticReasoner | None = None,
+    failure_memory: "FailureMemoryBank | None" = None,
+    learned_failures: list | None = None,
 ) -> tuple[list[dict[str, list[list[int]]]], float, bool, int]:
     raw_train_pairs = [
         (pair["input"], pair["output"]) for pair in task_data.get("train", [])
@@ -345,7 +352,15 @@ def solve_task(
             if procedural_memory is not None
             else ()
         )
-        agentic = agentic_reasoner.solve(task_id, task_data, memory_cues=cues)
+        # Recall approach families that already failed on structurally similar
+        # tasks so the reasoner steers away from known dead ends (learn-from-
+        # failure). Previously wired only in the eval harness, not production.
+        failure_cues = (
+            failure_memory.recall(task_data) if failure_memory is not None else ()
+        )
+        agentic = agentic_reasoner.solve(
+            task_id, task_data, memory_cues=cues, failure_cues=failure_cues
+        )
         if agentic.hypotheses:
             attempts = []
             for index, input_grid in enumerate(test_inputs):
@@ -355,6 +370,12 @@ def solve_task(
                 ]
                 attempts.append(_two_attempts(ranked, input_grid))
             return attempts, 1.0, True, agentic.hypotheses[0].complexity
+        # No exact solve: persist the genuine non-exact families as lessons for
+        # future structurally-similar tasks.
+        if learned_failures is not None:
+            learned_failures.extend(
+                extract_failed_families(task_id, task_data, agentic.failures)
+            )
 
     engine = MCTSEngine(
         global_memory=global_memory,
@@ -424,6 +445,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--agentic-model-name", default="qwen2.5-coder:7b")
     parser.add_argument("--agentic-memory", default=str(DEFAULT_AGENTIC_MEMORY))
     parser.add_argument("--enable-agentic-memory", action="store_true")
+    parser.add_argument("--failure-memory", default=str(DEFAULT_FAILURE_MEMORY))
+    parser.add_argument(
+        "--enable-failure-memory",
+        action="store_true",
+        help="Recall tried-and-failed approach families to steer the agentic "
+        "reasoner away from known dead ends, and persist new ones after each task.",
+    )
     parser.add_argument(
         "--agentic-device", choices=("auto", "cuda", "cpu"), default="auto"
     )
@@ -583,6 +611,21 @@ def main(argv: list[str] | None = None) -> int:
     else:
         log("[GATE] Agentic AI inactive; this configuration is not submission-eligible")
 
+    failure_memory = None
+    failure_memory_path = Path(args.failure_memory)
+    if args.enable_failure_memory:
+        failure_memory = (
+            FailureMemoryBank.load(failure_memory_path)
+            if failure_memory_path.is_file()
+            else FailureMemoryBank()
+        )
+        log(
+            f"[INFO] Failure memory enabled with "
+            f"{len(failure_memory.records)} learned dead-end families"
+        )
+    else:
+        log("[GATE] Failure memory inactive")
+
     global_memory = GlobalMemoryBank(k=5)
     global_prior_weight = 0.0
     if args.enable_legacy_seed_memory and seed_bank_path.is_file():
@@ -655,6 +698,7 @@ def main(argv: list[str] | None = None) -> int:
     failures: list[dict[str, str]] = []
     timed_out_tasks: list[str] = []
     demonstration_exact_tasks = 0
+    learned_failures: list = []
     for index, (task_id, task_data) in enumerate(challenges.items(), start=1):
         if task_id in completed_ids and task_id in submission:
             log(f"[SKIP] {task_id} ({index}/{total})")
@@ -682,6 +726,8 @@ def main(argv: list[str] | None = None) -> int:
                 procedural_memory,
                 agentic_memory,
                 agentic_reasoner,
+                failure_memory,
+                learned_failures,
             )
             submission[task_id] = attempts
             demonstration_exact_tasks += int(exact)
@@ -707,6 +753,14 @@ def main(argv: list[str] | None = None) -> int:
 
     validate_submission(submission, challenges)
     write_submission(output_path, submission)
+
+    if failure_memory is not None and learned_failures:
+        merged_failures = failure_memory.merged(learned_failures)
+        merged_failures.save(failure_memory_path)
+        log(
+            f"[INFO] Failure memory: +{len(learned_failures)} families this run, "
+            f"{len(merged_failures.records)} total -> {failure_memory_path}"
+        )
     identity_attempts = 0
     distinct_attempt_pairs = 0
     output_count = 0
