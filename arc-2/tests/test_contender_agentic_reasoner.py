@@ -203,6 +203,30 @@ def test_scene_payload_bounds_busy_grids_to_limit_prompt_bloat():
     assert all("relative_pixels" not in obj for obj in input_grid["objects"])
 
 
+def test_diagnose_causes_classifies_color_binding_vs_canvas():
+    from hyper_arc.contender.agentic_reasoner import _diagnose_causes
+
+    # Right shape, only colors differ -> wrong_color_binding.
+    pred = [[[1, 1], [1, 1]]]
+    target = [[[2, 2], [2, 2]]]
+    assert _diagnose_causes(pred, target) == ["wrong_color_binding"]
+    # Wrong output geometry -> wrong_canvas.
+    pred2 = [[[1, 1]]]
+    target2 = [[[1], [1]]]
+    assert _diagnose_causes(pred2, target2) == ["wrong_canvas"]
+
+
+def test_feedback_surfaces_the_dominant_typed_cause():
+    from hyper_arc.contender.agentic_reasoner import _feedback
+
+    evaluated = [
+        ("def transform(grid): return grid", 4, ["4 mismatches"], ["wrong_color_binding"]),
+    ]
+    feedback = _feedback(evaluated)
+    assert "DIAGNOSIS (wrong_color_binding)" in feedback
+    assert "COLOR MAPPING" in feedback
+
+
 def test_diversity_directive_demands_distinct_hypotheses():
     directive = _diversity_directive(8, prior_summaries=())
     assert "DIVERSITY REQUIREMENT" in directive

@@ -6,6 +6,7 @@ import hashlib
 import json
 import subprocess
 import sys
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
@@ -505,21 +506,77 @@ def _coding_prompt(
     )
 
 
+# Typed residual causes (from the symbolic world model's diagnose_residual)
+# mapped to concrete, actionable repair guidance for the LLM. This turns the
+# feedback from "you were N cells off" into "the OUTPUT SIZE is wrong" /
+# "only the COLOR MAPPING is wrong" so the model repairs the actual defect.
+_CAUSE_HINTS: dict[str, str] = {
+    "wrong_canvas": (
+        "OUTPUT GEOMETRY is wrong: the predicted grid is the wrong size/shape. "
+        "Fix how the output dimensions are derived from the input before anything else."
+    ),
+    "wrong_color_binding": (
+        "STRUCTURE is right but the COLOR MAPPING is wrong: the shapes/positions "
+        "match, only colors differ. Rebind output colors from the input; do not "
+        "change the geometry."
+    ),
+    "missing_content": (
+        "Content is MISSING: expected objects/cells were not produced. The rule "
+        "under-generates — add the missing objects or fill step."
+    ),
+    "extra_content": (
+        "EXTRA content was produced: the rule over-generates. Remove or gate the "
+        "spurious objects/cells."
+    ),
+    "local_or_structural": (
+        "A LOCAL/STRUCTURAL detail is off (placement, ordering, phase, or a few "
+        "cells). Keep the rule family and fix the specific detail."
+    ),
+}
+
+
+def _diagnose_causes(
+    predictions: Sequence[Sequence[Sequence[int]]],
+    targets: Sequence[Sequence[Sequence[int]]],
+) -> list[str]:
+    """Per-demo typed failure causes via the shared symbolic diagnosis."""
+    from hyper_arc.contender.repair import diagnose_residual
+
+    causes: list[str] = []
+    for index, (prediction, target) in enumerate(zip(predictions, targets)):
+        try:
+            causes.append(
+                diagnose_residual(prediction, target, example_index=index).cause
+            )
+        except Exception:  # noqa: BLE001 - diagnosis is advisory, never fatal
+            causes.append("local_or_structural")
+    return causes
+
+
 def _feedback(
-    evaluated: Sequence[tuple[str, int, list[str]]],
+    evaluated: Sequence[tuple[str, int, list[str], list[str]]],
 ) -> str:
     if not evaluated:
         return "No candidate could execute. Simplify the code and obey the contract."
     best = sorted(evaluated, key=lambda item: (item[1], len(item[0])))[0]
     code = best[0]
+    causes = best[3] if len(best) > 3 else []
+    # Surface the dominant typed cause as a specific repair directive.
+    directive = ""
+    non_exact = [c for c in causes if c and c != "exact"]
+    if non_exact:
+        dominant = Counter(non_exact).most_common(1)[0][0]
+        hint = _CAUSE_HINTS.get(dominant)
+        if hint:
+            directive = f" DIAGNOSIS ({dominant}): {hint}"
     return (
         "None of the candidates exactly reproduced every demonstration. Repair or "
         "replace them using this verifier feedback. Do not repeat unchanged code. "
-        f"Best total cell/shape error: {best[1]}; per-demo: {best[2]}. "
+        f"Best total cell/shape error: {best[1]}; per-demo: {best[2]}."
+        f"{directive} "
         f"Best failing code:\n{code[:2400]}\n"
-        "Diagnose whether the failure is perception, rule selection, parameter "
-        "binding, output geometry, or implementation, then propose a different or "
-        "specifically repaired hypothesis."
+        "Then propose a specifically repaired hypothesis (or a different family if "
+        "the diagnosis implies the whole approach is wrong)."
     )
 
 
@@ -682,7 +739,7 @@ class AgenticReasoner:
                         "code": plan.get("code"),
                     }
                 )
-            evaluated: list[tuple[str, int, list[str]]] = []
+            evaluated: list[tuple[str, int, list[str], list[str]]] = []
             for index, payload in enumerate(hypotheses[: self.candidates_per_round]):
                 generated += 1
                 if not isinstance(payload, Mapping):
@@ -711,7 +768,14 @@ class AgenticReasoner:
                         for actual, target in zip(demo_predictions, train_outputs)
                     ]
                     total_error = sum(item[0] for item in errors)
-                    evaluated.append((code, total_error, [item[1] for item in errors]))
+                    causes = (
+                        _diagnose_causes(demo_predictions, train_outputs)
+                        if total_error
+                        else []
+                    )
+                    evaluated.append(
+                        (code, total_error, [item[1] for item in errors], causes)
+                    )
                     if total_error:
                         failures.append(
                             f"r{round_index}c{index}:non-exact:{total_error}:"
