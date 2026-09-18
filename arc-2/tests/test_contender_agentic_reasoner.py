@@ -294,6 +294,35 @@ def test_extract_json_object_raises_when_no_object_present():
         _extract_json_object("no json here at all")
 
 
+def test_reasoner_abandons_a_plateaued_near_miss_for_diversity():
+    # A near-miss that never improves (right shape, one cell wrong every round)
+    # should be refined for a bounded number of rounds, then the planner must
+    # switch back to demanding a different family instead of nudging forever.
+    near_miss_code = "def transform(grid):\n    return [[0 for _ in row] for row in grid]"
+    payloads = []
+
+    def transport(payload):
+        payloads.append(payload)
+        return _plan_response("constant-zero near miss", near_miss_code)
+
+    reasoner = AgenticReasoner(
+        transport, model="test-model", rounds=5, candidates_per_round=1
+    )
+    # Output has one non-zero cell, so the constant-zero program is always a
+    # right-shape near-miss (residual 1 of 4 cells) that can never reach exact.
+    task = {
+        "train": [{"input": [[0, 0], [0, 0]], "output": [[1, 0], [0, 0]]}],
+        "test": [{"input": [[0, 0], [0, 0]]}],
+    }
+    result = reasoner.solve("plateau", task)
+
+    assert result.hypotheses == ()  # never solved
+    prompts = [p["messages"][-1]["content"] for p in payloads]
+    # Early rounds refine the near-miss; a later round must flip to diversity.
+    assert any("REFINE-FIRST" in p for p in prompts)
+    assert any("DIVERSITY REQUIREMENT" in p for p in prompts[2:])
+
+
 def test_reasoner_does_not_promote_a_non_exact_program():
     responses = iter(
         [

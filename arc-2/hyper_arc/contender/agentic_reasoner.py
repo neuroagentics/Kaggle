@@ -301,29 +301,48 @@ def _planning_schema(max_candidates: int) -> dict[str, Any]:
     }
 
 
-# A hypothesis counts as a near-miss (refine rather than replace) whenever it
-# produced OUTPUT OF THE RIGHT GEOMETRY but with wrong cells. We deliberately
-# bias toward exploitation: the observed solve had a candidate 12 of 24 cells
-# wrong (50%) that was still refinable to exact, because the rule family was
-# right and only the phase was off — a phase error flips ~half the cells yet is
-# a one-line fix. Blocking such a refinement costs a solve; allowing it costs
-# little, since remaining candidate slots still explore alternatives.
+# --- Explore / exploit policy -------------------------------------------------
 #
-# Therefore: any non-shape residual up to nearly all cells is treated as
-# refinable. Only a shape/geometry error (encoded as >=900 per pair by
-# _grid_error) or no attempt at all is a "big miss" that warrants full diversity.
+# Grounded in the bakeoff trajectories, a candidate's demonstration residual
+# (total wrong cells across training pairs; shape errors encoded as >=900/pair
+# by _grid_error) falls into four states that drive the planner:
+#
+#   DIRECT HIT     residual == 0        -> exact; accept, stop (handled in solve)
+#   REFINABLE      right geometry,      -> REFINE-FIRST: keep the rule family,
+#                  0 < residual <= ~all    fix the failing detail (phase/offset/
+#                  cells                   binding/ordering). This is what "got
+#                                          the ball rolling" on the only solve:
+#                                          a 12/24-cell miss jumped to exact in
+#                                          one repair. Refinable resolves in a
+#                                          single jump, not a smooth descent.
+#   PLATEAU        refinable, but best  -> ABANDON: the model cannot repair it;
+#                  residual flat for       force a different family (diversity).
+#                  _REFINE_STALL_LIMIT     Trajectories show residuals hold flat
+#                  rounds                  (12,12,12) far more than they descend.
+#   BIG MISS       wrong geometry, or   -> DIVERSITY: wrong rule; explore anew.
+#                  ~100% wrong cells,
+#                  or no attempt yet
+#
+# The bias is toward exploitation of a fresh refinable near-miss (blocking one
+# costs a solve; allowing it is cheap since spare candidate slots still explore),
+# but strictly time-boxed so a plateau cannot burn the whole round budget.
 _SHAPE_ERROR_FLOOR = 900
-# Guard against a candidate that is essentially 100% wrong on a large grid
-# (right shape, but no cell correct) — that is a wrong rule, not a near-miss.
-_NEAR_MISS_MAX_FRACTION = 0.95
+_NEAR_MISS_MAX_FRACTION = 0.95  # right shape but ~100% wrong == wrong rule
+_REFINE_STALL_LIMIT = 2  # non-improving rounds tolerated before abandoning
 
 
 def _is_near_miss(best_residual: int | None, total_output_cells: int) -> bool:
-    if best_residual is None or total_output_cells <= 0:
-        return False
+    """Right output geometry with at least a few correct cells: refinable.
+
+    Excludes exact hits (0 is a direct hit, not a near-miss), shape/geometry
+    errors, and essentially-100%-wrong outputs (a wrong rule that only overlaps
+    pixels, e.g. an unsolved case that plateaued at residual 2 without ever being
+    refinable).
+    """
+    if not best_residual or total_output_cells <= 0:
+        return False  # None or 0: no refinable near-miss (0 is a direct hit)
     if best_residual >= _SHAPE_ERROR_FLOOR:
         return False  # wrong output geometry — not a phase/parameter fix
-    # Right geometry with at least a few correct cells: refinable.
     return best_residual <= int(_NEAR_MISS_MAX_FRACTION * total_output_cells)
 
 
@@ -575,6 +594,13 @@ class AgenticReasoner:
         rejected_summaries: list[str] = []
         feedback = ""
         best_residual: int | None = None
+        # Refinement only earns rounds while it is making progress. The bakeoff
+        # data shows residuals plateau (e.g. 12,12,12) far more often than they
+        # descend; a refinable rule usually jumps straight to exact in one repair.
+        # So we refine a near-miss, but if the best residual stops improving for
+        # _REFINE_STALL_LIMIT consecutive rounds we abandon it and force a new
+        # family instead of nudging a dead plateau.
+        refine_stall = 0
         generated = 0
         executed = 0
         rounds_executed = 0
@@ -616,8 +642,9 @@ class AgenticReasoner:
                                 prior_summaries=rejected_summaries,
                                 failed_families=failure_cues,
                                 best_residual=best_residual,
-                                near_miss=_is_near_miss(
-                                    best_residual, total_output_cells
+                                near_miss=(
+                                    _is_near_miss(best_residual, total_output_cells)
+                                    and refine_stall < _REFINE_STALL_LIMIT
                                 ),
                             ),
                         },
@@ -715,12 +742,18 @@ class AgenticReasoner:
                 break
             feedback = _feedback(evaluated)
             # Track the best (lowest) demonstration residual seen so far so the
-            # next round can switch from diversity to refine-first on a near-miss.
+            # next round can switch from diversity to refine-first on a near-miss,
+            # and count consecutive rounds without improvement so a stalled
+            # refinement is abandoned rather than nudged indefinitely.
             round_best = min((item[1] for item in evaluated), default=None)
             if round_best is not None and (
                 best_residual is None or round_best < best_residual
             ):
                 best_residual = round_best
+                refine_stall = 0
+            elif _is_near_miss(best_residual, total_output_cells):
+                # We were refining a near-miss but this round did not improve it.
+                refine_stall += 1
         exact.sort(key=lambda item: (item.complexity, item.round_index, item.digest))
         predictions = tuple(
             tuple(hypothesis.test_predictions[test_index] for hypothesis in exact[:2])
