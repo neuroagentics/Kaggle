@@ -61,7 +61,10 @@ def _sha256(payload: bytes) -> str:
 def _source_revision() -> str:
     try:
         result = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
+            # Release-index/documentation-only commits must not change the
+            # archive identity. Record the most recent runtime/build-source commit.
+            ["git", "log", "-1", "--format=%H", "--", *RUNTIME_FILES,
+             "build_solver_archive.py", "build_release.py", "kaggle_launcher.py"],
             cwd=ROOT,
             check=True,
             capture_output=True,
