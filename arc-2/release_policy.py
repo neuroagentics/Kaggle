@@ -6,6 +6,7 @@ MODEL_ATTACHMENT = "google/gemma-4/Transformers/gemma-4-e4b-it/1"
 # Conservative admission floor, not a guarantee for every context length.
 # E4B BF16 did not fit the 14.56 GiB T4 allocated in private qualification v2.
 MODEL_MIN_GPU_MEMORY_GIB = 20.0
+MODEL_MIN_GPUS = 2  # Real ARC prompt generation OOMed on one L4 in v7.
 TASK_SECONDS = 120.0
 RUN_SECONDS = 34200.0  # 9.5 hours; outer notebook watchdog adds a small margin.
 AGENTIC_ROUNDS = 3

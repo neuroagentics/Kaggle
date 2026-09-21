@@ -1,0 +1,85 @@
+[{"stream_name":"stderr","time":11.163458875,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.163498975,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.163502818,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.163504955,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":11.920596629,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.920621864,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.920625444,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.920627795,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":20.660656614,"data":"GPUS: [{'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}]\n"}
+,{"stream_name":"stdout","time":22.575525339,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":22.729952329,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":22.760235315,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":22.777568166000002,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":22.777578936,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":22.777582534,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":22.805661118,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":22.82326344,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":23.007639541,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":23.007656089,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":30.320609681,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stdout","time":30.522662178,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stderr","time":453.637013382,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":453.63704314,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":453.637047805,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":453.63710838,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":453.637120562,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":453.637219131,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":453.637455848,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":453.637462045,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":453.63746415,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":453.637466347,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":453.637468378,"data":"TimeoutExpired                            Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":453.637470501,"data":"/tmp/ipykernel_65/1658401185.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":453.637479421,"data":"     77                        HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1')\n"}
+,{"stream_name":"stderr","time":453.6374814,"data":"     78     with open('/kaggle/working/model_runtime.log', 'w', encoding='utf-8') as log:\n"}
+,{"stream_name":"stderr","time":453.637483475,"data":"---\u003e 79         result = subprocess.run([sys.executable, '-u', '-c', code], cwd=root, env=environment,\n"}
+,{"stream_name":"stderr","time":453.63748573,"data":"     80                                 stdout=log, stderr=subprocess.STDOUT, timeout=420)\n"}
+,{"stream_name":"stderr","time":453.637487715,"data":"     81     print(pathlib.Path('/kaggle/working/model_runtime.log').read_text(encoding='utf-8'), flush=True)\n"}
+,{"stream_name":"stderr","time":453.63748974,"data":"\n"}
+,{"stream_name":"stderr","time":453.637491569,"data":"/usr/lib/python3.12/subprocess.py in run(input, capture_output, timeout, check, *popenargs, **kwargs)\n"}
+,{"stream_name":"stderr","time":453.637493665,"data":"    548     with Popen(*popenargs, **kwargs) as process:\n"}
+,{"stream_name":"stderr","time":453.637495493,"data":"    549         try:\n"}
+,{"stream_name":"stderr","time":453.637497274,"data":"--\u003e 550             stdout, stderr = process.communicate(input, timeout=timeout)\n"}
+,{"stream_name":"stderr","time":453.63749923,"data":"    551         except TimeoutExpired as exc:\n"}
+,{"stream_name":"stderr","time":453.63750109,"data":"    552             process.kill()\n"}
+,{"stream_name":"stderr","time":453.637503131,"data":"\n"}
+,{"stream_name":"stderr","time":453.637504933,"data":"/usr/lib/python3.12/subprocess.py in communicate(self, input, timeout)\n"}
+,{"stream_name":"stderr","time":453.637506886,"data":"   1207 \n"}
+,{"stream_name":"stderr","time":453.637508628,"data":"   1208             try:\n"}
+,{"stream_name":"stderr","time":453.637510434,"data":"-\u003e 1209                 stdout, stderr = self._communicate(input, endtime, timeout)\n"}
+,{"stream_name":"stderr","time":453.63751246100003,"data":"   1210             except KeyboardInterrupt:\n"}
+,{"stream_name":"stderr","time":453.637514252,"data":"   1211                 # https://bugs.python.org/issue25942\n"}
+,{"stream_name":"stderr","time":453.637516623,"data":"\n"}
+,{"stream_name":"stderr","time":453.63751842,"data":"/usr/lib/python3.12/subprocess.py in _communicate(self, input, endtime, orig_timeout)\n"}
+,{"stream_name":"stderr","time":453.637520467,"data":"   2139                             self._fileobj2output[key.fileobj].append(data)\n"}
+,{"stream_name":"stderr","time":453.637522434,"data":"   2140 \n"}
+,{"stream_name":"stderr","time":453.637529537,"data":"-\u003e 2141             self.wait(timeout=self._remaining_time(endtime))\n"}
+,{"stream_name":"stderr","time":453.637531551,"data":"   2142 \n"}
+,{"stream_name":"stderr","time":453.637533263,"data":"   2143             # All data exchanged.  Translate lists into strings.\n"}
+,{"stream_name":"stderr","time":453.637535127,"data":"\n"}
+,{"stream_name":"stderr","time":453.637536991,"data":"/usr/lib/python3.12/subprocess.py in wait(self, timeout)\n"}
+,{"stream_name":"stderr","time":453.637538878,"data":"   1262             endtime = _time() + timeout\n"}
+,{"stream_name":"stderr","time":453.637540813,"data":"   1263         try:\n"}
+,{"stream_name":"stderr","time":453.637542631,"data":"-\u003e 1264             return self._wait(timeout=timeout)\n"}
+,{"stream_name":"stderr","time":453.637544631,"data":"   1265         except KeyboardInterrupt:\n"}
+,{"stream_name":"stderr","time":453.637546906,"data":"   1266             # https://bugs.python.org/issue25942\n"}
+,{"stream_name":"stderr","time":453.637548812,"data":"\n"}
+,{"stream_name":"stderr","time":453.637550478,"data":"/usr/lib/python3.12/subprocess.py in _wait(self, timeout)\n"}
+,{"stream_name":"stderr","time":453.637552431,"data":"   2043                     remaining = self._remaining_time(endtime)\n"}
+,{"stream_name":"stderr","time":453.637554421,"data":"   2044                     if remaining \u003c= 0:\n"}
+,{"stream_name":"stderr","time":453.637556357,"data":"-\u003e 2045                         raise TimeoutExpired(self.args, timeout)\n"}
+,{"stream_name":"stderr","time":453.637558348,"data":"   2046                     delay = min(delay * 2, remaining, .05)\n"}
+,{"stream_name":"stderr","time":453.637560241,"data":"   2047                     time.sleep(delay)\n"}
+,{"stream_name":"stderr","time":453.637562031,"data":"\n"}
+,{"stream_name":"stderr","time":453.637567741,"data":"TimeoutExpired: Command '['/usr/bin/python3', '-u', '-c', \"\\nimport json, pathlib, torch\\nfrom release_policy import model_preflight, MODEL_ID, RELEASE_ID, MODEL_MIN_GPU_MEMORY_GIB\\nfrom hyper_arc.contender.offline_model import OfflineTransformersTransport\\nfrom hyper_arc.contender.agentic_reasoner import AgenticReasoner\\nimport time\\nmodels = [p.parent for p in pathlib.Path('/kaggle/input').rglob('config.json')\\n          if 'gemma-4-e4b-it' in str(p).lower()]\\nif len(models) != 1:\\n    raise RuntimeError('Expected exactly one attached model')\\ntransport = OfflineTransformersTransport(models[0], device='cuda',\\n    minimum_gpu_memory_gib=MODEL_MIN_GPU_MEMORY_GIB)\\nreport = model_preflight(transport, MODEL_ID, seconds=90)\\nif BENCH_TASK_ID is not None:\\n    result = AgenticReasoner(transport, model=MODEL_ID,\\n        rounds=RELEASE['rounds'], candidates_per_round=RELEASE['candidates'],\\n        max_output_tokens=RELEASE['output_tokens']).solve(\\n            BENCH_TASK_ID, BENCH_CHALLENGE, deadline=time.monotonic() + RELEASE['task_seconds'])\\n    expected = [tuple(tuple(row) for row in grid) for grid in BENCH_TARGETS]\\n    per_output_exact = [target in options for target, options in zip(expected, result.test_predictions)]\\n    report['builder_benchmark'] = {\\n        'task_id': BENCH_TASK_ID, 'rounds': result.rounds_executed,\\n        'generated': result.candidates_generated, 'executed': result.candidates_executed,\\n        'per_output_exact_pass_at_2': per_output_exact,\\n        'full_task_exact_pass_at_2': bool(per_output_exact) and all(per_output_exact),\\n        'failures': list(result.failures), 'selection': 'first frozen development task',\\n        'labels_passed_to_model': False}\\nreport.update({'release_id': RELEASE_ID, 'model': MODEL_ID,\\n               'device': torch.cuda.get_device_name(0), 'scope': 'synthetic-live-model-only',\\n               'submission_created': False})\\npathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))\\nprint(json.dumps(report), flush=True)\\n\"]' timed out after 419.9999864480001 seconds\n"}
+,{"stream_name":"stderr","time":453.637581105,"data":"\n"}
+,{"stream_name":"stderr","time":455.951563426,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":455.951584293,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":456.124474544,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":456.124498416,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":457.171353984,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":457.485525513,"data":"[NbConvertApp] Writing 168785 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":460.368528847,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":461.244488763,"data":"[NbConvertApp] Writing 479160 bytes to __results__.html\n"}
+]

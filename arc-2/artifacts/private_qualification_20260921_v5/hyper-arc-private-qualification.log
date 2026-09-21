@@ -1,0 +1,92 @@
+[{"stream_name":"stderr","time":7.632832745,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.632891152,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.632894675,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.632897038,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.250679196,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.250704344,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.250707267,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.250709528,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":14.655627747,"data":"GPUS: [{'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}]\n"}
+,{"stream_name":"stdout","time":16.32527402,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.480378844,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.511981265,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.527102038,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.527109291,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.527112337,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.538214332,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.561780767,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":16.740001802,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.740013555,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":24.236895061,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stdout","time":24.438788785,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stdout","time":274.905880541,"data":"\n"}
+,{"stream_name":"stdout","time":274.905910171,"data":"Loading weights:   0%|          | 0/2076 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":274.905914174,"data":"Loading weights:   8%|▊         | 173/2076 [00:00\u003c00:01, 1570.07it/s]\n"}
+,{"stream_name":"stdout","time":274.905917514,"data":"Loading weights:  16%|█▌        | 331/2076 [00:00\u003c00:01, 1446.41it/s]\n"}
+,{"stream_name":"stdout","time":274.90592832,"data":"Loading weights:  23%|██▎       | 476/2076 [00:00\u003c00:01, 1239.44it/s]\n"}
+,{"stream_name":"stdout","time":274.905930758,"data":"Loading weights:  29%|██▉       | 603/2076 [00:00\u003c00:01, 1231.73it/s]\n"}
+,{"stream_name":"stdout","time":274.905932679,"data":"Loading weights:  35%|███▌      | 728/2076 [00:00\u003c00:01, 1232.31it/s]\n"}
+,{"stream_name":"stdout","time":274.905934601,"data":"Loading weights:  41%|████      | 853/2076 [00:01\u003c00:02, 499.71it/s] \n"}
+,{"stream_name":"stdout","time":274.905936449,"data":"Loading weights:  45%|████▌     | 943/2076 [00:01\u003c00:02, 507.31it/s]\n"}
+,{"stream_name":"stdout","time":274.905938323,"data":"Loading weights:  49%|████▉     | 1021/2076 [00:01\u003c00:02, 390.48it/s]\n"}
+,{"stream_name":"stdout","time":274.905940243,"data":"Loading weights:  52%|█████▏    | 1081/2076 [00:01\u003c00:02, 343.55it/s]\n"}
+,{"stream_name":"stdout","time":274.905942192,"data":"Loading weights:  54%|█████▍    | 1130/2076 [00:02\u003c00:02, 321.12it/s]\n"}
+,{"stream_name":"stdout","time":274.905944111,"data":"Loading weights:  56%|█████▋    | 1172/2076 [00:02\u003c00:03, 250.32it/s]\n"}
+,{"stream_name":"stdout","time":274.905946129,"data":"Loading weights:  58%|█████▊    | 1205/2076 [00:02\u003c00:03, 219.49it/s]\n"}
+,{"stream_name":"stdout","time":274.905948018,"data":"Loading weights:  59%|█████▉    | 1232/2076 [00:02\u003c00:03, 216.74it/s]\n"}
+,{"stream_name":"stdout","time":274.905949979,"data":"Loading weights:  61%|██████    | 1257/2076 [00:02\u003c00:04, 196.72it/s]\n"}
+,{"stream_name":"stdout","time":274.905951874,"data":"Loading weights:  62%|██████▏   | 1279/2076 [00:03\u003c00:04, 185.92it/s]\n"}
+,{"stream_name":"stdout","time":274.90595375,"data":"Loading weights:  63%|██████▎   | 1299/2076 [00:03\u003c00:04, 162.30it/s]\n"}
+,{"stream_name":"stdout","time":274.905955601,"data":"Loading weights:  63%|██████▎   | 1316/2076 [00:03\u003c00:05, 147.85it/s]\n"}
+,{"stream_name":"stdout","time":274.905957533,"data":"Loading weights:  64%|██████▍   | 1332/2076 [00:03\u003c00:05, 138.08it/s]\n"}
+,{"stream_name":"stdout","time":274.905959453,"data":"Loading weights:  65%|██████▌   | 1351/2076 [00:03\u003c00:05, 143.14it/s]\n"}
+,{"stream_name":"stdout","time":274.905961367,"data":"Loading weights:  66%|██████▌   | 1366/2076 [00:03\u003c00:05, 131.31it/s]\n"}
+,{"stream_name":"stdout","time":274.905963266,"data":"Loading weights:  67%|██████▋   | 1395/2076 [00:03\u003c00:04, 166.16it/s]\n"}
+,{"stream_name":"stdout","time":274.905965227,"data":"Loading weights:  71%|███████   | 1479/2076 [00:04\u003c00:01, 322.05it/s]\n"}
+,{"stream_name":"stdout","time":274.905967118,"data":"Loading weights:  75%|███████▍  | 1555/2076 [00:04\u003c00:01, 430.88it/s]\n"}
+,{"stream_name":"stdout","time":274.905969026,"data":"Loading weights:  78%|███████▊  | 1615/2076 [00:04\u003c00:01, 449.11it/s]\n"}
+,{"stream_name":"stdout","time":274.905971689,"data":"Loading weights:  82%|████████▏ | 1707/2076 [00:04\u003c00:00, 568.09it/s]\n"}
+,{"stream_name":"stdout","time":274.905973666,"data":"Loading weights:  87%|████████▋ | 1808/2076 [00:04\u003c00:00, 681.93it/s]\n"}
+,{"stream_name":"stdout","time":274.90597563,"data":"Loading weights:  93%|█████████▎| 1934/2076 [00:04\u003c00:00, 792.90it/s]\n"}
+,{"stream_name":"stdout","time":274.905977623,"data":"Loading weights:  98%|█████████▊| 2031/2076 [00:04\u003c00:00, 836.81it/s]\n"}
+,{"stream_name":"stdout","time":274.905981962,"data":"Loading weights: 100%|██████████| 2076/2076 [00:04\u003c00:00, 435.14it/s]\n"}
+,{"stream_name":"stdout","time":274.905984066,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stdout","time":274.905985845,"data":"  File \"\u003cstring\u003e\", line 15, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":274.905988013,"data":"NameError: name 'BENCH_TASK_ID' is not defined\n"}
+,{"stream_name":"stdout","time":274.905989806,"data":"\n"}
+,{"stream_name":"stderr","time":275.63720952,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":275.637231495,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":275.637235012,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":275.637293281,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":275.637323932,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":275.637417028,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":275.637513518,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":275.637517191,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":275.637519319,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":275.637521475,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":275.637523555,"data":"CalledProcessError                        Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":275.637525498,"data":"/tmp/ipykernel_65/3990202438.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":275.637527698,"data":"     94                                 timeout=300 if BENCH_TASK_ID is not None else 420)\n"}
+,{"stream_name":"stderr","time":275.637529687,"data":"     95     print(pathlib.Path('/kaggle/working/model_runtime.log').read_text(encoding='utf-8'), flush=True)\n"}
+,{"stream_name":"stderr","time":275.637531592,"data":"---\u003e 96     result.check_returncode()\n"}
+,{"stream_name":"stderr","time":275.63753355,"data":"     97 except Exception as exc:\n"}
+,{"stream_name":"stderr","time":275.637535441,"data":"     98     partial = json.loads(report_path.read_text()) if report_path.is_file() else {}\n"}
+,{"stream_name":"stderr","time":275.637537577,"data":"\n"}
+,{"stream_name":"stderr","time":275.637539309,"data":"/usr/lib/python3.12/subprocess.py in check_returncode(self)\n"}
+,{"stream_name":"stderr","time":275.637541185,"data":"    500         \"\"\"Raise CalledProcessError if the exit code is non-zero.\"\"\"\n"}
+,{"stream_name":"stderr","time":275.637543312,"data":"    501         if self.returncode:\n"}
+,{"stream_name":"stderr","time":275.637545103,"data":"--\u003e 502             raise CalledProcessError(self.returncode, self.args, self.stdout,\n"}
+,{"stream_name":"stderr","time":275.637547032,"data":"    503                                      self.stderr)\n"}
+,{"stream_name":"stderr","time":275.637548947,"data":"    504 \n"}
+,{"stream_name":"stderr","time":275.63755069,"data":"\n"}
+,{"stream_name":"stderr","time":275.637554558,"data":"CalledProcessError: Command '['/usr/bin/python3', '-u', '-c', \"\\nimport json, pathlib, torch\\nfrom release_policy import model_preflight, MODEL_ID, RELEASE_ID, MODEL_MIN_GPU_MEMORY_GIB\\nfrom hyper_arc.contender.offline_model import OfflineTransformersTransport\\nfrom hyper_arc.contender.agentic_reasoner import AgenticReasoner\\nimport time\\nmodels = [p.parent for p in pathlib.Path('/kaggle/input').rglob('config.json')\\n          if 'gemma-4-e4b-it' in str(p).lower()]\\nif len(models) != 1:\\n    raise RuntimeError('Expected exactly one attached model')\\ntransport = OfflineTransformersTransport(models[0], device='cuda',\\n    minimum_gpu_memory_gib=MODEL_MIN_GPU_MEMORY_GIB)\\nreport = {'passed': False, 'release_id': RELEASE_ID, 'model': MODEL_ID,\\n          'device': torch.cuda.get_device_name(0), 'submission_created': False,\\n          'scope': 'frozen-builder-task' if BENCH_TASK_ID is not None else 'synthetic-live-model-only',\\n          'stage': 'model_loaded'}\\npathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))\\nif BENCH_TASK_ID is not None:\\n    # This stage isolates task reasoning; synthetic preflight passed in v3 with\\n    # the same immutable bundle, attachment and L4 hardware.\\n    report['stage'] = 'builder_task_started'\\n    report['builder_benchmark'] = {'task_id': BENCH_TASK_ID,\\n                                   'selection': 'first frozen development task',\\n                                   'labels_passed_to_model': False}\\n    pathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))\\n    result = AgenticReasoner(transport, model=MODEL_ID,\\n        rounds=RELEASE['rounds'], candidates_per_round=RELEASE['candidates'],\\n        max_output_tokens=RELEASE['output_tokens']).solve(\\n            BENCH_TASK_ID, BENCH_CHALLENGE, deadline=time.monotonic() + RELEASE['task_seconds'])\\n    expected = [tuple(tuple(row) for row in grid) for grid in BENCH_TARGETS]\\n    per_output_exact = [index \u003c len(result.test_predictions)\\n                        and target in result.test_predictions[index]\\n                        for index, target in enumerate(expected)]\\n    report['builder_benchmark'] = {\\n        'task_id': BENCH_TASK_ID, 'rounds': result.rounds_executed,\\n        'generated': result.candidates_generated, 'executed': result.candidates_executed,\\n        'per_output_exact_pass_at_2': per_output_exact,\\n        'full_task_exact_pass_at_2': bool(per_output_exact) and all(per_output_exact),\\n        'failures': list(result.failures), 'selection': 'first frozen development task',\\n        'labels_passed_to_model': False}\\nelse:\\n    report.update(model_preflight(transport, MODEL_ID, seconds=90))\\nreport.update({'passed': True, 'stage': 'completed'})\\npathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))\\nprint(json.dumps(report), flush=True)\\n\"]' returned non-zero exit status 1.\n"}
+,{"stream_name":"stderr","time":275.63757578,"data":"\n"}
+,{"stream_name":"stderr","time":277.782596106,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":277.78262268,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":277.936643798,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":277.9366694,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":278.7482714,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":279.063920416,"data":"[NbConvertApp] Writing 168656 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":281.526077726,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":282.384494483,"data":"[NbConvertApp] Writing 478943 bytes to __results__.html\n"}
+]

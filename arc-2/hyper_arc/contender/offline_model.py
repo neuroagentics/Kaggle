@@ -27,6 +27,23 @@ def check_gpu_memory(torch, minimum_gib: float) -> dict:
     return report
 
 
+def gpu_allocation_plan(torch, *, minimum_gpus: int = 1) -> dict[int, str] | None:
+    """Reserve space for generation while assigning model layers to GPUs."""
+    count = torch.cuda.device_count()
+    if count < minimum_gpus:
+        raise OfflineModelError(f"Selected deployment needs {minimum_gpus} GPUs; allocated {count}")
+    if count == 1:
+        return None
+    maximum = {}
+    for index in range(count):
+        free_gib = torch.cuda.mem_get_info(index)[0] / 2**30
+        budget = int(free_gib) - (10 if index == 0 else 4)
+        if budget < 4:
+            raise OfflineModelError(f"GPU {index} has insufficient space after generation reserve")
+        maximum[index] = f"{budget}GiB"
+    return maximum
+
+
 class OfflineTransformersTransport:
     """Expose a local Hugging Face causal model through the solver transport API.
 
@@ -41,6 +58,7 @@ class OfflineTransformersTransport:
         device: str = "auto",
         max_input_tokens: int = 24_000,
         minimum_gpu_memory_gib: float = 0.0,
+        minimum_gpu_count: int = 1,
     ) -> None:
         path = Path(model_path).resolve()
         if not path.is_dir():
@@ -60,6 +78,7 @@ class OfflineTransformersTransport:
         if device == "cuda" and not torch.cuda.is_available():
             raise OfflineModelError("CUDA was requested but is unavailable")
         self.hardware = check_gpu_memory(torch, minimum_gpu_memory_gib) if device == "cuda" else {}
+        placement = gpu_allocation_plan(torch, minimum_gpus=minimum_gpu_count) if device == "cuda" else None
         dtype = (torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16) if device == "cuda" else torch.float32
         try:
             try:
@@ -76,6 +95,9 @@ class OfflineTransformersTransport:
                     trust_remote_code=False,
                 )
                 self.processor = self.tokenizer
+            load_options = dict(
+                device_map="auto", max_memory=placement,
+            ) if placement else {}
             self.model = AutoModelForCausalLM.from_pretrained(
                 str(path),
                 local_files_only=True,
@@ -83,8 +105,14 @@ class OfflineTransformersTransport:
                 dtype=dtype,
                 low_cpu_mem_usage=True,
                 attn_implementation="sdpa",
+                **load_options,
             )
-            self.model.to(device)
+            if placement:
+                devices = set(self.model.hf_device_map.values())
+                if any(value in {"cpu", "disk"} for value in devices):
+                    raise OfflineModelError(f"GPU-only placement failed: {devices}")
+            else:
+                self.model.to(device)
             self.model.eval()
         except Exception as exc:
             raise OfflineModelError(f"Unable to load attached model at {path}: {exc}") from exc

@@ -84,8 +84,8 @@ Before release, all of the following remain required:
 1. Binding Kaggle rules retrieved and checked, including memory/data scope.
 2. Owner-approved public license and reviewed model/source license inventory.
 3. Actual attached weights/tokenizer load and pass the real offline transport.
-   **Passed** in the competition-linked private synthetic qualification v3 on
-   September 21; this does not measure ARC task accuracy.
+   Synthetic-only load/inference passed in competition-linked v3 on September
+   21. Full-size ARC task inference remains unqualified after v7 OOM.
 4. Independently evaluated exact per-test-output pass@2 improvement with a
    matched baseline, multiple runs/seeds, and no validation-memory leakage.
 5. Two clean full offline GPU rehearsals, complete output coverage, acceptable
@@ -127,12 +127,22 @@ offline. The live model produced one executable candidate and the synthetic
 preflight passed. `submission_created=false`; no competition task file was read.
 Evidence: `artifacts/private_qualification_20260921_v3/qualification.json` and
 the corresponding runtime log. The model-runtime gate is therefore satisfied
-for this attachment and hardware, but independent ARC-2 score evaluation and
+for the small synthetic prompt only. Independent ARC-2 score evaluation and
 full-run reliability gates are still open.
 
-The current single-GPU BF16 profile now checks for at least 20 GiB free GPU
-memory before loading weights. This is an admission floor, not proof of fit at
-all prompt lengths. Requested accelerator metadata is never sufficient evidence.
+The first frozen builder task (`d9fac9be`) was attempted in private v7. The
+single-L4 loader ran out of memory in all three reasoning rounds (3.67-3.68 GiB
+requested with only 0.73 GiB free); zero candidates were generated or executed,
+and exact score was zero. V4 timed out with preflight and task combined; v5-v6
+exposed and repaired diagnostic subprocess variable handoff errors. All remain
+unscored private diagnostics, preserved in `artifacts/private_qualification_20260921_v*/`.
+The v7 result supersedes any interpretation of v3 as model readiness for ARC
+tasks.
+
+The revised BF16 profile requires at least two GPUs and reserves generation
+space on the first while dispatching layers across available GPUs. GPU-only
+placement is mandatory; CPU/disk offload is rejected. This placement still
+requires a live test. Requested accelerator metadata is never sufficient evidence.
 The deprecated dtype argument is corrected; unsupported BF16 devices use FP16
 only if they meet the memory floor. No automatic quantization, CPU offload, or
 model substitution is introduced. ARC-2 accuracy remains unqualified.
@@ -147,7 +157,7 @@ Hardware sources checked September 20:
 [Google memory guidance](https://ai.google.dev/gemma/docs/core) and
 [Kaggle accelerator announcement](https://www.kaggle.com/discussions/product-announcements/735239).
 
-Correction evidence: 288 local tests passed after alignment and the hardware
+Correction evidence: 289 local tests passed after alignment and the hardware
 admission correction, including rejection
 of the historical false promotion, release/source identity, deadline handling,
 same-run development-memory transfer, validation-write rejection, per-program

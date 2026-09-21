@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "release_id": "hyper-arc-rc-20260920",
+  "model": "google/gemma-4-e4b-it",
+  "device": "NVIDIA L4",
+  "submission_created": false,
+  "scope": "frozen-builder-task",
+  "stage": "completed",
+  "builder_benchmark": {
+    "task_id": "d9fac9be",
+    "rounds": 3,
+    "generated": 0,
+    "executed": 0,
+    "per_output_exact_pass_at_2": [
+      false
+    ],
+    "full_task_exact_pass_at_2": false,
+    "failures": [
+      "r0:model:OfflineModelError:Offline inference failed: CUDA out of memory. Tried to allocate 3.67 GiB. GPU 0 has a total capacity of 22.03 GiB of which 745.12 MiB is free. Including non-PyTorch memory, this process has 21.30 GiB memory in use. Of the allocated memory 20.74 GiB is allocated by PyTorch, and 343.33 MiB is reserved",
+      "r1:model:OfflineModelError:Offline inference failed: CUDA out of memory. Tried to allocate 3.68 GiB. GPU 0 has a total capacity of 22.03 GiB of which 745.12 MiB is free. Including non-PyTorch memory, this process has 21.30 GiB memory in use. Of the allocated memory 17.24 GiB is allocated by PyTorch, and 3.83 GiB is reserved b",
+      "r2:model:OfflineModelError:Offline inference failed: CUDA out of memory. Tried to allocate 3.68 GiB. GPU 0 has a total capacity of 22.03 GiB of which 745.12 MiB is free. Including non-PyTorch memory, this process has 21.30 GiB memory in use. Of the allocated memory 17.24 GiB is allocated by PyTorch, and 3.83 GiB is reserved b"
+    ],
+    "selection": "first frozen development task",
+    "labels_passed_to_model": false
+  }
+}
