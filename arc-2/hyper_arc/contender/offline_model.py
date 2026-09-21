@@ -12,6 +12,21 @@ class OfflineModelError(RuntimeError):
     """Raised when the attached neural model cannot be loaded or queried."""
 
 
+def check_gpu_memory(torch, minimum_gib: float) -> dict:
+    """Check the actual single-device allocation before loading any weights."""
+    free, total = torch.cuda.mem_get_info(0)
+    report = {"name": torch.cuda.get_device_name(0),
+              "free_gib": free / 2**30, "total_gib": total / 2**30,
+              "minimum_free_gib": minimum_gib}
+    if report["free_gib"] < minimum_gib:
+        raise OfflineModelError(
+            "Insufficient GPU memory for selected deployment profile: "
+            + json.dumps(report, sort_keys=True)
+            + ". Accelerator metadata is not proof of allocation; no CPU fallback."
+        )
+    return report
+
+
 class OfflineTransformersTransport:
     """Expose a local Hugging Face causal model through the solver transport API.
 
@@ -25,6 +40,7 @@ class OfflineTransformersTransport:
         *,
         device: str = "auto",
         max_input_tokens: int = 24_000,
+        minimum_gpu_memory_gib: float = 0.0,
     ) -> None:
         path = Path(model_path).resolve()
         if not path.is_dir():
@@ -43,7 +59,8 @@ class OfflineTransformersTransport:
             device = "cuda" if torch.cuda.is_available() else "cpu"
         if device == "cuda" and not torch.cuda.is_available():
             raise OfflineModelError("CUDA was requested but is unavailable")
-        dtype = torch.bfloat16 if device == "cuda" else torch.float32
+        self.hardware = check_gpu_memory(torch, minimum_gpu_memory_gib) if device == "cuda" else {}
+        dtype = (torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16) if device == "cuda" else torch.float32
         try:
             try:
                 self.processor = AutoProcessor.from_pretrained(
@@ -63,7 +80,7 @@ class OfflineTransformersTransport:
                 str(path),
                 local_files_only=True,
                 trust_remote_code=False,
-                torch_dtype=dtype,
+                dtype=dtype,
                 low_cpu_mem_usage=True,
                 attn_implementation="sdpa",
             )

@@ -1,3 +1,5 @@
 /release/history/
 /release/current/*.zip
+/release/private_qualification/
+/release/private_qualification_remote/
 /artifacts/kaggle_audit_20260920/

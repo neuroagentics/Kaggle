@@ -1,0 +1,170 @@
+[{"stream_name":"stderr","time":7.587833788,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.587906769,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.587912972,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.587917297,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.212991327,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.213030652,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.213034364,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.213036919,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":14.725223313,"data":"GPU: Tesla T4\n"}
+,{"stream_name":"stdout","time":16.217067406,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.357955621,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.382862353,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.402088986,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.416470856,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":16.419597446,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.419619498,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.419623876,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.419627454,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.419630956,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":23.685142406,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stdout","time":23.888315123,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stderr","time":50.430829907,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":50.635852788,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":50.635881638,"data":"\n"}
+,{"stream_name":"stderr","time":50.63588836,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":51.263838247,"data":"\rLoading weights:   0%|          | 0/2076 [00:00\u003c?, ?it/s]\rLoading weights:   7%|▋         | 141/2076 [00:00\u003c00:01, 1408.23it/s]\rLoading weights:   0%|          | 0/2076 [00:00\u003c?, ?it/s]\rLoading weights:   7%|▋         | 141/2076 [00:00\u003c00:01, 1408.23it/s]\n"}
+,{"stream_name":"stderr","time":51.497919968,"data":"\rLoading weights:   0%|          | 0/2076 [00:00\u003c?, ?it/s]\rLoading weights:   7%|▋         | 141/2076 [00:00\u003c00:01, 1408.23it/s]\rLoading weights:  14%|█▎        | 282/2076 [00:00\u003c00:01, 1199.42it/s]\rLoading weights:  19%|█▉        | 404/2076 [00:00\u003c00:01, 1142.16it/s]\rLoading weights:  14%|█▎        | 282/2076 [00:00\u003c00:01, 1199.42it/s]\rLoading weights:  19%|█▉        | 404/2076 [00:00\u003c00:01, 1142.16it/s]\n"}
+,{"stream_name":"stderr","time":51.719700473,"data":"\rLoading weights:  14%|█▎        | 282/2076 [00:00\u003c00:01, 1199.42it/s]\rLoading weights:  19%|█▉        | 404/2076 [00:00\u003c00:01, 1142.16it/s]\rLoading weights:  25%|██▌       | 520/2076 [00:00\u003c00:01, 1115.93it/s]\rLoading weights:  30%|███       | 633/2076 [00:00\u003c00:01, 1080.92it/s]\rLoading weights:  25%|██▌       | 520/2076 [00:00\u003c00:01, 1115.93it/s]\rLoading weights:  30%|███       | 633/2076 [00:00\u003c00:01, 1080.92it/s]\n"}
+,{"stream_name":"stderr","time":51.933042537,"data":"\rLoading weights:  25%|██▌       | 520/2076 [00:00\u003c00:01, 1115.93it/s]\rLoading weights:  30%|███       | 633/2076 [00:00\u003c00:01, 1080.92it/s]\rLoading weights:  36%|███▌      | 743/2076 [00:00\u003c00:01, 1079.55it/s]\rLoading weights:  36%|███▌      | 743/2076 [00:00\u003c00:01, 1079.55it/s]\n"}
+,{"stream_name":"stderr","time":52.214445782,"data":"\rLoading weights:  36%|███▌      | 743/2076 [00:00\u003c00:01, 1079.55it/s]\rLoading weights:  41%|████      | 852/2076 [00:00\u003c00:01, 694.28it/s] \rLoading weights:  45%|████▌     | 938/2076 [00:01\u003c00:01, 637.66it/s]\rLoading weights:  41%|████      | 852/2076 [00:00\u003c00:01, 694.28it/s] \rLoading weights:  45%|████▌     | 938/2076 [00:01\u003c00:01, 637.66it/s]\n"}
+,{"stream_name":"stderr","time":52.540723213,"data":"\rLoading weights:  41%|████      | 852/2076 [00:00\u003c00:01, 694.28it/s] \rLoading weights:  45%|████▌     | 938/2076 [00:01\u003c00:01, 637.66it/s]\rLoading weights:  49%|████▉     | 1013/2076 [00:01\u003c00:01, 585.48it/s]\rLoading weights:  52%|█████▏    | 1079/2076 [00:01\u003c00:01, 558.08it/s]\rLoading weights:  49%|████▉     | 1013/2076 [00:01\u003c00:01, 585.48it/s]\rLoading weights:  52%|█████▏    | 1079/2076 [00:01\u003c00:01, 558.08it/s]\n"}
+,{"stream_name":"stderr","time":52.821713553,"data":"\rLoading weights:  49%|████▉     | 1013/2076 [00:01\u003c00:01, 585.48it/s]\rLoading weights:  52%|█████▏    | 1079/2076 [00:01\u003c00:01, 558.08it/s]\rLoading weights:  55%|█████▍    | 1140/2076 [00:01\u003c00:01, 518.48it/s]\rLoading weights:  58%|█████▊    | 1195/2076 [00:01\u003c00:01, 492.70it/s]\rLoading weights:  55%|█████▍    | 1140/2076 [00:01\u003c00:01, 518.48it/s]\rLoading weights:  58%|█████▊    | 1195/2076 [00:01\u003c00:01, 492.70it/s]\n"}
+,{"stream_name":"stderr","time":53.074087904,"data":"\rLoading weights:  55%|█████▍    | 1140/2076 [00:01\u003c00:01, 518.48it/s]\rLoading weights:  58%|█████▊    | 1195/2076 [00:01\u003c00:01, 492.70it/s]\rLoading weights:  60%|██████    | 1247/2076 [00:01\u003c00:01, 474.52it/s]\rLoading weights:  62%|██████▏   | 1297/2076 [00:01\u003c00:01, 472.12it/s]\rLoading weights:  60%|██████    | 1247/2076 [00:01\u003c00:01, 474.52it/s]\rLoading weights:  62%|██████▏   | 1297/2076 [00:01\u003c00:01, 472.12it/s]\n"}
+,{"stream_name":"stderr","time":53.286090955,"data":"\rLoading weights:  60%|██████    | 1247/2076 [00:01\u003c00:01, 474.52it/s]\rLoading weights:  62%|██████▏   | 1297/2076 [00:01\u003c00:01, 472.12it/s]\rLoading weights:  65%|██████▍   | 1345/2076 [00:02\u003c00:01, 469.14it/s]\rLoading weights:  67%|██████▋   | 1393/2076 [00:02\u003c00:01, 470.68it/s]\rLoading weights:  65%|██████▍   | 1345/2076 [00:02\u003c00:01, 469.14it/s]\rLoading weights:  67%|██████▋   | 1393/2076 [00:02\u003c00:01, 470.68it/s]\n"}
+,{"stream_name":"stderr","time":53.491840168,"data":"\rLoading weights:  65%|██████▍   | 1345/2076 [00:02\u003c00:01, 469.14it/s]\rLoading weights:  67%|██████▋   | 1393/2076 [00:02\u003c00:01, 470.68it/s]\rLoading weights:  69%|██████▉   | 1441/2076 [00:02\u003c00:01, 466.36it/s]\rLoading weights:  75%|███████▍  | 1556/2076 [00:02\u003c00:00, 649.71it/s]\rLoading weights:  69%|██████▉   | 1441/2076 [00:02\u003c00:01, 466.36it/s]\rLoading weights:  75%|███████▍  | 1556/2076 [00:02\u003c00:00, 649.71it/s]\n"}
+,{"stream_name":"stderr","time":53.695914883,"data":"\rLoading weights:  69%|██████▉   | 1441/2076 [00:02\u003c00:01, 466.36it/s]\rLoading weights:  75%|███████▍  | 1556/2076 [00:02\u003c00:00, 649.71it/s]\rLoading weights:  80%|████████  | 1669/2076 [00:02\u003c00:00, 784.29it/s]\rLoading weights:  84%|████████▍ | 1750/2076 [00:02\u003c00:00, 780.20it/s]\rLoading weights:  80%|████████  | 1669/2076 [00:02\u003c00:00, 784.29it/s]\rLoading weights:  84%|████████▍ | 1750/2076 [00:02\u003c00:00, 780.20it/s]\n"}
+,{"stream_name":"stderr","time":53.893682224,"data":"\rLoading weights:  80%|████████  | 1669/2076 [00:02\u003c00:00, 784.29it/s]\rLoading weights:  84%|████████▍ | 1750/2076 [00:02\u003c00:00, 780.20it/s]\rLoading weights:  89%|████████▉ | 1857/2076 [00:02\u003c00:00, 858.96it/s]\rLoading weights:  95%|█████████▍| 1966/2076 [00:02\u003c00:00, 924.62it/s]\rLoading weights: 100%|██████████| 2076/2076 [00:02\u003c00:00, 734.05it/s]\n"}
+,{"stream_name":"stderr","time":53.902426611,"data":"\rLoading weights:  89%|████████▉ | 1857/2076 [00:02\u003c00:00, 858.96it/s]\rLoading weights:  95%|█████████▍| 1966/2076 [00:02\u003c00:00, 924.62it/s]\rLoading weights: 100%|██████████| 2076/2076 [00:02\u003c00:00, 734.05it/s]\n"}
+,{"stream_name":"stderr","time":53.902455017,"data":"\n"}
+,{"stream_name":"stderr","time":53.902460137,"data":"\rLoading weights:  89%|████████▉ | 1857/2076 [00:02\u003c00:00, 858.96it/s]\rLoading weights:  95%|█████████▍| 1966/2076 [00:02\u003c00:00, 924.62it/s]\rLoading weights: 100%|██████████| 2076/2076 [00:02\u003c00:00, 734.05it/s]\n"}
+,{"stream_name":"stderr","time":156.703933058,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":156.703979219,"data":"  File \"/tmp/hyper_arc_qualification_x_npw_xq/hyper_arc/contender/offline_model.py\", line 70, in __init__\n"}
+,{"stream_name":"stderr","time":156.704230349,"data":"    self.model.to(device)\n"}
+,{"stream_name":"stderr","time":156.704249872,"data":"  File \"/tmp/hyper_arc_qualification_x_npw_xq/deps/transformers/modeling_utils.py\", line 3650, in to\n"}
+,{"stream_name":"stderr","time":156.704911068,"data":"    return super().to(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":156.704922961,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":156.704927871,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 1381, in to\n"}
+,{"stream_name":"stderr","time":156.707211577,"data":"    return self._apply(convert)\n"}
+,{"stream_name":"stderr","time":156.707244126,"data":"           ^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":156.707248038,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 933, in _apply\n"}
+,{"stream_name":"stderr","time":156.707542844,"data":"    module._apply(fn)\n"}
+,{"stream_name":"stderr","time":156.707554712,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 933, in _apply\n"}
+,{"stream_name":"stderr","time":156.707849863,"data":"    module._apply(fn)\n"}
+,{"stream_name":"stderr","time":156.707858228,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 933, in _apply\n"}
+,{"stream_name":"stderr","time":156.708168733,"data":"    module._apply(fn)\n"}
+,{"stream_name":"stderr","time":156.708180821,"data":"  [Previous line repeated 4 more times]\n"}
+,{"stream_name":"stderr","time":156.708184791,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 964, in _apply\n"}
+,{"stream_name":"stderr","time":156.708471965,"data":"    param_applied = fn(param)\n"}
+,{"stream_name":"stderr","time":156.708479547,"data":"                    ^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":156.708483266,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 1367, in convert\n"}
+,{"stream_name":"stderr","time":156.708859401,"data":"    return t.to(\n"}
+,{"stream_name":"stderr","time":156.708866687,"data":"           ^^^^^\n"}
+,{"stream_name":"stderr","time":156.708871408,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 14.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.44 GiB is allocated by PyTorch, and 5.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n"}
+,{"stream_name":"stderr","time":156.708880335,"data":"\n"}
+,{"stream_name":"stderr","time":156.708883792,"data":"The above exception was the direct cause of the following exception:\n"}
+,{"stream_name":"stderr","time":156.708887656,"data":"\n"}
+,{"stream_name":"stderr","time":156.708891054,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":156.708894597,"data":"  File \"\u003cstring\u003e\", line 9, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":156.708898853,"data":"  File \"/tmp/hyper_arc_qualification_x_npw_xq/hyper_arc/contender/offline_model.py\", line 73, in __init__\n"}
+,{"stream_name":"stderr","time":156.708998494,"data":"    raise OfflineModelError(f\"Unable to load attached model at {path}: {exc}\") from exc\n"}
+,{"stream_name":"stderr","time":156.709065022,"data":"hyper_arc.contender.offline_model.OfflineModelError: Unable to load attached model at /kaggle/input/models/google/gemma-4/transformers/gemma-4-e4b-it/1: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 14.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.44 GiB is allocated by PyTorch, and 5.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n"}
+,{"stream_name":"stderr","time":156.910075045,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":156.910108731,"data":"  File \"/tmp/hyper_arc_qualification_x_npw_xq/hyper_arc/contender/offline_model.py\", line 70, in __init__\n"}
+,{"stream_name":"stderr","time":156.910114334,"data":"    self.model.to(device)\n"}
+,{"stream_name":"stderr","time":156.910118715,"data":"  File \"/tmp/hyper_arc_qualification_x_npw_xq/deps/transformers/modeling_utils.py\", line 3650, in to\n"}
+,{"stream_name":"stderr","time":156.910123128,"data":"    return super().to(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":156.910127308,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":156.910130843,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 1381, in to\n"}
+,{"stream_name":"stderr","time":156.910135138,"data":"    return self._apply(convert)\n"}
+,{"stream_name":"stderr","time":156.910138744,"data":"           ^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":156.910142312,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 933, in _apply\n"}
+,{"stream_name":"stderr","time":156.910174205,"data":"    module._apply(fn)\n"}
+,{"stream_name":"stderr","time":156.910178549,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 933, in _apply\n"}
+,{"stream_name":"stderr","time":156.910182523,"data":"    module._apply(fn)\n"}
+,{"stream_name":"stderr","time":156.910186504,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 933, in _apply\n"}
+,{"stream_name":"stderr","time":156.910190759,"data":"    module._apply(fn)\n"}
+,{"stream_name":"stderr","time":156.910194859,"data":"  [Previous line repeated 4 more times]\n"}
+,{"stream_name":"stderr","time":156.910198868,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 964, in _apply\n"}
+,{"stream_name":"stderr","time":156.910202724,"data":"    param_applied = fn(param)\n"}
+,{"stream_name":"stderr","time":156.91020624,"data":"                    ^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":156.910209867,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 1367, in convert\n"}
+,{"stream_name":"stderr","time":156.910213709,"data":"    return t.to(\n"}
+,{"stream_name":"stderr","time":156.910217145,"data":"           ^^^^^\n"}
+,{"stream_name":"stderr","time":156.910220957,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 14.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.44 GiB is allocated by PyTorch, and 5.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n"}
+,{"stream_name":"stderr","time":156.910232881,"data":"\n"}
+,{"stream_name":"stderr","time":156.910235392,"data":"The above exception was the direct cause of the following exception:\n"}
+,{"stream_name":"stderr","time":156.910238018,"data":"\n"}
+,{"stream_name":"stderr","time":156.910240385,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":156.910242871,"data":"  File \"\u003cstring\u003e\", line 9, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":156.910246013,"data":"  File \"/tmp/hyper_arc_qualification_x_npw_xq/hyper_arc/contender/offline_model.py\", line 73, in __init__\n"}
+,{"stream_name":"stderr","time":156.910250191,"data":"    raise OfflineModelError(f\"Unable to load attached model at {path}: {exc}\") from exc\n"}
+,{"stream_name":"stderr","time":156.910257475,"data":"hyper_arc.contender.offline_model.OfflineModelError: Unable to load attached model at /kaggle/input/models/google/gemma-4/transformers/gemma-4-e4b-it/1: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 14.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.44 GiB is allocated by PyTorch, and 5.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n"}
+,{"stream_name":"stderr","time":156.910261563,"data":"\n"}
+,{"stream_name":"stderr","time":156.91026392,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":156.910266364,"data":"  File \"/tmp/hyper_arc_qualification_x_npw_xq/hyper_arc/contender/offline_model.py\", line 70, in __init__\n"}
+,{"stream_name":"stderr","time":156.910268988,"data":"    self.model.to(device)\n"}
+,{"stream_name":"stderr","time":156.910271487,"data":"  File \"/tmp/hyper_arc_qualification_x_npw_xq/deps/transformers/modeling_utils.py\", line 3650, in to\n"}
+,{"stream_name":"stderr","time":156.910274688,"data":"    return super().to(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":156.910277368,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":156.910279859,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 1381, in to\n"}
+,{"stream_name":"stderr","time":156.91028257,"data":"    return self._apply(convert)\n"}
+,{"stream_name":"stderr","time":156.910285004,"data":"           ^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":156.910287458,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 933, in _apply\n"}
+,{"stream_name":"stderr","time":156.910290037,"data":"    module._apply(fn)\n"}
+,{"stream_name":"stderr","time":156.910292497,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 933, in _apply\n"}
+,{"stream_name":"stderr","time":156.910295062,"data":"    module._apply(fn)\n"}
+,{"stream_name":"stderr","time":156.910297452,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 933, in _apply\n"}
+,{"stream_name":"stderr","time":156.91030001,"data":"    module._apply(fn)\n"}
+,{"stream_name":"stderr","time":156.910302511,"data":"  [Previous line repeated 4 more times]\n"}
+,{"stream_name":"stderr","time":156.910304939,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 964, in _apply\n"}
+,{"stream_name":"stderr","time":156.910307486,"data":"    param_applied = fn(param)\n"}
+,{"stream_name":"stderr","time":156.910309913,"data":"                    ^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":156.910312388,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py\", line 1367, in convert\n"}
+,{"stream_name":"stderr","time":156.910314974,"data":"    return t.to(\n"}
+,{"stream_name":"stderr","time":156.910317371,"data":"           ^^^^^\n"}
+,{"stream_name":"stderr","time":156.910320183,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 14.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.44 GiB is allocated by PyTorch, and 5.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n"}
+,{"stream_name":"stderr","time":156.910325593,"data":"\n"}
+,{"stream_name":"stderr","time":156.910328027,"data":"The above exception was the direct cause of the following exception:\n"}
+,{"stream_name":"stderr","time":156.910341353,"data":"\n"}
+,{"stream_name":"stderr","time":156.910343692,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":156.910346135,"data":"  File \"\u003cstring\u003e\", line 9, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":156.91034872,"data":"  File \"/tmp/hyper_arc_qualification_x_npw_xq/hyper_arc/contender/offline_model.py\", line 73, in __init__\n"}
+,{"stream_name":"stderr","time":156.910351315,"data":"    raise OfflineModelError(f\"Unable to load attached model at {path}: {exc}\") from exc\n"}
+,{"stream_name":"stderr","time":156.910353978,"data":"hyper_arc.contender.offline_model.OfflineModelError: Unable to load attached model at /kaggle/input/models/google/gemma-4/transformers/gemma-4-e4b-it/1: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 14.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.44 GiB is allocated by PyTorch, and 5.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n"}
+,{"stream_name":"stderr","time":160.511148769,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":160.511195335,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":160.511199924,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":160.511329557,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":160.511348645,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":160.511548545,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":160.511663139,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":160.511669734,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":160.511674397,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":160.51167842,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":160.511682268,"data":"CalledProcessError                        Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":160.511686185,"data":"/tmp/ipykernel_22/3216517574.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":160.511690213,"data":"     54     environment.update(PYTHONPATH=str(deps) + os.pathsep + str(root),\n"}
+,{"stream_name":"stderr","time":160.511693962,"data":"     55                        HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1')\n"}
+,{"stream_name":"stderr","time":160.511697686,"data":"---\u003e 56     subprocess.run([sys.executable, '-c', code], cwd=root, env=environment,\n"}
+,{"stream_name":"stderr","time":160.511701591,"data":"     57                    check=True, timeout=420)\n"}
+,{"stream_name":"stderr","time":160.511705219,"data":"     58 except Exception as exc:\n"}
+,{"stream_name":"stderr","time":160.511709128,"data":"\n"}
+,{"stream_name":"stderr","time":160.511724991,"data":"/usr/lib/python3.12/subprocess.py in run(input, capture_output, timeout, check, *popenargs, **kwargs)\n"}
+,{"stream_name":"stderr","time":160.511729174,"data":"    569         retcode = process.poll()\n"}
+,{"stream_name":"stderr","time":160.511732987,"data":"    570         if check and retcode:\n"}
+,{"stream_name":"stderr","time":160.511736534,"data":"--\u003e 571             raise CalledProcessError(retcode, process.args,\n"}
+,{"stream_name":"stderr","time":160.511740205,"data":"    572                                      output=stdout, stderr=stderr)\n"}
+,{"stream_name":"stderr","time":160.51174382,"data":"    573     return CompletedProcess(process.args, retcode, stdout, stderr)\n"}
+,{"stream_name":"stderr","time":160.511747384,"data":"\n"}
+,{"stream_name":"stderr","time":160.511751255,"data":"CalledProcessError: Command '['/usr/bin/python3', '-c', \"\\nimport json, pathlib, torch\\nfrom release_policy import model_preflight, MODEL_ID, RELEASE_ID\\nfrom hyper_arc.contender.offline_model import OfflineTransformersTransport\\nmodels = [p.parent for p in pathlib.Path('/kaggle/input').rglob('config.json')\\n          if 'gemma-4-e4b-it' in str(p).lower()]\\nif len(models) != 1:\\n    raise RuntimeError('Expected exactly one attached model')\\ntransport = OfflineTransformersTransport(models[0], device='cuda')\\nreport = model_preflight(transport, MODEL_ID, seconds=90)\\nreport.update({'release_id': RELEASE_ID, 'model': MODEL_ID,\\n               'device': torch.cuda.get_device_name(0), 'scope': 'synthetic-live-model-only',\\n               'submission_created': False})\\npathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))\\nprint(json.dumps(report), flush=True)\\n\"]' returned non-zero exit status 1.\n"}
+,{"stream_name":"stderr","time":160.51176099,"data":"\n"}
+,{"stream_name":"stderr","time":162.648631655,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":162.648680585,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":162.806553697,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":162.806593455,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":163.404564655,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":163.703721154,"data":"[NbConvertApp] Writing 159216 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":166.035314171,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":166.841771469,"data":"[NbConvertApp] Writing 443131 bytes to __results__.html\n"}
+]

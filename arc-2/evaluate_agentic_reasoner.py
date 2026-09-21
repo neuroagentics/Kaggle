@@ -20,7 +20,7 @@ from hyper_arc.contender.model_proposer import _ollama_transport
 from hyper_arc.contender.procedural_memory import ProceduralMemoryBank
 from hyper_arc.contender.telemetry import ResourceMonitor
 from hyper_arc.contender.offline_model import OfflineTransformersTransport
-from release_policy import AGENTIC_ROUNDS, AGENTIC_CANDIDATES, OUTPUT_TOKENS
+from release_policy import AGENTIC_ROUNDS, AGENTIC_CANDIDATES, OUTPUT_TOKENS, MODEL_ID, MODEL_MIN_GPU_MEMORY_GIB
 
 
 def _arguments() -> argparse.Namespace:
@@ -107,7 +107,8 @@ def main() -> int:
         if len(selected) == arguments.count:
             break
 
-    transport = (OfflineTransformersTransport(arguments.model_path) if arguments.backend == "transformers" else
+    transport = (OfflineTransformersTransport(arguments.model_path,
+        minimum_gpu_memory_gib=MODEL_MIN_GPU_MEMORY_GIB if arguments.model == MODEL_ID else 0.0) if arguments.backend == "transformers" else
         _ollama_transport(
             arguments.model,
             "http://127.0.0.1:11434/api/chat",

@@ -7,7 +7,7 @@ from pathlib import Path
 
 from build_solver_archive import ROOT, build_bundle
 from release_policy import (
-    RELEASE_ID, MODEL_ID, MODEL_ATTACHMENT, TASK_SECONDS, RUN_SECONDS,
+    RELEASE_ID, MODEL_ID, MODEL_ATTACHMENT, MODEL_MIN_GPU_MEMORY_GIB, TASK_SECONDS, RUN_SECONDS,
     AGENTIC_ROUNDS, AGENTIC_CANDIDATES, OUTPUT_TOKENS,
 )
 
@@ -30,6 +30,7 @@ def build_release(output_dir):
     with zipfile.ZipFile(bundle) as archive:
         manifest = json.loads(archive.read("bundle_manifest.json"))
     identity = {"id": RELEASE_ID, "model": MODEL_ID,
+                "minimum_gpu_memory_gib": MODEL_MIN_GPU_MEMORY_GIB,
                 "rounds": AGENTIC_ROUNDS, "candidates": AGENTIC_CANDIDATES, "output_tokens": OUTPUT_TOKENS,
                 "task_seconds": TASK_SECONDS, "run_seconds": RUN_SECONDS,
                 "source_tree_sha256": manifest["source_tree_sha256"]}

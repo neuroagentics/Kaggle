@@ -1,0 +1,23 @@
+[{"stream_name":"stderr","time":4.996948843,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":4.99703398,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":4.997041029,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 113, in execute_notebook\n"}
+,{"stream_name":"stderr","time":4.997100924,"data":"    kernel_name = papermill_engines.nb_kernel_name(engine_name=engine_name, nb=nb, name=kernel_name)\n"}
+,{"stream_name":"stderr","time":4.997214844,"data":"                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4.997222688,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/engines.py\", line 53, in nb_kernel_name\n"}
+,{"stream_name":"stderr","time":4.99728043,"data":"    return self.get_engine(engine_name).nb_kernel_name(nb, name)\n"}
+,{"stream_name":"stderr","time":4.997323272,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4.9973621040000005,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/engines.py\", line 386, in nb_kernel_name\n"}
+,{"stream_name":"stderr","time":4.997565644,"data":"    return nb_kernel_name(nb, name)\n"}
+,{"stream_name":"stderr","time":4.997574321,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4.997578288,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/utils.py\", line 52, in nb_kernel_name\n"}
+,{"stream_name":"stderr","time":4.99772423,"data":"    raise ValueError(\"No kernel name found in notebook and no override provided.\")\n"}
+,{"stream_name":"stderr","time":4.997738665,"data":"ValueError: No kernel name found in notebook and no override provided.\n"}
+,{"stream_name":"stderr","time":6.911518057,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":6.911550243,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":7.065562239,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":7.065585848,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":7.65298475,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":7.933554025,"data":"[NbConvertApp] Writing 149512 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":10.167791289,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":11.289588934,"data":"[NbConvertApp] Writing 435384 bytes to __results__.html\n"}
+]

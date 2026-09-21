@@ -20,7 +20,7 @@ from hyper_arc.contender.agentic_reasoner import AgenticReasoner, validate_code
 from hyper_arc.contender.agentic_memory import AgenticMemoryBank
 from hyper_arc.contender.session_memory import SessionMemory
 from release_policy import (
-    RELEASE_ID, MODEL_ID, TASK_SECONDS, RUN_SECONDS, AGENTIC_ROUNDS,
+    RELEASE_ID, MODEL_ID, MODEL_MIN_GPU_MEMORY_GIB, TASK_SECONDS, RUN_SECONDS, AGENTIC_ROUNDS,
     AGENTIC_CANDIDATES, OUTPUT_TOKENS, model_preflight, qualify_run,
 )
 from hyper_arc.contender.hyperbolic_memory import HyperbolicWorldMemory
@@ -622,6 +622,7 @@ def main(argv: list[str] | None = None) -> int:
         transport = OfflineTransformersTransport(
             args.model_path,
             device=args.agentic_device,
+            minimum_gpu_memory_gib=MODEL_MIN_GPU_MEMORY_GIB if args.agentic_model_name == MODEL_ID else 0.0,
         )
         preflight = model_preflight(transport, args.agentic_model_name,
                                    seconds=min(60.0, args.global_timeout - (time.monotonic() - started)))

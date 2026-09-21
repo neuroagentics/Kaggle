@@ -112,9 +112,34 @@ under the corrected policy. Its historical SOLVER_PROMOTED label is superseded.
 
 Local unit tests do not load deployment weights. No local copy of the selected
 weights was found in the inspected model cache, and Ollama was not running.
-Private Kaggle qualification requires free-GPU quota and explicit run approval.
+Private Kaggle qualification was authorized and attempted, without submitting.
+Version 1 exposed missing notebook kernelspec metadata (fixed and regression
+tested). Version 2 loaded the attached files but failed while moving weights to
+the GPU: actual allocation was Tesla T4, 14.56 GiB, despite the L4 request.
+It did not reach inference. Evidence is in
+`artifacts/private_qualification_20260920_v2/`.
 
-Correction evidence: 284 local tests passed after alignment, including rejection
+The current single-GPU BF16 profile now checks for at least 20 GiB free GPU
+memory before loading weights. This is an admission floor, not proof of fit at
+all prompt lengths. Requested accelerator metadata is never sufficient evidence.
+The deprecated dtype argument is corrected; unsupported BF16 devices use FP16
+only if they meet the memory floor. No automatic quantization, CPU offload, or
+model substitution is introduced. Actual inference remains unqualified.
+
+Google lists approximately 17.9 GB for E4B BF16 weight-loading requirements;
+context/KV cache adds more. Kaggle staff state L4 access is limited to selected
+competitions. The detached synthetic notebook therefore does not establish the
+competition's actual hardware allocation. Next: authorize a competition-linked
+private synthetic qualification (no submission or hidden-data access), or qualify
+a separately specified T4-compatible loading strategy. Do not repeat the same
+known out-of-memory run.
+
+Hardware sources checked September 20:
+[Google memory guidance](https://ai.google.dev/gemma/docs/core) and
+[Kaggle accelerator announcement](https://www.kaggle.com/discussions/product-announcements/735239).
+
+Correction evidence: 287 local tests passed after alignment and the hardware
+admission correction, including rejection
 of the historical false promotion, release/source identity, deadline handling,
 same-run development-memory transfer, validation-write rejection, per-program
 success verification, and distinct neural behaviors. Dependency check passed.
@@ -139,3 +164,9 @@ Never push a notebook against an older attached dataset: update the private
 code dataset to the exact newly built bundle first, then verify the notebook's
 expected source-tree digest. A private qualification run is distinct from
 Submit to Competition. No script here performs either upload or submission.
+
+`python prepare_private_qualification.py` generates a private synthetic-only
+diagnostic using the exact active bundle and existing model/wheel attachments.
+It does not upload or submit. Its detached default must not be mistaken for a
+competition-hardware rehearsal. Use UTF-8 mode (`$env:PYTHONUTF8='1'`) when
+retrieving Kaggle logs on Windows; model progress bars can break legacy encoding.
