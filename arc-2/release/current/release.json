@@ -7,8 +7,8 @@
   "task_seconds": 120.0,
   "run_seconds": 34200.0,
   "source_tree_sha256": "daff49c64f7c4e43204006ccba7323cff488ad51064b279f04a52ab26acfc326",
-  "source_revision": "b965747a0ef8aa70263ba7f2d3dbc51095fb339a",
-  "bundle": "hyper_arc_solver_bundle.e24ce76049f0c3a6a580992486294a4766a0f952494edf9f9f6a8a51abc03396.zip",
+  "source_revision": "a73b7e29581a648a5a6dc9865b5a5539e4d89802",
+  "bundle": "hyper_arc_solver_bundle.7ed4a5dda74fc091976a5873c244e6b3f79ea7e02a3c9d6db9cd750fc99eca26.zip",
   "notebook_sha256": "621034cfc6934749b8e41ed06c48210a9d8c228a208b78308075e795df153b75",
   "status": "UNQUALIFIED_CANDIDATE",
   "submission_authorized": false
