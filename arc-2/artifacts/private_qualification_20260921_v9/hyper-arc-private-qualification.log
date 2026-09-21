@@ -1,0 +1,85 @@
+[{"stream_name":"stderr","time":11.646450394,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.646497859,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.646501716,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.646503836,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":12.379591309,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":12.379612592,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":12.379615617,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":12.379617937,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":21.461771916,"data":"GPUS: [{'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}]\n"}
+,{"stream_name":"stdout","time":24.285838714,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.43526408,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.46320843,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":24.484080672,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":24.487932168,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.487939791,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.487943077,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":24.487945954,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":24.510442746,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":24.712436414,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":32.084369445,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stdout","time":32.286502121,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stderr","time":336.075676054,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":336.075715491,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":336.075720544,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":336.075769371,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":336.075783416,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":336.0758615,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":336.076099851,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":336.076103954,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":336.076106053,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":336.076108065,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":336.076110025,"data":"TimeoutExpired                            Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":336.076112027,"data":"/tmp/ipykernel_65/1751026608.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":336.076114482,"data":"     97                        HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1')\n"}
+,{"stream_name":"stderr","time":336.076116621,"data":"     98     with open('/kaggle/working/model_runtime.log', 'w', encoding='utf-8') as log:\n"}
+,{"stream_name":"stderr","time":336.076118717,"data":"---\u003e 99         result = subprocess.run([sys.executable, '-u', '-c', code], cwd=root, env=environment,\n"}
+,{"stream_name":"stderr","time":336.076120925,"data":"    100                                 stdout=log, stderr=subprocess.STDOUT,\n"}
+,{"stream_name":"stderr","time":336.076123057,"data":"    101                                 timeout=300 if BENCH_TASK_ID is not None else 420)\n"}
+,{"stream_name":"stderr","time":336.076125038,"data":"\n"}
+,{"stream_name":"stderr","time":336.076127104,"data":"/usr/lib/python3.12/subprocess.py in run(input, capture_output, timeout, check, *popenargs, **kwargs)\n"}
+,{"stream_name":"stderr","time":336.076129099,"data":"    548     with Popen(*popenargs, **kwargs) as process:\n"}
+,{"stream_name":"stderr","time":336.076131085,"data":"    549         try:\n"}
+,{"stream_name":"stderr","time":336.076132977,"data":"--\u003e 550             stdout, stderr = process.communicate(input, timeout=timeout)\n"}
+,{"stream_name":"stderr","time":336.076135046,"data":"    551         except TimeoutExpired as exc:\n"}
+,{"stream_name":"stderr","time":336.076136931,"data":"    552             process.kill()\n"}
+,{"stream_name":"stderr","time":336.076138949,"data":"\n"}
+,{"stream_name":"stderr","time":336.076140772,"data":"/usr/lib/python3.12/subprocess.py in communicate(self, input, timeout)\n"}
+,{"stream_name":"stderr","time":336.076142851,"data":"   1207 \n"}
+,{"stream_name":"stderr","time":336.076144728,"data":"   1208             try:\n"}
+,{"stream_name":"stderr","time":336.076146758,"data":"-\u003e 1209                 stdout, stderr = self._communicate(input, endtime, timeout)\n"}
+,{"stream_name":"stderr","time":336.076148809,"data":"   1210             except KeyboardInterrupt:\n"}
+,{"stream_name":"stderr","time":336.076150742,"data":"   1211                 # https://bugs.python.org/issue25942\n"}
+,{"stream_name":"stderr","time":336.076152654,"data":"\n"}
+,{"stream_name":"stderr","time":336.076154356,"data":"/usr/lib/python3.12/subprocess.py in _communicate(self, input, endtime, orig_timeout)\n"}
+,{"stream_name":"stderr","time":336.076156292,"data":"   2139                             self._fileobj2output[key.fileobj].append(data)\n"}
+,{"stream_name":"stderr","time":336.076158305,"data":"   2140 \n"}
+,{"stream_name":"stderr","time":336.076160116,"data":"-\u003e 2141             self.wait(timeout=self._remaining_time(endtime))\n"}
+,{"stream_name":"stderr","time":336.076167395,"data":"   2142 \n"}
+,{"stream_name":"stderr","time":336.076169409,"data":"   2143             # All data exchanged.  Translate lists into strings.\n"}
+,{"stream_name":"stderr","time":336.076171345,"data":"\n"}
+,{"stream_name":"stderr","time":336.07617306,"data":"/usr/lib/python3.12/subprocess.py in wait(self, timeout)\n"}
+,{"stream_name":"stderr","time":336.076174913,"data":"   1262             endtime = _time() + timeout\n"}
+,{"stream_name":"stderr","time":336.076176751,"data":"   1263         try:\n"}
+,{"stream_name":"stderr","time":336.076178603,"data":"-\u003e 1264             return self._wait(timeout=timeout)\n"}
+,{"stream_name":"stderr","time":336.076180511,"data":"   1265         except KeyboardInterrupt:\n"}
+,{"stream_name":"stderr","time":336.076182857,"data":"   1266             # https://bugs.python.org/issue25942\n"}
+,{"stream_name":"stderr","time":336.07618478,"data":"\n"}
+,{"stream_name":"stderr","time":336.076186514,"data":"/usr/lib/python3.12/subprocess.py in _wait(self, timeout)\n"}
+,{"stream_name":"stderr","time":336.07618835,"data":"   2043                     remaining = self._remaining_time(endtime)\n"}
+,{"stream_name":"stderr","time":336.076190228,"data":"   2044                     if remaining \u003c= 0:\n"}
+,{"stream_name":"stderr","time":336.076192153,"data":"-\u003e 2045                         raise TimeoutExpired(self.args, timeout)\n"}
+,{"stream_name":"stderr","time":336.076194158,"data":"   2046                     delay = min(delay * 2, remaining, .05)\n"}
+,{"stream_name":"stderr","time":336.076196096,"data":"   2047                     time.sleep(delay)\n"}
+,{"stream_name":"stderr","time":336.076197976,"data":"\n"}
+,{"stream_name":"stderr","time":336.076202668,"data":"TimeoutExpired: Command '['/usr/bin/python3', '-u', '-c', \"RELEASE = {'id': 'hyper-arc-rc-20260920', 'model': 'google/gemma-4-e4b-it', 'minimum_gpu_memory_gib': 20.0, 'rounds': 3, 'candidates': 4, 'output_tokens': 3000, 'task_seconds': 120.0, 'run_seconds': 34200.0, 'source_tree_sha256': 'd9ea0a77efe26d46ba6f7af1335a47f5047f7756fa83c578970d511827fd0b2a', 'source_revision': '6e5b0ae2f85e021282e016f0d924c691a6cab015', 'bundle': 'hyper_arc_solver_bundle.6fed972d9ffb070ec18c8657305fe06b60778b0a75e396eaa57ac3d88d91613d.zip', 'notebook_sha256': 'ed3e1f8ec1425d3cfaf3222d9b4f666ed122df6cde7f9ef5dd9e6558a65cf334', 'status': 'UNQUALIFIED_CANDIDATE', 'submission_authorized': False}\\nBENCH_TASK_ID = 'd9fac9be'\\nBENCH_CHALLENGE = {'train': [{'input': [[1, 2, 0, 0, 0, 2, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0], [2, 0, 1, 2, 0, 2, 0, 1, 1], [0, 1, 0, 0, 2, 0, 0, 0, 2], [0, 0, 0, 0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0], [1, 2, 1, 2, 0, 0, 0, 2, 0], [0, 2, 2, 2, 0, 0, 0, 0, 2], [0, 0, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 2, 0, 0, 0, 0, 0]], 'output': [[1]]}, {'input': [[8, 0, 8, 0, 0, 0, 0, 0, 8], [0, 0, 0, 0, 8, 0, 0, 0, 0], [0, 0, 8, 0, 0, 3, 3, 3, 0], [8, 0, 0, 3, 0, 3, 8, 3, 0], [0, 0, 0, 0, 0, 3, 3, 3, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0], [3, 0, 0, 8, 0, 0, 0, 8, 0]], 'output': [[8]]}, {'input': [[0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 3, 8], [3, 0, 0, 0, 0, 0, 0, 8, 0, 3, 0, 0], [0, 3, 3, 8, 0, 0, 0, 0, 0, 0, 0, 8], [0, 0, 0, 3, 8, 0, 0, 0, 0, 0, 0, 0], [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0], [0, 0, 0, 3, 8, 0, 0, 0, 0, 0, 0, 0], [0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 3, 3, 3, 0, 0, 8, 0, 3, 0], [0, 0, 3, 3, 8, 3, 0, 0, 0, 0, 0, 0], [0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0]], 'output': [[8]]}, {'input': [[2, 0, 0, 0, 0, 2, 0, 0, 2], [0, 4, 4, 4, 0, 0, 0, 0, 0], [0, 4, 2, 4, 0, 0, 2, 0, 0], [0, 4, 4, 4, 0, 0, 0, 2, 0], [2, 0, 0, 0, 0, 2, 0, 0, 0]], 'output': [[2]]}], 'test': [{'input': [[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0], [1, 0, 0, 0, 0, 0, 4, 0, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 4, 0, 0, 4, 0, 0, 0], [0, 4, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1, 0, 4, 4, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0, 0, 0, 4, 0, 0, 0], [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 4], [4, 0, 0, 0, 1, 4, 1, 1, 0, 0, 0, 0], [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 4], [0, 0, 4, 4, 0, 0, 0, 1, 0, 0, 0, 0]]}]}\\nBENCH_TARGETS = [[[4]]]\\nBENCH_OUTPUT_TOKENS = 512\\n\\nimport json, pathlib, torch\\nfrom release_policy import model_preflight, MODEL_ID, RELEASE_ID, MODEL_MIN_GPU_MEMORY_GIB, MODEL_MIN_GPUS\\nfrom hyper_arc.contender.offline_model import OfflineTransformersTransport\\nfrom hyper_arc.contender.agentic_reasoner import AgenticReasoner\\nimport time\\nmodels = [p.parent for p in pathlib.Path('/kaggle/input').rglob('config.json')\\n          if 'gemma-4-e4b-it' in str(p).lower()]\\nif len(models) != 1:\\n    raise RuntimeError('Expected exactly one attached model')\\ntransport = OfflineTransformersTransport(models[0], device='cuda',\\n    minimum_gpu_memory_gib=MODEL_MIN_GPU_MEMORY_GIB, minimum_gpu_count=MODEL_MIN_GPUS)\\nreport = {'passed': False, 'release_id': RELEASE_ID, 'model': MODEL_ID,\\n          'device': torch.cuda.get_device_name(0), 'submission_created': False,\\n          'scope': 'frozen-builder-task' if BENCH_TASK_ID is not None else 'synthetic-live-model-only',\\n          'stage': 'model_loaded'}\\npathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))\\nif BENCH_TASK_ID is not None:\\n    # This stage isolates task reasoning; synthetic preflight passed in v3 with\\n    # the same immutable bundle, attachment and L4 hardware.\\n    report['stage'] = 'builder_task_started'\\n    report['builder_benchmark'] = {'task_id': BENCH_TASK_ID,\\n                                   'selection': 'first frozen development task',\\n                                   'labels_passed_to_model': False}\\n    pathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))\\n    result = AgenticReasoner(transport, model=MODEL_ID,\\n        rounds=RELEASE['rounds'], candidates_per_round=RELEASE['candidates'],\\n        max_output_tokens=BENCH_OUTPUT_TOKENS or RELEASE['output_tokens']).solve(\\n            BENCH_TASK_ID, BENCH_CHALLENGE, deadline=time.monotonic() + RELEASE['task_seconds'])\\n    expected = [tuple(tuple(row) for row in grid) for grid in BENCH_TARGETS]\\n    per_output_exact = [index \u003c len(result.test_predictions)\\n                        and target in result.test_predictions[index]\\n                        for index, target in enumerate(expected)]\\n    report['builder_benchmark'] = {\\n        'task_id': BENCH_TASK_ID, 'rounds': result.rounds_executed,\\n        'generated': result.candidates_generated, 'executed': result.candidates_executed,\\n        'per_output_exact_pass_at_2': per_output_exact,\\n        'full_task_exact_pass_at_2': bool(per_output_exact) and all(per_output_exact),\\n        'failures': list(result.failures), 'selection': 'first frozen development task',\\n        'labels_passed_to_model': False,\\n        'output_token_cap': BENCH_OUTPUT_TOKENS or RELEASE['output_tokens']}\\nelse:\\n    report.update(model_preflight(transport, MODEL_ID, seconds=90))\\nreport.update({'passed': (result.candidates_executed \u003e 0 if BENCH_TASK_ID is not None else True),\\n               'stage': 'completed'})\\npathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))\\nprint(json.dumps(report), flush=True)\\n\"]' timed out after 299.99998598099955 seconds\n"}
+,{"stream_name":"stderr","time":336.076229167,"data":"\n"}
+,{"stream_name":"stderr","time":338.348196728,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":338.34822213,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":338.529132563,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":338.529158721,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":339.535187562,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":339.854843439,"data":"[NbConvertApp] Writing 178190 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":342.5859508,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":343.452303975,"data":"[NbConvertApp] Writing 488585 bytes to __results__.html\n"}
+]

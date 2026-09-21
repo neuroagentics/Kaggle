@@ -141,11 +141,27 @@ tasks.
 
 The revised BF16 profile requires at least two GPUs and reserves generation
 space on the first while dispatching layers across available GPUs. GPU-only
-placement is mandatory; CPU/disk offload is rejected. This placement still
-requires a live test. Requested accelerator metadata is never sufficient evidence.
+placement is mandatory; CPU/disk offload is rejected. In private v8 this removed
+the OOM on builder task `d9fac9be`, but one reasoning round exceeded the 120
+second task deadline, again producing zero candidates. The qualification
+notebook's `passed=true` in v8 means only that its process completed; its
+`builder_benchmark` is the authoritative task result and reports zero generated,
+zero executed, and zero exact outputs. A v9 512-token diagnostic stalled during
+model loading and hit its 300-second subprocess cap before task reasoning;
+there is no measured short-output result. These are deployment/performance
+failures, not evidence of solver accuracy. Requested accelerator metadata is
+never sufficient evidence.
 The deprecated dtype argument is corrected; unsupported BF16 devices use FP16
 only if they meet the memory floor. No automatic quantization, CPU offload, or
 model substitution is introduced. ARC-2 accuracy remains unqualified.
+
+Next dependency: establish a stable, bounded real-task neural generation path
+that fits the 120-second task and 34,200-second global budgets, then measure
+the complete solver against a matched baseline on the frozen development
+partition. The current four-L4 module placement is a memory fix only. A smaller
+text-only attachment, validated quantization, or supported tensor parallel
+execution may be researched; none is promoted without a real executable
+candidate and exact-score evaluation. Do not submit this candidate.
 
 Google lists approximately 17.9 GB for E4B BF16 weight-loading requirements;
 context/KV cache adds more. Kaggle staff state L4 access is limited to selected

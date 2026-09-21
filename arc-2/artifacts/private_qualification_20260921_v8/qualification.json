@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "release_id": "hyper-arc-rc-20260920",
+  "model": "google/gemma-4-e4b-it",
+  "device": "NVIDIA L4",
+  "submission_created": false,
+  "scope": "frozen-builder-task",
+  "stage": "completed",
+  "builder_benchmark": {
+    "task_id": "d9fac9be",
+    "rounds": 1,
+    "generated": 0,
+    "executed": 0,
+    "per_output_exact_pass_at_2": [
+      false
+    ],
+    "full_task_exact_pass_at_2": false,
+    "failures": [
+      "r0:model:OfflineModelError:Offline inference failed: Inference deadline exceeded",
+      "deadline:reasoning budget exhausted"
+    ],
+    "selection": "first frozen development task",
+    "labels_passed_to_model": false
+  }
+}

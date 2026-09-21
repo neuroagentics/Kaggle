@@ -15,7 +15,7 @@ from hyper_arc.contender.data_protocol import load_verified_split
 ROOT = Path(__file__).resolve().parent
 
 
-def prepare(*, attach_competition=False, benchmark=False):
+def prepare(*, attach_competition=False, benchmark=False, benchmark_output_tokens=None):
     release = json.loads((ROOT / "release/current/release.json").read_text())
     bundle = ROOT / "release/current" / release["bundle"]
     payload = bundle.read_bytes()
@@ -37,7 +37,8 @@ def prepare(*, attach_competition=False, benchmark=False):
         task_id, challenge, answers = None, None, None
     source = (f"BUNDLE = {base64.b64encode(payload).decode()!r}\nEXPECTED = {digest!r}\n"
               f"RELEASE = {release!r}\nWHEELS = {wheels!r}\n"
-              f"BENCH_TASK_ID = {task_id!r}\nBENCH_CHALLENGE = {challenge!r}\nBENCH_TARGETS = {answers!r}\n") + r'''
+              f"BENCH_TASK_ID = {task_id!r}\nBENCH_CHALLENGE = {challenge!r}\n"
+              f"BENCH_TARGETS = {answers!r}\nBENCH_OUTPUT_TOKENS = {benchmark_output_tokens!r}\n") + r'''
 import base64, hashlib, io, json, os, pathlib, subprocess, sys, tempfile, traceback, zipfile
 import torch
 report_path = pathlib.Path('/kaggle/working/qualification.json')
@@ -74,7 +75,8 @@ try:
     code = (f"RELEASE = {RELEASE!r}\n"
             f"BENCH_TASK_ID = {BENCH_TASK_ID!r}\n"
             f"BENCH_CHALLENGE = {BENCH_CHALLENGE!r}\n"
-            f"BENCH_TARGETS = {BENCH_TARGETS!r}\n") + """
+            f"BENCH_TARGETS = {BENCH_TARGETS!r}\n"
+            f"BENCH_OUTPUT_TOKENS = {BENCH_OUTPUT_TOKENS!r}\n") + """
 import json, pathlib, torch
 from release_policy import model_preflight, MODEL_ID, RELEASE_ID, MODEL_MIN_GPU_MEMORY_GIB, MODEL_MIN_GPUS
 from hyper_arc.contender.offline_model import OfflineTransformersTransport
@@ -101,7 +103,7 @@ if BENCH_TASK_ID is not None:
     pathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))
     result = AgenticReasoner(transport, model=MODEL_ID,
         rounds=RELEASE['rounds'], candidates_per_round=RELEASE['candidates'],
-        max_output_tokens=RELEASE['output_tokens']).solve(
+        max_output_tokens=BENCH_OUTPUT_TOKENS or RELEASE['output_tokens']).solve(
             BENCH_TASK_ID, BENCH_CHALLENGE, deadline=time.monotonic() + RELEASE['task_seconds'])
     expected = [tuple(tuple(row) for row in grid) for grid in BENCH_TARGETS]
     per_output_exact = [index < len(result.test_predictions)
@@ -113,10 +115,12 @@ if BENCH_TASK_ID is not None:
         'per_output_exact_pass_at_2': per_output_exact,
         'full_task_exact_pass_at_2': bool(per_output_exact) and all(per_output_exact),
         'failures': list(result.failures), 'selection': 'first frozen development task',
-        'labels_passed_to_model': False}
+        'labels_passed_to_model': False,
+        'output_token_cap': BENCH_OUTPUT_TOKENS or RELEASE['output_tokens']}
 else:
     report.update(model_preflight(transport, MODEL_ID, seconds=90))
-report.update({'passed': True, 'stage': 'completed'})
+report.update({'passed': (result.candidates_executed > 0 if BENCH_TASK_ID is not None else True),
+               'stage': 'completed'})
 pathlib.Path('/kaggle/working/qualification.json').write_text(json.dumps(report, indent=2))
 print(json.dumps(report), flush=True)
 """
@@ -167,5 +171,8 @@ if __name__ == "__main__":
                         help='Attach ARC-2 for hardware eligibility only; no competition tasks are read.')
     parser.add_argument('--benchmark', action='store_true',
                         help='Also score one frozen builder task after synthetic preflight.')
+    parser.add_argument('--benchmark-output-tokens', type=int,
+                        help='Diagnostic output cap override; does not change release settings.')
     args = parser.parse_args()
-    prepare(attach_competition=args.attach_competition, benchmark=args.benchmark)
+    prepare(attach_competition=args.attach_competition, benchmark=args.benchmark,
+            benchmark_output_tokens=args.benchmark_output_tokens)

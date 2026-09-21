@@ -1,0 +1,84 @@
+[{"stream_name":"stderr","time":7.7456404679999995,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.745687376,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.745690877,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.745693037,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.36035458,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.360377936,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.360381359,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.360383895,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":14.801217005,"data":"GPUS: [{'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}]\n"}
+,{"stream_name":"stdout","time":16.188160716,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.337355111,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.363989045,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.383916045,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.390172226,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.390180426,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.3901837,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.390186834,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.39891151,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":16.600822819,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":23.944450143,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stdout","time":24.146508155,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stdout","time":229.265136208,"data":"\n"}
+,{"stream_name":"stdout","time":229.265164083,"data":"Loading weights:   0%|          | 0/2076 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":229.265168296,"data":"Loading weights:   2%|▏         | 45/2076 [00:00\u003c00:04, 436.82it/s]\n"}
+,{"stream_name":"stdout","time":229.265173209,"data":"Loading weights:   4%|▍         | 89/2076 [00:00\u003c00:09, 213.45it/s]\n"}
+,{"stream_name":"stdout","time":229.265188585,"data":"Loading weights:   6%|▌         | 119/2076 [00:00\u003c00:08, 235.67it/s]\n"}
+,{"stream_name":"stdout","time":229.26519287,"data":"Loading weights:   7%|▋         | 147/2076 [00:00\u003c00:10, 186.80it/s]\n"}
+,{"stream_name":"stdout","time":229.26519612,"data":"Loading weights:   9%|▉         | 184/2076 [00:00\u003c00:08, 228.97it/s]\n"}
+,{"stream_name":"stdout","time":229.265199552,"data":"Loading weights:  10%|█         | 212/2076 [00:00\u003c00:09, 197.78it/s]\n"}
+,{"stream_name":"stdout","time":229.265202788,"data":"Loading weights:  12%|█▏        | 248/2076 [00:01\u003c00:07, 234.11it/s]\n"}
+,{"stream_name":"stdout","time":229.265206114,"data":"Loading weights:  13%|█▎        | 276/2076 [00:01\u003c00:08, 201.05it/s]\n"}
+,{"stream_name":"stdout","time":229.265209471,"data":"Loading weights:  14%|█▍        | 300/2076 [00:01\u003c00:08, 204.98it/s]\n"}
+,{"stream_name":"stdout","time":229.265212907,"data":"Loading weights:  16%|█▌        | 323/2076 [00:01\u003c00:09, 181.43it/s]\n"}
+,{"stream_name":"stdout","time":229.265216355,"data":"Loading weights:  17%|█▋        | 353/2076 [00:01\u003c00:08, 204.85it/s]\n"}
+,{"stream_name":"stdout","time":229.265218933,"data":"Loading weights:  18%|█▊        | 376/2076 [00:01\u003c00:08, 204.63it/s]\n"}
+,{"stream_name":"stdout","time":229.265220902,"data":"Loading weights:  19%|█▉        | 398/2076 [00:01\u003c00:09, 184.50it/s]\n"}
+,{"stream_name":"stdout","time":229.265222831,"data":"Loading weights:  21%|██        | 426/2076 [00:02\u003c00:07, 206.64it/s]\n"}
+,{"stream_name":"stdout","time":229.265224803,"data":"Loading weights:  22%|██▏       | 448/2076 [00:02\u003c00:08, 188.48it/s]\n"}
+,{"stream_name":"stdout","time":229.265226707,"data":"Loading weights:  23%|██▎       | 481/2076 [00:02\u003c00:07, 222.55it/s]\n"}
+,{"stream_name":"stdout","time":229.265228676,"data":"Loading weights:  24%|██▍       | 505/2076 [00:02\u003c00:07, 204.77it/s]\n"}
+,{"stream_name":"stdout","time":229.265230864,"data":"Loading weights:  25%|██▌       | 527/2076 [00:02\u003c00:07, 197.10it/s]\n"}
+,{"stream_name":"stdout","time":229.265232862,"data":"Loading weights:  27%|██▋       | 561/2076 [00:02\u003c00:07, 204.34it/s]\n"}
+,{"stream_name":"stdout","time":229.265234772,"data":"Loading weights:  28%|██▊       | 582/2076 [00:02\u003c00:08, 183.83it/s]\n"}
+,{"stream_name":"stdout","time":229.26525979,"data":"Loading weights:  30%|██▉       | 615/2076 [00:02\u003c00:07, 207.08it/s]\n"}
+,{"stream_name":"stdout","time":229.265264043,"data":"Loading weights:  31%|███       | 637/2076 [00:03\u003c00:07, 190.91it/s]\n"}
+,{"stream_name":"stdout","time":229.265267462,"data":"Loading weights:  32%|███▏      | 660/2076 [00:03\u003c00:07, 200.05it/s]\n"}
+,{"stream_name":"stdout","time":229.265271364,"data":"Loading weights:  33%|███▎      | 685/2076 [00:03\u003c00:06, 206.10it/s]\n"}
+,{"stream_name":"stdout","time":229.265274796,"data":"Loading weights:  34%|███▍      | 707/2076 [00:03\u003c00:07, 195.46it/s]\n"}
+,{"stream_name":"stdout","time":229.265279045,"data":"Loading weights:  36%|███▌      | 742/2076 [00:03\u003c00:05, 230.37it/s]\n"}
+,{"stream_name":"stdout","time":229.265284752,"data":"Loading weights:  36%|███▌      | 742/2076 [00:19\u003c00:05, 230.37it/s]\n"}
+,{"stream_name":"stdout","time":229.265288576,"data":"Loading weights:  36%|███▋      | 755/2076 [00:34\u003c08:49,  2.50it/s] \n"}
+,{"stream_name":"stdout","time":229.265291822,"data":"Loading weights:  54%|█████▍    | 1126/2076 [00:34\u003c00:48, 19.58it/s]\n"}
+,{"stream_name":"stdout","time":229.265300051,"data":"Loading weights:  60%|█████▉    | 1239/2076 [00:41\u003c00:45, 18.21it/s]\n"}
+,{"stream_name":"stdout","time":229.265303383,"data":"Loading weights:  63%|██████▎   | 1318/2076 [00:46\u003c00:42, 17.93it/s]\n"}
+,{"stream_name":"stdout","time":229.265306477,"data":"Loading weights:  66%|██████▌   | 1374/2076 [00:50\u003c00:40, 17.27it/s]\n"}
+,{"stream_name":"stdout","time":229.26530854,"data":"Loading weights:  68%|██████▊   | 1414/2076 [00:52\u003c00:38, 17.12it/s]\n"}
+,{"stream_name":"stdout","time":229.265310612,"data":"Loading weights:  70%|██████▉   | 1443/2076 [00:53\u003c00:33, 18.90it/s]\n"}
+,{"stream_name":"stdout","time":229.265312566,"data":"Loading weights:  74%|███████▍  | 1542/2076 [00:53\u003c00:17, 31.20it/s]\n"}
+,{"stream_name":"stdout","time":229.265314636,"data":"Loading weights:  76%|███████▋  | 1586/2076 [00:53\u003c00:12, 38.32it/s]\n"}
+,{"stream_name":"stdout","time":229.265316598,"data":"Loading weights:  78%|███████▊  | 1627/2076 [00:53\u003c00:09, 47.29it/s]\n"}
+,{"stream_name":"stdout","time":229.26531858,"data":"Loading weights:  80%|████████  | 1668/2076 [00:53\u003c00:06, 59.10it/s]\n"}
+,{"stream_name":"stdout","time":229.265320568,"data":"Loading weights:  82%|████████▏ | 1706/2076 [00:53\u003c00:05, 73.76it/s]\n"}
+,{"stream_name":"stdout","time":229.265322526,"data":"Loading weights:  84%|████████▍ | 1744/2076 [00:53\u003c00:03, 90.55it/s]\n"}
+,{"stream_name":"stdout","time":229.265324449,"data":"Loading weights:  86%|████████▌ | 1779/2076 [00:53\u003c00:02, 111.02it/s]\n"}
+,{"stream_name":"stdout","time":229.265326624,"data":"Loading weights:  87%|████████▋ | 1815/2076 [00:53\u003c00:01, 135.88it/s]\n"}
+,{"stream_name":"stdout","time":229.265328611,"data":"Loading weights:  89%|████████▉ | 1850/2076 [00:54\u003c00:01, 161.50it/s]\n"}
+,{"stream_name":"stdout","time":229.26533065,"data":"Loading weights:  91%|█████████ | 1885/2076 [00:54\u003c00:01, 187.47it/s]\n"}
+,{"stream_name":"stdout","time":229.265332747,"data":"Loading weights:  93%|█████████▎| 1924/2076 [00:54\u003c00:00, 215.52it/s]\n"}
+,{"stream_name":"stdout","time":229.265335987,"data":"Loading weights:  95%|█████████▍| 1964/2076 [00:54\u003c00:00, 243.89it/s]\n"}
+,{"stream_name":"stdout","time":229.265339062,"data":"Loading weights:  97%|█████████▋| 2004/2076 [00:54\u003c00:00, 270.72it/s]\n"}
+,{"stream_name":"stdout","time":229.265342259,"data":"Loading weights:  99%|█████████▊| 2047/2076 [00:54\u003c00:00, 298.49it/s]\n"}
+,{"stream_name":"stdout","time":229.26534556,"data":"Loading weights: 100%|██████████| 2076/2076 [00:54\u003c00:00, 37.89it/s] \n"}
+,{"stream_name":"stdout","time":229.265350945,"data":"{\"passed\": true, \"release_id\": \"hyper-arc-rc-20260920\", \"model\": \"google/gemma-4-e4b-it\", \"device\": \"NVIDIA L4\", \"submission_created\": false, \"scope\": \"frozen-builder-task\", \"stage\": \"completed\", \"builder_benchmark\": {\"task_id\": \"d9fac9be\", \"rounds\": 1, \"generated\": 0, \"executed\": 0, \"per_output_exact_pass_at_2\": [false], \"full_task_exact_pass_at_2\": false, \"failures\": [\"r0:model:OfflineModelError:Offline inference failed: Inference deadline exceeded\", \"deadline:reasoning budget exhausted\"], \"selection\": \"first frozen development task\", \"labels_passed_to_model\": false}}\n"}
+,{"stream_name":"stdout","time":229.265365053,"data":"\n"}
+,{"stream_name":"stdout","time":229.265946879,"data":"Qualification only: no submission.json was created.\n"}
+,{"stream_name":"stderr","time":232.16409094,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":232.164115192,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":232.316739644,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":232.316762761,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":232.951346858,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":233.274904379,"data":"[NbConvertApp] Writing 163034 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":235.734989543,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":236.601514224,"data":"[NbConvertApp] Writing 477742 bytes to __results__.html\n"}
+]
