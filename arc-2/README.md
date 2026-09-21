@@ -84,6 +84,8 @@ Before release, all of the following remain required:
 1. Binding Kaggle rules retrieved and checked, including memory/data scope.
 2. Owner-approved public license and reviewed model/source license inventory.
 3. Actual attached weights/tokenizer load and pass the real offline transport.
+   **Passed** in the competition-linked private synthetic qualification v3 on
+   September 21; this does not measure ARC task accuracy.
 4. Independently evaluated exact per-test-output pass@2 improvement with a
    matched baseline, multiple runs/seeds, and no validation-memory leakage.
 5. Two clean full offline GPU rehearsals, complete output coverage, acceptable
@@ -119,26 +121,33 @@ the GPU: actual allocation was Tesla T4, 14.56 GiB, despite the L4 request.
 It did not reach inference. Evidence is in
 `artifacts/private_qualification_20260920_v2/`.
 
+Version 3 attached the competition for accelerator eligibility and Kaggle
+allocated an NVIDIA L4. The exact active bundle and attached Gemma model loaded
+offline. The live model produced one executable candidate and the synthetic
+preflight passed. `submission_created=false`; no competition task file was read.
+Evidence: `artifacts/private_qualification_20260921_v3/qualification.json` and
+the corresponding runtime log. The model-runtime gate is therefore satisfied
+for this attachment and hardware, but independent ARC-2 score evaluation and
+full-run reliability gates are still open.
+
 The current single-GPU BF16 profile now checks for at least 20 GiB free GPU
 memory before loading weights. This is an admission floor, not proof of fit at
 all prompt lengths. Requested accelerator metadata is never sufficient evidence.
 The deprecated dtype argument is corrected; unsupported BF16 devices use FP16
 only if they meet the memory floor. No automatic quantization, CPU offload, or
-model substitution is introduced. Actual inference remains unqualified.
+model substitution is introduced. ARC-2 accuracy remains unqualified.
 
 Google lists approximately 17.9 GB for E4B BF16 weight-loading requirements;
 context/KV cache adds more. Kaggle staff state L4 access is limited to selected
-competitions. The detached synthetic notebook therefore does not establish the
-competition's actual hardware allocation. Next: authorize a competition-linked
-private synthetic qualification (no submission or hidden-data access), or qualify
-a separately specified T4-compatible loading strategy. Do not repeat the same
-known out-of-memory run.
+competitions. The detached synthetic notebook did not establish the
+competition's actual hardware allocation; the competition-linked v3 run did.
+Do not repeat the same known out-of-memory detached run.
 
 Hardware sources checked September 20:
 [Google memory guidance](https://ai.google.dev/gemma/docs/core) and
 [Kaggle accelerator announcement](https://www.kaggle.com/discussions/product-announcements/735239).
 
-Correction evidence: 287 local tests passed after alignment and the hardware
+Correction evidence: 288 local tests passed after alignment and the hardware
 admission correction, including rejection
 of the historical false promotion, release/source identity, deadline handling,
 same-run development-memory transfer, validation-write rejection, per-program
@@ -168,5 +177,7 @@ Submit to Competition. No script here performs either upload or submission.
 `python prepare_private_qualification.py` generates a private synthetic-only
 diagnostic using the exact active bundle and existing model/wheel attachments.
 It does not upload or submit. Its detached default must not be mistaken for a
-competition-hardware rehearsal. Use UTF-8 mode (`$env:PYTHONUTF8='1'`) when
+competition-hardware rehearsal. The authorized v3 run used
+`--attach-competition`, which adds only hardware eligibility to the diagnostic
+metadata. Use UTF-8 mode (`$env:PYTHONUTF8='1'`) when
 retrieving Kaggle logs on Windows; model progress bars can break legacy encoding.

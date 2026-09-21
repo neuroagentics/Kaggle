@@ -4,6 +4,7 @@ Embeds the exact active small code bundle, avoiding updates to existing Kaggle
 datasets. Weights and hash-verified wheels remain the existing attachments.
 """
 import ast
+import argparse
 import base64
 import hashlib
 import json
@@ -13,7 +14,7 @@ from release_policy import MODEL_ATTACHMENT
 ROOT = Path(__file__).resolve().parent
 
 
-def prepare():
+def prepare(*, attach_competition=False):
     release = json.loads((ROOT / "release/current/release.json").read_text())
     bundle = ROOT / "release/current" / release["bundle"]
     payload = bundle.read_bytes()
@@ -103,10 +104,14 @@ print('Qualification only: no submission.json was created.', flush=True)
         "is_private": True, "enable_gpu": True, "enable_internet": False,
         "dataset_sources": ["jthomaslockhart/hyper-arc-gemma4-runtime"],
         "model_sources": [MODEL_ATTACHMENT],
-        "competition_sources": [], "machine_shape": "NvidiaL4"}
+        "competition_sources": ["arc-prize-2026-arc-agi-2"] if attach_competition else [],
+        "machine_shape": "NvidiaL4"}
     (output / "kernel-metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8", newline="\n")
     print(f"Prepared synthetic-only private qualification at {output}; bundle={digest}")
 
 
 if __name__ == "__main__":
-    prepare()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--attach-competition', action='store_true',
+                        help='Attach ARC-2 for hardware eligibility only; no competition tasks are read.')
+    prepare(attach_competition=parser.parse_args().attach_competition)

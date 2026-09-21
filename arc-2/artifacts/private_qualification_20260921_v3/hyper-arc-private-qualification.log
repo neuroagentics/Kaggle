@@ -1,0 +1,54 @@
+[{"stream_name":"stderr","time":7.476588773,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.476639307,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.476642793,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.476644896,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.07174519,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.07176727,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.071770442,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.071772698,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":14.535392829,"data":"GPUS: [{'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}, {'name': 'NVIDIA L4', 'total_bytes': 23659151360}]\n"}
+,{"stream_name":"stdout","time":15.88484805,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.030164294,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.05619607,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.075943647,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.086925964,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/transformers-5.7.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.086940301,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/huggingface_hub-1.5.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":16.086943564,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.086946526,"data":"Processing /kaggle/input/datasets/jthomaslockhart/hyper-arc-gemma4-runtime/safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":16.090011231,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":16.291672837,"data":"Installing collected packages: transformers, tokenizers, safetensors, huggingface-hub\n"}
+,{"stream_name":"stdout","time":23.4641948,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stdout","time":23.666013432,"data":"Successfully installed huggingface-hub-1.5.0 safetensors-0.7.0 tokenizers-0.22.2 transformers-5.7.0\n"}
+,{"stream_name":"stdout","time":293.079591791,"data":"\n"}
+,{"stream_name":"stdout","time":293.079623019,"data":"Loading weights:   0%|          | 0/2076 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":293.079627394,"data":"Loading weights:   6%|▌         | 119/2076 [00:00\u003c00:01, 1087.85it/s]\n"}
+,{"stream_name":"stdout","time":293.079630854,"data":"Loading weights:  12%|█▏        | 256/2076 [00:00\u003c00:01, 1236.26it/s]\n"}
+,{"stream_name":"stdout","time":293.07964226,"data":"Loading weights:  19%|█▉        | 394/2076 [00:00\u003c00:01, 1290.71it/s]\n"}
+,{"stream_name":"stdout","time":293.07964442,"data":"Loading weights:  25%|██▌       | 524/2076 [00:00\u003c00:01, 1286.27it/s]\n"}
+,{"stream_name":"stdout","time":293.079646417,"data":"Loading weights:  32%|███▏      | 661/2076 [00:00\u003c00:01, 1301.87it/s]\n"}
+,{"stream_name":"stdout","time":293.079648405,"data":"Loading weights:  38%|███▊      | 792/2076 [00:00\u003c00:01, 1087.27it/s]\n"}
+,{"stream_name":"stdout","time":293.079650297,"data":"Loading weights:  44%|████▎     | 906/2076 [00:00\u003c00:01, 834.86it/s] \n"}
+,{"stream_name":"stdout","time":293.079652388,"data":"Loading weights:  48%|████▊     | 1001/2076 [00:01\u003c00:01, 708.22it/s]\n"}
+,{"stream_name":"stdout","time":293.079654488,"data":"Loading weights:  52%|█████▏    | 1081/2076 [00:01\u003c00:01, 609.23it/s]\n"}
+,{"stream_name":"stdout","time":293.079656445,"data":"Loading weights:  55%|█████▌    | 1150/2076 [00:01\u003c00:01, 604.50it/s]\n"}
+,{"stream_name":"stdout","time":293.079658374,"data":"Loading weights:  59%|█████▊    | 1216/2076 [00:01\u003c00:01, 551.19it/s]\n"}
+,{"stream_name":"stdout","time":293.07966028,"data":"Loading weights:  61%|██████▏   | 1275/2076 [00:01\u003c00:01, 492.82it/s]\n"}
+,{"stream_name":"stdout","time":293.079662266,"data":"Loading weights:  64%|██████▍   | 1327/2076 [00:01\u003c00:01, 477.27it/s]\n"}
+,{"stream_name":"stdout","time":293.079664188,"data":"Loading weights:  68%|██████▊   | 1414/2076 [00:01\u003c00:01, 566.98it/s]\n"}
+,{"stream_name":"stdout","time":293.079666091,"data":"Loading weights:  75%|███████▌  | 1565/2076 [00:02\u003c00:00, 798.06it/s]\n"}
+,{"stream_name":"stdout","time":293.07966809,"data":"Loading weights:  82%|████████▏ | 1704/2076 [00:02\u003c00:00, 946.09it/s]\n"}
+,{"stream_name":"stdout","time":293.07967021,"data":"Loading weights:  89%|████████▉ | 1843/2076 [00:02\u003c00:00, 1055.63it/s]\n"}
+,{"stream_name":"stdout","time":293.079672154,"data":"Loading weights:  96%|█████████▌| 1983/2076 [00:02\u003c00:00, 1148.32it/s]\n"}
+,{"stream_name":"stdout","time":293.079674132,"data":"Loading weights: 100%|██████████| 2076/2076 [00:02\u003c00:00, 867.60it/s] \n"}
+,{"stream_name":"stdout","time":293.079676178,"data":"{\"passed\": true, \"scope\": \"synthetic-live-model-only\", \"generated\": 1, \"executed\": 1, \"failures\": [], \"release_id\": \"hyper-arc-rc-20260920\", \"model\": \"google/gemma-4-e4b-it\", \"device\": \"NVIDIA L4\", \"submission_created\": false}\n"}
+,{"stream_name":"stdout","time":293.079681881,"data":"\n"}
+,{"stream_name":"stdout","time":293.080373841,"data":"Qualification only: no submission.json was created.\n"}
+,{"stream_name":"stderr","time":295.895584086,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":295.895605099,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":296.042318307,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":296.042327799,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":296.667800445,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":296.981913248,"data":"[NbConvertApp] Writing 155001 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":299.406142378,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":300.217697862,"data":"[NbConvertApp] Writing 441528 bytes to __results__.html\n"}
+]

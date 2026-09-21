@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "scope": "synthetic-live-model-only",
+  "generated": 1,
+  "executed": 1,
+  "failures": [],
+  "release_id": "hyper-arc-rc-20260920",
+  "model": "google/gemma-4-e4b-it",
+  "device": "NVIDIA L4",
+  "submission_created": false
+}

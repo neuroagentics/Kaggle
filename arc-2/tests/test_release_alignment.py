@@ -18,20 +18,21 @@ def test_active_notebook_matches_generated_source_and_release_identity(tmp_path)
     assert saved["status"] == "UNQUALIFIED_CANDIDATE"
 
 
-def test_private_qualification_has_executable_kernel_metadata_and_no_competition(tmp_path, monkeypatch):
+@pytest.mark.parametrize('attach_competition', [False, True])
+def test_private_qualification_has_executable_kernel_metadata_and_no_submission(tmp_path, monkeypatch, attach_competition):
     import shutil
     import prepare_private_qualification as preparation
     source_root = Path(__file__).parents[1]
     build_release(tmp_path / "release/current")
     shutil.copyfile(source_root / "kaggle_launcher.py", tmp_path / "kaggle_launcher.py")
     monkeypatch.setattr(preparation, "ROOT", tmp_path)
-    preparation.prepare()
+    preparation.prepare(attach_competition=attach_competition)
     output = tmp_path / "release/private_qualification"
     notebook = json.loads((output / "qualification.ipynb").read_text())
     metadata = json.loads((output / "kernel-metadata.json").read_text())
     assert notebook["metadata"]["kernelspec"]["name"] == "python3"
     assert metadata["is_private"] is True
-    assert metadata["competition_sources"] == []
+    assert metadata["competition_sources"] == (["arc-prize-2026-arc-agi-2"] if attach_competition else [])
     assert metadata["enable_internet"] is False
     compile("".join(notebook["cells"][0]["source"]), "qualification", "exec")
 
