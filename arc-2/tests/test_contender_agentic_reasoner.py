@@ -160,6 +160,10 @@ def test_reasoner_uses_verifier_feedback_and_returns_only_exact_replays():
     assert len(payloads) == 2
     assert "mismatches" in payloads[1]["messages"][-1]["content"]
     assert "Scene graph" in payloads[0]["messages"][-1]["content"]
+    assert [trace.demo_residual for trace in result.active_trace] == [4, 0]
+    assert result.active_trace[0].rule == "identity guess"
+    assert result.active_trace[0].code_digest != result.active_trace[1].code_digest
+    assert all(not hasattr(trace, "code") for trace in result.active_trace)
 
 
 @pytest.mark.parametrize(
@@ -368,3 +372,20 @@ def test_reasoner_does_not_promote_a_non_exact_program():
 
     assert result.hypotheses == ()
     assert result.test_predictions == ((),)
+
+
+def test_model_timeout_is_a_bounded_failure_not_a_task_crash():
+    def transport(_payload):
+        raise TimeoutError("inference deadline exceeded")
+
+    reasoner = AgenticReasoner(
+        transport, model="test-model", rounds=1, candidates_per_round=1
+    )
+    task = {
+        "train": [{"input": [[0]], "output": [[1]]}],
+        "test": [{"input": [[0]]}],
+    }
+    result = reasoner.solve("timeout", task)
+    assert not result.hypotheses
+    assert result.candidates_executed == 0
+    assert any("TimeoutError" in failure for failure in result.failures)

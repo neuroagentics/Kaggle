@@ -14,6 +14,8 @@ from hyper_arc.contender.world_model import (
 )
 import json
 from pathlib import Path
+from types import SimpleNamespace
+import time
 
 from build_global_memory import load_tasks
 from main import load_checkpoint, main, save_checkpoint, solve_task, validate_submission
@@ -189,6 +191,72 @@ def test_solve_task_uses_recursive_world_model_as_upside_attempt():
     assert expected in attempts[0].values()
     assert score == 1.0
     assert exact is True
+
+
+def test_unresolved_task_attempts_neural_induction_before_recursive_repair(monkeypatch):
+    import main as entrypoint
+
+    monkeypatch.setattr(entrypoint, "exact_candidates", lambda *_: [])
+    monkeypatch.setattr(entrypoint, "exact_relational_candidates", lambda *_: [])
+    calls = []
+    task = {
+        "train": [{"input": [[1]], "output": [[2]]}],
+        "test": [{"input": [[3]]}],
+    }
+
+    class Agent:
+        def solve(self, *_args, **_kwargs):
+            calls.append("induce-iterate")
+            assert 0 < _kwargs["deadline"] - time.monotonic() < 4.0
+            return SimpleNamespace(hypotheses=(), failures=())
+
+    class World:
+        def solve(self, *_args, **_kwargs):
+            calls.append("recurse")
+            return SimpleNamespace(
+                hypotheses=(SimpleNamespace(complexity=1),),
+                test_predictions=((((4,),),),),
+            )
+
+    attempts, _, exact, _ = solve_task(
+        "order", task, GlobalMemoryBank(), 0.0, 5.0, 1,
+        agentic_reasoner=Agent(), world_model=World(),
+    )
+    assert calls == ["induce-iterate", "recurse"]
+    assert exact and attempts[0]["attempt_1"] == [[4]]
+
+
+def test_exact_neural_fit_does_not_spend_recursive_budget(monkeypatch):
+    import main as entrypoint
+
+    monkeypatch.setattr(entrypoint, "exact_candidates", lambda *_: [])
+    monkeypatch.setattr(entrypoint, "exact_relational_candidates", lambda *_: [])
+    calls = []
+    task = {
+        "train": [{"input": [[1]], "output": [[2]]}],
+        "test": [{"input": [[3]]}],
+    }
+
+    class Agent:
+        def solve(self, *_args, **_kwargs):
+            calls.append("induce-iterate")
+            return SimpleNamespace(
+                hypotheses=(SimpleNamespace(complexity=1),),
+                test_predictions=((((4,),),),),
+                failures=(),
+            )
+
+    class World:
+        def solve(self, *_args, **_kwargs):
+            calls.append("recurse")
+            raise AssertionError("recursive repair should be skipped")
+
+    attempts, _, exact, _ = solve_task(
+        "order", task, GlobalMemoryBank(), 0.0, 5.0, 1,
+        agentic_reasoner=Agent(), world_model=World(),
+    )
+    assert calls == ["induce-iterate"]
+    assert exact and attempts[0]["attempt_1"] == [[4]]
 
 
 def test_validate_submission_rejects_split_attempt_objects():

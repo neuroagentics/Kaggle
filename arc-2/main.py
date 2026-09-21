@@ -291,13 +291,17 @@ def solve_task(
         if experience_bank is not None
         else []
     )
-    world_result = world_model.solve(task_id, task_data, deadline=deadline) if world_model else None
-    if (
-        deterministic
-        or relational
-        or memory
-        or (world_result is not None and world_result.hypotheses)
-    ):
+    # Induction and verifier-guided iteration get the first opportunity on
+    # unresolved tasks. Recursive repair is a conditional, bounded fallback.
+    # Exact-fit baselines remain cheap and available without a neural call.
+    # Retain the historical second-attempt world candidate on that path so
+    # changing the unresolved-task loop cannot silently erase its upside.
+    if deterministic or relational or memory:
+        baseline_world = (
+            world_model.solve(task_id, task_data, deadline=deadline)
+            if world_model is not None and time.monotonic() < deadline
+            else None
+        )
         attempts = []
         for index, input_grid in enumerate(test_inputs):
             baseline_ranked = [
@@ -316,9 +320,9 @@ def solve_task(
             world_predictions = (
                 [
                     [list(row) for row in prediction]
-                    for prediction in world_result.test_predictions[index]
+                    for prediction in baseline_world.test_predictions[index]
                 ]
-                if world_result is not None
+                if baseline_world is not None
                 else []
             )
             ranked = [
@@ -330,8 +334,8 @@ def solve_task(
             ]
             attempts.append(_two_attempts(ranked, input_grid))
         complexity = (
-            world_result.hypotheses[0].complexity
-            if world_result is not None and world_result.hypotheses
+            baseline_world.hypotheses[0].complexity
+            if baseline_world is not None and baseline_world.hypotheses
             else memory[0].complexity
             if memory
             else relational[0].complexity
@@ -361,6 +365,9 @@ def solve_task(
         return attempts, 1.0, True, validate_code(recalled[0].record.code)
 
     if agentic_reasoner is not None:
+        # A stalled model must not consume the entire task budget. Keep time
+        # for recursive repair and a schema-valid final fallback.
+        agentic_deadline = deadline - max(0.2, timeout_sec * 0.25)
         cues = (
             procedural_memory.retrieve_cues(task_data)
             if procedural_memory is not None
@@ -373,7 +380,7 @@ def solve_task(
             failure_memory.recall(task_data) if failure_memory is not None else ()
         )
         agentic = agentic_reasoner.solve(
-            task_id, task_data, memory_cues=cues, failure_cues=failure_cues, deadline=deadline
+            task_id, task_data, memory_cues=cues, failure_cues=failure_cues, deadline=agentic_deadline
         )
         if learned_failures is not None:
             learned_failures.extend(extract_failed_families(task_id, task_data, agentic.failures))
@@ -388,6 +395,19 @@ def solve_task(
                 ]
                 attempts.append(_two_attempts(ranked, input_grid))
             return attempts, 1.0, True, agentic.hypotheses[0].complexity
+
+    # Recursive symbolic composition is useful when induction/iteration did
+    # not produce an exact demonstration fit. It must never preempt that loop.
+    world_result = world_model.solve(task_id, task_data, deadline=deadline) if world_model and time.monotonic() < deadline else None
+    if world_result is not None and world_result.hypotheses:
+        attempts = []
+        for index, input_grid in enumerate(test_inputs):
+            ranked = [
+                [list(row) for row in prediction]
+                for prediction in world_result.test_predictions[index]
+            ]
+            attempts.append(_two_attempts(ranked, input_grid))
+        return attempts, 1.0, True, world_result.hypotheses[0].complexity
 
     if time.monotonic() >= deadline:
         raise TimeoutError("Task reasoning budget exhausted")

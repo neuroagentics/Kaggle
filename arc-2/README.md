@@ -31,9 +31,16 @@ does not create a different runtime. Exact package hashes are in release.json.
 
 ## Intended reasoning architecture
 
-Demonstrations -> object/relational analysis -> executable hypotheses -> exact
-demonstration execution -> typed residual diagnosis -> bounded repair or new
-hypothesis -> behaviorally distinct predictions -> output validation.
+Demonstrations and recalled cues -> induce one or more input-grounded rules ->
+iterate each rule as an executable transformation across *all* training pairs ->
+capture a compact task-local trace (rule, evidence, algorithm, code digest,
+residual, typed causes) -> rehydrate the selected failing code and verifier
+feedback for a bounded repair/new-rule round -> invoke recursive symbolic
+composition only if induction/iteration found no exact demonstration fit ->
+behaviorally distinct predictions -> output validation. Cheap exact-fit
+deterministic and previously qualified memory channels can still return first;
+their historical world-model second attempt is retained. This bypass path does
+not count as evidence of a neural solve or follow the full neural loop.
 
 The offline AI proposes executable restricted Python and receives execution
 feedback. It augments the owned symbolic/world-model search; it is not replaced
@@ -52,7 +59,9 @@ external solver implementations, and unpromoted neural specialists are excluded.
   replayed source demonstrations AND all supplied builder test labels. An
   ensemble success does not certify every member of the ensemble.
 - During a task, hypotheses, failed approaches, residuals and feedback inform
-  subsequent rounds immediately.
+  subsequent rounds immediately. The new `active_trace` is dehydrated task-local
+  evidence; the selected failing code is rehydrated into the next prompt. It is
+  not persisted across competition tasks or promoted as hidden-test success.
 - `--session-transfer --no-resume` enables bounded in-memory transfer between
   development tasks. Source procedures are only demo-supported, never labeled
   as hidden-test successes, and must replay every new task's demonstrations.
@@ -66,7 +75,8 @@ external solver implementations, and unpromoted neural specialists are excluded.
 
 ## Runtime and release gates
 
-Task budget: 120 seconds shared across channels; full solver budget: 34,200
+Task budget: 120 seconds shared across channels; the neural stage has at most
+75% of that budget so recursive repair and fallback retain time. Full solver budget: 34,200
 seconds including initialization. Generation has cooperative time limits and
 the notebook provides an outer process watchdog. These limits are not a promise
 that a wedged GPU kernel can be interrupted between tokens. Linux code workers
@@ -178,6 +188,8 @@ admission correction, including rejection
 of the historical false promotion, release/source identity, deadline handling,
 same-run development-memory transfer, validation-write rejection, per-program
 success verification, and distinct neural behaviors. Dependency check passed.
+The induction/iteration/conditional-recursion reorder has local orchestration
+tests but has **no demonstrated exact-score lift or full-size GPU qualification**.
 The corrected augmentation diagnostic retained all seven demo-fit programs and
 lost zero correct programs; task solves stayed 3/160 validation and 0/120 public
 evaluation. This is a correctness repair, not a newly demonstrated score gain.

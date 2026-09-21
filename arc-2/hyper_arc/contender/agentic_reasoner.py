@@ -41,6 +41,20 @@ class AgenticResult:
     candidates_generated: int
     candidates_executed: int
     failures: tuple[str, ...]
+    active_trace: tuple["ReasoningTrace", ...] = ()
+
+
+@dataclass(frozen=True)
+class ReasoningTrace:
+    """Dehydrated, task-local experience; never a claim of test correctness."""
+
+    round_index: int
+    rule: str
+    evidence: str
+    algorithm: str
+    code_digest: str
+    demo_residual: int
+    causes: tuple[str, ...]
 
 
 def _valid_grid(grid: Any) -> bool:
@@ -667,11 +681,15 @@ class AgenticReasoner:
         generated = 0
         executed = 0
         rounds_executed = 0
+        active_trace: list[ReasoningTrace] = []
         for round_index in range(self.rounds):
             if remaining() <= 0:
                 failures.append("deadline:reasoning budget exhausted")
                 break
             rounds_executed += 1
+            # Induce independent rules, then test each across every training
+            # pair. Keep multiple initial proposals for the two-attempt slot.
+            round_candidates = self.candidates_per_round
             common_options = {
                 "temperature": min(0.2 + 0.12 * round_index, 0.7),
                 "seed": int(
@@ -687,7 +705,7 @@ class AgenticReasoner:
                     {
                     "model": self.model,
                     "stream": False,
-                    "format": _planning_schema(self.candidates_per_round),
+                    "format": _planning_schema(round_candidates),
                     "think": self.thinking,
                     "options": common_options,
                     "messages": [
@@ -706,7 +724,7 @@ class AgenticReasoner:
                                 memory_cues,
                                 feedback,
                                 rejected_summaries,
-                                self.candidates_per_round,
+                                round_candidates,
                                 prior_summaries=rejected_summaries,
                                 failed_families=failure_cues,
                                 best_residual=best_residual,
@@ -731,7 +749,7 @@ class AgenticReasoner:
                 plans = decoded.get("hypotheses")
                 if not isinstance(plans, list):
                     raise AgenticReasoningError("model JSON is missing hypotheses")
-            except (AgenticReasoningError, RuntimeError, ValueError) as exc:
+            except (AgenticReasoningError, RuntimeError, TimeoutError, ValueError) as exc:
                 failures.append(
                     f"r{round_index}:model:{type(exc).__name__}:{str(exc)[:300]}"
                 )
@@ -747,11 +765,13 @@ class AgenticReasoner:
                 hypotheses.append(
                     {
                         "summary": str(plan.get("rule", plan.get("id", "hypothesis"))),
+                        "evidence": str(plan.get("evidence", "")),
+                        "algorithm": str(plan.get("algorithm", "")),
                         "code": plan.get("code"),
                     }
                 )
             evaluated: list[tuple[str, int, list[str], list[str]]] = []
-            for index, payload in enumerate(hypotheses[: self.candidates_per_round]):
+            for index, payload in enumerate(hypotheses[:round_candidates]):
                 if remaining() <= 0:
                     failures.append("deadline:candidate budget exhausted")
                     break
@@ -789,6 +809,17 @@ class AgenticReasoner:
                     )
                     evaluated.append(
                         (code, total_error, [item[1] for item in errors], causes)
+                    )
+                    active_trace.append(
+                        ReasoningTrace(
+                            round_index=round_index,
+                            rule=summary[:300],
+                            evidence=str(payload["evidence"])[:300],
+                            algorithm=str(payload["algorithm"])[:300],
+                            code_digest=digest,
+                            demo_residual=total_error,
+                            causes=tuple(causes),
+                        )
                     )
                     if total_error:
                         failures.append(
@@ -853,6 +884,7 @@ class AgenticReasoner:
             candidates_generated=generated,
             candidates_executed=executed,
             failures=tuple(failures),
+            active_trace=tuple(active_trace),
         )
         self.invocations += 1
         self.exact_invocations += int(bool(result.hypotheses))
