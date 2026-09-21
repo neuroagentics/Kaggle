@@ -1,5 +1,9 @@
 # ARC Prize 2026 Kaggle Operating Guide
 
+> ARC-2 deployment instructions below are historical. Its active authority is
+> [arc-2/README.md](arc-2/README.md), aligned 2026-09-20. Do not follow the older
+> model-free plumbing-submission recommendation for current ARC-2 releases.
+
 Status checked: 2026-08-30
 
 This guide is the shared operating procedure for `arc-2` and `arc-3`. The two
@@ -150,4 +154,3 @@ At least one week before the deadline:
 - [ARC-AGI-3 agent quickstart](https://docs.arcprize.org/agents-quickstart)
 - [ARC-AGI-3 agent interface](https://docs.arcprize.org/create-agent)
 - [ARC toolkit overview](https://docs.arcprize.org/toolkit/overview)
-

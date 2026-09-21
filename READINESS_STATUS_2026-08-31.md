@@ -1,5 +1,9 @@
 # ARC Prize 2026 Readiness Status — 2026-08-31
 
+> Historical snapshot, not current readiness. For ARC-2 use
+> [arc-2/README.md](arc-2/README.md) and its active release record. This note does
+> not change ARC-3's independently maintained status.
+
 ## Decision
 
 Both projects now produce rule-compliant offline artifacts and measurable

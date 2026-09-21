@@ -82,6 +82,7 @@ def test_solve_task_reuses_exact_model_authored_memory():
         model="test",
         task_data=task,
         validation_scope="builder",
+        expected_test_outputs=[[[3, 4, 3], [4, 3, 4]]],
     )
 
     attempts, score, exact, _ = solve_task(
@@ -364,7 +365,7 @@ def test_seed_builder_loads_tasks_inside_aggregate_file(tmp_path):
 
 
 def test_notebook_bootstrap_is_hermetic_and_does_not_install_dependencies():
-    notebook_path = Path(__file__).parents[1] / "notebook6a96ea823f.ipynb"
+    notebook_path = Path(__file__).parents[1] / "release" / "current" / "notebook6a96ea823f.ipynb"
     notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
     source = "".join(notebook["cells"][0]["source"])
 
@@ -385,7 +386,8 @@ def test_notebook_bootstrap_is_hermetic_and_does_not_install_dependencies():
     assert "solver_code.zip" not in source
     assert "main.py plus hyper_arc" not in source
     assert "validate_submission" in source
-    assert "--task-timeout', '20'" in source
+    assert "--task-timeout', str(RELEASE['task_seconds'])" in source
+    assert "qualify_run(run_manifest)" in source
     assert "--enable-agentic-ai" in source
     assert "--enable-agentic-memory" in source
     assert "--model-path" in source
@@ -396,7 +398,7 @@ def test_notebook_bootstrap_is_hermetic_and_does_not_install_dependencies():
 
 
 def test_notebook_emits_no_submission_when_agentic_runtime_is_missing(tmp_path):
-    notebook_path = Path(__file__).parents[1] / "notebook6a96ea823f.ipynb"
+    notebook_path = Path(__file__).parents[1] / "release" / "current" / "notebook6a96ea823f.ipynb"
     notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
     source = "".join(notebook["cells"][0]["source"])
     input_root = tmp_path / "input"

@@ -1,32 +1,4 @@
-"""Generalization gate: distinguish a demo-fitting program that encodes the
-GENERAL rule from one that merely memorized demo specifics.
-
-Motivation (measured): every channel accepts a program on the single criterion
-"reproduces all training demos exactly." With 2-5 demos and thousands of
-candidates, spurious programs fit the demos by accident and are trusted, then
-fail on the unseen test input. This is the mechanism behind the 57/160 (tuned
-split) -> ~2/120 (unseen eval) collapse.
-
-This module adds two channel-agnostic, exact-only consistency checks that a
-program must survive to be *trusted* for the test input. Neither re-fits the
-program; both reuse the existing TypedExecutor:
-
-1. Augmentation-consistency (the strong signal). Apply a rule-preserving
-   transform T to a demonstration pair and require program(T(input)) == T(output).
-   A program that encodes the general rule COMMUTES with T; one that baked demo
-   literals (a fixed color, offset, coordinate, or attribute value) breaks,
-   because the literal no longer matches the transformed grid.
-
-2. Leave-one-demo-out replay. Re-verify the program reproduces each demo output
-   individually. Cheap sanity check that the accepted program is genuinely exact
-   on every demo (guards against acceptance bugs), and the natural hook if a
-   channel later re-fits on N-1 demos.
-
-The gate returns a consistency score in [0, 1] and a boolean `generalizes`
-verdict, so callers can use it as a hard filter or a ranking signal. Colors are
-treated as categorical labels throughout — augmentations never do arithmetic on
-color values.
-"""
+"""Research-only augmentation diagnostics. Not used for production acceptance."""
 
 from __future__ import annotations
 
@@ -98,12 +70,12 @@ def _color_permutation(pairs: Sequence[GridPair], seed: int) -> Augmentation | N
 
 
 @dataclass(frozen=True)
-class GateReport:
-    generalizes: bool
+class ConsistencyReport:
+    passes_checks: bool
     consistency: float          # fraction of augmentation checks survived
     checks_run: int
     checks_passed: int
-    leave_one_out_exact: bool
+    demonstration_exact: bool
     failed_augmentations: tuple[str, ...]
 
 
@@ -125,29 +97,18 @@ def _runs_exact(
     return normalized == tuple(tuple(row) for row in expected)
 
 
-def generalization_gate(
+def augmentation_consistency(
     program: ProgramAST,
     train_pairs: Sequence[GridPair],
     *,
     executor: TypedExecutor | None = None,
-    require_color_invariance: bool = True,
-) -> GateReport:
-    """Score whether a demo-fitting program encodes the general rule.
+    require_color_invariance: bool = False,
+) -> ConsistencyReport:
+    """Advisory metamorphic checks, not evidence of unseen-task generalization.
 
-    Discriminator design (important): not every ARC rule commutes with every
-    augmentation. A directional rule ("move down by 3") legitimately breaks
-    under rotation, so dihedral checks are reported as a soft signal only. The
-    HARD gate is COLOR-PERMUTATION invariance: almost all ARC rules treat colors
-    as categorical labels, so a general rule commutes with a relabeling of the
-    palette, whereas a program that baked a literal color ("paint blue", "select
-    the blue object") does NOT. Color-literal overfitting is the most common
-    memorization mode in the generators, so this is the high-signal check.
-
-    A program PASSES (generalizes=True) when it is exact on every demo (LODO) and
-    — when require_color_invariance is set and a permutation is applicable — it is
-    also exact under a non-identity color permutation of every demo pair. The
-    dihedral checks populate `consistency`/`failed_augmentations` as advisory
-    ranking signal but do not by themselves fail the gate.
+    Only opt into color filtering when a rule-specific invariance is justified.
+    Replaying demonstrations is not leave-one-out induction: no example is
+    withheld from program generation. Neither result certifies hidden outputs.
     """
     executor = executor or TypedExecutor()
     pairs = tuple(
@@ -158,10 +119,10 @@ def generalization_gate(
         for pair in train_pairs
     )
     if not pairs:
-        return GateReport(False, 0.0, 0, 0, False, ())
+        return ConsistencyReport(False, 0.0, 0, 0, False, ())
 
-    # 1) Leave-one-demo-out replay: the program must be exact on each demo.
-    leave_one_out_exact = all(
+    # 1) Ordinary demonstration replay (no withheld-example claim).
+    demonstration_exact = all(
         _runs_exact(executor, program, pair.input, pair.output) for pair in pairs
     )
 
@@ -180,7 +141,7 @@ def generalization_gate(
         checks_run += 1
     consistency = checks_passed / checks_run if checks_run else 0.0
 
-    # 3) Color-permutation invariance — the HARD gate. Skipped only when the
+    # 3) Optional color consistency, advisory by default. Skipped when the
     #    palette is too small to form a non-identity permutation.
     color_invariant = True
     color_applicable = False
@@ -194,14 +155,14 @@ def generalization_gate(
         if not color_invariant:
             failed.append("color_permutation")
 
-    generalizes = leave_one_out_exact and (
+    passes_checks = demonstration_exact and (
         color_invariant if (require_color_invariance and color_applicable) else True
     )
-    return GateReport(
-        generalizes=generalizes,
+    return ConsistencyReport(
+        passes_checks=passes_checks,
         consistency=consistency,
         checks_run=checks_run,
         checks_passed=checks_passed,
-        leave_one_out_exact=leave_one_out_exact,
+        demonstration_exact=demonstration_exact,
         failed_augmentations=tuple(failed),
     )

@@ -51,6 +51,12 @@ SAFE_BUILTINS.update(
 
 
 def main() -> int:
+    if sys.platform == "linux":
+        # AST restrictions do not prevent enormous allocations or integer
+        # exponentiation. Bound worker memory; the parent bounds elapsed time.
+        import resource
+        limit = 256 * 1024 * 1024
+        resource.setrlimit(resource.RLIMIT_AS, (limit, limit))
     payload = json.loads(sys.stdin.read())
     code = payload["code"]
     grids = payload["grids"]

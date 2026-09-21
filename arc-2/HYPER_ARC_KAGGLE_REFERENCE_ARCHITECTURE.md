@@ -1,3 +1,5 @@
+> Historical document, superseded for ARC-2 deployment on 2026-09-20. See [README.md](README.md) and release/current/release.json. Retained results do not certify the current candidate.
+
 # Hyper-ARC Kaggle Reference Architecture
 
 **Status:** implementation contract for the ARC Prize 2026 contender  

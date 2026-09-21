@@ -18,6 +18,11 @@ from hyper_arc.esb import ESB
 from hyper_arc.contender.experience_bank import ExperienceBank, experience_candidates
 from hyper_arc.contender.agentic_reasoner import AgenticReasoner, validate_code
 from hyper_arc.contender.agentic_memory import AgenticMemoryBank
+from hyper_arc.contender.session_memory import SessionMemory
+from release_policy import (
+    RELEASE_ID, MODEL_ID, TASK_SECONDS, RUN_SECONDS, AGENTIC_ROUNDS,
+    AGENTIC_CANDIDATES, OUTPUT_TOKENS, model_preflight, qualify_run,
+)
 from hyper_arc.contender.hyperbolic_memory import HyperbolicWorldMemory
 from hyper_arc.contender.failure_memory import (
     FailureMemoryBank,
@@ -56,8 +61,8 @@ DEFAULT_SEED_BANK = Path("./hyper_arc/seed_bank.json")
 DEFAULT_EXPERIENCE_BANK = Path("./hyper_arc/experience_bank_v2.json")
 DEFAULT_WORLD_MEMORY = Path("./hyper_arc/world_memory_v1.json")
 DEFAULT_PROCEDURAL_MEMORY = Path("./hyper_arc/procedural_memory_v1.json")
-DEFAULT_AGENTIC_MEMORY = Path("./hyper_arc/agentic_memory_v1.json")
-DEFAULT_FAILURE_MEMORY = Path("./hyper_arc/failure_memory_v1.json")
+DEFAULT_AGENTIC_MEMORY = Path("./hyper_arc/agentic_memory_builder_v2.json")
+DEFAULT_FAILURE_MEMORY = Path("./hyper_arc/failure_memory_builder_v2.json")
 
 
 def log(message: str) -> None:
@@ -263,7 +268,9 @@ def solve_task(
     agentic_reasoner: AgenticReasoner | None = None,
     failure_memory: "FailureMemoryBank | None" = None,
     learned_failures: list | None = None,
+    session_memory: SessionMemory | None = None,
 ) -> tuple[list[dict[str, list[list[int]]]], float, bool, int]:
+    deadline = time.monotonic() + timeout_sec
     raw_train_pairs = [
         (pair["input"], pair["output"]) for pair in task_data.get("train", [])
     ]
@@ -284,7 +291,7 @@ def solve_task(
         if experience_bank is not None
         else []
     )
-    world_result = world_model.solve(task_id, task_data) if world_model else None
+    world_result = world_model.solve(task_id, task_data, deadline=deadline) if world_model else None
     if (
         deterministic
         or relational
@@ -335,7 +342,14 @@ def solve_task(
         )
         return attempts, 1.0, True, complexity
 
-    recalled = agentic_memory.exact_candidates(task_data) if agentic_memory else ()
+    if session_memory is not None:
+        predictions = session_memory.predict(task_data, deadline)
+        if predictions:
+            return [
+                _two_attempts([p[i] for p in predictions], grid)
+                for i, grid in enumerate(test_inputs)
+            ], 1.0, True, 0
+    recalled = agentic_memory.exact_candidates(task_data, deadline=deadline) if agentic_memory else ()
     if recalled:
         attempts = []
         for index, input_grid in enumerate(test_inputs):
@@ -359,9 +373,13 @@ def solve_task(
             failure_memory.recall(task_data) if failure_memory is not None else ()
         )
         agentic = agentic_reasoner.solve(
-            task_id, task_data, memory_cues=cues, failure_cues=failure_cues
+            task_id, task_data, memory_cues=cues, failure_cues=failure_cues, deadline=deadline
         )
+        if learned_failures is not None:
+            learned_failures.extend(extract_failed_families(task_id, task_data, agentic.failures))
         if agentic.hypotheses:
+            if session_memory is not None:
+                session_memory.remember(agentic.hypotheses)
             attempts = []
             for index, input_grid in enumerate(test_inputs):
                 ranked = [
@@ -370,12 +388,9 @@ def solve_task(
                 ]
                 attempts.append(_two_attempts(ranked, input_grid))
             return attempts, 1.0, True, agentic.hypotheses[0].complexity
-        # No exact solve: persist the genuine non-exact families as lessons for
-        # future structurally-similar tasks.
-        if learned_failures is not None:
-            learned_failures.extend(
-                extract_failed_families(task_id, task_data, agentic.failures)
-            )
+
+    if time.monotonic() >= deadline:
+        raise TimeoutError("Task reasoning budget exhausted")
 
     engine = MCTSEngine(
         global_memory=global_memory,
@@ -385,7 +400,7 @@ def solve_task(
         max_iterations=max_iterations,
         random_seed=stable_task_seed(task_id),
     )
-    program = engine.solve(train_pairs, timeout_sec=timeout_sec)
+    program = engine.solve(train_pairs, timeout_sec=max(0.001, deadline - time.monotonic()))
     score, exact = engine.score_program(program, train_pairs)
 
     attempts: list[dict[str, list[list[int]]]] = []
@@ -423,7 +438,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--procedural-memory", default=str(DEFAULT_PROCEDURAL_MEMORY)
     )
-    parser.add_argument("--task-timeout", type=float, default=60.0)
+    parser.add_argument("--task-timeout", type=float, default=TASK_SECONDS)
     parser.add_argument(
         "--timeout-fallback",
         choices=("input", "zero"),
@@ -434,7 +449,7 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument("--max-iterations", type=int, default=MAX_ITERATIONS)
-    parser.add_argument("--global-timeout", type=float, default=36_000.0)
+    parser.add_argument("--global-timeout", type=float, default=RUN_SECONDS)
     parser.add_argument("--enable-world-model", action="store_true")
     parser.add_argument("--enable-world-memory", action="store_true")
     parser.add_argument("--enable-experience-memory", action="store_true")
@@ -442,7 +457,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--enable-legacy-seed-memory", action="store_true")
     parser.add_argument("--enable-agentic-ai", action="store_true")
     parser.add_argument("--model-path")
-    parser.add_argument("--agentic-model-name", default="qwen2.5-coder:7b")
+    parser.add_argument("--agentic-model-name", default=MODEL_ID)
     parser.add_argument("--agentic-memory", default=str(DEFAULT_AGENTIC_MEMORY))
     parser.add_argument("--enable-agentic-memory", action="store_true")
     parser.add_argument("--failure-memory", default=str(DEFAULT_FAILURE_MEMORY))
@@ -455,11 +470,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--agentic-device", choices=("auto", "cuda", "cpu"), default="auto"
     )
-    parser.add_argument("--agentic-rounds", type=int, default=2)
-    parser.add_argument("--agentic-candidates", type=int, default=4)
-    parser.add_argument("--agentic-max-output-tokens", type=int, default=2400)
+    parser.add_argument("--agentic-rounds", type=int, default=AGENTIC_ROUNDS)
+    parser.add_argument("--agentic-candidates", type=int, default=AGENTIC_CANDIDATES)
+    parser.add_argument("--agentic-max-output-tokens", type=int, default=OUTPUT_TOKENS)
     parser.add_argument("--agentic-thinking", action="store_true")
     parser.add_argument("--competition-run", action="store_true")
+    parser.add_argument("--session-transfer", action="store_true",
+                        help="Development only: reuse demo-supported procedures and failures within this run")
     parser.add_argument(
         "--allow-missing-seed-bank",
         action="store_true",
@@ -477,10 +494,19 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    started = time.monotonic()
+    if args.task_timeout <= 0 or args.global_timeout <= 0:
+        raise ValueError("Runtime budgets must be positive")
+    if args.competition_run and args.session_transfer:
+        raise ValueError("Cross-task competition transfer requires verified rules; use task-local memory")
+    if args.session_transfer and not args.no_resume:
+        raise ValueError("Session transfer requires --no-resume; ephemeral evidence is not a checkpoint")
     if args.competition_run and not args.enable_agentic_ai:
         raise ValueError("Competition runs require --enable-agentic-ai")
     if args.competition_run and not args.enable_agentic_memory:
         raise ValueError("Competition runs require --enable-agentic-memory")
+    if args.competition_run and not args.no_resume:
+        raise ValueError("Competition qualification requires a clean --no-resume run")
     challenge_path = resolve_challenge_file(args.challenge_file, args.data_dir)
     output_path = Path(args.output)
     checkpoint_path = Path(args.checkpoint)
@@ -579,8 +605,8 @@ def main(argv: list[str] | None = None) -> int:
             )
         agentic_memory = AgenticMemoryBank.load(agentic_memory_path)
         agentic_memory_records = len(agentic_memory.records)
-        if not agentic_memory_records:
-            raise ValueError("Enabled agentic memory is empty")
+        if any(record.validation_scope != "builder" for record in agentic_memory.records):
+            raise ValueError("Active static agentic memory must contain builder-only evidence")
         log(
             f"[INFO] Enabled exact model-authored memory with "
             f"{agentic_memory_records} records"
@@ -589,6 +615,7 @@ def main(argv: list[str] | None = None) -> int:
         log("[GATE] Model-authored memory inactive")
 
     agentic_reasoner = None
+    preflight = {"passed": False}
     if args.enable_agentic_ai:
         if not args.model_path:
             raise ValueError("--enable-agentic-ai requires --model-path")
@@ -596,6 +623,8 @@ def main(argv: list[str] | None = None) -> int:
             args.model_path,
             device=args.agentic_device,
         )
+        preflight = model_preflight(transport, args.agentic_model_name,
+                                   seconds=min(60.0, args.global_timeout - (time.monotonic() - started)))
         agentic_reasoner = AgenticReasoner(
             transport,
             model=args.agentic_model_name,
@@ -654,6 +683,7 @@ def main(argv: list[str] | None = None) -> int:
     submission: dict[str, Any] = {}
     completed_ids: set[str] = set()
     signature_payload = {
+        "release_id": RELEASE_ID,
         "challenge_sha256": hashlib.sha256(challenge_path.read_bytes()).hexdigest(),
         "max_iterations": args.max_iterations,
         "task_timeout": args.task_timeout,
@@ -694,11 +724,11 @@ def main(argv: list[str] | None = None) -> int:
             submission, completed_ids = {}, set()
 
     total = len(challenges)
-    started = time.monotonic()
     failures: list[dict[str, str]] = []
     timed_out_tasks: list[str] = []
     demonstration_exact_tasks = 0
     learned_failures: list = []
+    session_memory = SessionMemory() if args.session_transfer else None
     for index, (task_id, task_data) in enumerate(challenges.items(), start=1):
         if task_id in completed_ids and task_id in submission:
             log(f"[SKIP] {task_id} ({index}/{total})")
@@ -714,12 +744,14 @@ def main(argv: list[str] | None = None) -> int:
                     timed_out_tasks.append(pending_id)
             break
         try:
+            task_started = time.monotonic()
+            task_budget = min(args.task_timeout, remaining)
             attempts, score, exact, program_len = solve_task(
                 task_id,
                 task_data,
                 global_memory,
                 global_prior_weight,
-                min(args.task_timeout, remaining),
+                task_budget,
                 args.max_iterations,
                 experience_bank,
                 world_model,
@@ -728,7 +760,10 @@ def main(argv: list[str] | None = None) -> int:
                 agentic_reasoner,
                 failure_memory,
                 learned_failures,
+                session_memory,
             )
+            if time.monotonic() - task_started > task_budget:
+                raise TimeoutError("Task exceeded its end-to-end budget")
             submission[task_id] = attempts
             demonstration_exact_tasks += int(exact)
             log(
@@ -741,7 +776,12 @@ def main(argv: list[str] | None = None) -> int:
             if args.task_failure_policy == "abort":
                 raise
             failures.append({"task_id": task_id, "error": type(exc).__name__})
+            if isinstance(exc, TimeoutError):
+                timed_out_tasks.append(task_id)
             submission[task_id] = failure_fallback(task_data, args.timeout_fallback)
+        if args.session_transfer and failure_memory is not None:
+            failure_memory = failure_memory.merged(learned_failures)
+        learned_failures.clear()
         completed_ids.add(task_id)
         save_checkpoint(
             checkpoint_path,
@@ -754,13 +794,8 @@ def main(argv: list[str] | None = None) -> int:
     validate_submission(submission, challenges)
     write_submission(output_path, submission)
 
-    if failure_memory is not None and learned_failures:
-        merged_failures = failure_memory.merged(learned_failures)
-        merged_failures.save(failure_memory_path)
-        log(
-            f"[INFO] Failure memory: +{len(learned_failures)} families this run, "
-            f"{len(merged_failures.records)} total -> {failure_memory_path}"
-        )
+    # Static inputs are immutable. Session learning is ephemeral; exporting it
+    # requires a separate builder-only evaluation, never hidden test guesses.
     identity_attempts = 0
     distinct_attempt_pairs = 0
     output_count = 0
@@ -789,6 +824,8 @@ def main(argv: list[str] | None = None) -> int:
             "platform": sys.platform,
         },
         "configuration": {
+            "release_id": RELEASE_ID,
+            "session_transfer": args.session_transfer,
             "run_signature": run_signature,
             "global_timeout_seconds": args.global_timeout,
             "task_timeout_seconds": args.task_timeout,
@@ -823,6 +860,9 @@ def main(argv: list[str] | None = None) -> int:
             "competition_run": args.competition_run,
         },
         "channels": {
+            "agentic_unusable_invocations": agentic_reasoner.unusable_invocations if agentic_reasoner else 0,
+            "session_procedures": len(session_memory.records) if session_memory else 0,
+            "session_memory_hits": session_memory.hits if session_memory else 0,
             "seed_records": len(global_memory),
             "experience_records": experience_records,
             "procedural_records": procedural_records,
@@ -856,8 +896,15 @@ def main(argv: list[str] | None = None) -> int:
             "distinct_attempt_pairs": distinct_attempt_pairs,
         },
         "elapsed_seconds": time.monotonic() - started,
+        "model_preflight": preflight,
     }
     write_submission(run_manifest_path, run_manifest)
+    if args.competition_run:
+        try:
+            qualify_run(run_manifest)
+        except RuntimeError:
+            output_path.unlink(missing_ok=True)
+            raise
     if checkpoint_path.exists() and not args.keep_checkpoint:
         checkpoint_path.unlink()
     log(f"[SUCCESS] Saved validated submission to {output_path}")

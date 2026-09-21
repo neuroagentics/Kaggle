@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import time
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -79,12 +80,25 @@ class OfflineTransformersTransport:
         messages = payload.get("messages")
         if not isinstance(messages, list) or not messages:
             raise OfflineModelError("Model request requires chat messages")
+        messages = [dict(message) for message in messages]
+        schema = payload.get("format")
+        if isinstance(schema, Mapping):
+            # Transformers does not implement Ollama's `format` option. Include
+            # the contract explicitly; parsing + execution remain authoritative.
+            # This is prompt guidance, NOT constrained/grammar decoding.
+            messages[-1]["content"] += (
+                "\nReturn only JSON conforming to this schema:\n" + json.dumps(schema)
+            )
         options = payload.get("options", {})
         if not isinstance(options, Mapping):
             options = {}
         seed = int(options.get("seed", 0))
         temperature = float(options.get("temperature", 0.0))
         max_new_tokens = min(max(int(options.get("num_predict", 1024)), 32), 4096)
+        max_time = float(options.get("max_time", 120.0))
+        if max_time <= 0:
+            raise OfflineModelError("Inference deadline exhausted")
+        started = time.monotonic()
         self.torch.manual_seed(seed)
         if self.device == "cuda":
             self.torch.cuda.manual_seed_all(seed)
@@ -99,20 +113,24 @@ class OfflineTransformersTransport:
             encoded = self.tokenizer(
                 rendered,
                 return_tensors="pt",
-                truncation=True,
-                max_length=self.max_input_tokens,
+                truncation=False,
                 add_special_tokens=False,
             )
             encoded = {key: value.to(self.device) for key, value in encoded.items()}
+            if encoded["input_ids"].shape[-1] > self.max_input_tokens:
+                raise OfflineModelError("Prompt exceeds input budget; refusing to truncate demonstrations")
             generation = {
                 "max_new_tokens": max_new_tokens,
                 "do_sample": temperature > 0,
                 "pad_token_id": self.tokenizer.eos_token_id,
+                "max_time": max(0.001, max_time - (time.monotonic() - started)),
             }
             if temperature > 0:
                 generation.update({"temperature": temperature, "top_p": 0.92})
             with self.torch.inference_mode():
                 output = self.model.generate(**encoded, **generation)
+            if time.monotonic() - started > max_time:
+                raise OfflineModelError("Inference deadline exceeded")
             prompt_length = encoded["input_ids"].shape[-1]
             content = self.processor.decode(
                 output[0, prompt_length:], skip_special_tokens=True

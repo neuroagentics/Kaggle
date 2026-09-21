@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import time
 from dataclasses import dataclass
 from typing import Any, Mapping
 
@@ -129,7 +130,7 @@ class RecursiveReasoningWorldModel:
         self.config = config or WorldModelConfig()
         self.executor = TypedExecutor()
 
-    def solve(self, task_id: str, task_data: Mapping[str, Any]) -> WorldModelResult:
+    def solve(self, task_id: str, task_data: Mapping[str, Any], *, deadline: float | None = None) -> WorldModelResult:
         task_state = perceive_task(
             task_id,
             task_data,
@@ -193,6 +194,7 @@ class RecursiveReasoningWorldModel:
             if (
                 executed[0] >= self.config.max_candidates
                 or program.digest in seen_programs
+                or (deadline is not None and time.monotonic() >= deadline)
             ):
                 return
             seen_programs.add(program.digest)
@@ -301,7 +303,7 @@ class RecursiveReasoningWorldModel:
                 )
 
         for name, source, program, memory_distance in seeds:
-            if executed[0] >= self.config.max_candidates:
+            if executed[0] >= self.config.max_candidates or (deadline is not None and time.monotonic() >= deadline):
                 break
             reason(
                 name,

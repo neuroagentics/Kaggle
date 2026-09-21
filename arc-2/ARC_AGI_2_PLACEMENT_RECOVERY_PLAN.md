@@ -1,3 +1,5 @@
+> Historical document, superseded for ARC-2 deployment on 2026-09-20. See [README.md](README.md) and release/current/release.json. Retained results do not certify the current candidate.
+
 # Hyper-ARC: ARC-AGI-2 Placement Recovery Plan
 
 > The refined runtime, compatibility, evaluation, and open-source contract is

@@ -1,3 +1,5 @@
+> Historical document, superseded for ARC-2 deployment on 2026-09-20. See [README.md](README.md) and release/current/release.json. Retained results do not certify the current candidate.
+
 # Phase B Structural World-Model Gate
 
 Date: 2026-09-09

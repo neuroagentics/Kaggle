@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import time
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping
@@ -57,8 +59,19 @@ class AgenticMemoryRecord:
         model: str,
         task_data: Mapping[str, Any],
         validation_scope: str,
+        expected_test_outputs: list,
     ) -> "AgenticMemoryRecord":
+        if validation_scope != "builder":
+            raise ValueError("Persistent success records require builder-only evidence")
         validate_code(code)
+        train = task_data.get("train", [])
+        tests = task_data.get("test", [])
+        if not train or not tests or len(expected_test_outputs) != len(tests):
+            raise ValueError("Complete builder demonstrations and test labels are required")
+        if execute_code(code, [p["input"] for p in train]) != [p["output"] for p in train]:
+            raise ValueError("Procedure does not reproduce its source demonstrations")
+        if execute_code(code, [p["input"] for p in tests]) != expected_test_outputs:
+            raise ValueError("Procedure is not individually full-task exact")
         payload = {
             "source_task_id": source_task_id,
             "summary": summary,
@@ -156,6 +169,7 @@ class AgenticMemoryBank:
         *,
         retrieve_limit: int = 12,
         execution_timeout: float = 2.0,
+        deadline: float | None = None,
     ) -> tuple[AgenticMemoryCandidate, ...]:
         fingerprint = task_fingerprint_v2(task_data)
         ranked = sorted(
@@ -170,16 +184,22 @@ class AgenticMemoryBank:
         test_inputs = [pair["input"] for pair in task_data.get("test", [])]
         exact = []
         for record in ranked:
+            def budget():
+                if deadline is None:
+                    return execution_timeout
+                return min(execution_timeout, max(0.001, deadline - time.monotonic()))
+            if deadline is not None and time.monotonic() >= deadline:
+                break
             try:
                 predictions = execute_code(
-                    record.code, train_inputs, timeout_seconds=execution_timeout
+                    record.code, train_inputs, timeout_seconds=budget()
                 )
                 if predictions != train_outputs:
                     continue
                 tests = execute_code(
-                    record.code, test_inputs, timeout_seconds=execution_timeout
+                    record.code, test_inputs, timeout_seconds=budget()
                 )
-            except (OSError, ValueError):
+            except (OSError, ValueError, subprocess.SubprocessError):
                 continue
             exact.append(
                 AgenticMemoryCandidate(
@@ -191,4 +211,3 @@ class AgenticMemoryBank:
                 )
             )
         return tuple(exact)
-

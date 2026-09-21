@@ -1,21 +1,8 @@
-"""Measure whether the generalization gate cuts spurious demo-fits without
-losing real solves.
+"""Research-only augmentation diagnostic on already inspected regression sets.
 
-For each task, the object-program channel yields programs that reproduce every
-training demo. For each such program we know (from the held-out solutions) two
-facts:
-  - demo_fit: it reproduced all train demos (always true here, by construction)
-  - test_correct: its test prediction actually matches the true test output
-
-The gate is a classifier over demo-fitting programs. We report, per split:
-  - programs that fit demos (the raw acceptance signal)
-  - how many of those are actually test-correct  (precision of raw signal)
-  - how many the gate PASSES, and precision among gate-passed
-  - true solves lost to the gate (test-correct programs the gate rejected)
-  - task-level pass@2 before vs after gating (rank gate-passers first)
-
-A good gate raises precision and task-level retention on the sealed holdout
-while losing few/no real solves. Uses labels ONLY to score, never to gate.
+Reports exact demo/test behavior without treating arbitrary color relabeling as
+proof of the intended rule. No program is re-fitted on N-1 demonstrations, so
+this is not leave-one-out induction. This script is not a deployment gate.
 """
 
 from __future__ import annotations
@@ -26,7 +13,7 @@ from pathlib import Path
 
 from hyper_arc.contender.executor import ExecutionError, TypedExecutor
 from hyper_arc.contender.object_programs import generate_object_programs
-from hyper_arc.contender.generalization import generalization_gate
+from hyper_arc.contender.generalization import augmentation_consistency
 from hyper_arc.contender.schemas import GridPair
 from hyper_arc.contender.data_protocol import load_verified_split
 
@@ -78,12 +65,10 @@ def evaluate(challenges: dict, solutions: dict, *, max_programs: int = 4000) -> 
             if not demo_ok:
                 continue
             # test_correct: pass@1-style, the program's own prediction on each test input
-            test_correct = all(
-                _run(executor, program, _grid(t["input"])) == targets[i]
-                for i, t in enumerate(tests)
-            )
-            report = generalization_gate(program, pairs, executor=executor)
-            fitters.append((program, test_correct, report.generalizes))
+            predictions = tuple(_run(executor, program, _grid(t["input"])) for t in tests)
+            test_correct = list(predictions) == targets
+            report = augmentation_consistency(program, pairs, executor=executor)
+            fitters.append((predictions, test_correct, report.passes_checks))
 
         if not fitters:
             continue
@@ -97,22 +82,20 @@ def evaluate(challenges: dict, solutions: dict, *, max_programs: int = 4000) -> 
             elif test_correct:
                 true_solves_lost += 1
 
-        # Task-level pass@2: raw = any of the first 2 distinct programs correct;
-        # gated = rank gate-passers first, then the rest.
+        # Distinct behavior, not distinct program text. Each test input can
+        # succeed via a different member of the two-attempt ensemble.
         def pass2(order):
             seen = set()
-            picked = 0
-            for prog, test_correct, _passed in order:
-                key = prog.digest
-                if key in seen:
+            selected = []
+            for predictions, _correct, _passed in order:
+                if predictions in seen:
                     continue
-                seen.add(key)
-                picked += 1
-                if test_correct:
-                    return True
-                if picked >= 2:
-                    return False
-            return False
+                seen.add(predictions)
+                selected.append(predictions)
+                if len(selected) == 2:
+                    break
+            return bool(selected) and all(any(p[i] == target for p in selected)
+                                          for i, target in enumerate(targets))
 
         raw_order = fitters
         gated_order = sorted(fitters, key=lambda f: (not f[2],))  # gate-passers first
@@ -123,6 +106,9 @@ def evaluate(challenges: dict, solutions: dict, *, max_programs: int = 4000) -> 
         return f"{100*n/d:.1f}%" if d else "n/a"
 
     return {
+        "scope": "augmentation-diagnostic-not-generalization-proof",
+        "total_tasks": len(challenges),
+        "color_filter_enabled": False,
         "tasks_with_demo_fit": tasks_with_fit,
         "demo_fitting_programs": fit_programs,
         "raw_precision(test_correct/fit)": pct(fit_test_correct, fit_programs),

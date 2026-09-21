@@ -1,10 +1,8 @@
-"""Tests for the generalization gate: a general program passes, a program that
-baked a demo literal (fixed color) fails the color-permutation invariance gate.
-"""
+"""Advisory invariance diagnostics are not unseen-task generalization tests."""
 
 from __future__ import annotations
 
-from hyper_arc.contender.generalization import generalization_gate
+from hyper_arc.contender.generalization import augmentation_consistency
 from hyper_arc.contender.schemas import GridPair, ProgramAST, ValueType
 
 
@@ -31,13 +29,13 @@ def test_color_invariant_program_passes_the_gate():
             (((5, 0), (0, 6)), ((6, 0), (0, 5))),
         ]
     )
-    report = generalization_gate(program, pairs)
-    assert report.leave_one_out_exact is True
-    assert report.generalizes is True
+    report = augmentation_consistency(program, pairs)
+    assert report.demonstration_exact is True
+    assert report.passes_checks is True
     assert "color_permutation" not in report.failed_augmentations
 
 
-def test_baked_color_literal_program_fails_the_gate():
+def test_color_literal_is_not_rejected_without_a_rule_specific_invariance_assumption():
     # A program that remaps every cell to the literal color 4 fits demos whose
     # output is all-4, but it is NOT color-invariant: under a palette relabel the
     # transformed output is no longer all-4, so program(T(input)) != T(output).
@@ -53,18 +51,19 @@ def test_baked_color_literal_program_fails_the_gate():
             (((5, 6), (0, 1)), ((4, 4), (4, 4))),
         ]
     )
-    report = generalization_gate(program, pairs)
-    # It does fit every demo exactly (LODO true)...
-    assert report.leave_one_out_exact is True
-    # ...but it memorized the literal target color, so the gate rejects it.
-    assert report.generalizes is False
+    report = augmentation_consistency(program, pairs)
+    # Ordinary demo replay is true; no leave-one-out induction was performed.
+    assert report.demonstration_exact is True
+    # A fixed target color can be the correct rule, not necessarily memorization.
+    assert report.passes_checks is True  # valid color-specific rules remain eligible
+    assert augmentation_consistency(program, pairs, require_color_invariance=True).passes_checks is False
     assert "color_permutation" in report.failed_augmentations
 
 
 def test_gate_handles_empty_pairs():
     program = ProgramAST(op="input", output_type=ValueType.GRID)
-    report = generalization_gate(program, ())
-    assert report.generalizes is False
+    report = augmentation_consistency(program, ())
+    assert report.passes_checks is False
 
 
 def test_gate_passes_color_invariant_when_palette_too_small_for_permutation():
@@ -72,6 +71,6 @@ def test_gate_passes_color_invariant_when_palette_too_small_for_permutation():
     # is then not applicable and must not spuriously fail a valid program.
     program = ProgramAST(op="input", output_type=ValueType.GRID)  # identity
     pairs = _pairs([(((0, 0), (0, 0)), ((0, 0), (0, 0)))])
-    report = generalization_gate(program, pairs)
-    assert report.leave_one_out_exact is True
-    assert report.generalizes is True
+    report = augmentation_consistency(program, pairs)
+    assert report.demonstration_exact is True
+    assert report.passes_checks is True

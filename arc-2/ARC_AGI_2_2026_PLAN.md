@@ -1,3 +1,5 @@
+> Historical document, superseded for ARC-2 deployment on 2026-09-20. See [README.md](README.md) and release/current/release.json. Retained results do not certify the current candidate.
+
 # ARC-AGI-2 2026 Implementation Plan
 
 Status: Experience-bank Version 2 implemented and packaged; external solvers are reference-only

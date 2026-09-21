@@ -27,6 +27,7 @@ def test_exact_agentic_memory_replays_only_after_current_demo_verification(tmp_p
         model="model",
         task_data=TASK,
         validation_scope="builder",
+        expected_test_outputs=[[[3, 4], [4, 3]]],
     )
     bank = AgenticMemoryBank((record,))
     path = tmp_path / "memory.json"
@@ -52,9 +53,9 @@ def test_agentic_memory_rejects_tampering():
         model="model",
         task_data=TASK,
         validation_scope="builder",
+        expected_test_outputs=[[[3, 4], [4, 3]]],
     )
     payload = AgenticMemoryBank((record,)).to_dict()
     payload["records"][0]["code"] += "\n"
     with pytest.raises(ValueError, match="digest"):
         AgenticMemoryBank.from_dict(json.loads(json.dumps(payload)))
-

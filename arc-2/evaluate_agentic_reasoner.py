@@ -19,16 +19,20 @@ from hyper_arc.contender.failure_memory import (
 from hyper_arc.contender.model_proposer import _ollama_transport
 from hyper_arc.contender.procedural_memory import ProceduralMemoryBank
 from hyper_arc.contender.telemetry import ResourceMonitor
+from hyper_arc.contender.offline_model import OfflineTransformersTransport
+from release_policy import AGENTIC_ROUNDS, AGENTIC_CANDIDATES, OUTPUT_TOKENS
 
 
 def _arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", default="qwen2.5-coder:7b")
+    parser.add_argument("--model", required=True, help="Explicit model identity; no silent model substitution")
+    parser.add_argument("--backend", choices=("transformers", "ollama"), default="transformers")
+    parser.add_argument("--model-path", type=Path)
     parser.add_argument("--count", type=int, default=10)
-    parser.add_argument("--rounds", type=int, default=3)
-    parser.add_argument("--candidates", type=int, default=4)
+    parser.add_argument("--rounds", type=int, default=AGENTIC_ROUNDS)
+    parser.add_argument("--candidates", type=int, default=AGENTIC_CANDIDATES)
     parser.add_argument("--timeout", type=float, default=120.0)
-    parser.add_argument("--max-output-tokens", type=int, default=2400)
+    parser.add_argument("--max-output-tokens", type=int, default=OUTPUT_TOKENS)
     parser.add_argument("--ordering", choices=("dataset", "smallest"), default="dataset")
     parser.add_argument("--thinking", action="store_true")
     parser.add_argument("--task-ids", nargs="*")
@@ -54,6 +58,10 @@ def _grid_area(grid) -> int:
 
 def main() -> int:
     arguments = _arguments()
+    if arguments.partition != "builder" and (arguments.memory_output or arguments.failure_memory):
+        raise ValueError("Validation is read-only: reusable memory output/update requires --partition builder")
+    if arguments.backend == "transformers" and not arguments.model_path:
+        raise ValueError("Offline evaluation requires --model-path; Ollama is research-only")
     development, _ = load_verified_split(
         "data/arc-agi-2/arc-agi_training_challenges.json",
         "config/arc2_split_v1.json",
@@ -99,12 +107,14 @@ def main() -> int:
         if len(selected) == arguments.count:
             break
 
-    reasoner = AgenticReasoner(
+    transport = (OfflineTransformersTransport(arguments.model_path) if arguments.backend == "transformers" else
         _ollama_transport(
             arguments.model,
             "http://127.0.0.1:11434/api/chat",
             arguments.timeout,
-        ),
+        ))
+    reasoner = AgenticReasoner(
+        transport,
         model=arguments.model,
         rounds=arguments.rounds,
         candidates_per_round=arguments.candidates,
@@ -117,6 +127,7 @@ def main() -> int:
     learned_failures: list = []
 
     solved = 0
+    exact_outputs = 0
     exact_fit = 0
     generated = 0
     executed = 0
@@ -133,6 +144,7 @@ def main() -> int:
                     development[task_id],
                     memory_cues=memory.retrieve_cues(development[task_id]),
                     failure_cues=failure_cues,
+                    deadline=time.monotonic() + arguments.timeout,
                 )
             except Exception as exc:
                 key = f"{type(exc).__name__}:{str(exc)[:100]}"
@@ -143,6 +155,7 @@ def main() -> int:
             generated += result.candidates_generated
             executed += result.candidates_executed
             targets = [_canonical(grid) for grid in solutions[task_id]]
+            exact_outputs += sum(target in options for target, options in zip(targets, result.test_predictions))
             test_exact = bool(result.hypotheses) and all(
                 target in options
                 for target, options in zip(targets, result.test_predictions)
@@ -150,6 +163,10 @@ def main() -> int:
             solved += test_exact
             if test_exact:
                 for hypothesis in result.hypotheses:
+                    # Ensemble pass@2 does not prove that EACH member solved
+                    # every test. Persist only individually verified programs.
+                    if list(hypothesis.test_predictions) != targets:
+                        continue
                     learned_records.append(
                         AgenticMemoryRecord.create(
                             source_task_id=task_id,
@@ -158,6 +175,7 @@ def main() -> int:
                             model=arguments.model,
                             task_data=development[task_id],
                             validation_scope=arguments.partition,
+                            expected_test_outputs=solutions[task_id],
                         )
                     )
             else:
@@ -210,6 +228,14 @@ def main() -> int:
         "partition": f"nested-{arguments.partition}-owned-production-unsolved",
         "partition_sha256": partition_digest,
         "model": arguments.model,
+        "backend": arguments.backend,
+        "model_path": str(arguments.model_path) if arguments.model_path else None,
+        "evaluator_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "max_output_tokens": arguments.max_output_tokens,
+        "task_budget_seconds": arguments.timeout,
+        "selected_task_ids": [task_id for task_id, _ in selected],
+        "exact_test_outputs_pass_at_2": exact_outputs,
+        "total_test_outputs": sum(len(development[tid]["test"]) for tid, _ in selected),
         "agent": "execution-guided-code-refinement-v1",
         "tasks": len(selected),
         "rounds": arguments.rounds,

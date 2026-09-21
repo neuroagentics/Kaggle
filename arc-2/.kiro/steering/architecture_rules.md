@@ -2,8 +2,10 @@
 
 ## Dependency Versioning
 
-Never hardcode strict, outdated version pins in `requirements.txt`.
-Use `>=` for all major libraries to ensure compatibility with modern Python environments.
+Use tested bounded ranges for development dependencies. Deployment must freeze
+and hash the exact offline artifacts and record the tested Kaggle base image.
+Never replace a release lock with unbounded minimum versions. README.md is the
+current release contract; these rules do not authorize a release by themselves.
 
 **Bad:**
 ```
@@ -23,8 +25,8 @@ If a specific upper bound is needed (e.g., a known breaking API change), documen
 
 ## Python Version
 
-Target Python 3.10+. Do not use syntax or stdlib features unavailable before 3.10.
-`match/case`, `X | Y` union types in annotations, and `tomllib` are all fine.
+Target the tested Kaggle Python 3.12 runtime and local Python 3.13 test runtime.
+`tomllib` requires Python 3.11+, not 3.10. Compatibility claims require tests.
 
 ## Tensor dtype
 

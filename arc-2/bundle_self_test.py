@@ -22,15 +22,15 @@ ROOT = Path(__file__).resolve().parent
 
 def main() -> int:
     procedural_path = ROOT / "hyper_arc" / "procedural_memory_v1.json"
-    agentic_memory_path = ROOT / "hyper_arc" / "agentic_memory_v1.json"
+    agentic_memory_path = ROOT / "hyper_arc" / "agentic_memory_builder_v2.json"
 
     seed_memory = GlobalMemoryBank(k=5)
     procedural_memory = ProceduralMemoryBank.load(procedural_path)
     agentic_memory = AgenticMemoryBank.load(agentic_memory_path)
     if not procedural_memory.records:
         raise RuntimeError("Required procedural-memory artifact is empty")
-    if not agentic_memory.records:
-        raise RuntimeError("Required exact model-authored memory is empty")
+    if any(r.validation_scope != "builder" for r in agentic_memory.records):
+        raise RuntimeError("Static agentic memory contains non-builder evidence")
 
     fixture = {
         "train": [
@@ -162,6 +162,8 @@ def main() -> int:
                 "deterministic_exact": exact,
                 "recursive_world_model_exact": True,
                 "agentic_pipeline_exact": True,
+                "neural_inference_tested": False,
+                "sentinel_scope": "stub-backed-structural-only",
                 "agentic_memory_records": len(agentic_memory.records),
                 "inactive_channels_packaged": False,
             },

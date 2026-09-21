@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import subprocess
+import time
 import sys
 from collections import Counter
 from dataclasses import dataclass
@@ -626,6 +627,7 @@ class AgenticReasoner:
         self.exact_invocations = 0
         self.generated_total = 0
         self.executed_total = 0
+        self.unusable_invocations = 0
 
     def solve(
         self,
@@ -634,7 +636,11 @@ class AgenticReasoner:
         *,
         memory_cues: Sequence[str] = (),
         failure_cues: Sequence[str] = (),
+        deadline: float | None = None,
     ) -> AgenticResult:
+        def remaining():
+            return max(0.0, deadline - time.monotonic()) if deadline is not None else float("inf")
+
         train_inputs = [pair["input"] for pair in task_data.get("train", [])]
         train_outputs = [pair["output"] for pair in task_data.get("train", [])]
         test_inputs = [pair["input"] for pair in task_data.get("test", [])]
@@ -662,6 +668,9 @@ class AgenticReasoner:
         executed = 0
         rounds_executed = 0
         for round_index in range(self.rounds):
+            if remaining() <= 0:
+                failures.append("deadline:reasoning budget exhausted")
+                break
             rounds_executed += 1
             common_options = {
                 "temperature": min(0.2 + 0.12 * round_index, 0.7),
@@ -671,6 +680,8 @@ class AgenticReasoner:
                 ),
                 "num_predict": self.max_output_tokens,
             }
+            if deadline is not None:
+                common_options["max_time"] = remaining()
             try:
                 planning_response = self.transport(
                     {
@@ -741,6 +752,9 @@ class AgenticReasoner:
                 )
             evaluated: list[tuple[str, int, list[str], list[str]]] = []
             for index, payload in enumerate(hypotheses[: self.candidates_per_round]):
+                if remaining() <= 0:
+                    failures.append("deadline:candidate budget exhausted")
+                    break
                 generated += 1
                 if not isinstance(payload, Mapping):
                     failures.append(f"r{round_index}c{index}:not-object")
@@ -760,7 +774,7 @@ class AgenticReasoner:
                 try:
                     complexity = validate_code(code)
                     demo_predictions = execute_code(
-                        code, train_inputs, timeout_seconds=self.execution_timeout
+                        code, train_inputs, timeout_seconds=min(self.execution_timeout, remaining())
                     )
                     executed += 1
                     errors = [
@@ -783,7 +797,7 @@ class AgenticReasoner:
                         )
                         continue
                     test_predictions = execute_code(
-                        code, test_inputs, timeout_seconds=self.execution_timeout
+                        code, test_inputs, timeout_seconds=min(self.execution_timeout, remaining())
                     )
                     exact.append(
                         CodeHypothesis(
@@ -819,6 +833,15 @@ class AgenticReasoner:
                 # We were refining a near-miss but this round did not improve it.
                 refine_stall += 1
         exact.sort(key=lambda item: (item.complexity, item.round_index, item.digest))
+        # Distinct source strings can implement identical behavior. Do not spend
+        # both output slots on the same predicted test grids.
+        behaviors = set()
+        distinct = []
+        for hypothesis in exact:
+            if hypothesis.test_predictions not in behaviors:
+                behaviors.add(hypothesis.test_predictions)
+                distinct.append(hypothesis)
+        exact = distinct
         predictions = tuple(
             tuple(hypothesis.test_predictions[test_index] for hypothesis in exact[:2])
             for test_index in range(len(test_inputs))
@@ -835,4 +858,5 @@ class AgenticReasoner:
         self.exact_invocations += int(bool(result.hypotheses))
         self.generated_total += result.candidates_generated
         self.executed_total += result.candidates_executed
+        self.unusable_invocations += int(result.candidates_executed == 0)
         return result

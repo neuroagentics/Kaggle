@@ -27,7 +27,8 @@ def test_bundle_is_named_by_digest_and_matches_internal_manifest(tmp_path):
         assert manifest["channels"]["procedural_memory"]["records"] > 0
         assert manifest["channels"]["agentic_ai"]["enabled"] is True
         assert manifest["channels"]["agentic_ai"]["required"] is True
-        assert manifest["channels"]["agentic_memory"]["records"] > 0
+        assert manifest["channels"]["agentic_memory"]["records"] == 0
+        assert "hyper_arc/agentic_memory_v1.json" not in archive.namelist()
         assert manifest["channels"]["recursive_world_model"]["enabled"] is True
         assert manifest["channels"]["world_memory"]["enabled"] is False
         assert manifest["channels"]["world_memory"]["packaged"] is False
@@ -68,5 +69,6 @@ def test_extracted_bundle_passes_its_runtime_sentinel(tmp_path):
     assert report["procedural_records"] > 0
     assert report["recursive_world_model_exact"] is True
     assert report["agentic_pipeline_exact"] is True
-    assert report["agentic_memory_records"] > 0
+    assert report["agentic_memory_records"] == 0
+    assert report["neural_inference_tested"] is False
     assert report["inactive_channels_packaged"] is False

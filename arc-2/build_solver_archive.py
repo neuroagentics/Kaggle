@@ -9,6 +9,7 @@ import subprocess
 import zipfile
 from pathlib import Path
 from typing import Iterable
+from release_policy import RELEASE_ID, MODEL_ATTACHMENT
 
 
 ROOT = Path(__file__).resolve().parent
@@ -16,6 +17,7 @@ BUNDLE_PREFIX = "hyper_arc_solver_bundle"
 MANIFEST_NAME = "bundle_manifest.json"
 
 RUNTIME_FILES = (
+    "release_policy.py",
     "main.py",
     "bundle_self_test.py",
     "agentic_sandbox.py",
@@ -45,8 +47,10 @@ RUNTIME_FILES = (
     "hyper_arc/contender/repair.py",
     "hyper_arc/contender/world_model.py",
     "hyper_arc/contender/failure_memory.py",
+    "hyper_arc/contender/session_memory.py",
     "hyper_arc/procedural_memory_v1.json",
-    "hyper_arc/agentic_memory_v1.json",
+    "hyper_arc/agentic_memory_builder_v2.json",
+    "hyper_arc/failure_memory_builder_v2.json",
 )
 
 
@@ -76,7 +80,8 @@ def _read_runtime_files(paths: Iterable[str]) -> dict[str, bytes]:
         if not path.is_file():
             missing.append(relative)
             continue
-        payloads[relative] = path.read_bytes()
+        # Stable across Windows/Linux checkouts; runtime assets are text only.
+        payloads[relative] = path.read_text(encoding="utf-8").replace("\r\n", "\n").encode("utf-8")
     if missing:
         raise FileNotFoundError(f"Required bundle files are missing: {missing}")
     return payloads
@@ -104,6 +109,7 @@ def build_manifest(payloads: dict[str, bytes]) -> dict:
         "project": "Hyper-ARC",
         "target": "ARC Prize 2026 ARC-AGI-2 Kaggle runtime",
         "source_revision": _source_revision(),
+        "release_id": RELEASE_ID,
         "source_tree_sha256": source_tree_digest,
         "files": files,
         "runtime": {
@@ -118,7 +124,7 @@ def build_manifest(payloads: dict[str, bytes]) -> dict:
             "agentic_ai": {
                 "required": True,
                 "enabled": True,
-                "model": "google/gemma-4/Transformers/gemma-4-e4b-it/1",
+                "model": MODEL_ATTACHMENT,
                 "reason": (
                     "Offline neural perception, hypothesis planning, program "
                     "synthesis, verifier feedback, and reflection controller"
@@ -128,7 +134,7 @@ def build_manifest(payloads: dict[str, bytes]) -> dict:
                 "required": True,
                 "enabled": True,
                 "records": _item_count(
-                    payloads["hyper_arc/agentic_memory_v1.json"], "records"
+                    payloads["hyper_arc/agentic_memory_builder_v2.json"], "records"
                 ),
                 "reason": (
                     "Only model-authored procedures with exact demonstration and "
@@ -184,7 +190,7 @@ def build_manifest(payloads: dict[str, bytes]) -> dict:
         "release": {
             "public_license": "PENDING",
             "competition_release_ready": False,
-            "reason": "Owner must select the permissive public license before release",
+            "reason": "Requires binding rules, owner-selected license, live offline model qualification, independent exact-score improvement and two clean rehearsals",
         },
     }
 
