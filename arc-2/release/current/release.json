@@ -7,10 +7,10 @@
   "output_tokens": 3000,
   "task_seconds": 120.0,
   "run_seconds": 34200.0,
-  "source_tree_sha256": "d9ea0a77efe26d46ba6f7af1335a47f5047f7756fa83c578970d511827fd0b2a",
-  "source_revision": "6e5b0ae2f85e021282e016f0d924c691a6cab015",
-  "bundle": "hyper_arc_solver_bundle.6fed972d9ffb070ec18c8657305fe06b60778b0a75e396eaa57ac3d88d91613d.zip",
-  "notebook_sha256": "ed3e1f8ec1425d3cfaf3222d9b4f666ed122df6cde7f9ef5dd9e6558a65cf334",
+  "source_tree_sha256": "ddc8c0fa5b37c039eaa6e3f4938a75eebd296548446a0c83950a7a48de9a08dd",
+  "source_revision": "b8ac252a038545e56dcf12fec0b39e36102675b3",
+  "bundle": "hyper_arc_solver_bundle.2f678e9e846f3ad2ffcfa7fcfd97eaa3fb164676723562454d2a4b62a5a382bc.zip",
+  "notebook_sha256": "478b09c5dab993c24ecd023ab5119ca328379673dfbfa366d3dd00eda456876b",
   "status": "UNQUALIFIED_CANDIDATE",
   "submission_authorized": false
 }
