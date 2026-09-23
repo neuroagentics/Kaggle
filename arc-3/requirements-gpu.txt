@@ -31,4 +31,4 @@ accelerate>=0.33
 bitsandbytes>=0.43
 
 # Weight download utility (R11):
-huggingface_hub>=1.0
+huggingface_hub>=1.32.0
