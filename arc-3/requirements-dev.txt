@@ -18,7 +18,7 @@
 #
 # Runtime deps shared with Kaggle (kept in sync with `make setup`):
 arc-agi>=0.9.6
-kaggle>=2.2
+kaggle>=2.2.4
 python-dotenv
 pandas
 pyarrow

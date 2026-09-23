@@ -1,5 +1,5 @@
 torch>=2.3,<3
 numpy>=1.26,<3
-kaggle>=1.6,<2
+kaggle>=2.2.4,<3
 pytest>=8.2,<10
 hypothesis>=6,<7
